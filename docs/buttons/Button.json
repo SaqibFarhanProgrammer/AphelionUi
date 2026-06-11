@@ -1,0 +1,25 @@
+{
+  "title": "Button",
+  "description": "A button component",
+
+  "props": [
+    {
+      "name": "text",
+      "type": "string",
+      "description": "The text of the button"
+    }
+  ],
+  "code": {
+    "MainCode": "",
+    "usageCode": "<Button text='Click me' />"
+  },
+
+  "description": "<Button text='Click me' />",
+
+  "publisher": {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "github": "https://www.example.com",
+    "avatar": "https://www.example.com/avatar.png"
+  }
+}
