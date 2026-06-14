@@ -1,5 +1,12 @@
-import Image from 'next/image';
+import Hero from '@/componentsApp/LandingPage/Hero'
+import React from 'react'
 
-export default function Home() {
-  return <div>hello orign ui</div>;
+function page() {
+  return (
+    <div className=''>
+      <Hero/>
+    </div>
+  )
 }
+
+export default page
