@@ -29,10 +29,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       cz-shortcut-listen="true"
     >
-
       <body className="min-h-full flex flex-col">
-        <Navbar/>
-        {children}</body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,7 +1,5 @@
 'use client';
 
-import { ArrowRight, Star } from 'lucide-react';
-
 const avatars = [
   'https://i.pravatar.cc/150?img=1',
   'https://i.pravatar.cc/150?img=2',
@@ -10,49 +8,61 @@ const avatars = [
   'https://i.pravatar.cc/150?img=5',
 ];
 
-const tabs = [
-  'Hero Sections',
-  'Features',
-  'Bento Grids',
-  'Parallax Blocks',
-  'Keyboard',
-  'Glowing Effect',
-  'Glare Card',
-  'Canvas Card',
-  'Text Reveal',
-];
-
 export default function Hero() {
   return (
-    <section className="relative bg-[#0A0A0A] min-h-screen pt-20 pb-10 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <div className="flex flex-col items-center text-center pt-12">
-          <h1 className="text-white text-[clamp(40px,6vw,72px)] font-bold leading-[1.05] tracking-[-0.03em] mb-6 max-w-[800px]">
-            Ship landing pages at lightning speed.
+    <section className="relative bg-black h-[100vh] flex flex-col overflow-hidden">
+      <img
+        src="https://i.pinimg.com/736x/11/af/16/11af1629e34b39f5cfb403f07424c5a6.jpg"
+        alt=""
+        className="h-screen blur-[5px] w-full absolute z-[1]"
+      />
+      <div className="absolute bottom-0 h-[40vh] z-10 w-full bg-gradient-to-b from-transparent to-black" />
+
+      <div className="w-full h-[90%] flex flex-col justify-center items-center pt-10 px-6 lg:px-10 z-10">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center">
+            {avatars.map((src, i) => (
+              <div
+                key={i}
+                className="relative w-9 h-9 rounded-full border-2 border-black overflow-hidden"
+                style={{
+                  marginLeft: i === 0 ? 0 : '-10px',
+                  zIndex: avatars.length - i,
+                }}
+              >
+                <img
+                  src={src}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-0.5">
+            <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
+              200+ Developers contributing
+            </span>{' '}
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center text-center pt-5">
+          <h1 className="text-[clamp(30px,5vw,58px)] leading-[1.05] tracking-[-0.03em] mb-6 max-w-[900px]">
+            <span className="bg-gradient-to-tr from-white to-white/40 bg-clip-text text-transparent">
+              at lightning Ship
+            </span>
+            <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
+              {' '}
+              landing{' '}
+            </span>
+            <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
+              pages speed landing
+            </span>
           </h1>
 
-          <p className="text-white/40 text-[15px] leading-[1.7] max-w-[560px] mb-8">
+          <p className="text-white/70 text-[15px] leading-[1.7] max-w-[560px] mb-8">
             200+ production-ready components, blocks and templates that make
-            your site feel like you hired a design team. Copy, paste, customize,
-            no wrestling with Framer Motion animations or Tailwind styling.
+            your site feel like you hired a design team. Copy, paste,
           </p>
-          <div className="flex flex-col items-center gap-3 mb-4">
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2.5">
-                {avatars.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`User ${i + 1}`}
-                    className="w-9 h-9 rounded-full border-2 border-[#0A0A0A] object-cover"
-                  />
-                ))}
-              </div>
-              <div className="flex items-center gap-0.5 ml-1">
-                50+ Developer Contriuting
-              </div>
-            </div>
-          </div>
 
           <div className="flex items-center justify-center gap-3 mb-12">
             <a
@@ -68,6 +78,8 @@ export default function Hero() {
               Get All-Access
             </a>
           </div>
+
+          {/* Social Proof — sirf itna hi */}
         </div>
       </div>
     </section>
