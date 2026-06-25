@@ -28,7 +28,6 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       cz-shortcut-listen="true"
-      
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
