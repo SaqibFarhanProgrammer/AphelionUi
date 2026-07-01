@@ -40,13 +40,13 @@ export default function Hero() {
             ))}
           </div>
           <div className="flex items-center gap-0.5">
-            <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-bl font-[inter-rag] from-white to-white/40 bg-clip-text text-transparent">
               200+ Developers contributing
             </span>{' '}
           </div>
         </div>
         <div className="flex flex-col items-center justify-center text-center pt-5">
-          <h1 className="text-[clamp(30px,5vw,58px)] leading-[1.05] tracking-[-0.03em] mb-6 max-w-[900px]">
+          <h1 className="text-[clamp(30px,5vw,58px)] leading-[1.05] tracking-[-0.03em] mb-6 font-[inter4-medium] max-w-[900px]">
             <span className="bg-gradient-to-tr from-white to-white/40 bg-clip-text text-transparent">
               at lightning Ship
             </span>
@@ -59,7 +59,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="text-white/70 text-[15px] leading-[1.7] max-w-[560px] mb-8">
+          <p className="text-white/70 font-[inter-rag] text-[15px] leading-[1.7] max-w-[560px] mb-8">
             200+ production-ready components, blocks and templates that make
             your site feel like you hired a design team. Copy, paste,
           </p>

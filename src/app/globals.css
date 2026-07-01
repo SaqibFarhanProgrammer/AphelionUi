@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -154,4 +154,15 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Chrome, Safari, and Opera */
+.remove-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Firefox, IE, and Edge */
+.remove-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
 }
