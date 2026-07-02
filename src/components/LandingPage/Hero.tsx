@@ -41,41 +41,40 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-0.5">
             <span className="bg-gradient-to-bl font-[inter-rag] from-white to-white/40 bg-clip-text text-transparent">
-              <p className="font-[a] inline">200</p>+ Developers contributing
+              <p className="font-[a] inline">50</p>+ Pre-built Components
             </span>{' '}
           </div>
         </div>
         <div className="flex flex-col items-center justify-center text-center pt-5">
           <h1 className="text-[clamp(30px,5vw,58px)] leading-[1.05] tracking-[-0.03em] mb-6 font-[inter4-medium] max-w-[900px]">
             <span className="bg-gradient-to-tr from-white to-white/40 bg-clip-text text-transparent">
-              at lightning Ship
+              Accelerate your
             </span>
             <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
               {' '}
-              landing{' '}
+              development{' '}
             </span>
             <span className="bg-gradient-to-bl from-white to-white/40 bg-clip-text text-transparent">
-              pages speed landing
+              with Aphelion UI
             </span>
           </h1>
 
           <p className="text-white/70 font-[inter-rag] text-[15px] leading-[1.7] max-w-[560px] mb-8">
-            200+ production-ready components, blocks and templates that make
-            your site feel like you hired a design team. Copy, paste,
+            A modern, professional UI component library built on Next.js and Tailwind CSS v4. Reduce development time with 50+ customizable, dark-first UI blocks.
           </p>
 
           <div className="flex items-center justify-center gap-3 mb-12">
             <a
-              href="#components"
+              href="/docs"
               className="inline-flex items-center justify-center px-5 py-2.5 bg-white hover:bg-white/90 text-[#0A0A0A] text-[13px] font-semibold rounded-lg transition-all duration-200"
             >
-              Browse Components
+              Get Started
             </a>
             <a
-              href="#pricing"
+              href="#components"
               className="inline-flex items-center justify-center px-5 py-2.5 border border-white/[0.12] hover:border-white/[0.25] text-white/70 hover:text-white text-[13px] font-medium rounded-lg transition-all duration-200"
             >
-              Get All-Access
+              Browse Components
             </a>
           </div>
 

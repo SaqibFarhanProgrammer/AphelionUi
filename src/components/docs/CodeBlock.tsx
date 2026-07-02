@@ -148,13 +148,8 @@ export default function CodeBlock({
   return (
     <div className="w-full rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4  border-b border-white/[0.06]">
+      <div className="flex items-center justify-between pl-4   border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
-          {filename && (
-            <span className="text-white/40 text-[12px] font-['inter-medium']">
-              {filename}
-            </span>
-          )}
           <span className="text-white/25 text-[11px] font-['inter-rag']">
             {language}
           </span>

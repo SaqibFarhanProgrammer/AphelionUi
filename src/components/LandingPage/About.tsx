@@ -6,24 +6,20 @@ export default function AboutSection() {
       <div className="max-w-[900px] mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
           <h2 className="text-white text-[28px] md:text-[36px] font-[inter4-medium] leading-[1.1] tracking-[-0.02em] max-w-[320px]">
-            We Turn Ideas
+            Built for Modern
             <br />
-            into Visual
-            <br />
-            Masterpieces
+            Web Applications
           </h2>
 
           <div className="max-w-[300px]">
             <p className="text-white/50 text-[15px] leading-tight mb-5">
-              Whether it&apos;s an engaging explainer video, a vibrant social
-              media campaign, or captivating motion graphics, we bring
-              creativity and expertise to every project.
+              Aphelion UI provides developers with a comprehensive, dark-first component library that accelerates development while maintaining full customization and brand consistency.
             </p>
             <a
-              href="#about"
+              href="/docs"
               className="inline-flex items-center px-4 py-2 bg-white hover:bg-white/90 text-[#0A0A0A] text-[12px] font-[inter4-medium] rounded-full transition-all duration-200"
             >
-              Know More About us
+              Read the Documentation
             </a>
           </div>
         </div>
@@ -39,10 +35,10 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/80 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5">
               <span className="text-white text-[32px] md:text-[40px] font-bold leading-none tracking-[-0.02em]">
-                200+
+                50+
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
-                Projects Delivered
+                UI Components
               </p>
             </div>
           </div>
@@ -57,10 +53,10 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/20 to-transparent" />
             <div className="absolute bottom-5 left-5">
               <span className="text-white text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
-                100+
+                100%
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
-                Happy Clients
+                Customizable
               </p>
             </div>
           </div>
@@ -75,18 +71,18 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/20 to-transparent" />
             <div className="absolute bottom-5 left-5">
               <span className="text-white font-[a] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
-                15
+                v4
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
-                Years of Experience
+                Tailwind CSS
               </p>
             </div>
             <div className="absolute bottom-5 right-5 text-right">
               <span className="text-white font-[b] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
-                95%
+                16
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
-                Client Satisfaction
+                Next.js App Router
               </p>
             </div>
           </div>

@@ -342,7 +342,7 @@ function ReactRouterSteps() {
         title="Create a React Router Project"
         description="Initialize a new React Router project with the CLI."
       >
-        <InstallCommand command="npx create-react-router@latest my-app" />
+        <InstallCommand command="create-react-router@latest my-app" />
       </Step>
 
       <Step
@@ -396,7 +396,7 @@ function AstroSteps() {
         title="Create an Astro Project"
         description="Scaffold a new Astro project with the starter template."
       >
-        <InstallCommand command="npm create astro@latest my-astro-app" />
+        <InstallCommand command="create astro@latest my-astro-app" />
       </Step>
 
       <Step
@@ -538,7 +538,7 @@ function TanStackStartSteps() {
         title="Create a TanStack Start Project"
         description="Bootstrap a new project with TanStack Start."
       >
-        <InstallCommand command="npm create tanstack/start@latest my-app" />
+        <InstallCommand command="create tanstack/start@latest my-app" />
       </Step>
 
       <Step
@@ -649,7 +649,7 @@ export default function InstallationPage() {
           <p className="font-['inter-semi'] text-[14px] text-white/75 tracking-[0.15em] uppercase mb-5">
             Getting Started
           </p>
-          <h1 className="font-['inter-bold'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
+          <h1 className="font-['inter-rag'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
             Installation
           </h1>
           <p className="font-['inter-rag'] text-[15px] text-white/70 leading-[1.7] max-w-[440px]">
@@ -660,7 +660,7 @@ export default function InstallationPage() {
 
       <div className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
         <div className="mb-14">
-          <p className="font-['inter-semi'] text-[14px] text-white/15 mb-3 uppercase tracking-wider">
+          <p className="font-['inter-semi'] text-[14px] text-white/75 mb-3 uppercase tracking-wider">
             Select your framework
           </p>
           <FrameworkSelector active={framework} onSelect={setFramework} />

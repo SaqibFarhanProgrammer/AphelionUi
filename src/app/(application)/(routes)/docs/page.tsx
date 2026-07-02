@@ -3,10 +3,10 @@ export default function IntroductionPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="">
         <div className="max-w-[720px] mx-auto px-6 pt-16 md:py-">
-          <p className="font-['inter-semi'] text-[11px] text-white/75 tracking-[0.15em] uppercase mb-5">
+          <p className="font-['inter-semi'] text-[11px] text-white/65 tracking-[0.15em] uppercase mb-5">
             Overview
           </p>
-          <h1 className="font-['inter-bold'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
+          <h1 className="font-['inter-bold'] fo text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
             Introduction
           </h1>
           <p className="font-['inter-rag'] text-[15px] text-white/70 leading-[1.7] max-w-[480px]">
@@ -132,7 +132,7 @@ export default function IntroductionPage() {
             href="/docs"
             className="group p-5 rounded-[12px] bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-200"
           >
-            <p className="font-['inter-semi'] text-[14px] text-white/70 group-hover:text-white/90 transition-colors mb-1.5">
+            <p className="font-['inter-rag'] text-[14px] text-white/70 group-hover:text-white/90 transition-colors mb-1.5">
               Installation
             </p>
             <p className="font-['inter-rag'] text-[12px] text-white/70 leading-tight">

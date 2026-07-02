@@ -2,86 +2,87 @@
 
 import { useState } from 'react';
 import { Search, X, Menu } from 'lucide-react';
+import Link from 'next/link';
 //
 
 const sidebarSections = [
   {
     heading: 'Getting Started',
     items: [
-      { label: 'Introduction', href: '#introduction' },
-      { label: 'Installation', href: '#installation' },
+      { label: 'Introduction', href: '/introduction' },
+      { label: 'Installation', href: '/installation' },
     ],
   },
   {
     heading: 'Components',
     items: [
-      { label: 'Accordion', href: '#accordion' },
-      { label: 'Alert', href: '#alert' },
-      { label: 'Alert Dialog', href: '#alert-dialog' },
-      { label: 'Aspect Ratio', href: '#aspect-ratio', isNew: true },
-      { label: 'Attachment', href: '#attachment', isNew: true },
-      { label: 'Avatar', href: '#avatar' },
-      { label: 'Badge', href: '#badge' },
-      { label: 'Breadcrumb', href: '#breadcrumb' },
-      { label: 'Bubble', href: '#bubble', isNew: true },
-      { label: 'Button', href: '#button' },
-      { label: 'Button Group', href: '#button-group' },
-      { label: 'Calendar', href: '#calendar' },
-      { label: 'Card', href: '#card' },
-      { label: 'Carousel', href: '#carousel' },
-      { label: 'Chart', href: '#chart' },
-      { label: 'Checkbox', href: '#checkbox' },
-      { label: 'Collapsible', href: '#collapsible' },
-      { label: 'Combobox', href: '#combobox' },
-      { label: 'Command', href: '#command' },
-      { label: 'Context Menu', href: '#context-menu' },
-      { label: 'Data Table', href: '#data-table' },
-      { label: 'Date Picker', href: '#date-picker' },
-      { label: 'Dialog', href: '#dialog' },
-      { label: 'Drawer', href: '#drawer' },
-      { label: 'Dropdown Menu', href: '#dropdown-menu' },
-      { label: 'Form', href: '#form' },
-      { label: 'Hover Card', href: '#hover-card' },
-      { label: 'Input', href: '#input' },
-      { label: 'Input OTP', href: '#input-otp' },
-      { label: 'Label', href: '#label' },
-      { label: 'Menubar', href: '#menubar' },
-      { label: 'Navigation Menu', href: '#navigation-menu' },
-      { label: 'Pagination', href: '#pagination' },
-      { label: 'Popover', href: '#popover' },
-      { label: 'Progress', href: '#progress' },
-      { label: 'Radio Group', href: '#radio-group' },
-      { label: 'Resizable', href: '#resizable' },
-      { label: 'Scroll Area', href: '#scroll-area' },
-      { label: 'Select', href: '#select' },
-      { label: 'Separator', href: '#separator' },
-      { label: 'Sheet', href: '#sheet' },
-      { label: 'Skeleton', href: '#skeleton' },
-      { label: 'Slider', href: '#slider' },
-      { label: 'Sonner', href: '#sonner' },
-      { label: 'Switch', href: '#switch' },
-      { label: 'Table', href: '#table' },
-      { label: 'Tabs', href: '#tabs' },
-      { label: 'Textarea', href: '#textarea' },
-      { label: 'Toast', href: '#toast' },
-      { label: 'Toggle', href: '#toggle' },
-      { label: 'Toggle Group', href: '#toggle-group' },
-      { label: 'Tooltip', href: '#tooltip' },
+      { label: 'Accordion', href: '/accordion' },
+      { label: 'Alert', href: '/alert' },
+      { label: 'Alert Dialog', href: '/alert-dialog' },
+      { label: 'Aspect Ratio', href: '/aspect-ratio', isNew: true },
+      { label: 'Attachment', href: '/attachment', isNew: true },
+      { label: 'Avatar', href: '/avatar' },
+      { label: 'Badge', href: '/badge' },
+      { label: 'Breadcrumb', href: '/breadcrumb' },
+      { label: 'Bubble', href: '/bubble', isNew: true },
+      { label: 'Button', href: '/button' },
+      { label: 'Button Group', href: '/button-group' },
+      { label: 'Calendar', href: '/calendar' },
+      { label: 'Card', href: '/card' },
+      { label: 'Carousel', href: '/carousel' },
+      { label: 'Chart', href: '/chart' },
+      { label: 'Checkbox', href: '/checkbox' },
+      { label: 'Collapsible', href: '/collapsible' },
+      { label: 'Combobox', href: '/combobox' },
+      { label: 'Command', href: '/command' },
+      { label: 'Context Menu', href: '/context-menu' },
+      { label: 'Data Table', href: '/data-table' },
+      { label: 'Date Picker', href: '/date-picker' },
+      { label: 'Dialog', href: '/dialog' },
+      { label: 'Drawer', href: '/drawer' },
+      { label: 'Dropdown Menu', href: '/dropdown-menu' },
+      { label: 'Form', href: '/form' },
+      { label: 'Hover Card', href: '/hover-card' },
+      { label: 'Input', href: '/input' },
+      { label: 'Input OTP', href: '/input-otp' },
+      { label: 'Label', href: '/label' },
+      { label: 'Menubar', href: '/menubar' },
+      { label: 'Navigation Menu', href: '/navigation-menu' },
+      { label: 'Pagination', href: '/pagination' },
+      { label: 'Popover', href: '/popover' },
+      { label: 'Progress', href: '/progress' },
+      { label: 'Radio Group', href: '/radio-group' },
+      { label: 'Resizable', href: '/resizable' },
+      { label: 'Scroll Area', href: '/scroll-area' },
+      { label: 'Select', href: '/select' },
+      { label: 'Separator', href: '/separator' },
+      { label: 'Sheet', href: '/sheet' },
+      { label: 'Skeleton', href: '/skeleton' },
+      { label: 'Slider', href: '/slider' },
+      { label: 'Sonner', href: '/sonner' },
+      { label: 'Switch', href: '/switch' },
+      { label: 'Table', href: '/table' },
+      { label: 'Tabs', href: '/tabs' },
+      { label: 'Textarea', href: '/textarea' },
+      { label: 'Toast', href: '/toast' },
+      { label: 'Toggle', href: '/toggle' },
+      { label: 'Toggle Group', href: '/toggle-group' },
+      { label: 'Tooltip', href: '/tooltip' },
     ],
   },
   {
     heading: 'Hooks',
     items: [
-      { label: 'useCallbackRef', href: '#use-callback-ref' },
-      { label: 'useControllableState', href: '#use-controllable-state' },
-      { label: 'useEscapeKeydown', href: '#use-escape-keydown' },
-      { label: 'useId', href: '#use-id' },
+      { label: 'useCallbackRef', href: '/use-callback-ref' },
+      { label: 'useControllableState', href: '/use-controllable-state' },
+      { label: 'useEscapeKeydown', href: '/use-escape-keydown' },
+      { label: 'useId', href: '/use-id' },
     ],
   },
 ];
 
 export default function Sidebar({
-  activeHref = '#installation',
+  activeHref = 'installation',
   onNavigate,
 }: {
   activeHref?: string;
@@ -96,7 +97,7 @@ export default function Sidebar({
 
   const sidebarContent = (
     <div className="flex flex-col h-full remove-scroll">
-      <div className="px-5 pt-6 pb-5">
+      <div className="px-5 pt-6 pb-5 bg-gradient to-t from bg-black to bg-transparent">
         <a
           href="/"
           className="flex items-center gap-2.5 text-white font-['inter-semi'] text-[14px] tracking-[0.02em] uppercase"
@@ -108,7 +109,7 @@ export default function Sidebar({
       <div className="flex-1 overflow-y-scroll px-3 pb-6 remove-scroll">
         {sidebarSections.map((section, sIdx) => (
           <div key={section.heading} className={sIdx > 0 ? 'mt-6' : ''}>
-            <p className="px-3 mb-1.5 text-white/85 text-[11px] font-['inter'] uppercase tracking-[0.06em]">
+            <p className="px-3 mb-1.5 text-white/65 text-[11px] font-['inter'] uppercase tracking-[0.06em]">
               {section.heading}
             </p>
 
@@ -116,23 +117,28 @@ export default function Sidebar({
               {section.items.map((item) => {
                 const isActive = item.href === activeHref;
                 return (
-                  <button
+                  <Link
                     key={item.href}
                     onClick={() => handleNavigate(item.href)}
+                    href={
+                      section.heading === 'components'
+                        ? `/docs/components/${item.href}`
+                        : `docs${item.href}`
+                    }
                     className={`
-                      w-full remove-scroll flex items-center gap-2 px-3 py-1.5 rounded-md text-[16px] transition-all duration-150 text-left
+                      z-20 w-full remove-scroll flex items-center gap-2 px-3 py-1.5 rounded-md text-[16px] transition-all duration-150 text-left
                       ${
                         isActive
                           ? 'bg-white/[0.08] text-white font-[inter-semi]'
-                          : 'text-white/80 hover:text-white/80 hover:bg-white/[0.03] font-[inter-rag]'
+                          : 'text-white/80 hover:text-white/80 hover:bg-white/[0.03] font-[inter-semi]'
                       }
                     `}
                   >
                     <span>{item.label}</span>
                     {item.isNew && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#012FFE] shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[/012FFE] shrink-0" />
                     )}
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -140,9 +146,7 @@ export default function Sidebar({
         ))}
       </div>
 
-      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-black to-transparent ">
-        /
-      </div>
+      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-black to-transparent "></div>
     </div>
   );
 

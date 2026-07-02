@@ -18,7 +18,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
   const commands: Record<PackageManager, string> = {
     pnpm: `pnpm ${command}`,
     npm: `npx ${command}`,
-    yarn: `yarn dlx ${command}`,
+    yarn: `yarn ${command}`,
     bun: `bunx ${command}`,
   };
 
@@ -30,8 +30,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
 
   return (
     <div className="w-full max-w-[640px] rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
-      {/* Top bar — icon + tabs + copy */}
-      <div className="flex items-center justify-between px-4 py-1 border-b border-white/[0.06]">
+      <div className="flex items-center justify-between pl-4 pr-1 py-1 border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-0.5">
             {packageManagers.map((m) => (
@@ -53,7 +52,6 @@ export default function InstallCommand({ command }: InstallCommandProps) {
           </div>
         </div>
 
-        {/* Copy button */}
         <button
           onClick={handleCopy}
           className="flex items-center justify-center w-8 h-8 rounded-md text-white/30 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
@@ -67,7 +65,6 @@ export default function InstallCommand({ command }: InstallCommandProps) {
         </button>
       </div>
 
-      {/* Code block */}
       <div className="px-5 py-4">
         <code className="text-white/70 text-[14px] font-['inter-rag'] tracking-wide select-all">
           {commands[pm]}
