@@ -9,7 +9,7 @@ export default function Applicationlayout({
 }) {
   return (
     <div className="flex min-h-screen w-full">
-        <DocsNavbar />
+      <DocsNavbar />
 
       <aside className="w-64 shrink-0">
         <Sidebar />
