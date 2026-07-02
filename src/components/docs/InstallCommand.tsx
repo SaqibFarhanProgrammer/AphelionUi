@@ -31,21 +31,15 @@ export default function InstallCommand({ command }: InstallCommandProps) {
   return (
     <div className="w-full max-w-[640px] rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
       {/* Top bar — icon + tabs + copy */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
+      <div className="flex items-center justify-between px-4 py-1 border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
-          {/* Terminal icon */}
-          <div className="flex items-center justify-center w-7 h-7 rounded-md bg-white/[0.06]">
-            <Terminal size={14} strokeWidth={1.8} className="text-white/50" />
-          </div>
-
-          {/* Tabs */}
           <div className="flex items-center gap-0.5">
             {packageManagers.map((m) => (
               <button
                 key={m}
                 onClick={() => setPm(m)}
                 className={`
-                  px-3 py-1.5 rounded-md text-[13px] transition-all duration-200
+                  px-3 py-1 rounded-sm text-[13px] transition-all duration-200
                   ${
                     pm === m
                       ? 'bg-white/[0.08] text-white font-[inter-semi]'
