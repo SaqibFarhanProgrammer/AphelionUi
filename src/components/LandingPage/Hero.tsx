@@ -41,7 +41,7 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-0.5">
             <span className="bg-gradient-to-bl font-[inter-rag] from-white to-white/40 bg-clip-text text-transparent">
-              200+ Developers contributing
+              <p className="font-[a] inline">200</p>+ Developers contributing
             </span>{' '}
           </div>
         </div>

@@ -12,9 +12,7 @@ export default function Applicationlayout({
         <Sidebar />
       </aside>
 
-      <main className="flex-1 overflow-auto">
-        {children}
-      </main>
+      <main className="flex-1 overflow-auto">{children}</main>
     </div>
   );
 }

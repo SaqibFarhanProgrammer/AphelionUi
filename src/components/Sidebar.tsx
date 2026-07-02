@@ -10,14 +10,6 @@ const sidebarSections = [
     items: [
       { label: 'Introduction', href: '#introduction' },
       { label: 'Installation', href: '#installation' },
-      { label: 'Theming', href: '#theming' },
-      { label: 'CLI', href: '#cli' },
-      { label: 'RTL', href: '#rtl' },
-      { label: 'Skills', href: '#skills' },
-      { label: 'MCP Server', href: '#mcp-server' },
-      { label: 'Registry', href: '#registry' },
-      { label: 'Forms', href: '#forms' },
-      { label: 'Changelog', href: '#changelog' },
     ],
   },
   {
@@ -167,7 +159,7 @@ export default function Sidebar({
                       ${
                         isActive
                           ? 'bg-white/[0.08] text-white font-[inter-semi]'
-                          : 'text-white/50 hover:text-white/80 hover:bg-white/[0.03] font-[inter-rag]'
+                          : 'text-white/80 hover:text-white/80 hover:bg-white/[0.03] font-[inter-rag]'
                       }
                     `}
                   >

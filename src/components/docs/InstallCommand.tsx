@@ -46,9 +46,10 @@ export default function InstallCommand({ command }: InstallCommandProps) {
                 onClick={() => setPm(m)}
                 className={`
                   px-3 py-1.5 rounded-md text-[13px] transition-all duration-200
-                  ${pm === m
-                    ? 'bg-white/[0.08] text-white font-[inter-semi]'
-                    : 'text-white/35 hover:text-white/60 font-[inter-rag]'
+                  ${
+                    pm === m
+                      ? 'bg-white/[0.08] text-white font-[inter-semi]'
+                      : 'text-white/35 hover:text-white/60 font-[inter-rag]'
                   }
                 `}
               >
