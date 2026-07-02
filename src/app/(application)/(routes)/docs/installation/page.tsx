@@ -646,7 +646,7 @@ export default function InstallationPage() {
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="">
         <div className="max-w-[720px] mx-auto px-6 py-6 md:pt-20">
-          <p className="font-['inter-semi'] text-[14px] text-white/15 tracking-[0.15em] uppercase mb-5">
+          <p className="font-['inter-semi'] text-[14px] text-white/75 tracking-[0.15em] uppercase mb-5">
             Getting Started
           </p>
           <h1 className="font-['inter-bold'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">

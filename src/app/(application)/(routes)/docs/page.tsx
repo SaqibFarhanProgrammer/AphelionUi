@@ -1,11 +1,9 @@
-
-
 export default function IntroductionPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
       <div className="">
         <div className="max-w-[720px] mx-auto px-6 pt-16 md:py-">
-          <p className="font-['inter-semi'] text-[11px] text-white/15 tracking-[0.15em] uppercase mb-5">
+          <p className="font-['inter-semi'] text-[11px] text-white/75 tracking-[0.15em] uppercase mb-5">
             Overview
           </p>
           <h1 className="font-['inter-bold'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
