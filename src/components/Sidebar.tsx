@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Search, X, Menu } from 'lucide-react';
-// 
+//
 
 const sidebarSections = [
   {
