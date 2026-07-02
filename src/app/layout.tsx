@@ -30,7 +30,6 @@ export default function RootLayout({
       cz-shortcut-listen="true"
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
         {children}
       </body>
     </html>
