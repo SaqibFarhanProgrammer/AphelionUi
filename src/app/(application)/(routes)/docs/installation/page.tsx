@@ -228,8 +228,6 @@ function NextJsSteps() {
   );
 }
 
-// ─── React + Vite Steps ───────────────────────────────────────────────────────
-
 function ReactViteSteps() {
   return (
     <div className="space-y-12">
@@ -336,8 +334,6 @@ export default defineConfig({
   );
 }
 
-// ─── React Router Steps ───────────────────────────────────────────────────────
-
 function ReactRouterSteps() {
   return (
     <div className="space-y-12">
@@ -391,8 +387,6 @@ function ReactRouterSteps() {
     </div>
   );
 }
-
-// ─── Astro Steps ───────────────────────────────────────────────────────────────
 
 function AstroSteps() {
   return (
@@ -474,8 +468,6 @@ function AstroSteps() {
   );
 }
 
-// ─── Laravel Steps ───────────────────────────────────────────────────────────────
-
 function LaravelSteps() {
   return (
     <div className="space-y-12">
@@ -538,8 +530,6 @@ function LaravelSteps() {
   );
 }
 
-// ─── TanStack Start Steps ───────────────────────────────────────────────────────
-
 function TanStackStartSteps() {
   return (
     <div className="space-y-12">
@@ -594,8 +584,6 @@ function TanStackStartSteps() {
   );
 }
 
-// ─── Manual Installation Steps ───────────────────────────────────────────────────
-
 function End() {
   return (
     <div className="mt-16 pt-8 border-t border-white/[0.06]">
@@ -642,7 +630,6 @@ function End() {
     </div>
   );
 }
-// ─── Main Page ──────────────────────────────────────────────────────────────
 
 export default function InstallationPage() {
   const [framework, setFramework] = useState<

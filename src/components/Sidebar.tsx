@@ -97,7 +97,6 @@ export default function Sidebar({
 
   const sidebarContent = (
     <div className="flex flex-col h-full remove-scroll">
-      {/* Logo */}
       <div className="px-5 pt-6 pb-5">
         <a
           href="/"
@@ -107,16 +106,13 @@ export default function Sidebar({
         </a>
       </div>
 
-      {/* Nav Sections */}
       <div className="flex-1 overflow-y-scroll px-3 pb-6 remove-scroll">
         {sidebarSections.map((section, sIdx) => (
           <div key={section.heading} className={sIdx > 0 ? 'mt-6' : ''}>
-            {/* Section Heading */}
             <p className="px-3 mb-1.5 text-white/85 text-[11px] font-['inter'] uppercase tracking-[0.06em]">
               {section.heading}
             </p>
 
-            {/* Section Items */}
             <div className="flex flex-col gap-0.5 remove-scroll">
               {section.items.map((item) => {
                 const isActive = item.href === activeHref;
@@ -145,7 +141,6 @@ export default function Sidebar({
         ))}
       </div>
 
-      {/* Footer */}
       <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-black to-transparent ">
         /
       </div>
@@ -154,7 +149,6 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Mobile toggle */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="lg:hidden fixed top-4 left-4 z-[60] w-9 h-9 flex items-center justify-center rounded-lg bg-[#111111] border border-white/[0.08] text-white/60 hover:text-white transition-all duration-200"
@@ -162,12 +156,10 @@ export default function Sidebar({
         {mobileOpen ? <X size={16} /> : <Menu size={16} />}
       </button>
 
-      {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] bg-[#0A0A0A] border-r border-white/[0.06] z-50">
         {sidebarContent}
       </aside>
 
-      {/* Mobile Sidebar */}
       {mobileOpen && (
         <>
           <div

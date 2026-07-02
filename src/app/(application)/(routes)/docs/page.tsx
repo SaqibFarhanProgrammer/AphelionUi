@@ -2,12 +2,9 @@
 
 import React from 'react';
 
-// ─── Main Introduction Page ─────────────────────────────────────────────────
-
 export default function IntroductionPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0A]">
-      {/* Hero */}
       <div className="">
         <div className="max-w-[720px] mx-auto px-6 pt-16 md:py-">
           <p className="font-['inter-semi'] text-[11px] text-white/15 tracking-[0.15em] uppercase mb-5">
@@ -23,9 +20,7 @@ export default function IntroductionPage() {
         </div>
       </div>
 
-      {/* Content */}
       <div className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
-        {/* What is Aphelion UI */}
         <section className="mb-14">
           <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
             What is Aphelion UI
@@ -45,7 +40,6 @@ export default function IntroductionPage() {
           </p>
         </section>
 
-        {/* Key Principles */}
         <section className="mb-14">
           <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
             Key Principles
@@ -97,9 +91,6 @@ export default function IntroductionPage() {
           </div>
         </section>
 
-        {/* Architecture */}
-
-        {/* Getting Started */}
         <section className="mb-14">
           <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
             Getting Started
@@ -117,7 +108,6 @@ export default function IntroductionPage() {
           </p>
         </section>
 
-        {/* Community */}
         <section className="mb-14">
           <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
             Community
@@ -133,7 +123,6 @@ export default function IntroductionPage() {
           </p>
         </section>
 
-        {/* Divider */}
         <div className="flex items-center gap-4 mb-10">
           <div className="h-px flex-1 bg-white/[0.03]" />
           <span className="font-['inter-semi'] text-[10px] text-white/10 tracking-[0.2em] uppercase">
@@ -142,7 +131,6 @@ export default function IntroductionPage() {
           <div className="h-px flex-1 bg-white/[0.03]" />
         </div>
 
-        {/* Bottom Navigation */}
         <div className="grid grid-cols-2 gap-3">
           <a
             href="/docs"
@@ -169,7 +157,6 @@ export default function IntroductionPage() {
           </a>
         </div>
 
-        {/* Footer */}
         <div className="mt-12 text-center">
           <p className="font-['inter-rag'] text-[12px] text-white/15">
             Aphelion UI — Built for developers who value structure.
