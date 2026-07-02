@@ -88,7 +88,6 @@ export default function Sidebar({
   onNavigate?: (href: string) => void;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   const handleNavigate = (href: string) => {
     onNavigate?.(href);
