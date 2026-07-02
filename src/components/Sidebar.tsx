@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Search, X, Menu } from 'lucide-react';
-// 
+//
 
 const sidebarSections = [
   {
@@ -184,8 +184,8 @@ export default function Sidebar({
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-3 border-t border-white/[0.06]">
-        <p className="text-white/20 text-[11px] font-['inter-rag']">v1.0.0</p>
+      <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-black to-transparent ">
+        /
       </div>
     </div>
   );

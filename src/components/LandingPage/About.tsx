@@ -74,7 +74,7 @@ export default function AboutSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-[#0A0A0A]/20 to-transparent" />
             <div className="absolute bottom-5 left-5">
-              <span className="text-white text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
+              <span className="text-white font-[a] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
                 15
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
@@ -82,7 +82,7 @@ export default function AboutSection() {
               </p>
             </div>
             <div className="absolute bottom-5 right-5 text-right">
-              <span className="text-white text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
+              <span className="text-white font-[b] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
                 95%
               </span>
               <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">

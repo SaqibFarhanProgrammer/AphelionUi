@@ -7,9 +7,14 @@ export default function Applicationlayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <Sidebar />
-      {children}
+    <div className="flex min-h-screen w-full">
+      <aside className="w-64 shrink-0">
+        <Sidebar />
+      </aside>
+
+      <main className="flex-1 overflow-auto">
+        {children}
+      </main>
     </div>
   );
 }

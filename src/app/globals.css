@@ -71,8 +71,12 @@
   src: url('../assets//fonts/inter.regular.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'inter-light';
-  src: url('../assets//fonts/inter.24pt-light.woff2') format('woff2');
+  font-family: 'a';
+  src: url('../Assets/fonts/NeueMachina-Light.woff2');
+}
+@font-face {
+  font-family: 'b';
+  src: url('../Assets/fonts/NeueMachina-Regular.woff2');
 }
 
 :root {

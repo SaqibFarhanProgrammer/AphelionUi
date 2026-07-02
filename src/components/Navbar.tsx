@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between h-[52px] px-2 pr-2 pl-5 bg-[#0A0A0A]/90 backdrop-blur-xl rounded-full border border-white/[0.08]  max-w-[70%] w-full mx-4">
         <a
           href="/"
-          className="flex  items-center gap-2 text-white font-semibold text-[13px] tracking-[0.02em] uppercase shrink-0"
+          className="flex font-[a] items-center gap-2 text-white font-semibold text-[13px] tracking-[0.02em] uppercase shrink-0"
         >
           Aphelion UI
         </a>
