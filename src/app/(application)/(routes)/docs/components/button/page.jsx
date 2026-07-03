@@ -1,71 +1,16 @@
+'use client';
+
+import { Button } from '@/registry/components/button/Button';
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';
-import { Button } from '@/registry/components/button/Button';
-
-function PropsTable({ props }) {
-  return (
-    <div className="rounded-[10px] border border-white/[0.06] overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-white/[0.06] bg-white/[0.02]">
-              <th className="text-left px-5 py-3 font-['inter-semi'] text-[12px] text-white/50 uppercase tracking-wider">
-                Prop
-              </th>
-              <th className="text-left px-5 py-3 font-['inter-semi'] text-[12px] text-white/50 uppercase tracking-wider">
-                Type
-              </th>
-              <th className="text-left px-5 py-3 font-['inter-semi'] text-[12px] text-white/50 uppercase tracking-wider">
-                Default
-              </th>
-              <th className="text-left px-5 py-3 font-['inter-semi'] text-[12px] text-white/50 uppercase tracking-wider">
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.map((prop) => (
-              <tr
-                key={prop.name}
-                className="border-b border-white/[0.04] last:border-0"
-              >
-                <td className="px-5 py-3 font-['inter-semi'] text-[13px] text-white/80">
-                  {prop.name}
-                </td>
-                <td className="px-5 py-3 font-['inter-rag'] text-[13px] text-white/80">
-                  {prop.type}
-                </td>
-                <td className="px-5 py-3 font-['inter-rag'] text-[13px] text-white/70">
-                  {prop.default}
-                </td>
-                <td className="px-5 py-3 font-['inter-rag'] text-[13px] text-white/50">
-                  {prop.description}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-function Section({ title, description, children }) {
-  return (
-    <div className="mb-12">
-      <h3 className="font-['inter-bold'] text-[18px] text-white/90 mb-2">
-        {title}
-      </h3>
-      <p className="font-['inter-rag'] text-[14px] text-white/80 mb-5 leading-relaxed">
-        {description}
-      </p>
-      {children}
-    </div>
-  );
-}
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
 
 const buttonData = {
-
   name: 'Button',
   slug: 'button',
   title: 'Button',
@@ -73,7 +18,7 @@ const buttonData = {
     'A clickable element that triggers an action or event. Supports multiple variants, sizes, shapes, loading states, and icon placement.',
   category: 'Inputs',
   installation: {
-    command:"shadcn@latest add aphelio/c/button"
+    command: 'shadcn@latest add aphelio/c/button',
   },
   usage: {
     import: "import { Button } from '@/components/ui/button'",
@@ -254,135 +199,110 @@ const buttonData = {
   ],
 };
 
+const bottomNavItems = [
+  {
+    label: 'Input',
+    href: '/docs/components/input',
+    description: 'Text input with validation support.',
+  },
+  {
+    label: 'Dialog',
+    href: '/docs/components/dialog',
+    description: 'Modal overlay for confirmations.',
+  },
+];
+
 export default function ButtonPage() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
-      <div className="bo">
-        <div className="max-w-[720px] mx-auto px-6 py-6 md:pt-20">
-          <p className="font-['inter-semi'] text-[11px] text-white/50 tracking-[0.15em] uppercase mb-5">
-            Components
-          </p>
-          <h1 className="font-['inter-bold'] text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
-            {buttonData.title}
-          </h1>
-          <p className="font-['inter-rag'] text-[15px] text-white/70 leading-[1.7] max-w-[480px]">
-            {buttonData.description}
-          </p>
-        </div>
-      </div>
+    <DocsPageLayout
+      category={buttonData.category}
+      title={buttonData.title}
+      description={buttonData.description}
+    >
+      {/* Installation */}
+      <section className="mb-14">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Installation
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
+          Install the Button component using the CLI. This will copy the
+          component source into your project.
+        </p>
+        <InstallCommand command={buttonData.installation.command} />
+      </section>
 
-      <div className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
-        <section className="mb-14">
-          <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
-            Installation
-          </h2>
-          <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
-            Install the Button component using the CLI. This will copy the
-            component source into your project.
-          </p>
-          <InstallCommand command={buttonData.installation.command} />
-        </section>
-
-        <section className="mb-14">
-          <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
-            Usage
-          </h2>
-          <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
-            Import the component and use it in your application.
-          </p>
-          <div className="space-y-4">
-            <div>
-              <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
-                Import
-              </p>
-              <CodeBlock code={buttonData.usage.import} />
-            </div>
-            <div>
-              <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
-                Basic
-              </p>
-              <CodeBlock code={buttonData.usage.basic} />
-            </div>
+      {/* Usage */}
+      <section className="mb-14">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Usage
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
+          Import the component and use it in your application.
+        </p>
+        <div className="space-y-4">
+          <div>
+            <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+              Import
+            </p>
+            <CodeBlock code={buttonData.usage.import} />
           </div>
-        </section>
+          <div>
+            <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+              Basic
+            </p>
+            <CodeBlock code={buttonData.usage.basic} />
+          </div>
+        </div>
+      </section>
 
-        <section className="mb-14">
-          <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
-            Examples
-          </h2>
-          <p className="font-['inter-rag'] text-[14px] text-white/70 mb-6 leading-relaxed">
-            Common use cases and configurations.
-          </p>
+      {/* Examples */}
+      <section className="mb-14">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Examples
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-6 leading-relaxed">
+          Common use cases and configurations.
+        </p>
 
-          {buttonData.sections.map((section) => (
-            <Section
-              key={section.id}
-              title={section.title}
-              description={section.description}
-            >
-              <div className="space-y-4">
-                {section.examples.map((example, idx) => (
-                  <div key={idx}>
-                    <p className="font-['inter-semi'] text-[11px] text-white/80 mb-2 uppercase tracking-wider">
-                      {example.label}
-                    </p>
-                    <div className="rounded-[10px] relative border border-white/[0.06] bg-[#0D0D0D] p-6 flex items-center justify-center min-h-[80px] mb-3">
-                      {example.preview}
-                    </div>
+        {buttonData.sections.map((section) => (
+          <DocsSection
+            key={section.id}
+            title={section.title}
+            description={section.description}
+          >
+            <div className="space-y-4">
+              {section.examples.map((example, idx) => (
+                <div key={idx}>
+                  <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+                    {example.label}
+                  </p>
+                  <ComponentPreview>{example.preview}</ComponentPreview>
+                  <div className="mt-3">
                     <CodeBlock code={example.code} />
                   </div>
-                ))}
-              </div>
-            </Section>
-          ))}
-        </section>
+                </div>
+              ))}
+            </div>
+          </DocsSection>
+        ))}
+      </section>
 
-        <section className="mb-14">
-          <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
-            Props
-          </h2>
-          <p className="font-['inter-rag'] text-[14px] text-white/70 mb-5 leading-relaxed">
-            All props available on the Button component.
-          </p>
-          <PropsTable props={buttonData.props} />
-        </section>
+      {/* Props */}
+      <section className="remove-scroll mb-14">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Props
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-5 leading-relaxed">
+          All props available on the Button component.
+        </p>
+        <PropsTable props={buttonData.props} />
+      </section>
 
-        <div className="mt-16 pt-8 border-t border-white/[0.06]">
-          <p className="font-['inter-semi'] text-[11px] text-white/50 mb-5 uppercase tracking-wider">
-            Next
-          </p>
-          <div className="grid grid-cols-2 gap-3">
-            <a
-              href="/docs/components/input"
-              className="group p-5 rounded-[12px] bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-200"
-            >
-              <p className="font-['inter-semi'] text-[14px] text-white/70 group-hover:text-white/90 transition-colors mb-1.5">
-                Input
-              </p>
-              <p className="font-['inter-rag'] text-[12px] text-white/80 leading-relaxed">
-                Text input with validation support.
-              </p>
-            </a>
-            <a
-              href="/docs/components/dialog"
-              className="group p-5 rounded-[12px] bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-200"
-            >
-              <p className="font-['inter-semi'] text-[14px] text-white/70 group-hover:text-white/90 transition-colors mb-1.5">
-                Dialog
-              </p>
-              <p className="font-['inter-rag'] text-[12px] text-white/80 leading-relaxed">
-                Modal overlay for confirmations.
-              </p>
-            </a>
-          </div>
-        </div>
+      {/* Bottom Navigation */}
+      <BottomNav items={bottomNavItems} />
 
-        <div className="mt-12 text-center">
-          <p className="font-['inter-rag'] text-[12px] text-white/80">
-            Aphelion UI — Built for developers who value structure.
-          </p>
-        </div>
-      </div>
-    </div>
+      {/* Footer */}
+      <DocsFooter />
+    </DocsPageLayout>
   );
 }
