@@ -6,7 +6,7 @@ export default function IntroductionPage() {
           <p className="font-['inter-semi'] text-[11px] text-white/65 tracking-[0.15em] uppercase mb-5">
             Overview
           </p>
-          <h1 className="font-['inter-bold'] fo text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
+          <h1 className="font-['inter-rag'] fo text-[36px] md:text-[48px] text-white leading-[1.1] tracking-tight mb-4">
             Introduction
           </h1>
           <p className="font-['inter-rag'] text-[15px] text-white/70 leading-[1.7] max-w-[480px]">

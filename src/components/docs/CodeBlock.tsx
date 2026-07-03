@@ -147,7 +147,6 @@ export default function CodeBlock({
 
   return (
     <div className="w-full rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
-      {/* Top bar */}
       <div className="flex items-center justify-between pl-4   border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <span className="text-white/25 text-[11px] font-['inter-rag']">
@@ -157,7 +156,7 @@ export default function CodeBlock({
 
         <button
           onClick={handleCopy}
-          className="flex items-center justify-center w-8 h-8 rounded-md text-white/30 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+          className="flex items-center justify-center w-8 h-8 rounded-md text-white/50 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           aria-label="Copy code"
         >
           {copied ? (
@@ -168,18 +167,15 @@ export default function CodeBlock({
         </button>
       </div>
 
-      {/* Code */}
       <div className="overflow-x-auto">
         <pre className="px-0 py-4 text-[13px] leading-[1.7] font-['inter-rag']">
           {lines.map((line, i) => {
             const tokens = tokenizeLine(line);
             return (
               <div key={i} className="flex">
-                {/* Line number */}
                 <span className="shrink-0 w-[48px] text-right pr-4 text-white/20 text-[12px] select-none">
                   {i + 1}
                 </span>
-                {/* Code line */}
                 <code>
                   {tokens.length === 0 ? (
                     <span>&nbsp;</span>

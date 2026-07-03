@@ -54,7 +54,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
 
         <button
           onClick={handleCopy}
-          className="flex items-center justify-center w-8 h-8 rounded-md text-white/30 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+          className="flex items-center justify-center w-8 h-8 rounded-md text-white/60 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           aria-label="Copy command"
         >
           {copied ? (
