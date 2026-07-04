@@ -146,7 +146,7 @@ export default function CodeBlock({
   };
 
   return (
-    <div className="w-full rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
+    <div className="w-full rounded-[9px] border border-white/[0.08] bg-[#1b1b1b] overflow-hidden">
       <div className="flex items-center justify-between pl-4   border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <span className="text-white/25 text-[11px] font-['inter-rag']">
@@ -167,7 +167,7 @@ export default function CodeBlock({
         </button>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto remove-scroll">
         <pre className="px-0 py-4 text-[13px] leading-[1.7] font-['inter-rag']">
           {lines.map((line, i) => {
             const tokens = tokenizeLine(line);

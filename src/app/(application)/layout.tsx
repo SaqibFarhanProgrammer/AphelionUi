@@ -1,4 +1,5 @@
 import DocsNavbar from '@/components/docs/DocsNavbar';
+import  { OnThisPage } from '@/components/docs/DocsPageSidebar';
 import Sidebar from '@/components/Sidebar';
 import React from 'react';
 
@@ -16,7 +17,10 @@ export default function Applicationlayout({
       </aside>
 
       <main className="flex-1 overflow-auto">
-        <div className="pt-6">{children}</div>
+        <div className="pt-6 ">
+          {children}
+
+        </div>
       </main>
     </div>
   );

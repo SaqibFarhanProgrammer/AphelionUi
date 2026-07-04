@@ -1,4 +1,3 @@
-'use client';
 
 import { Button } from '@/registry/components/button/Button';
 import InstallCommand from '@/components/docs/InstallCommand';
@@ -218,9 +217,19 @@ export default function ButtonPage() {
       category={buttonData.category}
       title={buttonData.title}
       description={buttonData.description}
+      sideMapGroup={[
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
+        ...buttonData.sections.map((section) => ({
+          id: section.id,
+          title: section.title,
+          level: 3,
+        })),
+        { id: 'props', title: 'Props' },
+      ]}
     >
-      {/* Installation */}
-      <section className="mb-14">
+      <section className="mb-14" id="installation">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Installation
         </h2>
@@ -231,8 +240,7 @@ export default function ButtonPage() {
         <InstallCommand command={buttonData.installation.command} />
       </section>
 
-      {/* Usage */}
-      <section className="mb-14">
+      <section className="mb-14" id="usage">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Usage
         </h2>
@@ -255,18 +263,17 @@ export default function ButtonPage() {
         </div>
       </section>
 
-      {/* Examples */}
-      <section className="mb-14">
+      <section className="mb-14" id="examples">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Examples
         </h2>
         <p className="font-['inter-rag'] text-[14px] text-white/70 mb-6 leading-relaxed">
           Common use cases and configurations.
         </p>
-
         {buttonData.sections.map((section) => (
           <DocsSection
             key={section.id}
+            id={section.id}
             title={section.title}
             description={section.description}
           >
@@ -287,8 +294,7 @@ export default function ButtonPage() {
         ))}
       </section>
 
-      {/* Props */}
-      <section className="remove-scroll mb-14">
+      <section className="remove-scroll mb-14" id="props">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Props
         </h2>
@@ -298,10 +304,7 @@ export default function ButtonPage() {
         <PropsTable props={buttonData.props} />
       </section>
 
-      {/* Bottom Navigation */}
       <BottomNav items={bottomNavItems} />
-
-      {/* Footer */}
       <DocsFooter />
     </DocsPageLayout>
   );

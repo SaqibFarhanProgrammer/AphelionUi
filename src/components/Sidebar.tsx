@@ -10,7 +10,7 @@ const sidebarSections = [
     heading: 'Getting Started',
     items: [
       { label: 'Introduction', href: '/introduction' },
-      { label: 'Installation', href: '/installation' },
+      { label: 'Installation', href: '/docs/installation' },
     ],
   },
   {

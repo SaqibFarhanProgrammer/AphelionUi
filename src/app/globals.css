@@ -50,25 +50,25 @@
 
 @font-face {
   font-family: 'inter';
-  src: url('../assets//fonts/inter.18pt-bold.woff2') format('woff2');
+  src: url('../Assets/fonts/inter.18pt-bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'inter-bold';
-  src: url('../assets//fonts/inter.28pt-bold.woff2') format('woff2');
+  src: url('../Assets/fonts/inter.28pt-bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'inter4-medium';
-  src: url('../assets//fonts/inter.18pt-medium.woff2') format('woff2');
+  src: url('../Assets/fonts/inter.18pt-medium.woff2') format('woff2');
 }
 @font-face {
   font-family: 'inter-semi';
-  src: url('../assets//fonts/inter.18pt-semibold.woff2') format('woff2');
+  src: url('../Assets/fonts/inter.18pt-semibold.woff2') format('woff2');
 }
 @font-face {
   font-family: 'inter-rag';
-  src: url('../assets//fonts/inter.regular.woff2') format('woff2');
+  src: url('../Assets/fonts/inter.regular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'a';
@@ -160,12 +160,10 @@
   }
 }
 
-/* Chrome, Safari, and Opera */
 .remove-scroll::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-/* Firefox, IE, and Edge */
 .remove-scroll {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;

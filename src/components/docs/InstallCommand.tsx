@@ -29,7 +29,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
   };
 
   return (
-    <div className="w-full max-w-[640px] rounded-[9px] border border-white/[0.08] bg-[#111111] overflow-hidden">
+    <div className="w-full max-w-[640px] rounded-[9px] border border-white/[0.08] bg-[#1b1b1b] overflow-hidden">
       <div className="flex items-center justify-between pl-4 pr-1 py-1 border-b border-white/[0.06]">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-0.5">
