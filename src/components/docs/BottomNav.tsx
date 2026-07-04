@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface NavItem {
@@ -36,4 +35,3 @@ export default function BottomNav({ items }: BottomNavProps) {
     </div>
   );
 }
-

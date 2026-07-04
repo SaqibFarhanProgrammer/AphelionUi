@@ -60,7 +60,9 @@ export default function Hero() {
           </h1>
 
           <p className="text-white/70 font-[inter-rag] text-[15px] leading-[1.7] max-w-[560px] mb-8">
-            A modern, professional UI component library built on Next.js and Tailwind CSS v4. Reduce development time with 50+ customizable, dark-first UI blocks.
+            A modern, professional UI component library built on Next.js and
+            Tailwind CSS v4. Reduce development time with 50+ customizable,
+            dark-first UI blocks.
           </p>
 
           <div className="flex items-center justify-center gap-3 mb-12">

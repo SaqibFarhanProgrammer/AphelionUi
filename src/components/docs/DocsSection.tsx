@@ -1,4 +1,3 @@
-
 interface DocsSectionProps {
   title: string;
   description: string;

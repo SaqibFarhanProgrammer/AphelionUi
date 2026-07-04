@@ -1,4 +1,3 @@
-
 import { Button } from '@/registry/components/button/Button';
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';

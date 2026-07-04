@@ -13,7 +13,9 @@ export default function AboutSection() {
 
           <div className="max-w-[300px]">
             <p className="text-white/50 text-[15px] leading-tight mb-5">
-              Aphelion UI provides developers with a comprehensive, dark-first component library that accelerates development while maintaining full customization and brand consistency.
+              Aphelion UI provides developers with a comprehensive, dark-first
+              component library that accelerates development while maintaining
+              full customization and brand consistency.
             </p>
             <a
               href="/docs"

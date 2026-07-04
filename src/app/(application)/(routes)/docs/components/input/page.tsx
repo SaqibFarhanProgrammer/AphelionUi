@@ -1,4 +1,3 @@
-
 import { Input } from '@/registry/components/input/Input';
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';

@@ -1,15 +1,23 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 // ──────────────────────────────────────────────────────────────
 // SECTION 1: LOGO CLOUD (Tailark Style)
 // ──────────────────────────────────────────────────────────────
 
 const logos = [
-  "Vercel", "Stripe", "Linear", "Notion", "Figma", 
-  "Supabase", "Raycast", "Arc", "Clerk", "Vercel"
+  'Vercel',
+  'Stripe',
+  'Linear',
+  'Notion',
+  'Figma',
+  'Supabase',
+  'Raycast',
+  'Arc',
+  'Clerk',
+  'Vercel',
 ];
 
 export function LogoCloud() {
@@ -34,8 +42,12 @@ export function LogoCloud() {
       </div>
       <style jsx>{`
         @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
         .animate-marquee {
           animation: marquee 30s linear infinite;
@@ -51,27 +63,31 @@ export function LogoCloud() {
 
 const features = [
   {
-    title: "Marketing Campaigns",
-    description: "Launch and manage campaigns seamlessly. Collaborate with your team to deliver impactful strategies.",
-    tag: "Campaigns",
+    title: 'Marketing Campaigns',
+    description:
+      'Launch and manage campaigns seamlessly. Collaborate with your team to deliver impactful strategies.',
+    tag: 'Campaigns',
     large: false,
   },
   {
-    title: "Collaborative Campaigns",
-    description: "Work together for greater impact. Engage with your team on comprehensive campaigns.",
-    tag: "Collaboration",
+    title: 'Collaborative Campaigns',
+    description:
+      'Work together for greater impact. Engage with your team on comprehensive campaigns.',
+    tag: 'Collaboration',
     large: false,
   },
   {
-    title: "Analytics Dashboard",
-    description: "Track performance metrics in real-time. Make data-driven decisions with comprehensive insights and reporting tools.",
-    tag: "Analytics",
+    title: 'Analytics Dashboard',
+    description:
+      'Track performance metrics in real-time. Make data-driven decisions with comprehensive insights and reporting tools.',
+    tag: 'Analytics',
     large: true,
   },
   {
-    title: "Customer Support",
-    description: "Provide exceptional support with integrated chat, ticketing, and knowledge base management.",
-    tag: "Support",
+    title: 'Customer Support',
+    description:
+      'Provide exceptional support with integrated chat, ticketing, and knowledge base management.',
+    tag: 'Support',
     large: true,
   },
 ];
@@ -95,10 +111,10 @@ export function FeaturesGrid() {
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`bg-[#000000] p-8 md:p-10 group hover:bg-white/[0.02] transition-colors duration-500 ${
-                feature.large ? "md:col-span-2" : ""
+                feature.large ? 'md:col-span-2' : ''
               }`}
             >
               <div className="flex items-center gap-2 mb-6">
@@ -141,10 +157,10 @@ export function FeaturesGrid() {
 // ──────────────────────────────────────────────────────────────
 
 const stats = [
-  { value: "99.99%", label: "Uptime", sublabel: "Reliable infrastructure" },
-  { value: "50+", label: "Components", sublabel: "Production ready" },
-  { value: "10k+", label: "Downloads", sublabel: "Growing community" },
-  { value: "0", label: "Dependencies", sublabel: "Lightweight" },
+  { value: '99.99%', label: 'Uptime', sublabel: 'Reliable infrastructure' },
+  { value: '50+', label: 'Components', sublabel: 'Production ready' },
+  { value: '10k+', label: 'Downloads', sublabel: 'Growing community' },
+  { value: '0', label: 'Dependencies', sublabel: 'Lightweight' },
 ];
 
 export function StatsSection() {
@@ -167,9 +183,7 @@ export function StatsSection() {
               <p className="text-sm text-white/50 font-medium mb-1">
                 {stat.label}
               </p>
-              <p className="text-xs text-white/20">
-                {stat.sublabel}
-              </p>
+              <p className="text-xs text-white/20">{stat.sublabel}</p>
             </motion.div>
           ))}
         </div>
@@ -183,14 +197,14 @@ export function StatsSection() {
 // ──────────────────────────────────────────────────────────────
 
 const integrations = [
-  { name: "Stripe", category: "Payments" },
-  { name: "PayPal", category: "Payments" },
-  { name: "Beacon", category: "Analytics" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Linear", category: "Project" },
-  { name: "Notion", category: "Docs" },
-  { name: "Figma", category: "Design" },
-  { name: "GitHub", category: "Code" },
+  { name: 'Stripe', category: 'Payments' },
+  { name: 'PayPal', category: 'Payments' },
+  { name: 'Beacon', category: 'Analytics' },
+  { name: 'Vercel', category: 'Hosting' },
+  { name: 'Linear', category: 'Project' },
+  { name: 'Notion', category: 'Docs' },
+  { name: 'Figma', category: 'Design' },
+  { name: 'GitHub', category: 'Code' },
 ];
 
 export function IntegrationsSection() {
@@ -237,40 +251,46 @@ export function IntegrationsSection() {
 
 const testimonials = [
   {
-    name: "Alex Chen",
-    handle: "@alexchen",
-    content: "This is exactly what I have been looking for. Clean, minimal, and actually useful components that I can drop into any project.",
-    avatar: "A",
+    name: 'Alex Chen',
+    handle: '@alexchen',
+    content:
+      'This is exactly what I have been looking for. Clean, minimal, and actually useful components that I can drop into any project.',
+    avatar: 'A',
   },
   {
-    name: "Sarah Miller",
-    handle: "@sarahmiller",
-    content: "The attention to detail is incredible. Every component feels intentional and well-crafted. Saved me hours of dev time.",
-    avatar: "S",
+    name: 'Sarah Miller',
+    handle: '@sarahmiller',
+    content:
+      'The attention to detail is incredible. Every component feels intentional and well-crafted. Saved me hours of dev time.',
+    avatar: 'S',
   },
   {
-    name: "James Wilson",
-    handle: "@jameswilson",
-    content: "Finally, a component library that does not try to do too much. Just the essentials, beautifully designed and fully accessible.",
-    avatar: "J",
+    name: 'James Wilson',
+    handle: '@jameswilson',
+    content:
+      'Finally, a component library that does not try to do too much. Just the essentials, beautifully designed and fully accessible.',
+    avatar: 'J',
   },
   {
-    name: "Emily Zhang",
-    handle: "@emilyzhang",
-    content: "The copy-and-paste workflow is a game changer. No npm packages, no version conflicts, no bloat. Just clean code.",
-    avatar: "E",
+    name: 'Emily Zhang',
+    handle: '@emilyzhang',
+    content:
+      'The copy-and-paste workflow is a game changer. No npm packages, no version conflicts, no bloat. Just clean code.',
+    avatar: 'E',
   },
   {
-    name: "Michael Park",
-    handle: "@michaelpark",
-    content: "We rebuilt our entire marketing site using these blocks. The result looks like we hired a top-tier design agency.",
-    avatar: "M",
+    name: 'Michael Park',
+    handle: '@michaelpark',
+    content:
+      'We rebuilt our entire marketing site using these blocks. The result looks like we hired a top-tier design agency.',
+    avatar: 'M',
   },
   {
-    name: "Lisa Johnson",
-    handle: "@lisajohnson",
-    content: "The black-only aesthetic is bold and beautiful. Forces you to focus on structure and typography. Exactly what good design should do.",
-    avatar: "L",
+    name: 'Lisa Johnson',
+    handle: '@lisajohnson',
+    content:
+      'The black-only aesthetic is bold and beautiful. Forces you to focus on structure and typography. Exactly what good design should do.',
+    avatar: 'L',
   },
 ];
 
@@ -293,7 +313,7 @@ export function Testimonials() {
               key={t.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
+              viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               className="bg-[#000000] p-8 flex flex-col group hover:bg-white/[0.02] transition-colors duration-500"
             >
@@ -344,13 +364,33 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-colors duration-200">
               Get Started
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </button>
             <button className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/[0.12] text-white/50 text-sm font-medium tracking-wide hover:border-white/25 hover:text-white/70 transition-all duration-200">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
               </svg>
               View Documentation
             </button>
@@ -366,9 +406,9 @@ export function CTASection() {
 // ──────────────────────────────────────────────────────────────
 
 const footerLinks = {
-  Product: ["Components", "Blocks", "Templates", "Changelog"],
-  Resources: ["Documentation", "Getting Started", "Examples", "GitHub"],
-  Company: ["About", "Blog", "Contact", "License"],
+  Product: ['Components', 'Blocks', 'Templates', 'Changelog'],
+  Resources: ['Documentation', 'Getting Started', 'Examples', 'GitHub'],
+  Company: ['About', 'Blog', 'Contact', 'License'],
 };
 
 export function Footer() {
@@ -411,7 +451,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Aphelion UI. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            {["Privacy", "Terms", "GitHub"].map((item) => (
+            {['Privacy', 'Terms', 'GitHub'].map((item) => (
               <a
                 key={item}
                 href="#"
@@ -433,27 +473,43 @@ export function Footer() {
 
 const plans = [
   {
-    name: "Free",
-    price: "$0",
-    description: "A strong starting point with free blocks and lifetime access.",
-    features: ["Lifetime Access", "Unlimited projects", "Free blocks", "Community support"],
-    cta: "Get access",
+    name: 'Free',
+    price: '$0',
+    description:
+      'A strong starting point with free blocks and lifetime access.',
+    features: [
+      'Lifetime Access',
+      'Unlimited projects',
+      'Free blocks',
+      'Community support',
+    ],
+    cta: 'Get access',
     popular: false,
   },
   {
-    name: "Pro",
-    price: "$49",
-    description: "For solo founders building polished marketing sites.",
-    features: ["Everything in Free", "Premium blocks", "Code snippets", "Priority support"],
-    cta: "Get access",
+    name: 'Pro',
+    price: '$49',
+    description: 'For solo founders building polished marketing sites.',
+    features: [
+      'Everything in Free',
+      'Premium blocks',
+      'Code snippets',
+      'Priority support',
+    ],
+    cta: 'Get access',
     popular: true,
   },
   {
-    name: "Team",
-    price: "$99",
-    description: "Designed for teams collaborating at scale.",
-    features: ["Everything in Pro", "10 team members", "High priority support", "Custom blocks"],
-    cta: "Get access",
+    name: 'Team',
+    price: '$99',
+    description: 'Designed for teams collaborating at scale.',
+    features: [
+      'Everything in Pro',
+      '10 team members',
+      'High priority support',
+      'Custom blocks',
+    ],
+    cta: 'Get access',
     popular: false,
   },
 ];
@@ -480,14 +536,16 @@ export function PricingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`bg-[#000000] p-8 md:p-10 flex flex-col ${
-                plan.popular ? "relative" : ""
+                plan.popular ? 'relative' : ''
               }`}
             >
               {plan.popular && (
                 <div className="absolute top-0 left-0 right-0 h-px bg-white/30" />
               )}
               <div className="mb-6">
-                <p className="text-sm text-white/60 font-medium mb-2">{plan.name}</p>
+                <p className="text-sm text-white/60 font-medium mb-2">
+                  {plan.name}
+                </p>
                 <p className="text-3xl font-medium text-white tracking-tight mb-3">
                   {plan.price}
                 </p>
@@ -506,8 +564,8 @@ export function PricingSection() {
               <button
                 className={`w-full py-3 text-sm font-medium tracking-wide transition-colors duration-200 ${
                   plan.popular
-                    ? "bg-white text-black hover:bg-white/90"
-                    : "border border-white/[0.12] text-white/50 hover:border-white/25 hover:text-white/70"
+                    ? 'bg-white text-black hover:bg-white/90'
+                    : 'border border-white/[0.12] text-white/50 hover:border-white/25 hover:text-white/70'
                 }`}
               >
                 {plan.cta}
@@ -526,20 +584,24 @@ export function PricingSection() {
 
 const faqs = [
   {
-    question: "What is Aphelion UI?",
-    answer: "Aphelion UI is a minimal component library built for developers who value structure over decoration. It provides production-ready React components with a black-only design philosophy.",
+    question: 'What is Aphelion UI?',
+    answer:
+      'Aphelion UI is a minimal component library built for developers who value structure over decoration. It provides production-ready React components with a black-only design philosophy.',
   },
   {
-    question: "Is it free to use?",
-    answer: "Yes, Aphelion UI is completely free and open-source under the MIT license. You can use it in personal and commercial projects without any restrictions.",
+    question: 'Is it free to use?',
+    answer:
+      'Yes, Aphelion UI is completely free and open-source under the MIT license. You can use it in personal and commercial projects without any restrictions.',
   },
   {
-    question: "How do I install components?",
-    answer: "Simply copy and paste the component code into your project. No npm install required. Each component is self-contained and works with Tailwind CSS.",
+    question: 'How do I install components?',
+    answer:
+      'Simply copy and paste the component code into your project. No npm install required. Each component is self-contained and works with Tailwind CSS.',
   },
   {
-    question: "Does it support dark mode?",
-    answer: "Aphelion UI is designed with a black-only aesthetic that works beautifully in dark environments. It is inherently dark mode friendly.",
+    question: 'Does it support dark mode?',
+    answer:
+      'Aphelion UI is designed with a black-only aesthetic that works beautifully in dark environments. It is inherently dark mode friendly.',
   },
 ];
 
@@ -566,7 +628,7 @@ export function FAQSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className={`${i !== 0 ? "border-t border-white/[0.06]" : ""}`}
+              className={`${i !== 0 ? 'border-t border-white/[0.06]' : ''}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -576,7 +638,7 @@ export function FAQSection() {
                   {faq.question}
                 </span>
                 <span className="text-white/30 text-lg flex-shrink-0 transition-transform duration-200">
-                  {openIndex === i ? "−" : "+"}
+                  {openIndex === i ? '−' : '+'}
                 </span>
               </button>
               {openIndex === i && (

@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "src/app/(application)/(routes)/docs/components/button/page.jsx"  ],
+    "**/*.mts",
+    "src/app/(application)/(routes)/docs/components/button/page.jsx"
+  ],
   "exclude": ["node_modules"]
 }

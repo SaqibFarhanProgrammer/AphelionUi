@@ -1,5 +1,3 @@
-
-
 export default function DocsFooter() {
   return (
     <div className="mt-12 text-center">
