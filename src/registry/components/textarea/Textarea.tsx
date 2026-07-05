@@ -1,16 +1,15 @@
+"use client";
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ─── CVA Variants ────────────────────────────────────────────────────────
 
 const textareaVariants = cva(
   [
@@ -83,7 +82,6 @@ const textareaVariants = cva(
   },
 );
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface TextareaProps
   extends
@@ -104,9 +102,8 @@ export interface TextareaProps
   labelClassName?: string;
 }
 
-// ─── Textarea Component ──────────────────────────────────────────────────
 
- const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea(
     {
       theme = "light",
@@ -259,6 +256,5 @@ export interface TextareaProps
 );
 
 Textarea.displayName = "Textarea";
-
 
 export default Textarea

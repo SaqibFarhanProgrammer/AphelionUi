@@ -30,7 +30,7 @@ export default function DocsPageLayout({
               {description}
             </p>
           </div>
-          <div className="max-w-[820px] mx-auto px-6 py-12 md:py-16">
+          <div className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
             {children}
           </div>
         </div>

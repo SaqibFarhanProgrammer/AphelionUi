@@ -34,10 +34,10 @@ const buttonVariants = cva(
           'bg-transparent text-white border border-neutral-300 hover:text-black hover:bg-neutral-100 focus-visible:ring-neutral-400/40',
 
         destructive:
-          'bg-red-600/96 text-red-200 border border-red-600 hover:bg-red-700 focus-visible:ring-red-500/40',
+          'bg-[#FF6467] text-red-900  hover:bg-[#FF6467]/70 focus-visible:ring-red-500/40',
 
         success:
-          'bg-[#3cf716]/85 text-white border border-[#3cf716] hover:bg-[#3cf716]/75 focus-visible:ring-emerald-500/40',
+          'bg-[#9dff64] text-greed-900  hover:bg-[#3cf716]/55 focus-visible:ring-emerald-500/40',
 
         link: 'bg-transparent text-neutral-900 underline-offset-4 hover:underline',
       },
