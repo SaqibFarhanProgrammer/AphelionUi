@@ -1,8 +1,7 @@
-
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 // ─── Utility ─────────────────────────────────────────────────────────────
 
@@ -14,39 +13,39 @@ function cn(...inputs: ClassValue[]) {
 
 const textareaVariants = cva(
   [
-    "w-full",
-    "resize-none",
-    "rounded-lg",
-    "border",
-    "px-4",
-    "py-3",
-    "text-sm",
-    "leading-relaxed",
-    "transition-all",
-    "duration-200",
-    "outline-none",
-    "placeholder:text-neutral-400",
-    "focus:ring-2",
-    "focus:ring-offset-0",
+    'w-full',
+    'resize-none',
+    'rounded-lg',
+    'border',
+    'px-4',
+    'py-3',
+    'text-sm',
+    'leading-relaxed',
+    'transition-all',
+    'duration-200',
+    'outline-none',
+    'placeholder:text-neutral-400',
+    'focus:ring-2',
+    'focus:ring-offset-0',
   ],
   {
     variants: {
       theme: {
         light: [
-          "bg-neutral-50",
-          "border-neutral-200",
-          "text-neutral-900",
-          "focus:border-neutral-900",
-          "focus:ring-neutral-900/10",
-          "hover:border-neutral-300",
+          'bg-neutral-50',
+          'border-neutral-200',
+          'text-neutral-900',
+          'focus:border-neutral-900',
+          'focus:ring-neutral-900/10',
+          'hover:border-neutral-300',
         ],
         dark: [
-          "bg-neutral-900",
-          "border-neutral-700",
-          "text-white",
-          "focus:border-white",
-          "focus:ring-white/10",
-          "hover:border-neutral-600",
+          'bg-neutral-900',
+          'border-neutral-700',
+          'text-white',
+          'focus:border-white',
+          'focus:ring-white/10',
+          'hover:border-neutral-600',
         ],
       },
       state: {
@@ -56,38 +55,38 @@ const textareaVariants = cva(
     },
     compoundVariants: [
       {
-        theme: "light",
-        state: "error",
+        theme: 'light',
+        state: 'error',
         className: [
-          "border-red-500",
-          "focus:border-red-500",
-          "focus:ring-red-500/10",
-          "placeholder:text-red-300",
+          'border-red-500',
+          'focus:border-red-500',
+          'focus:ring-red-500/10',
+          'placeholder:text-red-300',
         ],
       },
       {
-        theme: "dark",
-        state: "error",
+        theme: 'dark',
+        state: 'error',
         className: [
-          "border-red-500",
-          "focus:border-red-500",
-          "focus:ring-red-500/10",
-          "placeholder:text-red-400",
+          'border-red-500',
+          'focus:border-red-500',
+          'focus:ring-red-500/10',
+          'placeholder:text-red-400',
         ],
       },
     ],
     defaultVariants: {
-      theme: "light",
-      state: "default",
+      theme: 'light',
+      state: 'default',
     },
-  },
+  }
 );
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
 export interface TextareaProps
   extends
-    Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
+    Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
     VariantProps<typeof textareaVariants> {
   label?: string;
   required?: boolean;
@@ -106,15 +105,15 @@ export interface TextareaProps
 
 // ─── Textarea Component ──────────────────────────────────────────────────
 
- const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea(
     {
-      theme = "light",
+      theme = 'light',
       state,
       label,
       required = false,
       optional = false,
-      optionalText = "optional",
+      optionalText = 'optional',
       error,
       hint,
       maxLength,
@@ -130,16 +129,16 @@ export interface TextareaProps
       disabled,
       ...props
     },
-    ref,
+    ref
   ) {
     const [internalValue, setInternalValue] = React.useState(
-      (defaultValue as string) || "",
+      (defaultValue as string) || ''
     );
 
     const isControlled = value !== undefined;
     const currentValue = isControlled ? (value as string) : internalValue;
     const charCount = currentValue?.length || 0;
-    const isError = state === "error" || !!error;
+    const isError = state === 'error' || !!error;
     const isOverLimit = maxLength ? charCount > maxLength : false;
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -150,19 +149,22 @@ export interface TextareaProps
     };
 
     return (
-      <div className={cn("flex flex-col gap-1.5", containerClassName)} style={{fontFamily:"sans-serif"}}>
+      <div
+        className={cn('flex flex-col gap-1.5', containerClassName)}
+        style={{ fontFamily: 'sans-serif' }}
+      >
         {label && (
           <div className="flex items-center justify-between">
             <label
               htmlFor={props.id}
               className={cn(
-                "text-sm font-medium",
+                'text-sm font-medium',
                 isError
-                  ? "text-red-500"
-                  : theme === "dark"
-                    ? "text-white"
-                    : "text-neutral-900",
-                labelClassName,
+                  ? 'text-red-500'
+                  : theme === 'dark'
+                    ? 'text-white'
+                    : 'text-neutral-900',
+                labelClassName
               )}
             >
               {label}
@@ -174,8 +176,8 @@ export interface TextareaProps
               {optional && !required && (
                 <span
                   className={cn(
-                    "ml-1.5 font-normal",
-                    theme === "dark" ? "text-neutral-400" : "text-neutral-400",
+                    'ml-1.5 font-normal',
+                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-400'
                   )}
                 >
                   ({optionalText})
@@ -193,24 +195,20 @@ export interface TextareaProps
           disabled={disabled}
           maxLength={maxLength}
           className={cn(
-            textareaVariants({ theme, state: isError ? "error" : "default" }),
+            textareaVariants({ theme, state: isError ? 'error' : 'default' }),
             disabled && [
-              "cursor-not-allowed",
-              "opacity-50",
-              theme === "light" ? "bg-neutral-100" : "bg-neutral-800",
+              'cursor-not-allowed',
+              'opacity-50',
+              theme === 'light' ? 'bg-neutral-100' : 'bg-neutral-800',
             ],
-            className,
+            className
           )}
           value={value}
           defaultValue={defaultValue}
           onChange={handleChange}
           aria-invalid={isError}
           aria-describedby={
-            error
-              ? `${props.id}-error`
-              : hint
-                ? `${props.id}-hint`
-                : undefined
+            error ? `${props.id}-error` : hint ? `${props.id}-hint` : undefined
           }
           {...props}
         />
@@ -219,18 +217,15 @@ export interface TextareaProps
         <div className="flex items-center justify-between min-h-[20px]">
           <div className="flex-1">
             {error ? (
-              <span
-                id={`${props.id}-error`}
-                className="text-xs text-red-500"
-              >
+              <span id={`${props.id}-error`} className="text-xs text-red-500">
                 {error}
               </span>
             ) : hint ? (
               <span
                 id={`${props.id}-hint`}
                 className={cn(
-                  "text-xs",
-                  theme === "dark" ? "text-neutral-400" : "text-neutral-500",
+                  'text-xs',
+                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
                 )}
               >
                 {hint}
@@ -240,25 +235,24 @@ export interface TextareaProps
           {(showCount || maxLength) && (
             <span
               className={cn(
-                "text-xs tabular-nums shrink-0 ml-4",
+                'text-xs tabular-nums shrink-0 ml-4',
                 isOverLimit
-                  ? "text-red-500"
-                  : theme === "dark"
-                    ? "text-neutral-400"
-                    : "text-neutral-400",
+                  ? 'text-red-500'
+                  : theme === 'dark'
+                    ? 'text-neutral-400'
+                    : 'text-neutral-400'
               )}
             >
               {charCount}
-              {maxLength ? `/${maxLength}` : ""}
+              {maxLength ? `/${maxLength}` : ''}
             </span>
           )}
         </div>
       </div>
     );
-  },
+  }
 );
 
-Textarea.displayName = "Textarea";
+Textarea.displayName = 'Textarea';
 
-
-export default Textarea
+export default Textarea;

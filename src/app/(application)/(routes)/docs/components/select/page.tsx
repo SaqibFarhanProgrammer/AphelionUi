@@ -1,4 +1,3 @@
-
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';
 import ComponentPreview from '@/components/docs/ComponentPreview';

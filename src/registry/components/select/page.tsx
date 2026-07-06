@@ -5,11 +5,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
 
 const selectVariants = cva(
   [
@@ -118,7 +116,6 @@ const errorVariants = cva([
   'text-red-500',
 ]);
 
-
 export interface SelectOption {
   value: string;
   label: string;
@@ -147,7 +144,6 @@ export interface SelectProps
   dropdownClassName?: string;
   optionClassName?: string;
 }
-
 
 const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
   {
