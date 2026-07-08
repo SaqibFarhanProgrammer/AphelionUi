@@ -1,8 +1,6 @@
 import Navbar from '@/components/Navbar';
 import About from '../components/LandingPage/About';
-import ComponentsShowCase from '../components/LandingPage/ComponentsShowCase';
 import Hero from '../components/LandingPage/Hero';
-import React from 'react';
 import FeaturesSection from '@/components/LandingPage/Features';
 import {
   CTASection,
