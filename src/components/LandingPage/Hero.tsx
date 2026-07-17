@@ -18,7 +18,7 @@ export default function Hero() {
       />
       <div className="absolute bottom-0 h-[40vh] z-10 w-full bg-gradient-to-b from-transparent to-black" />
 
-      <div className="w-full h-[90%] flex flex-col justify-center items-center pt-10 px-6 lg:px-10 z-10">
+      <div className="w-full h-[90%] flex flex-col justify-center items-center pt-40 px-6 lg:px-10 z-10">
         <div className="flex items-center gap-4">
           <div className="flex items-center">
             {avatars.map((src, i) => (
