@@ -112,12 +112,29 @@ const accordionData = {
     command: 'shadcn@latest add aphelio/c/accordion',
   },
   usage: {
-    import: 'import { Accordion } from @/components/ui/accordion',
-    basic: `<Accordion
-  items={[
-    { id: "1", title: "Item 1", content: "Content 1" },
-    { id: "2", title: "Item 2", content: "Content 2" },
-  ]}
+    import: 'import { Accordion } from "@/components/ui/accordion"',
+    basic: `const demoItems = [
+  {
+    id: "item-1",
+    title: "What is a design system?",
+    content: "A design system is a collection of reusable components...",
+  },
+  {
+    id: "item-2",
+    title: "Why use Tailwind CSS?",
+    content: "Tailwind CSS is a utility-first CSS framework...",
+  },
+  {
+    id: "item-3",
+    title: "How does Framer Motion work?",
+    content: "Framer Motion is a production-ready motion library for React...",
+  },
+];
+
+<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="default" 
 />`,
   },
   sections: [
@@ -128,21 +145,36 @@ const accordionData = {
       examples: [
         {
           label: 'Default',
-          code: `<Accordion items={items} theme="dark" variant="default" />`,
+          code: `// Default variant with dark theme
+<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="default" 
+/>`,
           preview: (
             <Accordion items={demoItems} theme="dark" variant="default" />
           ),
         },
         {
           label: 'Bordered',
-          code: `<Accordion items={items} theme="dark" variant="bordered" />`,
+          code: `// Bordered variant with dark theme
+<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="bordered" 
+/>`,
           preview: (
             <Accordion items={demoItems} theme="dark" variant="bordered" />
           ),
         },
         {
           label: 'Card',
-          code: `<Accordion items={items} theme="dark" variant="card" />`,
+          code: `// Card variant with dark theme
+<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="card" 
+/>`,
           preview: <Accordion items={demoItems} theme="dark" variant="card" />,
         },
       ],
@@ -154,14 +186,24 @@ const accordionData = {
       examples: [
         {
           label: 'Dark Theme',
-          code: `<Accordion items={items} theme="dark" variant="bordered" />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="bordered" 
+/>`,
           preview: (
             <Accordion items={demoItems} theme="dark" variant="bordered" />
           ),
         },
         {
           label: 'Light Theme',
-          code: `<Accordion items={items} theme="light" variant="bordered" />`,
+          code: `<div className="rounded-xl border border-black/10 bg-white p-4">
+  <Accordion 
+    items={demoItems} 
+    theme="light" 
+    variant="bordered" 
+  />
+</div>`,
           preview: (
             <div className="rounded-xl border border-black/10 bg-white p-4">
               <Accordion items={demoItems} theme="light" variant="bordered" />
@@ -177,7 +219,12 @@ const accordionData = {
       examples: [
         {
           label: 'Small',
-          code: `<Accordion items={items} theme="dark" size="sm" variant="bordered" />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  size="sm" 
+  variant="bordered" 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -189,7 +236,12 @@ const accordionData = {
         },
         {
           label: 'Medium (Default)',
-          code: `<Accordion items={items} theme="dark" size="md" variant="bordered" />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  size="md" 
+  variant="bordered" 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -201,7 +253,12 @@ const accordionData = {
         },
         {
           label: 'Large',
-          code: `<Accordion items={items} theme="dark" size="lg" variant="bordered" />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  size="lg" 
+  variant="bordered" 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -220,7 +277,12 @@ const accordionData = {
       examples: [
         {
           label: 'Chevron (Default)',
-          code: `<Accordion items={items} theme="dark" variant="bordered" icon="chevron" />`,
+          code: `<Accordion 
+  items={demoItems.slice(0, 2)} 
+  theme="dark" 
+  variant="bordered" 
+  icon="chevron" 
+/>`,
           preview: (
             <Accordion
               items={demoItems.slice(0, 2)}
@@ -232,7 +294,12 @@ const accordionData = {
         },
         {
           label: 'Left Chevron',
-          code: `<Accordion items={items} theme="dark" variant="bordered" icon="left-chevron" />`,
+          code: `<Accordion 
+  items={demoItems.slice(0, 2)} 
+  theme="dark" 
+  variant="bordered" 
+  icon="left-chevron" 
+/>`,
           preview: (
             <Accordion
               items={demoItems.slice(0, 2)}
@@ -244,7 +311,12 @@ const accordionData = {
         },
         {
           label: 'Plus / Minus',
-          code: `<Accordion items={items} theme="dark" variant="bordered" icon="plus-minus" />`,
+          code: `<Accordion 
+  items={demoItems.slice(0, 2)} 
+  theme="dark" 
+  variant="bordered" 
+  icon="plus-minus" 
+/>`,
           preview: (
             <Accordion
               items={demoItems.slice(0, 2)}
@@ -263,7 +335,13 @@ const accordionData = {
       examples: [
         {
           label: 'Single (Default)',
-          code: `<Accordion items={items} theme="dark" variant="bordered" type="single" defaultValue={["item-1"]} />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="bordered" 
+  type="single" 
+  defaultValue={["item-1"]} 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -276,7 +354,13 @@ const accordionData = {
         },
         {
           label: 'Multiple',
-          code: `<Accordion items={items} theme="dark" variant="bordered" type="multiple" defaultValue={["item-1", "item-2"]} />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="bordered" 
+  type="multiple" 
+  defaultValue={["item-1", "item-2"]} 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -289,7 +373,14 @@ const accordionData = {
         },
         {
           label: 'Non-Collapsible',
-          code: `<Accordion items={items} theme="dark" variant="bordered" type="single" defaultValue={["item-1"]} collapsible={false} />`,
+          code: `<Accordion 
+  items={demoItems} 
+  theme="dark" 
+  variant="bordered" 
+  type="single" 
+  defaultValue={["item-1"]} 
+  collapsible={false} 
+/>`,
           preview: (
             <Accordion
               items={demoItems}
@@ -310,14 +401,16 @@ const accordionData = {
       examples: [
         {
           label: 'Disabled Item',
-          code: `<Accordion
-  items={[
-    { id: "1", title: "Active", content: "This is active" },
-    { id: "2", title: "Disabled", content: "You can't open this", disabled: true },
-    { id: "3", title: "Active 2", content: "This is also active" },
-  ]}
-  theme="dark"
-  variant="bordered"
+          code: `const disabledItems = [
+  { id: "1", title: "Active", content: "This is active" },
+  { id: "2", title: "Disabled", content: "You can't open this", disabled: true },
+  { id: "3", title: "Active 2", content: "This is also active" },
+];
+
+<Accordion 
+  items={disabledItems} 
+  theme="dark" 
+  variant="bordered" 
 />`,
           preview: (
             <Accordion
@@ -348,13 +441,28 @@ const accordionData = {
           label: 'Controlled State',
           code: `const [openItems, setOpenItems] = useState<string[]>(["item-1"]);
 
-<Accordion
-  items={items}
-  theme="dark"
-  variant="bordered"
-  value={openItems}
-  onValueChange={setOpenItems}
-/>`,
+return (
+  <div className="space-y-4">
+    <div className="flex flex-wrap gap-2">
+      <button onClick={() => setOpenItems([])}>
+        Close All
+      </button>
+      <button onClick={() => setOpenItems(["item-1"])}>
+        Open Item 1
+      </button>
+      <button onClick={() => setOpenItems(["item-2"])}>
+        Open Item 2
+      </button>
+    </div>
+    <Accordion
+      items={demoItems}
+      theme="dark"
+      variant="bordered"
+      value={openItems}
+      onValueChange={setOpenItems}
+    />
+  </div>
+);`,
           preview: <ControlledAccordionPreview />,
         },
       ],
@@ -367,7 +475,12 @@ const accordionData = {
       examples: [
         {
           label: 'Rich Content',
-          code: `<Accordion items={longItems} theme="dark" variant="card" defaultValue={["long-1"]} />`,
+          code: `<Accordion 
+  items={longItems} 
+  theme="dark" 
+  variant="card" 
+  defaultValue={["long-1"]} 
+/>`,
           preview: (
             <Accordion
               items={longItems}
@@ -389,13 +502,31 @@ const accordionData = {
           label: 'Hook Controlled',
           code: `const accordion = useAccordion(["hook-1"]);
 
-<Accordion
-  items={items}
-  theme="dark"
-  variant="card"
-  value={accordion.openItems}
-  onValueChange={accordion.setOpenItems}
-/>`,
+const hookItems = [
+  { id: "hook-1", title: "Hook Controlled Item 1", content: "..." },
+  { id: "hook-2", title: "Hook Controlled Item 2", content: "..." },
+];
+
+return (
+  <div className="space-y-4">
+    <div className="flex flex-wrap gap-2">
+      <button onClick={accordion.closeAll}>Close All</button>
+      <button onClick={() => accordion.open("hook-1")}>
+        Open Item 1
+      </button>
+      <button onClick={() => accordion.toggle("hook-2")}>
+        Toggle Item 2
+      </button>
+    </div>
+    <Accordion
+      items={hookItems}
+      theme="dark"
+      variant="card"
+      value={accordion.openItems}
+      onValueChange={accordion.setOpenItems}
+    />
+  </div>
+);`,
           preview: <HookAccordionPreview />,
         },
       ],
@@ -665,6 +796,7 @@ function HookAccordionPreview() {
 export default function AccordionPage() {
   return (
     <DocsPageLayout
+    
       category={accordionData.category}
       title={accordionData.title}
       description={accordionData.description}

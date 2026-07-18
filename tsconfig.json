@@ -30,6 +30,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "src/app/(application)/(routes)/docs/components/button/page.jsx"
-  ],
+, "src/app/(application)/(routes)/docs/components/card/page.jsx"  ],
   "exclude": ["node_modules"]
 }

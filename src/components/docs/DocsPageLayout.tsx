@@ -16,7 +16,10 @@ export default function DocsPageLayout({
   sideMapGroup,
 }: DocsPageLayoutProps) {
   return (
-    <div className="min-h-screen w-full flex bg-[#0A0A0A]">
+    <div
+      className="min-h-screen w-full flex bg-[#0A0A0A]"
+      style={{ fontFamily: 'sans-serif' }}
+    >
       <div className="w-[90%]">
         <div className="border-b border-white/[0.04]">
           <div className="max-w-[720px] mx-auto px-6 py-16 md:py-20">
