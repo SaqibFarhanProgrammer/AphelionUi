@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { Progress } from "@/registry/components/Progress/Progress";
-import InstallCommand from "@/components/docs/InstallCommand";
-import CodeBlock from "@/components/docs/CodeBlock";
-import ComponentPreview from "@/components/docs/ComponentPreview";
-import PropsTable from "@/components/docs/PropsTable";
-import DocsSection from "@/components/docs/DocsSection";
-import DocsPageLayout from "@/components/docs/DocsPageLayout";
-import BottomNav from "@/components/docs/BottomNav";
-import DocsFooter from "@/components/docs/DocsFooter";
+import { Progress } from '@/registry/components/Progress/Progress';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
 
 const progressData = {
-  name: "Progress",
-  slug: "progress",
-  title: "Progress",
+  name: 'Progress',
+  slug: 'progress',
+  title: 'Progress',
   description:
-    "A flexible progress bar component with multiple variants, sizes, themes, animated fills, indeterminate state, and value display options.",
-  category: "Feedback",
+    'A flexible progress bar component with multiple variants, sizes, themes, animated fills, indeterminate state, and value display options.',
+  category: 'Feedback',
   installation: {
-    command: "shadcn@latest add aphelio/c/progress",
+    command: 'shadcn@latest add aphelio/c/progress',
   },
   usage: {
     import: "import { Progress } from '@/components/ui/progress'",
@@ -26,12 +26,12 @@ const progressData = {
   },
   sections: [
     {
-      id: "variants",
-      title: "Variants",
-      description: "Seven color variants for different contexts.",
+      id: 'variants',
+      title: 'Variants',
+      description: 'Seven color variants for different contexts.',
       examples: [
         {
-          label: "Default",
+          label: 'Default',
           code: `<Progress
   variant="default"
   value={60}
@@ -47,7 +47,7 @@ const progressData = {
           ),
         },
         {
-          label: "Primary",
+          label: 'Primary',
           code: `<Progress
   variant="primary"
   value={60}
@@ -63,7 +63,7 @@ const progressData = {
           ),
         },
         {
-          label: "Success",
+          label: 'Success',
           code: `<Progress
   variant="success"
   value={75}
@@ -79,23 +79,18 @@ const progressData = {
           ),
         },
         {
-          label: "Info",
+          label: 'Info',
           code: `<Progress
   variant="info"
   value={50}
   label="Info"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              variant="info"
-              value={50}
-              label="Info"
-            />
+            <Progress theme="dark" variant="info" value={50} label="Info" />
           ),
         },
         {
-          label: "Warning",
+          label: 'Warning',
           code: `<Progress
   variant="warning"
   value={40}
@@ -111,23 +106,18 @@ const progressData = {
           ),
         },
         {
-          label: "Error",
+          label: 'Error',
           code: `<Progress
   variant="error"
   value={90}
   label="Error"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              variant="error"
-              value={90}
-              label="Error"
-            />
+            <Progress theme="dark" variant="error" value={90} label="Error" />
           ),
         },
         {
-          label: "Neutral",
+          label: 'Neutral',
           code: `<Progress
   variant="neutral"
   value={30}
@@ -145,12 +135,12 @@ const progressData = {
       ],
     },
     {
-      id: "themes",
-      title: "Themes",
-      description: "Dark and light color themes.",
+      id: 'themes',
+      title: 'Themes',
+      description: 'Dark and light color themes.',
       examples: [
         {
-          label: "Dark Theme",
+          label: 'Dark Theme',
           code: `<Progress
   theme="dark"
   variant="success"
@@ -169,7 +159,7 @@ const progressData = {
           ),
         },
         {
-          label: "Light Theme",
+          label: 'Light Theme',
           code: `<Progress
   theme="light"
   variant="success"
@@ -190,99 +180,70 @@ const progressData = {
       ],
     },
     {
-      id: "sizes",
-      title: "Sizes",
-      description: "Control the height of the progress bar.",
+      id: 'sizes',
+      title: 'Sizes',
+      description: 'Control the height of the progress bar.',
       examples: [
         {
-          label: "Small",
+          label: 'Small',
           code: `<Progress
   size="sm"
   value={60}
   label="Small"
 />`,
-          preview: (
-            <Progress
-              theme="dark"
-              size="sm"
-              value={60}
-              label="Small"
-            />
-          ),
+          preview: <Progress theme="dark" size="sm" value={60} label="Small" />,
         },
         {
-          label: "Medium",
+          label: 'Medium',
           code: `<Progress
   size="md"
   value={60}
   label="Medium"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              size="md"
-              value={60}
-              label="Medium"
-            />
+            <Progress theme="dark" size="md" value={60} label="Medium" />
           ),
         },
         {
-          label: "Large",
+          label: 'Large',
           code: `<Progress
   size="lg"
   value={60}
   label="Large"
 />`,
-          preview: (
-            <Progress
-              theme="dark"
-              size="lg"
-              value={60}
-              label="Large"
-            />
-          ),
+          preview: <Progress theme="dark" size="lg" value={60} label="Large" />,
         },
         {
-          label: "Extra Large",
+          label: 'Extra Large',
           code: `<Progress
   size="xl"
   value={60}
   label="Extra Large"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              size="xl"
-              value={60}
-              label="Extra Large"
-            />
+            <Progress theme="dark" size="xl" value={60} label="Extra Large" />
           ),
         },
       ],
     },
     {
-      id: "radius",
-      title: "Radius",
-      description: "Control the border radius of the progress bar.",
+      id: 'radius',
+      title: 'Radius',
+      description: 'Control the border radius of the progress bar.',
       examples: [
         {
-          label: "None",
+          label: 'None',
           code: `<Progress
   radius="none"
   value={60}
   label="No Radius"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              radius="none"
-              value={60}
-              label="No Radius"
-            />
+            <Progress theme="dark" radius="none" value={60} label="No Radius" />
           ),
         },
         {
-          label: "Small",
+          label: 'Small',
           code: `<Progress
   radius="sm"
   value={60}
@@ -298,7 +259,7 @@ const progressData = {
           ),
         },
         {
-          label: "Medium",
+          label: 'Medium',
           code: `<Progress
   radius="md"
   value={60}
@@ -314,7 +275,7 @@ const progressData = {
           ),
         },
         {
-          label: "Large",
+          label: 'Large',
           code: `<Progress
   radius="lg"
   value={60}
@@ -330,7 +291,7 @@ const progressData = {
           ),
         },
         {
-          label: "Full",
+          label: 'Full',
           code: `<Progress
   radius="full"
   value={60}
@@ -348,12 +309,12 @@ const progressData = {
       ],
     },
     {
-      id: "value-display",
-      title: "Value Display",
-      description: "Show the current progress percentage.",
+      id: 'value-display',
+      title: 'Value Display',
+      description: 'Show the current progress percentage.',
       examples: [
         {
-          label: "Outside Value",
+          label: 'Outside Value',
           code: `<Progress
   value={72}
   showValue
@@ -371,7 +332,7 @@ const progressData = {
           ),
         },
         {
-          label: "Inside Value",
+          label: 'Inside Value',
           code: `<Progress
   value={45}
   showValue
@@ -389,7 +350,7 @@ const progressData = {
           ),
         },
         {
-          label: "Top Value",
+          label: 'Top Value',
           code: `<Progress
   value={88}
   showValue
@@ -407,7 +368,7 @@ const progressData = {
           ),
         },
         {
-          label: "Bottom Value",
+          label: 'Bottom Value',
           code: `<Progress
   value={34}
   showValue
@@ -427,12 +388,12 @@ const progressData = {
       ],
     },
     {
-      id: "indeterminate",
-      title: "Indeterminate",
-      description: "Animated indeterminate state for unknown progress.",
+      id: 'indeterminate',
+      title: 'Indeterminate',
+      description: 'Animated indeterminate state for unknown progress.',
       examples: [
         {
-          label: "Indeterminate",
+          label: 'Indeterminate',
           code: `<Progress
   indeterminate
   label="Loading..."
@@ -450,99 +411,74 @@ const progressData = {
       ],
     },
     {
-      id: "widths",
-      title: "Widths",
-      description: "Control the width of the progress bar.",
+      id: 'widths',
+      title: 'Widths',
+      description: 'Control the width of the progress bar.',
       examples: [
         {
-          label: "Small Width",
+          label: 'Small Width',
           code: `<Progress
   width="sm"
   value={60}
   label="Small"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              width="sm"
-              value={60}
-              label="Small"
-            />
+            <Progress theme="dark" width="sm" value={60} label="Small" />
           ),
         },
         {
-          label: "Medium Width",
+          label: 'Medium Width',
           code: `<Progress
   width="md"
   value={60}
   label="Medium"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              width="md"
-              value={60}
-              label="Medium"
-            />
+            <Progress theme="dark" width="md" value={60} label="Medium" />
           ),
         },
         {
-          label: "Large Width",
+          label: 'Large Width',
           code: `<Progress
   width="lg"
   value={60}
   label="Large"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              width="lg"
-              value={60}
-              label="Large"
-            />
+            <Progress theme="dark" width="lg" value={60} label="Large" />
           ),
         },
         {
-          label: "Full Width",
+          label: 'Full Width',
           code: `<Progress
   width="full"
   value={60}
   label="Full Width"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              width="full"
-              value={60}
-              label="Full Width"
-            />
+            <Progress theme="dark" width="full" value={60} label="Full Width" />
           ),
         },
       ],
     },
     {
-      id: "animated",
-      title: "Animated",
-      description: "Toggle the fill animation on or off.",
+      id: 'animated',
+      title: 'Animated',
+      description: 'Toggle the fill animation on or off.',
       examples: [
         {
-          label: "Animated (Default)",
+          label: 'Animated (Default)',
           code: `<Progress
   animated
   value={80}
   label="Animated"
 />`,
           preview: (
-            <Progress
-              theme="dark"
-              animated
-              value={80}
-              label="Animated"
-            />
+            <Progress theme="dark" animated value={80} label="Animated" />
           ),
         },
         {
-          label: "No Animation",
+          label: 'No Animation',
           code: `<Progress
   animated={false}
   value={80}
@@ -560,12 +496,12 @@ const progressData = {
       ],
     },
     {
-      id: "with-description",
-      title: "With Description",
-      description: "Add a description below the progress bar.",
+      id: 'with-description',
+      title: 'With Description',
+      description: 'Add a description below the progress bar.',
       examples: [
         {
-          label: "With Description",
+          label: 'With Description',
           code: `<Progress
   value={45}
   label="Uploading file..."
@@ -583,12 +519,12 @@ const progressData = {
       ],
     },
     {
-      id: "combinations",
-      title: "Combinations",
-      description: "Mix and match props for complex use cases.",
+      id: 'combinations',
+      title: 'Combinations',
+      description: 'Mix and match props for complex use cases.',
       examples: [
         {
-          label: "Full Featured",
+          label: 'Full Featured',
           code: `<Progress
   variant="success"
   theme="dark"
@@ -621,114 +557,114 @@ const progressData = {
   ],
   props: [
     {
-      name: "variant",
+      name: 'variant',
       type: "'default' | 'primary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'",
       default: "'default'",
-      description: "Color variant of the progress fill.",
+      description: 'Color variant of the progress fill.',
     },
     {
-      name: "theme",
+      name: 'theme',
       type: "'light' | 'dark'",
       default: "'dark'",
-      description: "Color theme of the progress bar.",
+      description: 'Color theme of the progress bar.',
     },
     {
-      name: "size",
+      name: 'size',
       type: "'sm' | 'md' | 'lg' | 'xl'",
       default: "'md'",
-      description: "Height of the progress bar.",
+      description: 'Height of the progress bar.',
     },
     {
-      name: "radius",
+      name: 'radius',
       type: "'none' | 'sm' | 'md' | 'lg' | 'full'",
       default: "'full'",
-      description: "Border radius of the progress bar.",
+      description: 'Border radius of the progress bar.',
     },
     {
-      name: "width",
+      name: 'width',
       type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'",
       default: "'md'",
-      description: "Width of the progress bar.",
+      description: 'Width of the progress bar.',
     },
     {
-      name: "animated",
-      type: "boolean",
-      default: "true",
-      description: "Animate the fill width on value change.",
+      name: 'animated',
+      type: 'boolean',
+      default: 'true',
+      description: 'Animate the fill width on value change.',
     },
     {
-      name: "value",
-      type: "number",
-      default: "0",
-      description: "Current progress value.",
+      name: 'value',
+      type: 'number',
+      default: '0',
+      description: 'Current progress value.',
     },
     {
-      name: "max",
-      type: "number",
-      default: "100",
-      description: "Maximum value.",
+      name: 'max',
+      type: 'number',
+      default: '100',
+      description: 'Maximum value.',
     },
     {
-      name: "min",
-      type: "number",
-      default: "0",
-      description: "Minimum value.",
+      name: 'min',
+      type: 'number',
+      default: '0',
+      description: 'Minimum value.',
     },
     {
-      name: "showValue",
-      type: "boolean",
-      default: "false",
-      description: "Show the percentage value.",
+      name: 'showValue',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show the percentage value.',
     },
     {
-      name: "valuePosition",
+      name: 'valuePosition',
       type: "'inside' | 'outside' | 'top' | 'bottom'",
       default: "'outside'",
-      description: "Position of the value display.",
+      description: 'Position of the value display.',
     },
     {
-      name: "label",
-      type: "string",
-      default: "undefined",
-      description: "Label text above the progress bar.",
+      name: 'label',
+      type: 'string',
+      default: 'undefined',
+      description: 'Label text above the progress bar.',
     },
     {
-      name: "description",
-      type: "string",
-      default: "undefined",
-      description: "Description text below the progress bar.",
+      name: 'description',
+      type: 'string',
+      default: 'undefined',
+      description: 'Description text below the progress bar.',
     },
     {
-      name: "indeterminate",
-      type: "boolean",
-      default: "false",
-      description: "Show animated indeterminate state.",
+      name: 'indeterminate',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show animated indeterminate state.',
     },
     {
-      name: "className",
-      type: "string",
-      default: "undefined",
-      description: "Additional classes.",
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional classes.',
     },
     {
-      name: "fillClassName",
-      type: "string",
-      default: "undefined",
-      description: "Classes for the fill element.",
+      name: 'fillClassName',
+      type: 'string',
+      default: 'undefined',
+      description: 'Classes for the fill element.',
     },
   ],
 };
 
 const bottomNavItems = [
   {
-    label: "Alert",
-    href: "/docs/components/alert",
-    description: "Alert notification component.",
+    label: 'Alert',
+    href: '/docs/components/alert',
+    description: 'Alert notification component.',
   },
   {
-    label: "Spinner",
-    href: "/docs/components/spinner",
-    description: "Loading spinner component.",
+    label: 'Spinner',
+    href: '/docs/components/spinner',
+    description: 'Loading spinner component.',
   },
 ];
 
@@ -739,15 +675,15 @@ export default function ProgressPage() {
       title={progressData.title}
       description={progressData.description}
       sideMapGroup={[
-        { id: "installation", title: "Installation" },
-        { id: "usage", title: "Usage" },
-        { id: "examples", title: "Examples" },
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
         ...progressData.sections.map((section) => ({
           id: section.id,
           title: section.title,
           level: 3,
         })),
-        { id: "props", title: "Props" },
+        { id: 'props', title: 'Props' },
       ]}
     >
       <section className="mb-14" id="installation">

@@ -68,7 +68,6 @@ function PositionDemo({
               description: `${label} – Check settings.`,
               variant: 'warning',
               duration: 3000,
-              
             })
           }
         >

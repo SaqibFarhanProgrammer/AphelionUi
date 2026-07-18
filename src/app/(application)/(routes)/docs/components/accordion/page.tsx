@@ -796,7 +796,6 @@ function HookAccordionPreview() {
 export default function AccordionPage() {
   return (
     <DocsPageLayout
-    
       category={accordionData.category}
       title={accordionData.title}
       description={accordionData.description}

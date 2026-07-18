@@ -39,8 +39,6 @@ import {
   UserPlus,
 } from 'lucide-react';
 
-// ─── Demo Data ───────────────────────────────────────────────────────────
-
 const countries = [
   { value: 'us', label: 'United States' },
   { value: 'uk', label: 'United Kingdom' },
@@ -73,8 +71,6 @@ const settingsTabs = [
   { id: 'privacy', label: 'Privacy' },
 ];
 
-// ─── Card Data ─────────────────────────────────────────────────────────────
-
 const cardData = {
   name: 'Card',
   slug: 'card',
@@ -92,7 +88,6 @@ const cardData = {
 </Card>`,
   },
   sections: [
-    // ─── Basic Cards ───────────────────────────────────────────────────
     {
       id: 'basic-cards',
       title: 'Basic Cards',
@@ -211,7 +206,6 @@ const cardData = {
         },
       ],
     },
-    // ─── Interactive Cards ───────────────────────────────────────────────
     {
       id: 'interactive',
       title: 'Interactive Cards',
@@ -336,7 +330,6 @@ const cardData = {
         },
       ],
     },
-    // ─── Form Components ─────────────────────────────────────────────────
     {
       id: 'form',
       title: 'Form Components',
@@ -492,7 +485,6 @@ const cardData = {
         },
       ],
     },
-    // ─── Advanced Components ───────────────────────────────────────────
     {
       id: 'advanced',
       title: 'Advanced Components',
@@ -567,7 +559,6 @@ const cardData = {
         },
       ],
     },
-    // ─── Cards with Images ─────────────────────────────────────────────
     {
       id: 'images',
       title: 'Cards with Images',
@@ -579,7 +570,6 @@ const cardData = {
   theme="dark"
   title="Mountain View"
   description="Beautiful landscape"
-  image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=300&fit=crop"
   badge={
     <span className="rounded-full bg-blue-500 px-3 py-1 text-xs font-medium text-white">
       Popular
@@ -595,7 +585,6 @@ const cardData = {
               theme="dark"
               title="Mountain View"
               description="Beautiful landscape"
-              image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=300&fit=crop"
               badge={
                 <span className="rounded-full bg-blue-500 px-3 py-1 text-xs font-medium text-white">
                   Popular
@@ -614,7 +603,6 @@ const cardData = {
   theme="dark"
   title="City Lights"
   description="Urban night scene"
-  image="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=300&fit=crop"
 >
   <p className="text-white/60">
     Explore the vibrant energy of the city after dark.
@@ -631,7 +619,6 @@ const cardData = {
               theme="dark"
               title="City Lights"
               description="Urban night scene"
-              image="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=300&fit=crop"
             >
               <p className="text-white/60">
                 Explore the vibrant energy of the city after dark.
@@ -651,7 +638,6 @@ const cardData = {
   theme="dark"
   title="Ocean View"
   description="Serene coastal scene"
-  image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=300&fit=crop"
   actions={
     <div className="flex w-full gap-2">
       <CardButton size="sm" variant="outline" className="flex-1">
@@ -673,7 +659,6 @@ const cardData = {
               theme="dark"
               title="Ocean View"
               description="Serene coastal scene"
-              image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=300&fit=crop"
               actions={
                 <div className="flex w-full gap-2">
                   <CardButton
@@ -704,7 +689,6 @@ const cardData = {
         },
       ],
     },
-    // ─── Sizes ───────────────────────────────────────────────────────────
     {
       id: 'sizes',
       title: 'Sizes',
@@ -938,10 +922,6 @@ const bottomNavItems = [
   },
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  PREVIEW COMPONENTS (with state)
-// ═══════════════════════════════════════════════════════════════════════════
-
 function SettingsCardPreview() {
   const [settingsTab, setSettingsTab] = useState('account');
 
@@ -1074,10 +1054,6 @@ function SubscriptionCardPreview() {
     </Card>
   );
 }
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  MAIN PAGE
-// ═══════════════════════════════════════════════════════════════════════════
 
 export default function CardPage() {
   return (

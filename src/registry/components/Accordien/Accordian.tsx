@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { motion, AnimatePresence } from "framer-motion";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Utility ─────────────────────────────────────────────────────────────
 
@@ -18,131 +18,131 @@ function cn(...inputs: ClassValue[]) {
 
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
-const accordionVariants = cva(["w-full"], {
+const accordionVariants = cva(['w-full'], {
   variants: {
     theme: {
-      dark: "",
-      light: "",
+      dark: '',
+      light: '',
     },
     variant: {
-      default: "",
-      bordered: "",
-      card: "",
+      default: '',
+      bordered: '',
+      card: '',
     },
     size: {
-      sm: "",
-      md: "",
-      lg: "",
+      sm: '',
+      md: '',
+      lg: '',
     },
   },
   compoundVariants: [
-    { theme: "dark", variant: "default", className: "" },
+    { theme: 'dark', variant: 'default', className: '' },
     {
-      theme: "dark",
-      variant: "bordered",
-      className: "border border-white/[0.08] rounded-[12px] overflow-hidden",
+      theme: 'dark',
+      variant: 'bordered',
+      className: 'border border-white/[0.08] rounded-[12px] overflow-hidden',
     },
     {
-      theme: "dark",
-      variant: "card",
+      theme: 'dark',
+      variant: 'card',
       className:
-        "border border-white/[0.08] rounded-[12px] overflow-hidden bg-white/[0.02]",
+        'border border-white/[0.08] rounded-[12px] overflow-hidden bg-white/[0.02]',
     },
-    { theme: "light", variant: "default", className: "" },
+    { theme: 'light', variant: 'default', className: '' },
     {
-      theme: "light",
-      variant: "bordered",
-      className: "border border-black/[0.08] rounded-[12px] overflow-hidden",
+      theme: 'light',
+      variant: 'bordered',
+      className: 'border border-black/[0.08] rounded-[12px] overflow-hidden',
     },
     {
-      theme: "light",
-      variant: "card",
+      theme: 'light',
+      variant: 'card',
       className:
-        "border border-black/[0.08] rounded-[12px] overflow-hidden bg-black/[0.02]",
+        'border border-black/[0.08] rounded-[12px] overflow-hidden bg-black/[0.02]',
     },
   ],
   defaultVariants: {
-    theme: "dark",
-    variant: "default",
-    size: "md",
+    theme: 'dark',
+    variant: 'default',
+    size: 'md',
   },
 });
 
-const itemVariants = cva(["w-full"], {
+const itemVariants = cva(['w-full'], {
   variants: {
     theme: {
-      dark: "",
-      light: "",
+      dark: '',
+      light: '',
     },
     variant: {
-      default: "border-b",
-      bordered: "border-b last:border-b-0",
-      card: "border-b last:border-b-0",
+      default: 'border-b',
+      bordered: 'border-b last:border-b-0',
+      card: 'border-b last:border-b-0',
     },
   },
   compoundVariants: [
-    { theme: "dark", variant: "default", className: "border-white/[0.08]" },
-    { theme: "dark", variant: "bordered", className: "border-white/[0.06]" },
-    { theme: "dark", variant: "card", className: "border-white/[0.06]" },
-    { theme: "light", variant: "default", className: "border-black/[0.08]" },
-    { theme: "light", variant: "bordered", className: "border-black/[0.06]" },
-    { theme: "light", variant: "card", className: "border-black/[0.06]" },
+    { theme: 'dark', variant: 'default', className: 'border-white/[0.08]' },
+    { theme: 'dark', variant: 'bordered', className: 'border-white/[0.06]' },
+    { theme: 'dark', variant: 'card', className: 'border-white/[0.06]' },
+    { theme: 'light', variant: 'default', className: 'border-black/[0.08]' },
+    { theme: 'light', variant: 'bordered', className: 'border-black/[0.06]' },
+    { theme: 'light', variant: 'card', className: 'border-black/[0.06]' },
   ],
   defaultVariants: {
-    theme: "dark",
-    variant: "default",
+    theme: 'dark',
+    variant: 'default',
   },
 });
 
 const triggerVariants = cva(
   [
-    "flex",
-    "w-full",
-    "items-center",
-    "justify-between",
-    "gap-4",
-    "text-left",
-    "transition-colors",
-    "duration-200",
-    "select-none",
-    "outline-none",
-    "focus-visible:ring-2",
-    "focus-visible:ring-offset-2",
+    'flex',
+    'w-full',
+    'items-center',
+    'justify-between',
+    'gap-4',
+    'text-left',
+    'transition-colors',
+    'duration-200',
+    'select-none',
+    'outline-none',
+    'focus-visible:ring-2',
+    'focus-visible:ring-offset-2',
   ],
   {
     variants: {
       theme: {
-        dark: "text-white hover:bg-white/[0.02] focus-visible:ring-white/20",
-        light: "text-black hover:bg-black/[0.02] focus-visible:ring-black/20",
+        dark: 'text-white hover:bg-white/[0.02] focus-visible:ring-white/20',
+        light: 'text-black hover:bg-black/[0.02] focus-visible:ring-black/20',
       },
       size: {
-        sm: "px-4 py-3 text-sm",
-        md: "px-5 py-4 text-base",
-        lg: "px-6 py-5 text-lg",
+        sm: 'px-4 py-3 text-sm',
+        md: 'px-5 py-4 text-base',
+        lg: 'px-6 py-5 text-lg',
       },
     },
     defaultVariants: {
-      theme: "dark",
-      size: "md",
+      theme: 'dark',
+      size: 'md',
     },
-  },
+  }
 );
 
-const contentVariants = cva(["overflow-hidden"], {
+const contentVariants = cva(['overflow-hidden'], {
   variants: {
     theme: {
-      dark: "text-white/60",
-      light: "text-black/60",
+      dark: 'text-white/60',
+      light: 'text-black/60',
     },
     size: {
-      sm: "px-4 pb-3 text-sm",
-      md: "px-5 pb-4 text-base",
-      lg: "px-6 pb-5 text-base",
+      sm: 'px-4 pb-3 text-sm',
+      md: 'px-5 pb-4 text-base',
+      lg: 'px-6 pb-5 text-base',
     },
   },
   defaultVariants: {
-    theme: "dark",
-    size: "md",
+    theme: 'dark',
+    size: 'md',
   },
 });
 
@@ -150,10 +150,10 @@ const contentVariants = cva(["overflow-hidden"], {
 
 function ChevronIcon({
   open,
-  theme = "dark",
+  theme = 'dark',
 }: {
   open: boolean;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }) {
   return (
     <motion.svg
@@ -168,8 +168,8 @@ function ChevronIcon({
       animate={{ rotate: open ? 180 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={cn(
-        "shrink-0",
-        theme === "dark" ? "text-white/40" : "text-black/40",
+        'shrink-0',
+        theme === 'dark' ? 'text-white/40' : 'text-black/40'
       )}
     >
       <path d="M6 9l6 6 6-6" />
@@ -179,10 +179,10 @@ function ChevronIcon({
 
 function LeftChevronIcon({
   open,
-  theme = "dark",
+  theme = 'dark',
 }: {
   open: boolean;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }) {
   return (
     <motion.svg
@@ -197,8 +197,8 @@ function LeftChevronIcon({
       animate={{ rotate: open ? -90 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={cn(
-        "shrink-0",
-        theme === "dark" ? "text-white/40" : "text-black/40",
+        'shrink-0',
+        theme === 'dark' ? 'text-white/40' : 'text-black/40'
       )}
     >
       <path d="M9 18l6-6-6-6" />
@@ -208,16 +208,16 @@ function LeftChevronIcon({
 
 function PlusMinusIcon({
   open,
-  theme = "dark",
+  theme = 'dark',
 }: {
   open: boolean;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
 }) {
   return (
     <motion.span
       className={cn(
-        "inline-flex h-5 w-5 shrink-0 items-center justify-center text-lg leading-none font-light",
-        theme === "dark" ? "text-white/50" : "text-black/50",
+        'inline-flex h-5 w-5 shrink-0 items-center justify-center text-lg leading-none font-light',
+        theme === 'dark' ? 'text-white/50' : 'text-black/50'
       )}
       animate={{ rotate: open ? 90 : 0 }}
       transition={{ duration: 0.2 }}
@@ -254,8 +254,8 @@ export interface AccordionProps
     React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof accordionVariants> {
   items: AccordionItem[];
-  icon?: "chevron" | "left-chevron" | "plus-minus";
-  type?: "single" | "multiple";
+  icon?: 'chevron' | 'left-chevron' | 'plus-minus';
+  type?: 'single' | 'multiple';
   defaultValue?: string[];
   value?: string[];
   onValueChange?: (value: string[]) => void;
@@ -272,11 +272,11 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   function Accordion(
     {
       items,
-      theme = "dark",
-      variant = "default",
-      size = "md",
-      icon = "chevron",
-      type = "single",
+      theme = 'dark',
+      variant = 'default',
+      size = 'md',
+      icon = 'chevron',
+      type = 'single',
       defaultValue = [],
       value: controlledValue,
       onValueChange,
@@ -287,7 +287,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
       contentClassName,
       ...props
     },
-    ref,
+    ref
   ) {
     const [internalValue, setInternalValue] =
       React.useState<string[]>(defaultValue);
@@ -296,7 +296,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
 
     const toggleItem = (id: string) => {
       let next: string[];
-      if (type === "single") {
+      if (type === 'single') {
         if (openItems.includes(id)) {
           next = collapsible ? [] : [id];
         } else {
@@ -314,9 +314,9 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     const renderIcon = (id: string) => {
       const isOpen = openItems.includes(id);
       switch (icon) {
-        case "left-chevron":
+        case 'left-chevron':
           return <LeftChevronIcon open={isOpen} theme={theme!} />;
-        case "plus-minus":
+        case 'plus-minus':
           return <PlusMinusIcon open={isOpen} theme={theme!} />;
         default:
           return <ChevronIcon open={isOpen} theme={theme!} />;
@@ -326,7 +326,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
     return (
       <div
         style={{
-          fontFamily: "sans-serif",
+          fontFamily: 'sans-serif',
         }}
         ref={ref}
         className={cn(accordionVariants({ theme, variant, size }), className)}
@@ -345,8 +345,8 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                 onClick={() => toggleItem(item.id)}
                 className={cn(
                   triggerVariants({ theme, size }),
-                  item.disabled && "cursor-not-allowed opacity-40",
-                  triggerClassName,
+                  item.disabled && 'cursor-not-allowed opacity-40',
+                  triggerClassName
                 )}
                 aria-expanded={isOpen}
               >
@@ -357,17 +357,17 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
                 {isOpen && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
+                    animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{
                       height: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] },
-                      opacity: { duration: 0.2, ease: "easeInOut" },
+                      opacity: { duration: 0.2, ease: 'easeInOut' },
                     }}
                   >
                     <div
                       className={cn(
                         contentVariants({ theme, size }),
-                        contentClassName,
+                        contentClassName
                       )}
                     >
                       {item.content}
@@ -380,10 +380,10 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         })}
       </div>
     );
-  },
+  }
 );
 
-Accordion.displayName = "Accordion";
+Accordion.displayName = 'Accordion';
 
 // ─── useAccordion Hook ───────────────────────────────────────────────────
 
@@ -395,7 +395,7 @@ export function useAccordion(defaultOpen: string[] = []) {
     isOpen: (id: string) => openItems.includes(id),
     toggle: (id: string) => {
       setOpenItems((prev) =>
-        prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id],
+        prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id]
       );
     },
     open: (id: string) => {

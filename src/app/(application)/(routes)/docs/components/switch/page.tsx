@@ -1,4 +1,3 @@
-
 import { Switch } from '@/registry/components/switch/Switch';
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';
@@ -8,8 +7,6 @@ import DocsSection from '@/components/docs/DocsSection';
 import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
-
-
 
 const bottomNavItems = [
   {
@@ -25,22 +22,20 @@ const bottomNavItems = [
 ];
 
 export default function SwitchPage() {
-
-
-    const switchData = {
-  name: 'Switch',
-  slug: 'switch',
-  title: 'Switch',
-  description:
-    'A toggle switch component with support for labels, checked/unchecked states, multiple sizes, themes, and disabled states.',
-  category: 'Inputs',
-  installation: {
-    command: 'shadcn@latest add aphelio/c/switch',
-  },
-  usage: {
-    import: "import { Switch } from '@/components/ui/switch'",
-    basic: '<Switch />',
-    full: `import { Switch } from '@/components/ui/switch';
+  const switchData = {
+    name: 'Switch',
+    slug: 'switch',
+    title: 'Switch',
+    description:
+      'A toggle switch component with support for labels, checked/unchecked states, multiple sizes, themes, and disabled states.',
+    category: 'Inputs',
+    installation: {
+      command: 'shadcn@latest add aphelio/c/switch',
+    },
+    usage: {
+      import: "import { Switch } from '@/components/ui/switch'",
+      basic: '<Switch />',
+      full: `import { Switch } from '@/components/ui/switch';
 
 export default function App() {
   const [enabled, setEnabled] = React.useState(false);
@@ -55,185 +50,193 @@ export default function App() {
     />
   );
 }`,
-  },
-  sections: [
-    {
-      id: 'sizes',
-      title: 'Sizes',
-      description: 'Three predefined sizes for different use cases.',
-      examples: [
-        {
-          label: 'Small',
-          code: "<Switch size='sm' theme='dark' />",
-          preview: <Switch size="sm" theme="dark" />,
-        },
-        {
-          label: 'Medium',
-          code: "<Switch size='md' theme='dark' />",
-          preview: <Switch size="md" theme="dark" />,
-        },
-        {
-          label: 'Large',
-          code: "<Switch size='lg' theme='dark' />",
-          preview: <Switch size="lg" theme="dark" />,
-        },
-      ],
     },
-    {
-      id: 'states',
-      title: 'States',
-      description: 'Checked and unchecked states of the switch.',
-      examples: [
-        {
-          label: 'Unchecked',
-          code: "<Switch checked={false} theme='dark' />",
-          preview: <Switch checked={false} theme="dark" />,
-        },
-        {
-          label: 'Checked',
-          code: "<Switch checked={true} theme='dark' />",
-          preview: <Switch checked={true} theme="dark" />,
-        },
-        {
-          label: 'Default Checked',
-          code: "<Switch defaultChecked theme='dark' />",
-          preview: <Switch defaultChecked theme="dark" />,
-        },
-      ],
-    },
-    {
-      id: 'label',
-      title: 'Label',
-      description: 'Add a descriptive label next to the switch.',
-      examples: [
-        {
-          label: 'With Label',
-          code: "<Switch label='Airplane Mode' theme='dark' />",
-          preview: <Switch label="Airplane Mode" theme="dark" />,
-        },
-        {
-          label: 'Dynamic Label',
-          code: "<Switch labelOn='Enabled' labelOff='Disabled' theme='dark' />",
-          preview: <Switch labelOn="Enabled" labelOff="Disabled" theme="dark" />,
-        },
-      ],
-    },
-    {
-      id: 'disabled',
-      title: 'Disabled',
-      description: 'Disable the switch for non-interactive states.',
-      examples: [
-        {
-          label: 'Disabled Unchecked',
-          code: "<Switch disabled label='Disabled' theme='dark' />",
-          preview: <Switch disabled label="Disabled" theme="dark" />,
-        },
-        {
-          label: 'Disabled Checked',
-          code: "<Switch disabled checked label='Disabled Checked' theme='dark' />",
-          preview: <Switch disabled checked label="Disabled Checked" theme="dark" />,
-        },
-      ],
-    },
-    {
-      id: 'combinations',
-      title: 'Combinations',
-      description: 'Mix and match props for complex use cases.',
-      examples: [
-        {
-          label: 'Large with Label',
-          code: "<Switch size='lg' label='Dark Mode' defaultChecked theme='dark' />",
-          preview: <Switch size="lg" label="Dark Mode" defaultChecked theme="dark" />,
-        },
-        {
-          label: 'Small Disabled',
-          code: "<Switch size='sm' disabled checked label='Locked' theme='dark' />",
-          preview: <Switch size="sm" disabled checked label="Locked" theme="dark" />,
-        },
-      ],
-    },
-  ],
-  props: [
-    {
-      name: 'size',
-      type: "'sm' | 'md' | 'lg'",
-      default: "'md'",
-      description: 'Size of the switch.',
-    },
-    {
-      name: 'theme',
-      type: "'light' | 'dark'",
-      default: "'light'",
-      description: 'Color theme of the switch.',
-    },
-    {
-      name: 'label',
-      type: 'string',
-      default: 'undefined',
-      description: 'Static label text displayed next to the switch.',
-    },
-    {
-      name: 'labelOn',
-      type: 'string',
-      default: 'undefined',
-      description: 'Label text shown when the switch is checked.',
-    },
-    {
-      name: 'labelOff',
-      type: 'string',
-      default: 'undefined',
-      description: 'Label text shown when the switch is unchecked.',
-    },
-    {
-      name: 'checked',
-      type: 'boolean',
-      default: 'undefined',
-      description: 'Controlled checked state.',
-    },
-    {
-      name: 'defaultChecked',
-      type: 'boolean',
-      default: 'false',
-      description: 'Default checked state for uncontrolled usage.',
-    },
-    {
-      name: 'onChange',
-      type: '(checked: boolean) => void',
-      default: 'undefined',
-      description: 'Callback fired when the switch is toggled.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      default: 'false',
-      description: 'Disables the switch.',
-    },
-    {
-      name: 'className',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional classes for the container.',
-    },
-    {
-      name: 'switchClassName',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional classes for the switch track.',
-    },
-    {
-      name: 'thumbClassName',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional classes for the switch thumb.',
-    },
-    {
-      name: 'labelClassName',
-      type: 'string',
-      default: 'undefined',
-      description: 'Additional classes for the label.',
-    },
-  ],
-};
+    sections: [
+      {
+        id: 'sizes',
+        title: 'Sizes',
+        description: 'Three predefined sizes for different use cases.',
+        examples: [
+          {
+            label: 'Small',
+            code: "<Switch size='sm' theme='dark' />",
+            preview: <Switch size="sm" theme="dark" />,
+          },
+          {
+            label: 'Medium',
+            code: "<Switch size='md' theme='dark' />",
+            preview: <Switch size="md" theme="dark" />,
+          },
+          {
+            label: 'Large',
+            code: "<Switch size='lg' theme='dark' />",
+            preview: <Switch size="lg" theme="dark" />,
+          },
+        ],
+      },
+      {
+        id: 'states',
+        title: 'States',
+        description: 'Checked and unchecked states of the switch.',
+        examples: [
+          {
+            label: 'Unchecked',
+            code: "<Switch checked={false} theme='dark' />",
+            preview: <Switch checked={false} theme="dark" />,
+          },
+          {
+            label: 'Checked',
+            code: "<Switch checked={true} theme='dark' />",
+            preview: <Switch checked={true} theme="dark" />,
+          },
+          {
+            label: 'Default Checked',
+            code: "<Switch defaultChecked theme='dark' />",
+            preview: <Switch defaultChecked theme="dark" />,
+          },
+        ],
+      },
+      {
+        id: 'label',
+        title: 'Label',
+        description: 'Add a descriptive label next to the switch.',
+        examples: [
+          {
+            label: 'With Label',
+            code: "<Switch label='Airplane Mode' theme='dark' />",
+            preview: <Switch label="Airplane Mode" theme="dark" />,
+          },
+          {
+            label: 'Dynamic Label',
+            code: "<Switch labelOn='Enabled' labelOff='Disabled' theme='dark' />",
+            preview: (
+              <Switch labelOn="Enabled" labelOff="Disabled" theme="dark" />
+            ),
+          },
+        ],
+      },
+      {
+        id: 'disabled',
+        title: 'Disabled',
+        description: 'Disable the switch for non-interactive states.',
+        examples: [
+          {
+            label: 'Disabled Unchecked',
+            code: "<Switch disabled label='Disabled' theme='dark' />",
+            preview: <Switch disabled label="Disabled" theme="dark" />,
+          },
+          {
+            label: 'Disabled Checked',
+            code: "<Switch disabled checked label='Disabled Checked' theme='dark' />",
+            preview: (
+              <Switch disabled checked label="Disabled Checked" theme="dark" />
+            ),
+          },
+        ],
+      },
+      {
+        id: 'combinations',
+        title: 'Combinations',
+        description: 'Mix and match props for complex use cases.',
+        examples: [
+          {
+            label: 'Large with Label',
+            code: "<Switch size='lg' label='Dark Mode' defaultChecked theme='dark' />",
+            preview: (
+              <Switch size="lg" label="Dark Mode" defaultChecked theme="dark" />
+            ),
+          },
+          {
+            label: 'Small Disabled',
+            code: "<Switch size='sm' disabled checked label='Locked' theme='dark' />",
+            preview: (
+              <Switch size="sm" disabled checked label="Locked" theme="dark" />
+            ),
+          },
+        ],
+      },
+    ],
+    props: [
+      {
+        name: 'size',
+        type: "'sm' | 'md' | 'lg'",
+        default: "'md'",
+        description: 'Size of the switch.',
+      },
+      {
+        name: 'theme',
+        type: "'light' | 'dark'",
+        default: "'light'",
+        description: 'Color theme of the switch.',
+      },
+      {
+        name: 'label',
+        type: 'string',
+        default: 'undefined',
+        description: 'Static label text displayed next to the switch.',
+      },
+      {
+        name: 'labelOn',
+        type: 'string',
+        default: 'undefined',
+        description: 'Label text shown when the switch is checked.',
+      },
+      {
+        name: 'labelOff',
+        type: 'string',
+        default: 'undefined',
+        description: 'Label text shown when the switch is unchecked.',
+      },
+      {
+        name: 'checked',
+        type: 'boolean',
+        default: 'undefined',
+        description: 'Controlled checked state.',
+      },
+      {
+        name: 'defaultChecked',
+        type: 'boolean',
+        default: 'false',
+        description: 'Default checked state for uncontrolled usage.',
+      },
+      {
+        name: 'onChange',
+        type: '(checked: boolean) => void',
+        default: 'undefined',
+        description: 'Callback fired when the switch is toggled.',
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        default: 'false',
+        description: 'Disables the switch.',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        default: 'undefined',
+        description: 'Additional classes for the container.',
+      },
+      {
+        name: 'switchClassName',
+        type: 'string',
+        default: 'undefined',
+        description: 'Additional classes for the switch track.',
+      },
+      {
+        name: 'thumbClassName',
+        type: 'string',
+        default: 'undefined',
+        description: 'Additional classes for the switch thumb.',
+      },
+      {
+        name: 'labelClassName',
+        type: 'string',
+        default: 'undefined',
+        description: 'Additional classes for the label.',
+      },
+    ],
+  };
   return (
     <DocsPageLayout
       category={switchData.category}

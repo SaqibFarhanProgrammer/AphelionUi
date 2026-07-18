@@ -5,23 +5,16 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { motion, AnimatePresence } from 'framer-motion';
-// ─── Lucide Icons Import ─────────────────────────────────────────────────
 import { Loader2, ChevronDown } from 'lucide-react';
 import { Input } from '../input/Input';
 import { Button } from '../button/Button';
 
-// ─── Your Library Components Import ──────────────────────────────────────
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  CARD COMPONENT SYSTEM VARIANTS
-// ═══════════════════════════════════════════════════════════════════════════
 
 const cardVariants = cva(
   [
@@ -686,7 +679,6 @@ const sliderThumbVariants = cva(
   }
 );
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface CardProps
   extends
@@ -801,11 +793,7 @@ export interface CardSliderProps {
   labelClassName?: string;
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  COMPONENTS IMPLEMENTATION
-// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── Card Component ──────────────────────────────────────────────────────
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   {
@@ -910,7 +898,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
 });
 Card.displayName = 'Card';
 
-// ─── CardInput Component (Using your library Input component) ─────────────
 
 const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
   function CardInput(
@@ -977,7 +964,6 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
 );
 CardInput.displayName = 'CardInput';
 
-// ─── CardTextarea Component ──────────────────────────────────────────────
 
 const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
   function CardTextarea(
@@ -1041,7 +1027,6 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
 );
 CardTextarea.displayName = 'CardTextarea';
 
-// ─── CardButton Component (Using your library Button component + Lucide) ──
 
 const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
   function CardButton(
@@ -1079,7 +1064,6 @@ const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
 );
 CardButton.displayName = 'CardButton';
 
-// ─── CardSwitch Component ────────────────────────────────────────────────
 
 const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
   function CardSwitch(
@@ -1143,7 +1127,6 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
 );
 CardSwitch.displayName = 'CardSwitch';
 
-// ─── CardSelect Component (Using Lucide Chevron Down Icon) ────────────────
 
 const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
   function CardSelect(
@@ -1222,7 +1205,6 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
 );
 CardSelect.displayName = 'CardSelect';
 
-// ─── CardTabs Component ──────────────────────────────────────────────────
 
 const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
   function CardTabs({ tabs, activeTab, onTabChange, theme = 'dark', className }, ref) {
@@ -1244,7 +1226,6 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
 );
 CardTabs.displayName = 'CardTabs';
 
-// ─── CardSlider Component ────────────────────────────────────────────────
 
 const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
   function CardSlider({ label, value = 0, min = 0, max = 100, step = 1, onChange, theme = 'dark', className, labelClassName }, ref) {
@@ -1283,9 +1264,6 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
 );
 CardSlider.displayName = 'CardSlider';
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  EXPORT ALL COMPONENTS
-// ═══════════════════════════════════════════════════════════════════════════
 
 export {
   Card,
