@@ -9,12 +9,9 @@ import { Loader2, ChevronDown } from 'lucide-react';
 import { Input } from '../input/Input';
 import { Button } from '../button/Button';
 
-
-
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
 
 const cardVariants = cva(
   [
@@ -679,7 +676,6 @@ const sliderThumbVariants = cva(
   }
 );
 
-
 export interface CardProps
   extends
     React.HTMLAttributes<HTMLDivElement>,
@@ -793,8 +789,6 @@ export interface CardSliderProps {
   labelClassName?: string;
 }
 
-
-
 const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   {
     theme = 'dark',
@@ -863,7 +857,11 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
                 {(icon || badge) && !image && (
                   <div className="mb-3 flex items-center gap-2">
                     {icon && (
-                      <span className={theme === 'dark' ? 'text-white/60' : 'text-black/60'}>
+                      <span
+                        className={
+                          theme === 'dark' ? 'text-white/60' : 'text-black/60'
+                        }
+                      >
                         {icon}
                       </span>
                     )}
@@ -871,12 +869,19 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
                   </div>
                 )}
                 {title && (
-                  <h3 className={cn(cardTitleVariants({ theme }), titleClassName)}>
+                  <h3
+                    className={cn(cardTitleVariants({ theme }), titleClassName)}
+                  >
                     {title}
                   </h3>
                 )}
                 {description && (
-                  <p className={cn(cardDescriptionVariants({ theme }), descriptionClassName)}>
+                  <p
+                    className={cn(
+                      cardDescriptionVariants({ theme }),
+                      descriptionClassName
+                    )}
+                  >
                     {description}
                   </p>
                 )}
@@ -889,7 +894,12 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
       <div className={cn('flex-1', bodyClassName)}>{children}</div>
 
       {(footer || actions) && (
-        <div className={cn(cardFooterVariants({ padding, align: 'between' }), footerClassName)}>
+        <div
+          className={cn(
+            cardFooterVariants({ padding, align: 'between' }),
+            footerClassName
+          )}
+        >
           {footer || actions}
         </div>
       )}
@@ -897,7 +907,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   );
 });
 Card.displayName = 'Card';
-
 
 const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
   function CardInput(
@@ -925,11 +934,24 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
     const hasError = Boolean(error);
 
     return (
-      <div className={cn('flex flex-col', fullWidth && 'w-full', containerClassName)}>
+      <div
+        className={cn(
+          'flex flex-col',
+          fullWidth && 'w-full',
+          containerClassName
+        )}
+      >
         {label && (
-          <label htmlFor={inputId} className={cn(labelVariants({ theme }), labelClassName)}>
+          <label
+            htmlFor={inputId}
+            className={cn(labelVariants({ theme }), labelClassName)}
+          >
             {label}
-            {required && <span className="ml-0.5 text-red-500" aria-hidden="true">*</span>}
+            {required && (
+              <span className="ml-0.5 text-red-500" aria-hidden="true">
+                *
+              </span>
+            )}
           </label>
         )}
         <Input
@@ -943,8 +965,18 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
           error={error}
           fullWidth={fullWidth}
           aria-invalid={hasError}
-          aria-describedby={hasError ? `${inputId}-err` : helperText ? `${inputId}-help` : undefined}
-          className={cn(inputVariants({ size, theme, error: hasError }), className, inputClassName)}
+          aria-describedby={
+            hasError
+              ? `${inputId}-err`
+              : helperText
+                ? `${inputId}-help`
+                : undefined
+          }
+          className={cn(
+            inputVariants({ size, theme, error: hasError }),
+            className,
+            inputClassName
+          )}
           style={{ fontFamily: 'sans-serif' }}
           {...props}
         />
@@ -963,7 +995,6 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
   }
 );
 CardInput.displayName = 'CardInput';
-
 
 const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
   function CardTextarea(
@@ -991,11 +1022,24 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
     const hasError = Boolean(error);
 
     return (
-      <div className={cn('flex flex-col', fullWidth && 'w-full', containerClassName)}>
+      <div
+        className={cn(
+          'flex flex-col',
+          fullWidth && 'w-full',
+          containerClassName
+        )}
+      >
         {label && (
-          <label htmlFor={inputId} className={cn(labelVariants({ theme }), labelClassName)}>
+          <label
+            htmlFor={inputId}
+            className={cn(labelVariants({ theme }), labelClassName)}
+          >
             {label}
-            {required && <span className="ml-0.5 text-red-500" aria-hidden="true">*</span>}
+            {required && (
+              <span className="ml-0.5 text-red-500" aria-hidden="true">
+                *
+              </span>
+            )}
           </label>
         )}
         <textarea
@@ -1006,8 +1050,18 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
           required={required}
           rows={rows}
           aria-invalid={hasError}
-          aria-describedby={hasError ? `${inputId}-err` : helperText ? `${inputId}-help` : undefined}
-          className={cn(textareaVariants({ size, theme, error: hasError }), className, textareaClassName)}
+          aria-describedby={
+            hasError
+              ? `${inputId}-err`
+              : helperText
+                ? `${inputId}-help`
+                : undefined
+          }
+          className={cn(
+            textareaVariants({ size, theme, error: hasError }),
+            className,
+            textareaClassName
+          )}
           style={{ fontFamily: 'sans-serif' }}
           {...props}
         />
@@ -1026,7 +1080,6 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
   }
 );
 CardTextarea.displayName = 'CardTextarea';
-
 
 const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
   function CardButton(
@@ -1064,7 +1117,6 @@ const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
 );
 CardButton.displayName = 'CardButton';
 
-
 const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
   function CardSwitch(
     {
@@ -1082,7 +1134,8 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
     },
     ref
   ) {
-    const [internalChecked, setInternalChecked] = React.useState(defaultChecked);
+    const [internalChecked, setInternalChecked] =
+      React.useState(defaultChecked);
     const isControlled = checked !== undefined;
     const currentChecked = isControlled ? checked : internalChecked;
 
@@ -1100,7 +1153,12 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
     };
 
     return (
-      <label className={cn('inline-flex cursor-pointer items-center gap-3 select-none', containerClassName)}>
+      <label
+        className={cn(
+          'inline-flex cursor-pointer items-center gap-3 select-none',
+          containerClassName
+        )}
+      >
         <button
           ref={ref}
           type="button"
@@ -1108,16 +1166,29 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
           aria-checked={currentChecked}
           disabled={disabled}
           onClick={handleToggle}
-          className={cn(switchVariants({ size, theme, checked: currentChecked }), className)}
+          className={cn(
+            switchVariants({ size, theme, checked: currentChecked }),
+            className
+          )}
           {...props}
         >
           <span
-            className={cn(switchThumbVariants({ size, theme, checked: currentChecked }), thumbTranslate[size ?? 'md'])}
+            className={cn(
+              switchThumbVariants({ size, theme, checked: currentChecked }),
+              thumbTranslate[size ?? 'md']
+            )}
             aria-hidden="true"
           />
         </button>
         {label && (
-          <span className={cn('text-sm font-medium', theme === 'dark' ? 'text-white' : 'text-black', disabled && 'opacity-40', labelClassName)}>
+          <span
+            className={cn(
+              'text-sm font-medium',
+              theme === 'dark' ? 'text-white' : 'text-black',
+              disabled && 'opacity-40',
+              labelClassName
+            )}
+          >
             {label}
           </span>
         )}
@@ -1126,7 +1197,6 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
   }
 );
 CardSwitch.displayName = 'CardSwitch';
-
 
 const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
   function CardSelect(
@@ -1157,7 +1227,10 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
     return (
       <div className={cn('flex w-full flex-col', containerClassName)}>
         {label && (
-          <label htmlFor={selectId} className={cn(labelVariants({ theme }), labelClassName)}>
+          <label
+            htmlFor={selectId}
+            className={cn(labelVariants({ theme }), labelClassName)}
+          >
             {label}
           </label>
         )}
@@ -1170,7 +1243,12 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
             disabled={disabled}
             aria-invalid={hasError}
             onChange={(e) => onChange?.(e.target.value)}
-            className={cn(selectVariants({ size, theme, error: hasError }), 'pr-10', className, selectClassName)}
+            className={cn(
+              selectVariants({ size, theme, error: hasError }),
+              'pr-10',
+              className,
+              selectClassName
+            )}
             style={{ fontFamily: 'sans-serif' }}
             {...props}
           >
@@ -1185,7 +1263,12 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
               </option>
             ))}
           </select>
-          <div className={cn('pointer-events-none absolute top-0 right-3 bottom-0 flex items-center', theme === 'dark' ? 'text-white/40' : 'text-black/40')}>
+          <div
+            className={cn(
+              'pointer-events-none absolute top-0 right-3 bottom-0 flex items-center',
+              theme === 'dark' ? 'text-white/40' : 'text-black/40'
+            )}
+          >
             <ChevronDown size={16} strokeWidth={2.5} />
           </div>
         </div>
@@ -1205,9 +1288,11 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
 );
 CardSelect.displayName = 'CardSelect';
 
-
 const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
-  function CardTabs({ tabs, activeTab, onTabChange, theme = 'dark', className }, ref) {
+  function CardTabs(
+    { tabs, activeTab, onTabChange, theme = 'dark', className },
+    ref
+  ) {
     return (
       <div ref={ref} className={cn(tabsVariants({ theme }), className)}>
         {tabs.map((tab) => (
@@ -1215,7 +1300,9 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
             key={tab.id}
             type="button"
             onClick={() => onTabChange(tab.id)}
-            className={cn(tabTriggerVariants({ theme, active: activeTab === tab.id }))}
+            className={cn(
+              tabTriggerVariants({ theme, active: activeTab === tab.id })
+            )}
           >
             {tab.label}
           </button>
@@ -1226,13 +1313,31 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
 );
 CardTabs.displayName = 'CardTabs';
 
-
 const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
-  function CardSlider({ label, value = 0, min = 0, max = 100, step = 1, onChange, theme = 'dark', className, labelClassName }, ref) {
+  function CardSlider(
+    {
+      label,
+      value = 0,
+      min = 0,
+      max = 100,
+      step = 1,
+      onChange,
+      theme = 'dark',
+      className,
+      labelClassName,
+    },
+    ref
+  ) {
     return (
       <div className={cn('w-full flex flex-col', className)}>
         {label && (
-          <span className={cn('text-sm font-medium mb-2', theme === 'dark' ? 'text-white' : 'text-black', labelClassName)}>
+          <span
+            className={cn(
+              'text-sm font-medium mb-2',
+              theme === 'dark' ? 'text-white' : 'text-black',
+              labelClassName
+            )}
+          >
             {label}
           </span>
         )}
@@ -1249,13 +1354,18 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
           />
           <div className={cn(sliderTrackVariants({ theme }))}>
             <div
-              className={cn('h-full transition-all duration-150', theme === 'dark' ? 'bg-white' : 'bg-black')}
+              className={cn(
+                'h-full transition-all duration-150',
+                theme === 'dark' ? 'bg-white' : 'bg-black'
+              )}
               style={{ width: `${((value - min) / (max - min)) * 100}%` }}
             />
           </div>
           <div
             className={cn(sliderThumbVariants({ theme }))}
-            style={{ left: `calc(${((value - min) / (max - min)) * 100}% - 10px)` }}
+            style={{
+              left: `calc(${((value - min) / (max - min)) * 100}% - 10px)`,
+            }}
           />
         </div>
       </div>
@@ -1263,7 +1373,6 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
   }
 );
 CardSlider.displayName = 'CardSlider';
-
 
 export {
   Card,
