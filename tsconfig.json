@@ -31,6 +31,6 @@
     "**/*.mts",
     "src/app/(application)/(routes)/docs/components/button/page.jsx",
     "src/app/(application)/(routes)/docs/components/card/page.jsx"
-  ],
+, "src/registry/components/Sheet/Sheet.jsx"  ],
   "exclude": ["node_modules"]
 }
