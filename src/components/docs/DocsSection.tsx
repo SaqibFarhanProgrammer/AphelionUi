@@ -2,6 +2,7 @@ interface DocsSectionProps {
   title: string;
   description: string;
   children: React.ReactNode;
+  id:string
 }
 
 export default function DocsSection({
