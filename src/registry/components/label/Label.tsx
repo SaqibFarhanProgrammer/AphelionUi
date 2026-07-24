@@ -1,7 +1,9 @@
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+"use client";
+
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 // ─── Utility ─────────────────────────────────────────────────────────────
 
@@ -11,248 +13,253 @@ function cn(...inputs: ClassValue[]) {
 
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
-const textareaVariants = cva(
+const labelVariants = cva(
   [
-    'w-full',
-    'resize-none',
-    'rounded-lg',
-    'border',
-    'px-4',
-    'py-3',
-    'text-sm',
-    'leading-relaxed',
-    'transition-all',
-    'duration-200',
-    'outline-none',
-    'placeholder:text-neutral-400',
-    'focus:ring-2',
-    'focus:ring-offset-0',
+    "inline-flex",
+    "items-center",
+    "gap-2",
+    "rounded-full",
+    "font-medium",
+    "leading-none",
+    "transition-all",
+    "duration-200",
+    "select-none",
+    "whitespace-nowrap",
   ],
   {
     variants: {
+      size: {
+        sm: ["px-3", "py-1.5", "text-xs"],
+        md: ["px-4", "py-2", "text-sm"],
+        lg: ["px-5", "py-2.5", "text-sm"],
+      },
       theme: {
         light: [
-          'bg-neutral-50',
-          'border-neutral-200',
-          'text-neutral-900',
-          'focus:border-neutral-900',
-          'focus:ring-neutral-900/10',
-          'hover:border-neutral-300',
+          "bg-neutral-100",
+          "text-neutral-700",
+          "border",
+          "border-neutral-200",
+          "hover:bg-neutral-200",
+          "hover:border-neutral-300",
         ],
         dark: [
-          'bg-neutral-900',
-          'border-neutral-700',
-          'text-white',
-          'focus:border-white',
-          'focus:ring-white/10',
-          'hover:border-neutral-600',
+          "bg-neutral-800",
+          "text-white",
+          "border",
+          "border-neutral-700",
+          "hover:bg-neutral-700",
+          "hover:border-neutral-600",
+        ],
+        "light-primary": [
+          "bg-neutral-900",
+          "text-white",
+          "border",
+          "border-neutral-900",
+          "hover:bg-neutral-800",
+        ],
+        "dark-primary": [
+          "bg-slate-800",
+          "text-white",
+          "border",
+          "border-slate-700",
+          "hover:bg-slate-700",
         ],
       },
-      state: {
+      variant: {
         default: [],
-        error: [],
+        outline: [],
+        ghost: [],
       },
     },
     compoundVariants: [
       {
-        theme: 'light',
-        state: 'error',
-        className: [
-          'border-red-500',
-          'focus:border-red-500',
-          'focus:ring-red-500/10',
-          'placeholder:text-red-300',
-        ],
+        theme: "light",
+        variant: "outline",
+        className:
+          "bg-transparent border-neutral-300 text-neutral-700 hover:bg-neutral-100",
       },
       {
-        theme: 'dark',
-        state: 'error',
-        className: [
-          'border-red-500',
-          'focus:border-red-500',
-          'focus:ring-red-500/10',
-          'placeholder:text-red-400',
-        ],
+        theme: "dark",
+        variant: "outline",
+        className:
+          "bg-transparent border-neutral-600 text-neutral-200 hover:bg-neutral-800",
+      },
+      {
+        theme: "light",
+        variant: "ghost",
+        className:
+          "bg-transparent border-transparent text-neutral-700 hover:bg-neutral-100",
+      },
+      {
+        theme: "dark",
+        variant: "ghost",
+        className:
+          "bg-transparent border-transparent text-neutral-200 hover:bg-neutral-800",
       },
     ],
     defaultVariants: {
-      theme: 'light',
-      state: 'default',
+      size: "md",
+      theme: "light",
+      variant: "default",
     },
-  }
+  },
 );
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
-export interface TextareaProps
+export type LabelIcon = "dot" | "circle" | "check" | "user" | React.ReactNode;
+
+export interface LabelProps
   extends
-    Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
-    VariantProps<typeof textareaVariants> {
-  label?: string;
-  required?: boolean;
-  optional?: boolean;
-  optionalText?: string;
-  error?: string;
-  hint?: string;
-  maxLength?: number;
-  showCount?: boolean;
-  actionButton?: React.ReactNode;
-  rows?: number;
+    React.HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof labelVariants> {
+  icon?: LabelIcon;
+  iconRight?: LabelIcon;
+  children: React.ReactNode;
   className?: string;
-  containerClassName?: string;
-  labelClassName?: string;
+  dismissible?: boolean;
+  onDismiss?: () => void;
 }
 
-// ─── Textarea Component ──────────────────────────────────────────────────
+// ─── Icon Renderer ───────────────────────────────────────────────────────
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  function Textarea(
-    {
-      theme = 'light',
-      state,
-      label,
-      required = false,
-      optional = false,
-      optionalText = 'optional',
-      error,
-      hint,
-      maxLength,
-      showCount = false,
-      actionButton,
-      rows = 4,
-      className,
-      containerClassName,
-      labelClassName,
-      onChange,
-      value,
-      defaultValue,
-      disabled,
-      ...props
-    },
-    ref
-  ) {
-    const [internalValue, setInternalValue] = React.useState(
-      (defaultValue as string) || ''
-    );
+function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
+  if (!icon) return null;
 
-    const isControlled = value !== undefined;
-    const currentValue = isControlled ? (value as string) : internalValue;
-    const charCount = currentValue?.length || 0;
-    const isError = state === 'error' || !!error;
-    const isOverLimit = maxLength ? charCount > maxLength : false;
+  const iconColor =
+    theme.includes("dark") || theme.includes("primary")
+      ? "text-white"
+      : "text-neutral-500";
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      if (!isControlled) {
-        setInternalValue(e.target.value);
-      }
-      onChange?.(e);
-    };
-
+  if (React.isValidElement(icon)) {
     return (
-      <div
-        className={cn('flex flex-col gap-1.5', containerClassName)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
-        {label && (
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor={props.id}
-              className={cn(
-                'text-sm font-medium',
-                isError
-                  ? 'text-red-500'
-                  : theme === 'dark'
-                    ? 'text-white'
-                    : 'text-neutral-900',
-                labelClassName
-              )}
-            >
-              {label}
-              {required && (
-                <span className="ml-0.5 text-red-500" aria-hidden="true">
-                  *
-                </span>
-              )}
-              {optional && !required && (
-                <span
-                  className={cn(
-                    'ml-1.5 font-normal',
-                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-400'
-                  )}
-                >
-                  ({optionalText})
-                </span>
-              )}
-            </label>
-            {actionButton && <div className="shrink-0">{actionButton}</div>}
-          </div>
-        )}
-
-        {/* ─── Textarea ───────────────────────────────────────────────── */}
-        <textarea
-          ref={ref}
-          rows={rows}
-          disabled={disabled}
-          maxLength={maxLength}
-          className={cn(
-            textareaVariants({ theme, state: isError ? 'error' : 'default' }),
-            disabled && [
-              'cursor-not-allowed',
-              'opacity-50',
-              theme === 'light' ? 'bg-neutral-100' : 'bg-neutral-800',
-            ],
-            className
-          )}
-          value={value}
-          defaultValue={defaultValue}
-          onChange={handleChange}
-          aria-invalid={isError}
-          aria-describedby={
-            error ? `${props.id}-error` : hint ? `${props.id}-hint` : undefined
-          }
-          {...props}
-        />
-
-        {/* ─── Bottom Row: Hint / Error / Count ───────────────────────── */}
-        <div className="flex items-center justify-between min-h-[20px]">
-          <div className="flex-1">
-            {error ? (
-              <span id={`${props.id}-error`} className="text-xs text-red-500">
-                {error}
-              </span>
-            ) : hint ? (
-              <span
-                id={`${props.id}-hint`}
-                className={cn(
-                  'text-xs',
-                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-                )}
-              >
-                {hint}
-              </span>
-            ) : null}
-          </div>
-          {(showCount || maxLength) && (
-            <span
-              className={cn(
-                'text-xs tabular-nums shrink-0 ml-4',
-                isOverLimit
-                  ? 'text-red-500'
-                  : theme === 'dark'
-                    ? 'text-neutral-400'
-                    : 'text-neutral-400'
-              )}
-            >
-              {charCount}
-              {maxLength ? `/${maxLength}` : ''}
-            </span>
-          )}
-        </div>
-      </div>
+      <span className={cn("inline-flex items-center", iconColor)}>{icon}</span>
     );
   }
-);
 
-Textarea.displayName = 'Textarea';
+  switch (icon) {
+    case "dot":
+      return (
+        <span
+          className={cn(
+            "inline-block h-2 w-2 rounded-full",
+            theme.includes("dark") || theme.includes("primary")
+              ? "bg-white"
+              : "bg-neutral-500",
+          )}
+        />
+      );
+    case "circle":
+      return (
+        <span
+          className={cn(
+            "inline-block h-3 w-3 rounded-full border-2",
+            theme.includes("dark") || theme.includes("primary")
+              ? "border-white"
+              : "border-neutral-500",
+          )}
+        />
+      );
+    case "check":
+      return (
+        <svg
+          className={cn("h-3.5 w-3.5", iconColor)}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={3}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      );
+    case "user":
+      return (
+        <svg
+          className={cn("h-3.5 w-3.5", iconColor)}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
-export default Textarea;
+// ─── Label Component ─────────────────────────────────────────────────────
+
+const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
+  {
+    size = "md",
+    theme = "light",
+    variant = "default",
+    icon,
+    iconRight,
+    children,
+    className,
+    dismissible = false,
+    onDismiss,
+    ...props
+  },
+  ref,
+) {
+  return (
+    <span
+      style={{
+        fontFamily: "sans-serif",
+      }}
+      ref={ref}
+      className={cn(labelVariants({ size, theme, variant }), className)}
+      {...props}
+    >
+      {renderIcon(icon, theme!)}
+      <span>{children}</span>
+      {renderIcon(iconRight, theme!)}
+      {dismissible && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDismiss?.();
+          }}
+          className={cn(
+            "ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full transition-colors",
+            theme!.includes("dark") || theme!.includes("primary")
+              ? "text-white/70 hover:bg-white/20 hover:text-white"
+              : "text-neutral-400 hover:bg-neutral-300 hover:text-neutral-600",
+          )}
+          aria-label="Dismiss"
+        >
+          <svg
+            className="h-3 w-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      )}
+    </span>
+  );
+});
+
+Label.displayName = "Label";
+
+export default Label;

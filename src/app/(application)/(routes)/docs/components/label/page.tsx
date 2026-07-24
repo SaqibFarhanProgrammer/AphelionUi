@@ -1,6 +1,4 @@
-'use client';
-
-import { Label } from '@/registry/components/label/Label';
+'use client'
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';
 import ComponentPreview from '@/components/docs/ComponentPreview';
@@ -9,6 +7,7 @@ import DocsSection from '@/components/docs/DocsSection';
 import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
+import Label from '@/registry/components/label/Label';
 
 const labelData = {
   name: 'Label',
@@ -33,17 +32,17 @@ const labelData = {
         {
           label: 'Small',
           code: "<Label size='sm'>Small Label</Label>",
-          preview: <Label size="sm">Small Label</Label>,
+          preview: <Label theme='dark' size="sm">Small Label</Label>,
         },
         {
           label: 'Medium',
           code: "<Label size='md'>Medium Label</Label>",
-          preview: <Label size="md">Medium Label</Label>,
+          preview: <Label size="md"theme={"dark"} >Medium Label</Label>,
         },
         {
           label: 'Large',
           code: "<Label size='lg'>Large Label</Label>",
-          preview: <Label size="lg">Large Label</Label>,
+          preview: <Label size="lg"theme={'dark'} > Large Label</Label>,
         },
       ],
     },
@@ -319,7 +318,7 @@ export default function LabelPage() {
             <div className="space-y-4">
               {section.examples.map((example, idx) => (
                 <div key={idx}>
-                  <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+                  <p className="font-['inter-semi'] text-[12px] text-white/90 mb-2 uppercase tracking-wider">
                     {example.label}
                   </p>
                   <ComponentPreview>{example.preview}</ComponentPreview>
