@@ -69,7 +69,14 @@ const sheetData = {
 >
   <p>Content for the right sheet.</p>
 </Sheet>`,
-          preview: <SheetPreview side="right" title="Right Sheet" subtitle="Slides in from the right" buttonLabel="Open Right Sheet" />,
+          preview: (
+            <SheetPreview
+              side="right"
+              title="Right Sheet"
+              subtitle="Slides in from the right"
+              buttonLabel="Open Right Sheet"
+            />
+          ),
         },
         {
           label: 'Left',
@@ -88,7 +95,14 @@ const sheetData = {
 >
   <p>Content for the left sheet.</p>
 </Sheet>`,
-          preview: <SheetPreview side="left" title="Left Sheet" subtitle="Slides in from the left" buttonLabel="Open Left Sheet" />,
+          preview: (
+            <SheetPreview
+              side="left"
+              title="Left Sheet"
+              subtitle="Slides in from the left"
+              buttonLabel="Open Left Sheet"
+            />
+          ),
         },
         {
           label: 'Top',
@@ -107,7 +121,14 @@ const sheetData = {
 >
   <p>Content for the top sheet.</p>
 </Sheet>`,
-          preview: <SheetPreview side="top" title="Top Sheet" subtitle="Slides in from the top" buttonLabel="Open Top Sheet" />,
+          preview: (
+            <SheetPreview
+              side="top"
+              title="Top Sheet"
+              subtitle="Slides in from the top"
+              buttonLabel="Open Top Sheet"
+            />
+          ),
         },
         {
           label: 'Bottom',
@@ -126,63 +147,18 @@ const sheetData = {
 >
   <p>Content for the bottom sheet.</p>
 </Sheet>`,
-          preview: <SheetPreview side="bottom" title="Bottom Sheet" subtitle="Slides in from the bottom" buttonLabel="Open Bottom Sheet" />,
-        },
-      ],
-    },
-    {
-      id: 'themes',
-      title: 'Themes',
-      description: 'Light and dark themes for different backgrounds.',
-      examples: [
-        {
-          label: 'Dark Theme',
-          code: `<Sheet
-  open={open}
-  onOpenChange={onOpenChange}
-  theme="dark"
-  side="right"
-  title="Dark Sheet"
-  subtitle="Default dark theme"
-  footer={
-    <>
-      <button>Cancel</button>
-      <button>Save</button>
-    </>
-  }
->
-  <p>Dark themed content.</p>
-</Sheet>`,
-          preview: <SheetPreview theme="dark" side="right" title="Dark Sheet" subtitle="Default dark theme" buttonLabel="Open Dark Sheet" />,
-        },
-        {
-          label: 'Light Theme',
-          code: `<div className="rounded-xl border border-black/10 bg-white p-4">
-  <Sheet
-    open={open}
-    onOpenChange={onOpenChange}
-    theme="light"
-    side="right"
-    title="Light Sheet"
-    subtitle="Light theme variant"
-    footer={
-      <>
-        <button>Cancel</button>
-        <button>Save</button>
-      </>
-    }
-  >
-    <p>Light themed content.</p>
-  </Sheet>
-</div>`,
           preview: (
-            <div className="rounded-xl border border-black/10 bg-white p-4">
-              <SheetPreview theme="light" side="right" title="Light Sheet" subtitle="Light theme variant" buttonLabel="Open Light Sheet" />
-            </div>
+            <SheetPreview
+              side="bottom"
+              title="Bottom Sheet"
+              subtitle="Slides in from the bottom"
+              buttonLabel="Open Bottom Sheet"
+            />
           ),
         },
       ],
     },
+
     {
       id: 'with-content',
       title: 'With Content',
@@ -209,7 +185,15 @@ const sheetData = {
     <input placeholder="Password" type="password" />
   </div>
 </Sheet>`,
-          preview: <SheetPreview side="right" title="Create Account" subtitle="Fill in your details to get started." buttonLabel="Open Form Sheet" bodyType="form" />,
+          preview: (
+            <SheetPreview
+              side="right"
+              title="Create Account"
+              subtitle="Fill in your details to get started."
+              buttonLabel="Open Form Sheet"
+              bodyType="form"
+            />
+          ),
         },
       ],
     },
@@ -233,7 +217,15 @@ const sheetData = {
 >
   <p>This sheet requires explicit action to close.</p>
 </Sheet>`,
-          preview: <SheetPreview side="right" title="Important Notice" subtitle="You must click a button to close this sheet." buttonLabel="Open Locked Sheet" closeOnOverlayClick={false} />,
+          preview: (
+            <SheetPreview
+              side="right"
+              title="Important Notice"
+              subtitle="You must click a button to close this sheet."
+              buttonLabel="Open Locked Sheet"
+              closeOnOverlayClick={false}
+            />
+          ),
         },
       ],
     },
@@ -260,7 +252,15 @@ const sheetData = {
 >
   <p>This sheet has no close button.</p>
 </Sheet>`,
-          preview: <SheetPreview side="right" title="Custom Sheet" subtitle="No close button by default" buttonLabel="Open (No Close)" showClose={false} />,
+          preview: (
+            <SheetPreview
+              side="right"
+              title="Custom Sheet"
+              subtitle="No close button by default"
+              buttonLabel="Open (No Close)"
+              showClose={false}
+            />
+          ),
         },
       ],
     },
@@ -290,14 +290,24 @@ const sheetData = {
     Warning: All your data will be permanently removed.
   </div>
 </Sheet>`,
-          preview: <SheetPreview side="right" title="Delete Account" subtitle="Are you sure you want to delete your account?" description="This action cannot be undone." buttonLabel="Open Full Featured" bodyType="warning" />,
+          preview: (
+            <SheetPreview
+              side="right"
+              title="Delete Account"
+              subtitle="Are you sure you want to delete your account?"
+              description="This action cannot be undone."
+              buttonLabel="Open Full Featured"
+              bodyType="warning"
+            />
+          ),
         },
       ],
     },
     {
       id: 'controlled',
       title: 'Controlled',
-      description: 'Control the sheet state externally with open and onOpenChange.',
+      description:
+        'Control the sheet state externally with open and onOpenChange.',
       examples: [
         {
           label: 'Controlled State',
@@ -577,7 +587,42 @@ function SheetPreview({
         </div>
       );
     }
-    return <p className="text-sm text-neutral-400">This is the sheet body content.</p>;
+    return (
+      <p className="text-sm text-neutral-400">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores culpa
+        sit cum dolor voluptate pariatur amet veniam! Iusto molestias rerum
+        veritatis obcaecati aperiam quos consectetur illo tenetur, nobis neque
+        ducimus. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Consectetur itaque iure architecto at. Libero sit molestiae tenetur
+        aspernatur sapiente reprehenderit distinctio, nostrum praesentium
+        blanditiis placeat, accusamus, officia alias recusandae omnis. Lorem
+        ipsum dolor, sit amet consectetur adipisicing elit. Cumque velit, a, vel
+        odit distinctio animi nemo consequatur officia labore suscipit expedita
+        laborum deserunt cupiditate nisi reprehenderit? Sapiente maxime ipsum
+        dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Placeat ipsa ut eius minus error! Debitis perspiciatis ipsum, corporis
+        nobis, quae qui suscipit tempore cum optio harum beatae ut dignissimos?
+        Adipisci? Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Cumque velit, a, vel odit distinctio animi nemo consequatur officia
+        labore suscipit expedita laborum deserunt cupiditate nisi reprehenderit?
+        Sapiente maxime ipsum dolorem. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Placeat ipsa ut eius minus error! Debitis perspiciatis
+        ipsum, corporis nobis, quae qui suscipit tempore cum optio harum beatae
+        ut dignissimos? Adipisci? Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Cumque velit, a, vel odit distinctio animi nemo
+        consequatur officia labore suscipit expedita laborum deserunt cupiditate
+        nisi reprehenderit? Sapiente maxime ipsum dolorem. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Placeat ipsa ut eius minus error!
+        Debitis perspiciatis ipsum, corporis nobis, quae qui suscipit tempore
+        cum optio harum beatae ut dignissimos? Adipisci? Lorem ipsum dolor, sit
+        amet consectetur adipisicing elit. Cumque velit, a, vel odit distinctio
+        animi nemo consequatur officia labore suscipit expedita laborum deserunt
+        cupiditate nisi reprehenderit? Sapiente maxime ipsum dolorem. Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Placeat ipsa ut eius
+        minus error! Debitis perspiciatis ipsum, corporis nobis, quae qui
+        suscipit tempore cum optio harum beatae ut dignissimos? Adipisci?
+      </p>
+    );
   };
 
   return (
@@ -668,7 +713,9 @@ function ControlledSheetPreview() {
           </div>
         }
       >
-        <p className="text-sm text-neutral-400">This sheet is controlled externally.</p>
+        <p className="text-sm text-neutral-400">
+          This sheet is controlled externally.
+        </p>
       </Sheet>
     </div>
   );
@@ -727,7 +774,9 @@ function HookSheetPreview() {
           </div>
         }
       >
-        <p className="text-sm text-neutral-400">Content controlled by the useSheet hook.</p>
+        <p className="text-sm text-neutral-400">
+          Content controlled by the useSheet hook.
+        </p>
       </Sheet>
     </div>
   );
