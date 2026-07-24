@@ -1,18 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, type Transition, type Variants } from "framer-motion";
 
-
-function cn(...inputs) {
+// --- Utility ----------------------------------------------------------------
+function cn(...inputs: (string | undefined | null | boolean)[]): string {
   return twMerge(clsx(inputs));
 }
 
-
-
+// --- Variant definitions ----------------------------------------------------
 const overlayVariants = cva(
   ["fixed", "inset-0", "z-40", "transition-colors", "duration-300"],
   {
@@ -25,7 +24,7 @@ const overlayVariants = cva(
     defaultVariants: {
       theme: "dark",
     },
-  },
+  }
 );
 
 const sheetVariants = cva(
@@ -56,7 +55,7 @@ const sheetVariants = cva(
     defaultVariants: {
       side: "right",
     },
-  },
+  }
 );
 
 const headerVariants = cva(
@@ -71,7 +70,7 @@ const headerVariants = cva(
     defaultVariants: {
       theme: "dark",
     },
-  },
+  }
 );
 
 const titleVariants = cva(["text-lg", "font-semibold", "leading-tight"], {
@@ -110,7 +109,7 @@ const bodyVariants = cva(
     defaultVariants: {
       theme: "dark",
     },
-  },
+  }
 );
 
 const footerVariants = cva(
@@ -125,18 +124,26 @@ const footerVariants = cva(
     defaultVariants: {
       theme: "dark",
     },
-  },
+  }
 );
 
-
+// --- Animation objects ------------------------------------------------------
 const overlayAnimation = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
-  transition: { duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] },
+  transition: { duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] } as Transition,
 };
 
-const sheetAnimation = {
+const sheetAnimation: Record<
+  NonNullable<VariantProps<typeof sheetVariants>["side"]>,
+  {
+    initial: Variants["initial"];
+    animate: Variants["animate"];
+    exit: Variants["exit"];
+    transition: Transition;
+  }
+> = {
   top: {
     initial: { y: "-100%", opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -163,8 +170,31 @@ const sheetAnimation = {
   },
 };
 
+// --- Props type -------------------------------------------------------------
+export interface SheetProps {
+  theme?: "light" | "dark";
+  side?: "top" | "bottom" | "left" | "right";
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
+  children?: React.ReactNode;
+  footer?: React.ReactNode;
+  showClose?: boolean;
+  closeOnOverlayClick?: boolean;
+  closeOnEscape?: boolean;
+  className?: string;
+  overlayClassName?: string;
+  headerClassName?: string;
+  bodyClassName?: string;
+  footerClassName?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
+}
 
-const Sheet = React.forwardRef(function Sheet(
+// --- Sheet Component ---------------------------------------------------------
+const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
   {
     theme = "dark",
     side = "right",
@@ -186,17 +216,17 @@ const Sheet = React.forwardRef(function Sheet(
     titleClassName,
     subtitleClassName,
   },
-  ref,
+  ref
 ) {
   const handleClose = () => onOpenChange?.(false);
 
-  const handleOverlayClick = (e) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (closeOnOverlayClick && e.target === e.currentTarget) handleClose();
   };
 
   React.useEffect(() => {
     if (!closeOnEscape || !open) return;
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -245,7 +275,7 @@ const Sheet = React.forwardRef(function Sheet(
                   "absolute top-4 right-4 z-10 rounded-md p-1.5 transition-colors",
                   theme === "dark"
                     ? "text-neutral-500 hover:bg-neutral-800 hover:text-neutral-300"
-                    : "text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600",
+                    : "text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600"
                 )}
                 aria-label="Close"
               >
@@ -274,10 +304,7 @@ const Sheet = React.forwardRef(function Sheet(
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 }}
-                      className={cn(
-                        titleVariants({ theme }),
-                        titleClassName,
-                      )}
+                      className={cn(titleVariants({ theme }), titleClassName)}
                     >
                       {title}
                     </motion.h2>
@@ -289,7 +316,7 @@ const Sheet = React.forwardRef(function Sheet(
                       transition={{ duration: 0.3, delay: 0.15 }}
                       className={cn(
                         subtitleVariants({ theme }),
-                        subtitleClassName,
+                        subtitleClassName
                       )}
                     >
                       {subtitle}
@@ -304,7 +331,7 @@ const Sheet = React.forwardRef(function Sheet(
                         "mt-3 text-sm leading-relaxed",
                         theme === "dark"
                           ? "text-neutral-400"
-                          : "text-neutral-500",
+                          : "text-neutral-500"
                       )}
                     >
                       {description}
@@ -346,17 +373,16 @@ const Sheet = React.forwardRef(function Sheet(
 
 Sheet.displayName = "Sheet";
 
-
-function useSheet(defaultOpen = false) {
+// --- useSheet hook -----------------------------------------------------------
+export function useSheet(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);
   return {
     open,
     onOpenChange: setOpen,
     onOpen: () => setOpen(true),
     onClose: () => setOpen(false),
-    onToggle: () => setOpen((p) => !p),
+    onToggle: () => setOpen((prev) => !prev),
   };
 }
 
 export { Sheet, useSheet };
-
