@@ -1,4 +1,3 @@
-"use client";
 
 import React from "react";
 import { Avatar, AvatarGroup } from "@/registry/components/Avatar/Avatar";
@@ -421,7 +420,6 @@ export default function AvatarPage() {
         { id: "group-props", title: "AvatarGroup Props" },
       ]}
     >
-      {/* Installation */}
       <section className="mb-14" id="installation">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Installation
@@ -433,7 +431,6 @@ export default function AvatarPage() {
         <InstallCommand command={data.installation.command} />
       </section>
 
-      {/* Usage */}
       <section className="mb-14" id="usage">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Usage
@@ -457,7 +454,6 @@ export default function AvatarPage() {
         </div>
       </section>
 
-      {/* Examples */}
       <section className="mb-14" id="examples">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Examples
@@ -489,7 +485,6 @@ export default function AvatarPage() {
         ))}
       </section>
 
-      {/* Props */}
       <section className="remove-scroll mb-14" id="props">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           Props
@@ -500,7 +495,6 @@ export default function AvatarPage() {
         <PropsTable props={data.props} />
       </section>
 
-      {/* AvatarGroup Props */}
       <section className="remove-scroll mb-14" id="group-props">
         <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
           AvatarGroup Props

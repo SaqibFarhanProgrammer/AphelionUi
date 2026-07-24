@@ -76,13 +76,13 @@ function formatDate(date: Date): string {
 const calendarVariants = cva(["w-full", "select-none"], {
   variants: {
     theme: {
-      dark: "",
-      light: "",
+      dark: "bg-black text-white",
+      light: "bg-white text-black",
     },
     variant: {
       default: "",
       bordered: "border rounded-[12px] overflow-hidden",
-      card: "border rounded-[12px] overflow-hidden",
+      card: "border rounded-[12px] overflow-hidden shadow-lg",
     },
     size: {
       sm: "max-w-[280px]",
@@ -91,17 +91,17 @@ const calendarVariants = cva(["w-full", "select-none"], {
     },
   },
   compoundVariants: [
-    { theme: "dark", variant: "bordered", className: "border-white/[0.08]" },
+    { theme: "dark", variant: "bordered", className: "border-white/10" },
     {
       theme: "dark",
       variant: "card",
-      className: "border-white/[0.08] bg-white/[0.02]",
+      className: "border-white/10 shadow-white/5",
     },
-    { theme: "light", variant: "bordered", className: "border-black/[0.08]" },
+    { theme: "light", variant: "bordered", className: "border-black/10" },
     {
       theme: "light",
       variant: "card",
-      className: "border-black/[0.08] bg-black/[0.02]",
+      className: "border-black/10 shadow-black/5",
     },
   ],
   defaultVariants: {
@@ -148,64 +148,88 @@ const dayCellVariants = cva(
       },
     },
     compoundVariants: [
-      // Dark
+      // Dark theme
       {
         theme: "dark",
         state: "default",
-        className: "text-white hover:bg-white/[0.06]",
+        className: "text-white hover:bg-white/10",
       },
-      { theme: "dark", state: "selected", className: "bg-white text-black" },
+      { 
+        theme: "dark", 
+        state: "selected", 
+        className: "bg-white text-black hover:bg-white/90" 
+      },
       {
         theme: "dark",
         state: "in-range",
-        className: "bg-white/[0.08] text-white rounded-none",
+        className: "bg-white/10 text-white rounded-none hover:bg-white/15",
       },
       {
         theme: "dark",
         state: "range-start",
-        className: "bg-white text-black rounded-r-none",
+        className: "bg-white text-black rounded-r-none hover:bg-white/90",
       },
       {
         theme: "dark",
         state: "range-end",
-        className: "bg-white text-black rounded-l-none",
+        className: "bg-white text-black rounded-l-none hover:bg-white/90",
       },
       {
         theme: "dark",
         state: "disabled",
-        className: "text-white/20 line-through",
+        className: "text-white/20 line-through cursor-not-allowed hover:bg-transparent",
       },
-      { theme: "dark", state: "outside-month", className: "text-white/20" },
-      { theme: "dark", state: "today", className: "text-white" },
-      // Light
+      { 
+        theme: "dark", 
+        state: "outside-month", 
+        className: "text-white/20 cursor-default hover:bg-transparent" 
+      },
+      { 
+        theme: "dark", 
+        state: "today", 
+        className: "text-white font-bold" 
+      },
+      // Light theme
       {
         theme: "light",
         state: "default",
-        className: "text-black hover:bg-black/[0.06]",
+        className: "text-black hover:bg-black/10",
       },
-      { theme: "light", state: "selected", className: "bg-black text-white" },
+      { 
+        theme: "light", 
+        state: "selected", 
+        className: "bg-black text-white hover:bg-black/90" 
+      },
       {
         theme: "light",
         state: "in-range",
-        className: "bg-black/[0.06] text-black rounded-none",
+        className: "bg-black/10 text-black rounded-none hover:bg-black/15",
       },
       {
         theme: "light",
         state: "range-start",
-        className: "bg-black text-white rounded-r-none",
+        className: "bg-black text-white rounded-r-none hover:bg-black/90",
       },
       {
         theme: "light",
         state: "range-end",
-        className: "bg-black text-white rounded-l-none",
+        className: "bg-black text-white rounded-l-none hover:bg-black/90",
       },
       {
         theme: "light",
         state: "disabled",
-        className: "text-black/20 line-through",
+        className: "text-black/20 line-through cursor-not-allowed hover:bg-transparent",
       },
-      { theme: "light", state: "outside-month", className: "text-black/20" },
-      { theme: "light", state: "today", className: "text-black" },
+      { 
+        theme: "light", 
+        state: "outside-month", 
+        className: "text-black/20 cursor-default hover:bg-transparent" 
+      },
+      { 
+        theme: "light", 
+        state: "today", 
+        className: "text-black font-bold" 
+      },
     ],
     defaultVariants: {
       theme: "dark",
@@ -506,7 +530,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         <div
           className={cn(
             "w-[130px] shrink-0 border-l pl-5",
-            theme === "dark" ? "border-white/[0.08]" : "border-black/[0.08]",
+            theme === "dark" 
+              ? "border-white/10" 
+              : "border-black/10",
           )}
         >
           <p
@@ -535,8 +561,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                       ? "border-white bg-white text-black"
                       : "border-black bg-black text-white"
                     : theme === "dark"
-                      ? "border-white/[0.08] text-white/70 hover:border-white/20 hover:bg-white/[0.03]"
-                      : "border-black/[0.08] text-black/70 hover:border-black/20 hover:bg-black/[0.03]",
+                      ? "border-white/10 text-white/70 hover:border-white/20 hover:bg-white/5"
+                      : "border-black/10 text-black/70 hover:border-black/20 hover:bg-black/5",
                 )}
               >
                 {time}
@@ -553,7 +579,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         <div
           className={cn(
             "w-[130px] shrink-0 space-y-0.5 border-r pr-5",
-            theme === "dark" ? "border-white/[0.08]" : "border-black/[0.08]",
+            theme === "dark" 
+              ? "border-white/10" 
+              : "border-black/10",
           )}
         >
           {presets.map((preset) => (
@@ -573,8 +601,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               className={cn(
                 "w-full rounded-[6px] px-3 py-2 text-left text-sm font-medium transition-colors",
                 theme === "dark"
-                  ? "text-white hover:bg-white/[0.06]"
-                  : "text-black hover:bg-black/[0.06]",
+                  ? "text-white hover:bg-white/10"
+                  : "text-black hover:bg-black/10",
               )}
             >
               {preset.label}
@@ -592,8 +620,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           className={cn(
             "h-9 flex-1 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none",
             theme === "dark"
-              ? "border-white/[0.08] text-white"
-              : "border-black/[0.08] text-black",
+              ? "border-white/10 text-white"
+              : "border-black/10 text-black",
           )}
         >
           {MONTHS.map((m, i) => (
@@ -608,8 +636,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           className={cn(
             "h-9 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none",
             theme === "dark"
-              ? "border-white/[0.08] text-white"
-              : "border-black/[0.08] text-black",
+              ? "border-white/10 text-white"
+              : "border-black/10 text-black",
           )}
         >
           {Array.from({ length: 21 }, (_, i) => currentYear - 10 + i).map(
@@ -630,8 +658,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               className={cn(
                 "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                 theme === "dark"
-                  ? "text-white/40 hover:bg-white/[0.06] hover:text-white"
-                  : "text-black/40 hover:bg-black/[0.06] hover:text-black",
+                  ? "text-white/40 hover:bg-white/10 hover:text-white"
+                  : "text-black/40 hover:bg-black/10 hover:text-black",
               )}
             >
               <svg
@@ -660,8 +688,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               className={cn(
                 "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                 theme === "dark"
-                  ? "text-white/40 hover:bg-white/[0.06] hover:text-white"
-                  : "text-black/40 hover:bg-black/[0.06] hover:text-black",
+                  ? "text-white/40 hover:bg-white/10 hover:text-white"
+                  : "text-black/40 hover:bg-black/10 hover:text-black",
               )}
             >
               <svg
@@ -694,8 +722,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 className={cn(
                   "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                   theme === "dark"
-                    ? "text-white/40 hover:bg-white/[0.06] hover:text-white"
-                    : "text-black/40 hover:bg-black/[0.06] hover:text-black",
+                    ? "text-white/40 hover:bg-white/10 hover:text-white"
+                    : "text-black/40 hover:bg-black/10 hover:text-black",
                 )}
               >
                 <svg
@@ -716,8 +744,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 className={cn(
                   "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                   theme === "dark"
-                    ? "text-white/40 hover:bg-white/[0.06] hover:text-white"
-                    : "text-black/40 hover:bg-black/[0.06] hover:text-black",
+                    ? "text-white/40 hover:bg-white/10 hover:text-white"
+                    : "text-black/40 hover:bg-black/10 hover:text-black",
                 )}
               >
                 <svg
@@ -741,7 +769,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
     return (
       <div
-        style={{ fontFamily: "sans-serif" }}
         ref={ref}
         className={cn(
           calendarVariants({ theme, variant, size }),
@@ -831,8 +858,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           className={cn(
             "flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-[10px] border px-4 text-sm transition-colors",
             theme === "dark"
-              ? "border-white/[0.08] bg-transparent text-white hover:border-white/20"
-              : "border-black/[0.08] bg-transparent text-black hover:border-black/20",
+              ? "border-white/10 bg-black text-white hover:border-white/20"
+              : "border-black/10 bg-white text-black hover:border-black/20",
             className,
           )}
         >

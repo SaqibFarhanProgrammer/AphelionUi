@@ -6,17 +6,12 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  ACCORDION COMPONENT SYSTEM
-// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── CVA Variants ────────────────────────────────────────────────────────
 
 const accordionVariants = cva(['w-full'], {
   variants: {
@@ -146,7 +141,6 @@ const contentVariants = cva(['overflow-hidden'], {
   },
 });
 
-// ─── Icon Components ─────────────────────────────────────────────────────
 
 function ChevronIcon({
   open,
@@ -240,7 +234,6 @@ function PlusMinusIcon({
   );
 }
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface AccordionItem {
   id: string;
@@ -266,7 +259,6 @@ export interface AccordionProps
   contentClassName?: string;
 }
 
-// ─── Accordion Component ─────────────────────────────────────────────────
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   function Accordion(
@@ -385,7 +377,6 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
 
 Accordion.displayName = 'Accordion';
 
-// ─── useAccordion Hook ───────────────────────────────────────────────────
 
 export function useAccordion(defaultOpen: string[] = []) {
   const [openItems, setOpenItems] = React.useState<string[]>(defaultOpen);
@@ -408,7 +399,6 @@ export function useAccordion(defaultOpen: string[] = []) {
   };
 }
 
-// ─── Named Exports ───────────────────────────────────────────────────────
 
 export {
   Accordion,

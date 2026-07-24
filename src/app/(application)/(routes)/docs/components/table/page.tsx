@@ -6,17 +6,12 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  CALENDAR / DATE PICKER COMPONENT
-// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── Helpers ─────────────────────────────────────────────────────────────
 
 const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 const MONTHS = [
@@ -71,7 +66,6 @@ function formatDate(date: Date): string {
   });
 }
 
-// ─── CVA Variants ────────────────────────────────────────────────────────
 
 const calendarVariants = cva(['w-full', 'select-none', 'bg-transparent'], {
   variants: {
@@ -156,7 +150,6 @@ const dayCellVariants = cva(
       },
     },
     compoundVariants: [
-      // Dark
       {
         theme: 'dark',
         state: 'default',
@@ -197,7 +190,6 @@ const dayCellVariants = cva(
         state: 'today',
         className: 'text-white border border-white/20',
       },
-      // Light
       {
         theme: 'light',
         state: 'default',
@@ -247,7 +239,6 @@ const dayCellVariants = cva(
   }
 );
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface CalendarProps
   extends
@@ -279,7 +270,6 @@ export interface DatePickerProps extends Omit<
   onChange?: (date: Date | null) => void;
 }
 
-// ─── Calendar Component ──────────────────────────────────────────────────
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   function Calendar(
@@ -829,7 +819,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
 Calendar.displayName = 'Calendar';
 
-// ─── DatePicker Input ────────────────────────────────────────────────────
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   function DatePicker(
@@ -930,7 +919,6 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
 
 DatePicker.displayName = 'DatePicker';
 
-// ─── Exports ─────────────────────────────────────────────────────────────
 
 export { Calendar, DatePicker };
 export default Calendar;

@@ -6,17 +6,12 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── UTILITY ──────────────────────────────────────────────────────────────
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  SHEET COMPONENT
-// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── CVA Variants ────────────────────────────────────────────────────────
 
 const overlayVariants = cva(
   ["fixed", "inset-0", "z-40", "transition-colors", "duration-300"],
@@ -133,7 +128,6 @@ const footerVariants = cva(
   },
 );
 
-// ─── Animation configs based on side ─────────────────────────────────────
 
 const overlayAnimation = {
   initial: { opacity: 0 },
@@ -169,7 +163,6 @@ const sheetAnimation = {
   },
 };
 
-// ─── Sheet Component ─────────────────────────────────────────────────────
 
 const Sheet = React.forwardRef(function Sheet(
   {
@@ -353,7 +346,6 @@ const Sheet = React.forwardRef(function Sheet(
 
 Sheet.displayName = "Sheet";
 
-// ─── useSheet Hook ───────────────────────────────────────────────────────
 
 function useSheet(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);
@@ -368,23 +360,3 @@ function useSheet(defaultOpen = false) {
 
 export { Sheet, useSheet };
 
-// ─── USAGE EXAMPLE ──────────────────────────────────────────────────────
-// 
-// const sheet = useSheet();
-// <Button onClick={sheet.onOpen}>Open Sheet</Button>
-// <Sheet
-//   open={sheet.open}
-//   onOpenChange={sheet.onOpenChange}
-//   side="right"
-//   title="Quick Feedback"
-//   subtitle="Share your feedback to help us improve."
-//   footer={
-//     <>
-//       <Button variant="outline" onClick={sheet.onClose}>Cancel</Button>
-//       <Button variant="primary">Submit</Button>
-//     </>
-//   }
-// >
-//   <Input theme="dark" label="Name" placeholder="Your Name" />
-//   <Input theme="dark" label="Email" placeholder="Your Email" />
-// </Sheet>

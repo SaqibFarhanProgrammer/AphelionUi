@@ -9,7 +9,6 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ─── CVA ─────────────────────────────────────────────────────────────────
 
 const avatarVariants = cva(
   [
@@ -104,7 +103,6 @@ const groupVariants = cva(['flex', 'items-center'], {
   },
 });
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface AvatarProps extends VariantProps<typeof avatarVariants> {
   src?: string;
@@ -127,7 +125,6 @@ export interface AvatarGroupProps extends VariantProps<typeof groupVariants> {
   className?: string;
 }
 
-// ─── Status Position Offsets ─────────────────────────────────────────────
 
 const statusOffset: Record<string, string> = {
   'bottom-right': 'translate-x-[25%] translate-y-[25%] bottom-0 right-0',
@@ -136,7 +133,6 @@ const statusOffset: Record<string, string> = {
   'top-left': '-translate-x-[25%] -translate-y-[25%] top-0 left-0',
 };
 
-// ─── Avatar Component ────────────────────────────────────────────────────
 
 const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
   {
@@ -229,7 +225,6 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
 
 Avatar.displayName = 'Avatar';
 
-// ─── Avatar Group Component ──────────────────────────────────────────────
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   function AvatarGroup(
@@ -288,7 +283,6 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
 
 AvatarGroup.displayName = 'AvatarGroup';
 
-// ─── useAvatar Hook ──────────────────────────────────────────────────────
 
 export function useAvatar() {
   const [src, setSrc] = React.useState<string | undefined>(undefined);

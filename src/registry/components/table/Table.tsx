@@ -5,17 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  TABLE COMPONENT SYSTEM
-// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── Table Container Variants ────────────────────────────────────────────
 
 const tableContainerVariants = cva(["w-full", "overflow-x-auto"], {
   variants: {
@@ -36,7 +31,6 @@ const tableContainerVariants = cva(["w-full", "overflow-x-auto"], {
   },
 });
 
-// ─── Table Variants ──────────────────────────────────────────────────────
 
 const tableVariants = cva(["w-full", "border-collapse", "text-left"], {
   variants: {
@@ -60,7 +54,6 @@ const tableVariants = cva(["w-full", "border-collapse", "text-left"], {
     },
   },
   compoundVariants: [
-    // ─── Dark Theme ───────────────────────────────────────────
     { theme: "dark", variant: "default", className: "" },
     { theme: "dark", variant: "striped", className: "" },
     { theme: "dark", variant: "no-dividers", className: "" },
@@ -68,7 +61,6 @@ const tableVariants = cva(["w-full", "border-collapse", "text-left"], {
     { theme: "dark", variant: "dense", className: "" },
     { theme: "dark", variant: "card", className: "" },
     { theme: "dark", variant: "vertical", className: "" },
-    // ─── Light Theme ──────────────────────────────────────────
     { theme: "light", variant: "default", className: "" },
     { theme: "light", variant: "striped", className: "" },
     { theme: "light", variant: "no-dividers", className: "" },
@@ -84,7 +76,6 @@ const tableVariants = cva(["w-full", "border-collapse", "text-left"], {
   },
 });
 
-// ─── Header Row Variants ─────────────────────────────────────────────────
 
 const headerRowVariants = cva(["border-b"], {
   variants: {
@@ -129,7 +120,6 @@ const headerCellVariants = cva(
   },
 );
 
-// ─── Body Row Variants ───────────────────────────────────────────────────
 
 const bodyRowVariants = cva(["transition-colors", "duration-150"], {
   variants: {
@@ -156,7 +146,6 @@ const bodyRowVariants = cva(["transition-colors", "duration-150"], {
     },
   },
   compoundVariants: [
-    // ─── Dark Theme Row Borders ───────────────────────────────
     {
       theme: "dark",
       variant: "default",
@@ -192,7 +181,6 @@ const bodyRowVariants = cva(["transition-colors", "duration-150"], {
       variant: "vertical",
       className: "border-white/[0.06] hover:bg-white/[0.02]",
     },
-    // ─── Light Theme Row Borders ──────────────────────────────
     {
       theme: "light",
       variant: "default",
@@ -228,7 +216,6 @@ const bodyRowVariants = cva(["transition-colors", "duration-150"], {
       variant: "vertical",
       className: "border-black/[0.06] hover:bg-black/[0.02]",
     },
-    // ─── Selected State ───────────────────────────────────────
     { theme: "dark", selected: true, className: "bg-white/[0.04]" },
     { theme: "light", selected: true, className: "bg-black/[0.04]" },
   ],
@@ -240,7 +227,6 @@ const bodyRowVariants = cva(["transition-colors", "duration-150"], {
   },
 });
 
-// ─── Body Cell Variants ──────────────────────────────────────────────────
 
 const bodyCellVariants = cva(["whitespace-nowrap", "text-left"], {
   variants: {
@@ -282,7 +268,6 @@ const bodyCellVariants = cva(["whitespace-nowrap", "text-left"], {
   },
 });
 
-// ─── Footer Row Variants ─────────────────────────────────────────────────
 
 const footerRowVariants = cva(["border-t"], {
   variants: {
@@ -317,7 +302,6 @@ const footerCellVariants = cva(
   },
 );
 
-// ─── Checkbox Component ──────────────────────────────────────────────────
 
 function Checkbox({
   checked,
@@ -368,7 +352,6 @@ function Checkbox({
   );
 }
 
-// ─── Sort Icon ───────────────────────────────────────────────────────────
 
 function SortIcon({ direction }: { direction?: "asc" | "desc" | null }) {
   return (
@@ -401,7 +384,6 @@ function SortIcon({ direction }: { direction?: "asc" | "desc" | null }) {
   );
 }
 
-// ─── Checkmark / Cross Icons (for compatibility tables) ──────────────────
 
 function CheckIcon({ theme = "dark" }: { theme?: "dark" | "light" }) {
   return (
@@ -439,7 +421,6 @@ function CrossIcon({ theme = "dark" }: { theme?: "dark" | "light" }) {
   );
 }
 
-// ─── Avatar Component ────────────────────────────────────────────────────
 
 function Avatar({
   src,
@@ -485,7 +466,6 @@ function Avatar({
   );
 }
 
-// ─── Status Badge ────────────────────────────────────────────────────────
 
 function StatusBadge({
   status,
@@ -519,7 +499,6 @@ function StatusBadge({
   );
 }
 
-// ─── Intent Badge (for advanced table) ───────────────────────────────────
 
 function IntentBadge({
   label,
@@ -559,7 +538,6 @@ function IntentBadge({
   );
 }
 
-// ─── Filter Input ────────────────────────────────────────────────────────
 
 function FilterInput({
   placeholder,
@@ -591,9 +569,6 @@ function FilterInput({
   );
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-//  TABLE COMPONENT
-// ═══════════════════════════════════════════════════════════════════════════
 
 export interface TableColumn<T = any> {
   key: string;
@@ -752,11 +727,9 @@ function Table<T = any>({
               const key = rowKey(row, index);
               const selected = selectedRows.has(key);
 
-              // Striped logic
               const isStripedRow = isStriped && index % 2 === 0;
 
               if (isVertical) {
-                // Vertical table: each row shows key-value pairs
                 return (
                   <React.Fragment key={String(key)}>
                     {columns.map((col, colIndex) => (
@@ -879,7 +852,6 @@ function Table<T = any>({
   );
 }
 
-// ─── Named Exports ───────────────────────────────────────────────────────
 
 export {
   Table,
@@ -891,7 +863,6 @@ export {
   CheckIcon,
   CrossIcon,
   SortIcon,
-  // Variants
   tableContainerVariants,
   tableVariants,
   headerRowVariants,

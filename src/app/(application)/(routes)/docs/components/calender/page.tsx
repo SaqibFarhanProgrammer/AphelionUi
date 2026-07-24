@@ -221,25 +221,25 @@ const calendarData = {
   variant="bordered"
 />`,
           preview: (
-            <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" />
+            <CalendarWrapper >
+              <Calendar mode="single"  theme="dark" variant="bordered" />
             </CalendarWrapper>
           ),
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-xl z-10 bg-white p-6">
   <Calendar
     mode="single"
     selected={date}
     onSelect={setDate}
-    theme="light"
+    theme="dark"
     variant="bordered"
   />
 </div>`,
           preview: (
             <div className="rounded-xl bg-white p-6">
-              <Calendar mode="single" theme="light" variant="bordered" />
+              <Calendar mode="single" theme="light" className='' variant="bordered" />
             </div>
           ),
         },
@@ -659,7 +659,7 @@ function TimeSlotCalendarPreview() {
 function PresetCalendarPreview() {
   const [range, setRange] = useState<{ from: Date; to: Date } | null>(null);
   return (
-    <div className="space-y-4">
+    <div className="">
       <CalendarWrapper>
         <Calendar
           mode="range"

@@ -5,13 +5,11 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ─── CVA Variants ────────────────────────────────────────────────────────
 
 const radioVariants = cva(
   [
@@ -216,7 +214,6 @@ const tableRowVariants = cva(
   }
 );
 
-// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface RadioOption {
   value: string;
@@ -260,7 +257,6 @@ export interface RadioGroupProps {
   columns?: 1 | 2 | 3;
 }
 
-// ─── Radio Component ───────────────────────────────────────────────────────
 
 const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
@@ -353,7 +349,6 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
 
 Radio.displayName = 'Radio';
 
-// ─── RadioGroup Component ────────────────────────────────────────────────
 
 const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   function RadioGroup(
