@@ -1120,7 +1120,6 @@ export default function CardPage() {
         {cardData.sections.map((section) => (
           <DocsSection
             key={section.id}
-            id={section.id}
             title={section.title}
             description={section.description}
           >

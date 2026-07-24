@@ -305,7 +305,6 @@ export default function App() {
           <DocsSection
             key={section.id}
             title={section.title}
-            id={section.id}
             description={section.description}
           >
             <div className="space-y-4">

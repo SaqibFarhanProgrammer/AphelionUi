@@ -914,7 +914,6 @@ export default function PopoverPage() {
         {popoverData.sections.map((section) => (
           <DocsSection
             key={section.id}
-            id={section.id}
             title={section.title}
             description={section.description}
           >

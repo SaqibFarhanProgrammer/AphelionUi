@@ -353,7 +353,6 @@ export default function InputPage() {
         {inputData.sections.map((section) => (
           <DocsSection
             key={section.id}
-            id={section.id}
             title={section.title}
             description={section.description}
           >
