@@ -1,924 +1,738 @@
 'use client';
 
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import { motion, AnimatePresence } from 'framer-motion';
+import Table, {
+  Avatar,
+  StatusBadge,
+  IntentBadge,
+  FilterInput,
+  CheckIcon,
+  CrossIcon,
+} from '@/registry/components/table/Table';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
+import { useState, useMemo } from 'react';
 
+// ─── Demo Data ───────────────────────────────────────────────────────────
 
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-
-
-const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+const USERS = [
+  {
+    id: 1,
+    name: 'Alice Johnson',
+    email: 'alice@example.com',
+    role: 'Designer',
+    department: 'Design',
+    status: 'Active',
+    avatar: 'https://i.pravatar.cc/150?img=1',
+    lastActive: '2 min ago',
+    projects: 12,
+  },
+  {
+    id: 2,
+    name: 'Bob Smith',
+    email: 'bob@example.com',
+    role: 'Developer',
+    department: 'Engineering',
+    status: 'Active',
+    avatar: 'https://i.pravatar.cc/150?img=2',
+    lastActive: '1 hour ago',
+    projects: 8,
+  },
+  {
+    id: 3,
+    name: 'Carol Davis',
+    email: 'carol@example.com',
+    role: 'Product Manager',
+    department: 'Product',
+    status: 'Inactive',
+    avatar: 'https://i.pravatar.cc/150?img=3',
+    lastActive: '3 days ago',
+    projects: 5,
+  },
+  {
+    id: 4,
+    name: 'Dave Wilson',
+    email: 'dave@example.com',
+    role: 'Developer',
+    department: 'Engineering',
+    status: 'Active',
+    avatar: 'https://i.pravatar.cc/150?img=4',
+    lastActive: '15 min ago',
+    projects: 10,
+  },
+  {
+    id: 5,
+    name: 'Eve Brown',
+    email: 'eve@example.com',
+    role: 'Marketing Lead',
+    department: 'Marketing',
+    status: 'Active',
+    avatar: 'https://i.pravatar.cc/150?img=5',
+    lastActive: '2 hours ago',
+    projects: 7,
+  },
 ];
 
-function getDaysInMonth(year: number, month: number): number {
-  return new Date(year, month + 1, 0).getDate();
-}
+const COMPATIBILITY_DATA = [
+  { feature: 'Dark Mode', 'Basic Plan': true, 'Pro Plan': true, Enterprise: true },
+  { feature: 'Advanced Analytics', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
+  { feature: 'Team Collaboration', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
+  { feature: 'Priority Support', 'Basic Plan': false, 'Pro Plan': false, Enterprise: true },
+  { feature: 'Custom Integrations', 'Basic Plan': false, 'Pro Plan': false, Enterprise: true },
+  { feature: 'API Access', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
+];
 
-function getFirstDayOfMonth(year: number, month: number): number {
-  return new Date(year, month, 1).getDay();
-}
+const INTENT_DATA = [
+  { id: '1', item: 'Project Alpha', status: 'Active', priority: 'C' },
+  { id: '2', item: 'Project Beta', status: 'In Progress', priority: 'T' },
+  { id: '3', item: 'Project Gamma', status: 'Review', priority: 'I' },
+  { id: '4', item: 'Project Delta', status: 'Done', priority: 'N' },
+  { id: '5', item: 'Project Epsilon', status: 'Active', priority: 'C' },
+];
 
-function getPrevMonthDays(year: number, month: number): number {
-  const prevMonth = month === 0 ? 11 : month - 1;
-  const prevYear = month === 0 ? year - 1 : year;
-  return getDaysInMonth(prevYear, prevMonth);
-}
+// ─── Columns Definitions ─────────────────────────────────────────────────
 
-function isSameDate(a: Date, b: Date): boolean {
+const userColumns = [
+  {
+    key: 'name',
+    header: 'User',
+    sortable: true,
+    render: (row: (typeof USERS)[0]) => (
+      <div className="flex items-center gap-3">
+        <Avatar src={row.avatar} fallback={row.name} />
+        <div>
+          <div className="font-medium">{row.name}</div>
+          <div className="text-xs text-white/40">{row.email}</div>
+        </div>
+      </div>
+    ),
+  },
+  { key: 'role', header: 'Role', sortable: true },
+  { key: 'department', header: 'Department', sortable: true },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    render: (row: (typeof USERS)[0]) => <StatusBadge status={row.status} />,
+  },
+  { key: 'projects', header: 'Projects', sortable: true, align: 'center' as const },
+  { key: 'lastActive', header: 'Last Active', sortable: true },
+];
+
+const compatColumns = [
+  { key: 'feature', header: 'Feature', sortable: false },
+  {
+    key: 'Basic Plan',
+    header: 'Basic',
+    sortable: false,
+    align: 'center' as const,
+    render: (row: (typeof COMPATIBILITY_DATA)[0]) =>
+      row['Basic Plan'] ? <CheckIcon /> : <CrossIcon />,
+  },
+  {
+    key: 'Pro Plan',
+    header: 'Pro',
+    sortable: false,
+    align: 'center' as const,
+    render: (row: (typeof COMPATIBILITY_DATA)[0]) =>
+      row['Pro Plan'] ? <CheckIcon /> : <CrossIcon />,
+  },
+  {
+    key: 'Enterprise',
+    header: 'Enterprise',
+    sortable: false,
+    align: 'center' as const,
+    render: (row: (typeof COMPATIBILITY_DATA)[0]) =>
+      row['Enterprise'] ? <CheckIcon /> : <CrossIcon />,
+  },
+];
+
+const intentColumns = [
+  { key: 'id', header: 'ID', sortable: true },
+  { key: 'item', header: 'Item', sortable: true },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    render: (row: (typeof INTENT_DATA)[0]) => <StatusBadge status={row.status} />,
+  },
+  {
+    key: 'priority',
+    header: 'Priority',
+    sortable: true,
+    align: 'center' as const,
+    render: (row: (typeof INTENT_DATA)[0]) => <IntentBadge label={row.priority} />,
+  },
+];
+
+// ─── Table Data ──────────────────────────────────────────────────────────
+
+const tableData = {
+  name: 'Table',
+  slug: 'table',
+  title: 'Table',
+  description:
+    'A powerful table component with sorting, selection, filtering, multiple variants, custom cell rendering, and built-in sub-components like Avatar, StatusBadge, and IntentBadge.',
+  category: 'Data Display',
+  installation: {
+    command: 'shadcn@latest add aphelio/c/table',
+  },
+  usage: {
+    import: "import Table, { Avatar, StatusBadge } from '@/components/ui/table'",
+    basic: `const columns = [
+  { key: 'name', header: 'Name', sortable: true },
+  { key: 'email', header: 'Email', sortable: true },
+  { key: 'role', header: 'Role', sortable: true },
+];
+
+const data = [
+  { name: 'Alice', email: 'alice@example.com', role: 'Designer' },
+  { name: 'Bob', email: 'bob@example.com', role: 'Developer' },
+];
+
+<Table columns={columns} data={data} />`,
+  },
+  sections: [
+    {
+      id: 'default',
+      title: 'Default',
+      description: 'Basic table with sorting, selection, and filtering.',
+      examples: [
+        {
+          label: 'With Selection & Sorting',
+          code: `<Table
+  columns={columns}
+  data={data}
+  selectable
+  selectedRows={selectedRows}
+  onRowSelect={(id, selected) => {
+    // handle selection
+  }}
+  onSelectAll={(selected) => {
+    // handle select all
+  }}
+  sortColumn={sortColumn}
+  sortDirection={sortDirection}
+  onSort={handleSort}
+  filters={
+    <FilterInput
+      placeholder="Search users..."
+      value={searchFilter}
+      onChange={setSearchFilter}
+    />
+  }
+  stickyHeader
+  maxHeight="400px"
+/>`,
+          preview: <DefaultTablePreview />,
+        },
+      ],
+    },
+    {
+      id: 'variants',
+      title: 'Variants',
+      description: 'Multiple visual variants for different contexts.',
+      examples: [
+        {
+          label: 'Striped',
+          code: `<Table
+  columns={columns.slice(0, 4)}
+  data={data.slice(0, 5)}
+  variant="striped"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="striped" />,
+        },
+        {
+          label: 'No Dividers',
+          code: `<Table
+  columns={columns.slice(0, 4)}
+  data={data.slice(0, 5)}
+  variant="no-dividers"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="no-dividers" />,
+        },
+        {
+          label: 'Vertical Lines',
+          code: `<Table
+  columns={columns.slice(0, 5)}
+  data={data.slice(0, 5)}
+  variant="vertical-lines"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 5)} data={USERS.slice(0, 5)} variant="vertical-lines" />,
+        },
+        {
+          label: 'Dense',
+          code: `<Table
+  columns={columns.slice(0, 4)}
+  data={data.slice(0, 5)}
+  variant="dense"
+  size="sm"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="dense" size="sm" />,
+        },
+        {
+          label: 'Card',
+          code: `<Table
+  columns={columns.slice(0, 4)}
+  data={data.slice(0, 5)}
+  variant="card"
+  layout="card"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="card" layout="card" />,
+        },
+        {
+          label: 'Vertical',
+          code: `<Table
+  columns={columns.slice(0, 4)}
+  data={data.slice(0, 1)}
+  variant="vertical"
+  layout="vertical"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 1)} variant="vertical" layout="vertical" />,
+        },
+      ],
+    },
+    {
+      id: 'themes',
+      title: 'Themes',
+      description: 'Light and dark themes for different backgrounds.',
+      examples: [
+        {
+          label: 'Dark Theme (Default)',
+          code: `<Table
+  columns={columns}
+  data={data}
+  theme="dark"
+  variant="striped"
+/>`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 4)} theme="dark" variant="striped" />,
+        },
+        {
+          label: 'Light Theme',
+          code: `<div className="rounded-xl bg-white p-6">
+  <Table
+    columns={columns}
+    data={data}
+    theme="light"
+    variant="striped"
+  />
+</div>`,
+          preview: (
+            <div className="rounded-xl bg-white p-6">
+              <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 4)} theme="light" variant="striped" />
+            </div>
+          ),
+        },
+      ],
+    },
+    {
+      id: 'custom-rendering',
+      title: 'Custom Rendering',
+      description: 'Use built-in sub-components for rich cell content.',
+      examples: [
+        {
+          label: 'Avatar & StatusBadge',
+          code: `const columns = [
+  {
+    key: 'name',
+    header: 'User',
+    render: (row) => (
+      <div className="flex items-center gap-3">
+        <Avatar src={row.avatar} fallback={row.name} />
+        <div>
+          <div className="font-medium">{row.name}</div>
+          <div className="text-xs text-white/40">{row.email}</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (row) => <StatusBadge status={row.status} />,
+  },
+];
+
+<Table columns={columns} data={data} />`,
+          preview: (
+            <Table
+              columns={[
+                {
+                  key: 'name',
+                  header: 'User',
+                  render: (row: (typeof USERS)[0]) => (
+                    <div className="flex items-center gap-3">
+                      <Avatar src={row.avatar} fallback={row.name} />
+                      <div>
+                        <div className="font-medium">{row.name}</div>
+                        <div className="text-xs text-white/40">{row.email}</div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  key: 'status',
+                  header: 'Status',
+                  render: (row: (typeof USERS)[0]) => <StatusBadge status={row.status} />,
+                },
+              ]}
+              data={USERS.slice(0, 3)}
+            />
+          ),
+        },
+        {
+          label: 'IntentBadge',
+          code: `const columns = [
+  { key: 'item', header: 'Item' },
+  {
+    key: 'priority',
+    header: 'Priority',
+    align: 'center',
+    render: (row) => <IntentBadge label={row.priority} />,
+  },
+];
+
+<Table columns={columns} data={data} variant="striped" />`,
+          preview: <Table columns={intentColumns} data={INTENT_DATA} variant="striped" />,
+        },
+        {
+          label: 'CheckIcon / CrossIcon',
+          code: `const columns = [
+  { key: 'feature', header: 'Feature' },
+  {
+    key: 'basic',
+    header: 'Basic',
+    align: 'center',
+    render: (row) => row.basic ? <CheckIcon /> : <CrossIcon />,
+  },
+];
+
+<Table columns={columns} data={data} variant="no-dividers" />`,
+          preview: <Table columns={compatColumns} data={COMPATIBILITY_DATA} variant="no-dividers" />,
+        },
+      ],
+    },
+    {
+      id: 'empty-state',
+      title: 'Empty State',
+      description: 'Display a message when no data is available.',
+      examples: [
+        {
+          label: 'Empty Table',
+          code: `<Table columns={columns} data={[]} />`,
+          preview: <Table columns={userColumns.slice(0, 4)} data={[]} />,
+        },
+      ],
+    },
+  ],
+  props: [
+    {
+      name: 'columns',
+      type: 'Column[]',
+      default: 'required',
+      description: 'Array of column definitions with key, header, sortable, align, and render.',
+    },
+    {
+      name: 'data',
+      type: 'any[]',
+      default: 'required',
+      description: 'Array of data rows to display.',
+    },
+    {
+      name: 'variant',
+      type: "'default' | 'striped' | 'no-dividers' | 'vertical-lines' | 'dense' | 'card' | 'vertical'",
+      default: '"default"',
+      description: 'Visual variant of the table.',
+    },
+    {
+      name: 'theme',
+      type: "'dark' | 'light'",
+      default: '"dark"',
+      description: 'Color theme of the table.',
+    },
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: '"md"',
+      description: 'Size of the table cells and padding.',
+    },
+    {
+      name: 'layout',
+      type: "'table' | 'card' | 'vertical'",
+      default: '"table"',
+      description: 'Layout mode for the table display.',
+    },
+    {
+      name: 'selectable',
+      type: 'boolean',
+      default: 'false',
+      description: 'Enable row selection with checkboxes.',
+    },
+    {
+      name: 'selectedRows',
+      type: 'Set<string | number>',
+      default: 'undefined',
+      description: 'Set of selected row IDs.',
+    },
+    {
+      name: 'onRowSelect',
+      type: '(id: string | number, selected: boolean) => void',
+      default: 'undefined',
+      description: 'Callback fired when a row is selected.',
+    },
+    {
+      name: 'onSelectAll',
+      type: '(selected: boolean) => void',
+      default: 'undefined',
+      description: 'Callback fired when select all is toggled.',
+    },
+    {
+      name: 'onRowClick',
+      type: '(row: any) => void',
+      default: 'undefined',
+      description: 'Callback fired when a row is clicked.',
+    },
+    {
+      name: 'sortColumn',
+      type: 'string | null',
+      default: 'null',
+      description: 'Currently sorted column key.',
+    },
+    {
+      name: 'sortDirection',
+      type: "'asc' | 'desc' | null",
+      default: 'null',
+      description: 'Current sort direction.',
+    },
+    {
+      name: 'onSort',
+      type: '(column: string) => void',
+      default: 'undefined',
+      description: 'Callback fired when a column header is clicked for sorting.',
+    },
+    {
+      name: 'filters',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Filter elements rendered above the table.',
+    },
+    {
+      name: 'stickyHeader',
+      type: 'boolean',
+      default: 'false',
+      description: 'Make the table header sticky on scroll.',
+    },
+    {
+      name: 'maxHeight',
+      type: 'string',
+      default: 'undefined',
+      description: 'Maximum height of the table body with scroll.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional classes for the table container.',
+    },
+  ],
+};
+
+const bottomNavItems = [
+  {
+    label: 'Dialog',
+    href: '/docs/components/dialog',
+    description: 'Modal overlay for confirmations and alerts.',
+  },
+  {
+    label: 'Sheet',
+    href: '/docs/components/sheet',
+    description: 'Slide-in panel component.',
+  },
+];
+
+// ─── Default Table Preview Component ───────────────────────────────────────
+
+function DefaultTablePreview() {
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  const [sortColumn, setSortColumn] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(null);
+  const [searchFilter, setSearchFilter] = useState('');
+
+  const handleSort = (column: string) => {
+    if (sortColumn === column) {
+      if (sortDirection === 'asc') setSortDirection('desc');
+      else if (sortDirection === 'desc') {
+        setSortColumn(null);
+        setSortDirection(null);
+      }
+    } else {
+      setSortColumn(column);
+      setSortDirection('asc');
+    }
+  };
+
+  const filteredData = useMemo(() => {
+    if (!searchFilter) return USERS;
+    const query = searchFilter.toLowerCase();
+    return USERS.filter(
+      (user) =>
+        user.name.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query) ||
+        user.role.toLowerCase().includes(query) ||
+        user.department.toLowerCase().includes(query)
+    );
+  }, [searchFilter]);
+
+  const sortedData = useMemo(() => {
+    if (!sortColumn || !sortDirection) return filteredData;
+    return [...filteredData].sort((a, b) => {
+      const aVal = a[sortColumn as keyof typeof a];
+      const bVal = b[sortColumn as keyof typeof b];
+      if (typeof aVal === 'string' && typeof bVal === 'string') {
+        return sortDirection === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      }
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      return 0;
+    });
+  }, [filteredData, sortColumn, sortDirection]);
+
   return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
+    <Table
+      columns={userColumns}
+      data={sortedData}
+      selectable
+      selectedRows={selectedRows}
+      onRowSelect={(id, selected) => {
+        setSelectedRows((prev) => {
+          const next = new Set(prev);
+          if (selected) next.add(id);
+          else next.delete(id);
+          return next;
+        });
+      }}
+      onSelectAll={(selected) => {
+        if (selected) setSelectedRows(new Set(sortedData.map((_, i) => i)));
+        else setSelectedRows(new Set());
+      }}
+      sortColumn={sortColumn}
+      sortDirection={sortDirection}
+      onSort={handleSort}
+      filters={
+        <FilterInput
+          placeholder="Search users..."
+          value={searchFilter}
+          onChange={setSearchFilter}
+        />
+      }
+      stickyHeader
+      maxHeight="400px"
+    />
   );
 }
 
-function isDateInRange(date: Date, start: Date, end: Date): boolean {
-  const d = date.getTime();
-  const s = Math.min(start.getTime(), end.getTime());
-  const e = Math.max(start.getTime(), end.getTime());
-  return d >= s && d <= e;
-}
+// ─── Main Page ─────────────────────────────────────────────────────────────
 
-function formatDate(date: Date): string {
-  return date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
+export default function TablePage() {
+  return (
+    <DocsPageLayout
+      category={tableData.category}
+      title={tableData.title}
+      description={tableData.description}
+      sideMapGroup={[
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
+        ...tableData.sections.map((section) => ({
+          id: section.id,
+          title: section.title,
+          level: 3,
+        })),
+        { id: 'props', title: 'Props' },
+      ]}
+    >
+      <section className="mb-14" id="installation">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Installation
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
+          Install the Table component using the CLI. This will copy the
+          component source into your project.
+        </p>
+        <InstallCommand command={tableData.installation.command} />
+      </section>
 
-
-const calendarVariants = cva(['w-full', 'select-none', 'bg-transparent'], {
-  variants: {
-    theme: {
-      dark: '',
-      light: '',
-    },
-    variant: {
-      default: '',
-      bordered: 'border rounded-[12px] overflow-hidden',
-      card: 'border rounded-[12px] overflow-hidden',
-    },
-    size: {
-      sm: 'max-w-[280px]',
-      md: 'max-w-[320px]',
-      lg: 'max-w-[380px]',
-    },
-  },
-  compoundVariants: [
-    {
-      theme: 'dark',
-      variant: 'bordered',
-      className: 'border-white/[0.08] bg-transparent',
-    },
-    {
-      theme: 'dark',
-      variant: 'card',
-      className: 'border-white/[0.08] bg-white/[0.03] backdrop-blur-sm',
-    },
-    {
-      theme: 'light',
-      variant: 'bordered',
-      className: 'border-black/[0.08] bg-transparent',
-    },
-    {
-      theme: 'light',
-      variant: 'card',
-      className: 'border-black/[0.08] bg-black/[0.03] backdrop-blur-sm',
-    },
-  ],
-  defaultVariants: {
-    theme: 'dark',
-    variant: 'bordered',
-    size: 'md',
-  },
-});
-
-const dayCellVariants = cva(
-  [
-    'inline-flex',
-    'items-center',
-    'justify-center',
-    'rounded-[10px]',
-    'text-sm',
-    'font-medium',
-    'transition-all',
-    'duration-150',
-    'cursor-pointer',
-    'select-none',
-    'relative',
-  ],
-  {
-    variants: {
-      theme: {
-        dark: '',
-        light: '',
-      },
-      state: {
-        default: '',
-        selected: '',
-        'in-range': '',
-        'range-start': '',
-        'range-end': '',
-        disabled: 'cursor-not-allowed opacity-50',
-        'outside-month': '',
-        today: '',
-      },
-      size: {
-        sm: 'h-8 w-8 text-xs',
-        md: 'h-10 w-10 text-sm',
-        lg: 'h-12 w-12 text-base',
-      },
-    },
-    compoundVariants: [
-      {
-        theme: 'dark',
-        state: 'default',
-        className: 'text-white/80 hover:bg-white/[0.08]',
-      },
-      {
-        theme: 'dark',
-        state: 'selected',
-        className: 'bg-white text-black hover:bg-white/90',
-      },
-      {
-        theme: 'dark',
-        state: 'in-range',
-        className: 'bg-white/[0.08] text-white rounded-none',
-      },
-      {
-        theme: 'dark',
-        state: 'range-start',
-        className: 'bg-white text-black rounded-r-none hover:bg-white/90',
-      },
-      {
-        theme: 'dark',
-        state: 'range-end',
-        className: 'bg-white text-black rounded-l-none hover:bg-white/90',
-      },
-      {
-        theme: 'dark',
-        state: 'disabled',
-        className: 'text-white/20 line-through',
-      },
-      {
-        theme: 'dark',
-        state: 'outside-month',
-        className: 'text-white/20 hover:bg-transparent',
-      },
-      {
-        theme: 'dark',
-        state: 'today',
-        className: 'text-white border border-white/20',
-      },
-      {
-        theme: 'light',
-        state: 'default',
-        className: 'text-black/80 hover:bg-black/[0.08]',
-      },
-      {
-        theme: 'light',
-        state: 'selected',
-        className: 'bg-black text-white hover:bg-black/90',
-      },
-      {
-        theme: 'light',
-        state: 'in-range',
-        className: 'bg-black/[0.08] text-black rounded-none',
-      },
-      {
-        theme: 'light',
-        state: 'range-start',
-        className: 'bg-black text-white rounded-r-none hover:bg-black/90',
-      },
-      {
-        theme: 'light',
-        state: 'range-end',
-        className: 'bg-black text-white rounded-l-none hover:bg-black/90',
-      },
-      {
-        theme: 'light',
-        state: 'disabled',
-        className: 'text-black/20 line-through',
-      },
-      {
-        theme: 'light',
-        state: 'outside-month',
-        className: 'text-black/20 hover:bg-transparent',
-      },
-      {
-        theme: 'light',
-        state: 'today',
-        className: 'text-black border border-black/20',
-      },
-    ],
-    defaultVariants: {
-      theme: 'dark',
-      state: 'default',
-      size: 'md',
-    },
-  }
-);
-
-
-export interface CalendarProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof calendarVariants> {
-  mode?: 'single' | 'range' | 'multiple';
-  selected?: Date | Date[] | { from: Date; to: Date } | null;
-  onSelect?: (date: Date | Date[] | { from: Date; to: Date } | null) => void;
-  disabled?: Date[] | ((date: Date) => boolean);
-  showOutsideDays?: boolean;
-  showWeekNumbers?: boolean;
-  navPosition?: 'top' | 'right';
-  showMonthYearSelect?: boolean;
-  presets?: { label: string; value: Date | { from: Date; to: Date } }[];
-  timeSlots?: string[];
-  onTimeSelect?: (time: string) => void;
-  selectedTime?: string;
-  minDate?: Date;
-  maxDate?: Date;
-  className?: string;
-}
-
-export interface DatePickerProps extends Omit<
-  CalendarProps,
-  'selected' | 'onSelect'
-> {
-  placeholder?: string;
-  value?: Date | null;
-  onChange?: (date: Date | null) => void;
-}
-
-
-const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
-  function Calendar(
-    {
-      theme = 'dark',
-      variant = 'bordered',
-      size = 'md',
-      mode = 'single',
-      selected,
-      onSelect,
-      disabled,
-      showOutsideDays = true,
-      showWeekNumbers = false,
-      navPosition = 'top',
-      showMonthYearSelect = false,
-      presets,
-      timeSlots,
-      onTimeSelect,
-      selectedTime,
-      minDate,
-      maxDate,
-      className,
-      ...props
-    },
-    ref
-  ) {
-    const today = new Date();
-    const [currentMonth, setCurrentMonth] = React.useState(today.getMonth());
-    const [currentYear, setCurrentYear] = React.useState(today.getFullYear());
-
-    const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-    const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
-    const prevMonthDays = getPrevMonthDays(currentYear, currentMonth);
-
-    const isDisabled = (date: Date): boolean => {
-      if (minDate && date < minDate) return true;
-      if (maxDate && date > maxDate) return true;
-      if (Array.isArray(disabled)) {
-        return disabled.some((d) => isSameDate(d, date));
-      }
-      if (typeof disabled === 'function') {
-        return disabled(date);
-      }
-      return false;
-    };
-
-    const getDayState = (date: Date): string => {
-      if (isDisabled(date)) return 'disabled';
-
-      if (
-        mode === 'single' &&
-        selected instanceof Date &&
-        isSameDate(selected, date)
-      ) {
-        return 'selected';
-      }
-
-      if (mode === 'multiple' && Array.isArray(selected)) {
-        if (selected.some((d) => isSameDate(d, date))) return 'selected';
-      }
-
-      if (
-        mode === 'range' &&
-        selected &&
-        typeof selected === 'object' &&
-        'from' in selected &&
-        'to' in selected
-      ) {
-        const { from, to } = selected;
-        if (isSameDate(from, date)) return 'range-start';
-        if (isSameDate(to, date)) return 'range-end';
-        if (isDateInRange(date, from, to)) return 'in-range';
-      }
-
-      if (isSameDate(date, today)) return 'today';
-      return 'default';
-    };
-
-    const handleDayClick = (date: Date) => {
-      if (isDisabled(date)) return;
-
-      if (mode === 'single') {
-        onSelect?.(date);
-      } else if (mode === 'multiple') {
-        const current = Array.isArray(selected) ? selected : [];
-        const exists = current.some((d) => isSameDate(d, date));
-        const next = exists
-          ? current.filter((d) => !isSameDate(d, date))
-          : [...current, date];
-        onSelect?.(next);
-      } else if (mode === 'range') {
-        const current =
-          selected && typeof selected === 'object' && 'from' in selected
-            ? selected
-            : null;
-        if (!current || (current.from && current.to)) {
-          onSelect?.({ from: date, to: date });
-        } else {
-          if (date < current.from) {
-            onSelect?.({ from: date, to: current.from });
-          } else {
-            onSelect?.({ from: current.from, to: date });
-          }
-        }
-      }
-    };
-
-    const prevMonth = () => {
-      if (currentMonth === 0) {
-        setCurrentMonth(11);
-        setCurrentYear((y) => y - 1);
-      } else {
-        setCurrentMonth((m) => m - 1);
-      }
-    };
-
-    const nextMonth = () => {
-      if (currentMonth === 11) {
-        setCurrentMonth(0);
-        setCurrentYear((y) => y + 1);
-      } else {
-        setCurrentMonth((m) => m + 1);
-      }
-    };
-
-    const renderDays = () => {
-      const days: React.ReactNode[] = [];
-      let nextMonthDay = 1;
-
-      for (let i = 0; i < firstDay; i++) {
-        const day = prevMonthDays - firstDay + i + 1;
-        if (showOutsideDays) {
-          days.push(
-            <button
-              key={`prev-${i}`}
-              disabled
-              className={cn(
-                dayCellVariants({ theme, state: 'outside-month', size })
-              )}
-            >
-              {day}
-            </button>
-          );
-        } else {
-          days.push(
-            <div
-              key={`prev-${i}`}
-              className={cn(dayCellVariants({ theme, size }), 'opacity-0')}
-            />
-          );
-        }
-      }
-
-      for (let i = 1; i <= daysInMonth; i++) {
-        const date = new Date(currentYear, currentMonth, i);
-        const state = getDayState(date);
-        const isToday = isSameDate(date, today);
-
-        days.push(
-          <motion.button
-            key={`day-${i}`}
-            whileTap={{ scale: 0.92 }}
-            onClick={() => handleDayClick(date)}
-            className={cn(
-              dayCellVariants({ theme, state: state as any, size })
-            )}
-          >
-            {i}
-            {isToday && state === 'default' && (
-              <span
-                className={cn(
-                  'absolute bottom-1 h-1 w-1 rounded-full',
-                  theme === 'dark' ? 'bg-white/50' : 'bg-black/50'
-                )}
-              />
-            )}
-            {state === 'selected' && (
-              <span
-                className={cn(
-                  'absolute bottom-1.5 h-1 w-1 rounded-full',
-                  theme === 'dark' ? 'bg-black' : 'bg-white'
-                )}
-              />
-            )}
-          </motion.button>
-        );
-      }
-
-      const remaining = (7 - ((firstDay + daysInMonth) % 7)) % 7;
-      for (let i = 0; i < remaining; i++) {
-        if (showOutsideDays) {
-          days.push(
-            <button
-              key={`next-${i}`}
-              disabled
-              className={cn(
-                dayCellVariants({ theme, state: 'outside-month', size })
-              )}
-            >
-              {nextMonthDay}
-            </button>
-          );
-        } else {
-          days.push(
-            <div
-              key={`next-${i}`}
-              className={cn(dayCellVariants({ theme, size }), 'opacity-0')}
-            />
-          );
-        }
-        nextMonthDay++;
-      }
-
-      return days;
-    };
-
-    const renderWeekNumbers = () => {
-      if (!showWeekNumbers) return null;
-      const weeks: React.ReactNode[] = [];
-      const totalCells =
-        firstDay + daysInMonth + ((7 - ((firstDay + daysInMonth) % 7)) % 7);
-      const weekCount = Math.ceil(totalCells / 7);
-
-      for (let i = 0; i < weekCount; i++) {
-        const weekStart = new Date(
-          currentYear,
-          currentMonth,
-          1 + i * 7 - firstDay
-        );
-        const startOfYear = new Date(weekStart.getFullYear(), 0, 1);
-        const daysDiff = Math.floor(
-          (weekStart.getTime() - startOfYear.getTime()) / 86400000
-        );
-        const weekNum = Math.ceil((daysDiff + startOfYear.getDay() + 1) / 7);
-
-        weeks.push(
-          <div
-            key={`week-${i}`}
-            className={cn(
-              'flex items-center justify-center text-xs font-medium',
-              theme === 'dark' ? 'text-white/30' : 'text-black/30',
-              size === 'sm'
-                ? 'h-8 w-8'
-                : size === 'md'
-                  ? 'h-10 w-10'
-                  : 'h-12 w-12'
-            )}
-          >
-            {weekNum}
+      <section className="mb-14" id="usage">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Usage
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-4 leading-relaxed">
+          Import the component and use it in your application.
+        </p>
+        <div className="space-y-4">
+          <div>
+            <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+              Import
+            </p>
+            <CodeBlock code={tableData.usage.import} />
           </div>
-        );
-      }
-      return weeks;
-    };
-
-    const renderTimeSlots = () => {
-      if (!timeSlots) return null;
-      const selDate = selected instanceof Date ? selected : null;
-      return (
-        <div
-          className={cn(
-            'w-[130px] shrink-0 border-l pl-5',
-            theme === 'dark' ? 'border-white/[0.08]' : 'border-black/[0.08]'
-          )}
-        >
-          <p
-            className={cn(
-              'mb-3 text-base font-semibold',
-              theme === 'dark' ? 'text-white' : 'text-black'
-            )}
-          >
-            {selDate
-              ? selDate.toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  day: 'numeric',
-                })
-              : 'Select date'}
-          </p>
-          <div className="scrollbar-hide max-h-[260px] space-y-1.5 overflow-y-auto">
-            {timeSlots.map((time) => (
-              <motion.button
-                key={time}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => onTimeSelect?.(time)}
-                className={cn(
-                  'w-full rounded-[8px] border px-3 py-2 text-sm font-medium transition-all',
-                  selectedTime === time
-                    ? theme === 'dark'
-                      ? 'border-white bg-white text-black'
-                      : 'border-black bg-black text-white'
-                    : theme === 'dark'
-                      ? 'border-white/[0.08] text-white/70 hover:border-white/20 hover:bg-white/[0.05]'
-                      : 'border-black/[0.08] text-black/70 hover:border-black/20 hover:bg-black/[0.05]'
-                )}
-              >
-                {time}
-              </motion.button>
-            ))}
+          <div>
+            <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+              Basic
+            </p>
+            <CodeBlock code={tableData.usage.basic} />
           </div>
         </div>
-      );
-    };
+      </section>
 
-    const renderPresets = () => {
-      if (!presets) return null;
-      return (
-        <div
-          className={cn(
-            'w-[130px] shrink-0 space-y-0.5 border-r pr-5',
-            theme === 'dark' ? 'border-white/[0.08]' : 'border-black/[0.08]'
-          )}
-        >
-          {presets.map((preset) => (
-            <button
-              key={preset.label}
-              onClick={() => {
-                if (preset.value instanceof Date) {
-                  onSelect?.(preset.value);
-                  setCurrentMonth(preset.value.getMonth());
-                  setCurrentYear(preset.value.getFullYear());
-                } else {
-                  onSelect?.(preset.value);
-                  setCurrentMonth(preset.value.from.getMonth());
-                  setCurrentYear(preset.value.from.getFullYear());
-                }
-              }}
-              className={cn(
-                'w-full rounded-[6px] px-3 py-2 text-left text-sm font-medium transition-colors',
-                theme === 'dark'
-                  ? 'text-white/80 hover:bg-white/[0.06]'
-                  : 'text-black/80 hover:bg-black/[0.06]'
-              )}
-            >
-              {preset.label}
-            </button>
-          ))}
-        </div>
-      );
-    };
-
-    const headerContent = showMonthYearSelect ? (
-      <div className="mb-4 flex items-center gap-2">
-        <select
-          value={currentMonth}
-          onChange={(e) => setCurrentMonth(Number(e.target.value))}
-          className={cn(
-            'h-9 flex-1 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none',
-            theme === 'dark'
-              ? 'border-white/[0.08] text-white'
-              : 'border-black/[0.08] text-black'
-          )}
-        >
-          {MONTHS.map((m, i) => (
-            <option key={m} value={i}>
-              {m}
-            </option>
-          ))}
-        </select>
-        <select
-          value={currentYear}
-          onChange={(e) => setCurrentYear(Number(e.target.value))}
-          className={cn(
-            'h-9 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none',
-            theme === 'dark'
-              ? 'border-white/[0.08] text-white'
-              : 'border-black/[0.08] text-black'
-          )}
-        >
-          {Array.from({ length: 21 }, (_, i) => currentYear - 10 + i).map(
-            (y) => (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            )
-          )}
-        </select>
-      </div>
-    ) : (
-      <div className="mb-4 flex items-center justify-between">
-        {navPosition === 'top' ? (
-          <>
-            <button
-              onClick={prevMonth}
-              className={cn(
-                'flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors',
-                theme === 'dark'
-                  ? 'text-white/40 hover:bg-white/[0.06] hover:text-white'
-                  : 'text-black/40 hover:bg-black/[0.06] hover:text-black'
-              )}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <span
-              className={cn(
-                'text-base font-semibold',
-                theme === 'dark' ? 'text-white' : 'text-black'
-              )}
-            >
-              {MONTHS[currentMonth]} {currentYear}
-            </span>
-            <button
-              onClick={nextMonth}
-              className={cn(
-                'flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors',
-                theme === 'dark'
-                  ? 'text-white/40 hover:bg-white/[0.06] hover:text-white'
-                  : 'text-black/40 hover:bg-black/[0.06] hover:text-black'
-              )}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </>
-        ) : (
-          <>
-            <span
-              className={cn(
-                'text-lg font-semibold',
-                theme === 'dark' ? 'text-white' : 'text-black'
-              )}
-            >
-              {MONTHS[currentMonth]} {currentYear}
-            </span>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={prevMonth}
-                className={cn(
-                  'flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors',
-                  theme === 'dark'
-                    ? 'text-white/40 hover:bg-white/[0.06] hover:text-white'
-                    : 'text-black/40 hover:bg-black/[0.06] hover:text-black'
-                )}
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-              <button
-                onClick={nextMonth}
-                className={cn(
-                  'flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors',
-                  theme === 'dark'
-                    ? 'text-white/40 hover:bg-white/[0.06] hover:text-white'
-                    : 'text-black/40 hover:bg-black/[0.06] hover:text-black'
-                )}
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
+      <section className="mb-14" id="examples">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Examples
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-6 leading-relaxed">
+          Common use cases and configurations.
+        </p>
+        {tableData.sections.map((section) => (
+          <DocsSection
+            key={section.id}
+            title={section.title}
+            description={section.description}
+          >
+            <div className="space-y-4">
+              {section.examples.map((example, idx) => (
+                <div key={idx}>
+                  <p className="font-['inter-semi'] text-[11px] text-white/50 mb-2 uppercase tracking-wider">
+                    {example.label}
+                  </p>
+                  <ComponentPreview>{example.preview}</ComponentPreview>
+                  <div className="mt-3">
+                    <CodeBlock code={example.code} />
+                  </div>
+                </div>
+              ))}
             </div>
-          </>
-        )}
-      </div>
-    );
+          </DocsSection>
+        ))}
+      </section>
 
-    return (
-      <div
-        style={{ fontFamily: 'sans-serif' }}
-        ref={ref}
-        className={cn(
-          calendarVariants({ theme, variant, size }),
-          (timeSlots || presets) && 'flex max-w-none bg-transparent',
-          className
-        )}
-        {...props}
-      >
-        {renderPresets()}
-        <div className="flex-1 p-4 bg-transparent">
-          {headerContent}
-          <div
-            className={cn(
-              'mb-1 grid',
-              showWeekNumbers ? 'grid-cols-8' : 'grid-cols-7'
-            )}
-          >
-            {showWeekNumbers && <div />}
-            {DAYS.map((day) => (
-              <div
-                key={day}
-                className={cn(
-                  'flex items-center justify-center pb-2 text-xs font-medium',
-                  theme === 'dark' ? 'text-white/40' : 'text-black/40',
-                  size === 'sm' ? 'h-8' : size === 'md' ? 'h-10' : 'h-12'
-                )}
-              >
-                {day}
-              </div>
-            ))}
-          </div>
-          <div
-            className={cn(
-              'grid',
-              showWeekNumbers ? 'grid-cols-8' : 'grid-cols-7'
-            )}
-          >
-            {showWeekNumbers && (
-              <div className="flex flex-col">{renderWeekNumbers()}</div>
-            )}
-            {renderDays()}
-          </div>
-        </div>
-        {renderTimeSlots()}
-      </div>
-    );
-  }
-);
+      <section className="remove-scroll mb-14" id="props">
+        <h2 className="font-['inter-bold'] text-[22px] text-white/90 mb-4">
+          Props
+        </h2>
+        <p className="font-['inter-rag'] text-[14px] text-white/70 mb-5 leading-relaxed">
+          All props available on the Table component.
+        </p>
+        <PropsTable props={tableData.props} />
+      </section>
 
-Calendar.displayName = 'Calendar';
-
-
-const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
-  function DatePicker(
-    {
-      theme = 'dark',
-      placeholder = 'Pick a date',
-      value,
-      onChange,
-      className,
-      ...props
-    },
-    ref
-  ) {
-    const [open, setOpen] = React.useState(false);
-    const containerRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-      const handleClick = (e: MouseEvent) => {
-        if (
-          containerRef.current &&
-          !containerRef.current.contains(e.target as Node)
-        ) {
-          setOpen(false);
-        }
-      };
-      document.addEventListener('mousedown', handleClick);
-      return () => document.removeEventListener('mousedown', handleClick);
-    }, []);
-
-    return (
-      <div ref={containerRef} className="relative inline-block">
-        <button
-          type="button"
-          onClick={() => setOpen(!open)}
-          className={cn(
-            'flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-[10px] border px-4 text-sm transition-colors bg-transparent',
-            theme === 'dark'
-              ? 'border-white/[0.08] text-white hover:border-white/20'
-              : 'border-black/[0.08] text-black hover:border-black/20',
-            className
-          )}
-        >
-          <span
-            className={
-              value ? '' : theme === 'dark' ? 'text-white/40' : 'text-black/40'
-            }
-          >
-            {value
-              ? value.toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric',
-                  year: 'numeric',
-                })
-              : placeholder}
-          </span>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className={theme === 'dark' ? 'text-white/40' : 'text-black/40'}
-          >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-        </button>
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, y: 8, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 8, scale: 0.96 }}
-              transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-full left-0 z-50 mt-2 bg-transparent"
-            >
-              <Calendar
-                theme={theme}
-                selected={value}
-                onSelect={(date) => {
-                  if (date instanceof Date) {
-                    onChange?.(date);
-                    setOpen(false);
-                  }
-                }}
-                {...props}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  }
-);
-
-DatePicker.displayName = 'DatePicker';
-
-
-export { Calendar, DatePicker };
-export default Calendar;
+      <BottomNav items={bottomNavItems} />
+      <DocsFooter />
+    </DocsPageLayout>
+  );
+}
