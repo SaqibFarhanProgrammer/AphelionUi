@@ -17,7 +17,6 @@ import BottomNav from "@/components/docs/BottomNav";
 import DocsFooter from "@/components/docs/DocsFooter";
 import { useState } from "react";
 
-// ─── Demo Data ──────────────────────────────────────────────────────────
 
 const sampleItems = [
   {
@@ -88,7 +87,6 @@ const eventItems = [
   },
 ];
 
-// ─── Timeline Data ───────────────────────────────────────────────────────
 
 const timelineData = {
   name: "Timeline",
@@ -366,7 +364,6 @@ const timelineData = {
   HorizontalTimeline,
 } from "@/components/ui/timeline";
 
-// Use directly without layout prop
 <VerticalLeftTimeline items={items} theme="dark" dotSize="md" />
 <AlternatingTimeline items={items} theme="dark" dotSize="md" />
 <HorizontalTimeline items={items} theme="dark" dotSize="md" />`,
@@ -516,7 +513,6 @@ const bottomNavItems = [
   },
 ];
 
-// ─── Interactive Preview Component ──────────────────────────────────────
 
 function InteractiveTimelinePreview() {
   const [currentLayout, setCurrentLayout] = useState("vertical-left");
@@ -623,7 +619,6 @@ function InteractiveTimelinePreview() {
   );
 }
 
-// ─── Main Page ──────────────────────────────────────────────────────────
 
 export default function TimelinePage() {
   return (
