@@ -348,7 +348,6 @@ function InteractiveSpinnerPreview() {
 
   return (
     <div className="space-y-5">
-      {/* Controls */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <div>
           <p className="mb-2 font-['inter-semi'] text-[11px] uppercase tracking-wider text-white/50">
@@ -412,7 +411,6 @@ function InteractiveSpinnerPreview() {
         </div>
       </div>
 
-      {/* Live Preview */}
       <div
         className={`flex items-center justify-center gap-4 rounded-xl border border-white/[0.06] p-8 ${
           currentTheme === "light" ? "bg-white" : "bg-white/[0.02]"
