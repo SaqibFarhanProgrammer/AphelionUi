@@ -21,7 +21,6 @@ import BottomNav from "@/components/docs/BottomNav";
 import DocsFooter from "@/components/docs/DocsFooter";
 import { useState } from "react";
 
-// ─── Spinner Data ────────────────────────────────────────────────────────
 
 const spinnerData = {
   name: "Loading-Spinner",
@@ -218,7 +217,6 @@ const spinnerData = {
   InfiniteSpinner,
 } from "@/components/ui/loading-spinner";
 
-// Use directly without variant prop
 <CircleSpinner size="md" theme="dark" />
 <EllipsisSpinner size="lg" theme="light" />`,
           preview: (
@@ -318,7 +316,6 @@ const bottomNavItems = [
   },
 ];
 
-// ─── Interactive Preview Component ──────────────────────────────────────
 
 function InteractiveSpinnerPreview() {
   const [currentVariant, setCurrentVariant] = useState("default");
@@ -438,7 +435,6 @@ function InteractiveSpinnerPreview() {
   );
 }
 
-// ─── Main Page ──────────────────────────────────────────────────────────
 
 export default function LoadingSpinnerPage() {
   return (
