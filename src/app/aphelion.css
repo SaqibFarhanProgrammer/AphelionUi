@@ -1,0 +1,428 @@
+/* =====================================================
+   APHELION UI
+   DESIGN TOKEN SYSTEM
+   ===================================================== */
+
+
+
+/* =====================================================
+   ROOT TOKENS
+   ===================================================== */
+
+:root {
+
+
+  /* ===================================================
+     BRAND
+     =================================================== */
+
+  --aphelion-brand-primary: #1C1C1C;
+  --aphelion-brand-secondary: #656765;
+  --aphelion-brand-accent: #91989F;
+
+
+
+  /* ===================================================
+     BACKGROUND SYSTEM
+     =================================================== */
+
+  --aphelion-background: #FAFAFA;
+  --aphelion-foreground: #1C1C1C;
+
+  --aphelion-surface: #F3F3F3;
+
+  --aphelion-card: #FEFFFB;
+
+  --aphelion-popover: #FFFFFF;
+
+  --aphelion-muted: #F3F3F3;
+
+
+
+  /* ===================================================
+     PRIMARY
+     =================================================== */
+
+  --aphelion-primary:
+  var(--aphelion-brand-primary);
+
+  --aphelion-primary-foreground:#FFFFFF;
+
+  --aphelion-primary-hover:#080808;
+
+  --aphelion-primary-active:#000000;
+
+  --aphelion-primary-soft:#F3F3F3;
+
+  --aphelion-primary-border:#434343;
+
+
+
+  /* ===================================================
+     SECONDARY
+     =================================================== */
+
+  --aphelion-secondary:#F3F3F3;
+
+  --aphelion-secondary-foreground:#1C1C1C;
+
+  --aphelion-secondary-hover:#EAEAEA;
+
+  --aphelion-secondary-border:#E2E2E2;
+
+
+
+  /* ===================================================
+     TEXT
+     =================================================== */
+
+  --aphelion-text-primary:#1C1C1C;
+
+  --aphelion-text-secondary:#434343;
+
+  --aphelion-text-muted:#787878;
+
+  --aphelion-text-disabled:#BDC0BA;
+
+
+
+  /* ===================================================
+     BORDER
+     =================================================== */
+
+  --aphelion-border:#E2E2E2;
+
+  --aphelion-border-strong:#BDC0BA;
+
+  --aphelion-divider:#F3F3F3;
+
+  --aphelion-input-border:#D1D1D1;
+
+
+
+  /* ===================================================
+     INTERACTION
+     =================================================== */
+
+  --aphelion-hover:
+  rgba(0,0,0,0.04);
+
+
+  --aphelion-active:
+  rgba(0,0,0,0.08);
+
+
+  --aphelion-focus-ring:
+  rgba(28,28,28,0.4);
+
+
+  --aphelion-selected:
+  rgba(28,28,28,0.08);
+
+
+
+  /* ===================================================
+     SUCCESS
+     =================================================== */
+
+  --aphelion-success:#2E654C;
+
+  --aphelion-success-background:#EAF4EF;
+
+  --aphelion-success-foreground:#FFFFFF;
+
+  --aphelion-success-border:#B7DBC8;
+
+
+
+  /* ===================================================
+     WARNING
+     =================================================== */
+
+  --aphelion-warning:#B27C12;
+
+  --aphelion-warning-background:#FDF6E3;
+
+  --aphelion-warning-foreground:#FFFFFF;
+
+  --aphelion-warning-border:#EAD39B;
+
+
+
+  /* ===================================================
+     DESTRUCTIVE
+     =================================================== */
+
+  --aphelion-destructive:#B02A37;
+
+  --aphelion-destructive-background:#FCE8E8;
+
+  --aphelion-destructive-foreground:#FFFFFF;
+
+  --aphelion-destructive-border:#EFB5B5;
+
+
+
+  /* ===================================================
+     INFO
+     =================================================== */
+
+  --aphelion-info:#2563EB;
+
+  --aphelion-info-background:#EFF6FF;
+
+  --aphelion-info-foreground:#FFFFFF;
+
+  --aphelion-info-border:#BFDBFE;
+
+
+
+  /* ===================================================
+     RADIUS
+     =================================================== */
+
+  --aphelion-radius-sm:6px;
+
+  --aphelion-radius-md:8px;
+
+  --aphelion-radius-lg:12px;
+
+  --aphelion-radius-xl:16px;
+
+  --aphelion-radius-full:9999px;
+
+
+
+  /* ===================================================
+     SHADOW
+     =================================================== */
+
+  --aphelion-shadow-sm:
+  0 1px 2px rgba(0,0,0,.05);
+
+
+  --aphelion-shadow-md:
+  0 4px 12px rgba(0,0,0,.08);
+
+
+  --aphelion-shadow-lg:
+  0 10px 30px rgba(0,0,0,.12);
+
+
+}
+
+
+
+/* =====================================================
+   DARK THEME
+   ===================================================== */
+
+
+[data-theme="dark"] {
+
+
+  --aphelion-brand-primary:#FAFAFA;
+
+  --aphelion-brand-secondary:#91989F;
+
+  --aphelion-brand-accent:#787D7B;
+
+
+
+  --aphelion-background:#080808;
+
+  --aphelion-foreground:#FAFAFA;
+
+
+  --aphelion-surface:#141414;
+
+  --aphelion-card:#0C0C0C;
+
+  --aphelion-popover:#1C1C1C;
+
+  --aphelion-muted:#222222;
+
+
+
+  /* PRIMARY */
+
+  --aphelion-primary:
+  var(--aphelion-brand-primary);
+
+
+  --aphelion-primary-foreground:#080808;
+
+
+  --aphelion-primary-hover:#FFFFFF;
+
+
+  --aphelion-primary-active:#FFFFFF;
+
+
+  --aphelion-primary-soft:#1C1C1C;
+
+
+  --aphelion-primary-border:#434343;
+
+
+
+  /* SECONDARY */
+
+
+  --aphelion-secondary:#1C1C1C;
+
+  --aphelion-secondary-foreground:#FAFAFA;
+
+  --aphelion-secondary-hover:#222222;
+
+  --aphelion-secondary-border:#333333;
+
+
+
+  /* TEXT */
+
+
+  --aphelion-text-primary:#FAFAFA;
+
+  --aphelion-text-secondary:#BDC0BA;
+
+  --aphelion-text-muted:#787D7B;
+
+  --aphelion-text-disabled:#434343;
+
+
+
+  /* BORDER */
+
+
+  --aphelion-border:#2C2C2C;
+
+  --aphelion-border-strong:#434343;
+
+  --aphelion-divider:#1C1C1C;
+
+  --aphelion-input-border:#333333;
+
+
+
+  /* INTERACTION */
+
+
+  --aphelion-hover:
+  rgba(255,255,255,.06);
+
+
+  --aphelion-active:
+  rgba(255,255,255,.1);
+
+
+  --aphelion-focus-ring:
+  rgba(250,250,250,.4);
+
+
+
+  /* STATUS */
+
+
+  --aphelion-success:#4DAA7F;
+
+  --aphelion-success-background:#0E291E;
+
+  --aphelion-success-foreground:#080808;
+
+
+
+  --aphelion-warning:#F5B83D;
+
+  --aphelion-warning-background:#3B2A05;
+
+  --aphelion-warning-foreground:#080808;
+
+
+
+  --aphelion-destructive:#EF4444;
+
+  --aphelion-destructive-background:#451115;
+
+  --aphelion-destructive-foreground:#080808;
+
+
+
+  --aphelion-info:#60A5FA;
+
+  --aphelion-info-background:#0D2857;
+
+  --aphelion-info-foreground:#080808;
+
+
+}
+
+
+
+/* =====================================================
+   TAILWIND v4 TOKEN MAPPING
+   ===================================================== */
+
+
+@theme inline {
+
+
+  --color-aphelion-primary:
+  var(--aphelion-primary);
+
+
+  --color-aphelion-primary-foreground:
+  var(--aphelion-primary-foreground);
+
+
+  --color-aphelion-primary-hover:
+  var(--aphelion-primary-hover);
+
+
+  --color-aphelion-primary-border:
+  var(--aphelion-primary-border);
+
+
+
+  --color-aphelion-secondary:
+  var(--aphelion-secondary);
+
+
+  --color-aphelion-secondary-foreground:
+  var(--aphelion-secondary-foreground);
+
+
+
+  --color-aphelion-background:
+  var(--aphelion-background);
+
+
+  --color-aphelion-foreground:
+  var(--aphelion-foreground);
+
+
+  --color-aphelion-card:
+  var(--aphelion-card);
+
+
+  --color-aphelion-border:
+  var(--aphelion-border);
+
+
+
+  --color-aphelion-success:
+  var(--aphelion-success);
+
+
+  --color-aphelion-warning:
+  var(--aphelion-warning);
+
+
+  --color-aphelion-destructive:
+  var(--aphelion-destructive);
+
+
+  --color-aphelion-info:
+  var(--aphelion-info);
+
+}

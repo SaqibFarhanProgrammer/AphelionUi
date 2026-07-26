@@ -9,7 +9,7 @@ export default function Applicationlayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen w-full bg-red-400">
+    <div className="flex min-h-screen w-full ">
       <DocsNavbar />
 
       <aside className="w-64 shrink-0">
