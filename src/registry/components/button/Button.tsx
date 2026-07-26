@@ -25,7 +25,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-aphelion-primary text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-focus-ring',
+          'bg-aphelion-primary  text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-focus-ring',
 
         secondary:
           'bg-aphelion-secondary text-aphelion-secondary-foreground border border-aphelion-secondary-border hover:bg-aphelion-secondary-hover focus-visible:ring-aphelion-focus-ring',

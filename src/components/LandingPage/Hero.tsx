@@ -72,12 +72,12 @@ export default function Hero() {
             >
               Get Started
             </a>
-            <a
-              href="#components"
-              className="inline-flex items-center justify-center px-5 py-2.5 border border-white/[0.12] hover:border-white/[0.25] text-white/70 hover:text-white text-[13px] font-medium rounded-lg transition-all duration-200"
+            <button
+              className="py-2 px-20 test-radius bg-aphelion-background  text-black "
+              style={{ borderRadius: 'var(--aphelion-radius-md)' }}
             >
-              Browse Components
-            </a>
+              hello
+            </button>
           </div>
 
           {/* Social Proof — sirf itna hi */}
