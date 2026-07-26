@@ -24,9 +24,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary:
-          'bg-neutral-900 text-white border border-neutral-900 hover:bg-neutral-800 focus-visible:ring-neutral-900/40',
-
+        primary: 'btn-aphelion-primary border focus-visible:ring-aphelion-focus-ring',
         secondary:
           'bg-neutral-100 text-neutral-900 border border-neutral-200 hover:bg-neutral-200 focus-visible:ring-neutral-400/40',
 
