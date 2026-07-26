@@ -14,10 +14,10 @@ const buttonVariants = cva(
     'transition-all',
     'duration-200',
     'select-none',
+    'font-medium',
     'focus-visible:outline-none',
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
-    'text-white',
     'disabled:pointer-events-none',
     'disabled:opacity-50',
   ],
@@ -25,20 +25,29 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-aphelion-primary border border-aphelion-primary-border focus-visible:ring-aphelion-focus-ring',
+          'bg-aphelion-primary text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-focus-ring',
+
         secondary:
-          'bg-neutral-100 text-neutral-900 border border-neutral-200 hover:bg-neutral-200 focus-visible:ring-neutral-400/40',
+          'bg-aphelion-secondary text-aphelion-secondary-foreground border border-aphelion-secondary-border hover:bg-aphelion-secondary-hover focus-visible:ring-aphelion-focus-ring',
 
         outline:
-          'bg-transparent text-white border border-neutral-300 hover:text-black hover:bg-neutral-100 focus-visible:ring-neutral-400/40',
+          'bg-transparent text-aphelion-text-primary border border-aphelion-border hover:bg-aphelion-hover focus-visible:ring-aphelion-focus-ring',
+
+        ghost:
+          'bg-transparent text-aphelion-text-primary hover:bg-aphelion-hover focus-visible:ring-aphelion-focus-ring',
 
         destructive:
-          'bg-[#FF6467] text-red-900  hover:bg-[#FF6467]/70 focus-visible:ring-red-500/40',
+          'bg-aphelion-destructive text-aphelion-destructive-foreground border border-aphelion-destructive-border hover:bg-aphelion-destructive/80 focus-visible:ring-aphelion-destructive/40',
 
         success:
-          'bg-[#9dff64] text-greed-900  hover:bg-[#3cf716]/55 focus-visible:ring-emerald-500/40',
+          'bg-aphelion-success text-aphelion-success-foreground border border-aphelion-success-border hover:bg-aphelion-success/80 focus-visible:ring-aphelion-success/40',
 
-        link: 'bg-transparent text-neutral-900 underline-offset-4 hover:underline',
+        warning:
+          'bg-aphelion-warning text-aphelion-warning-foreground border border-aphelion-warning-border hover:bg-aphelion-warning/80 focus-visible:ring-aphelion-warning/40',
+
+        info: 'bg-aphelion-info text-aphelion-info-foreground border border-aphelion-info-border hover:bg-aphelion-info/80 focus-visible:ring-aphelion-info/40',
+
+        link: 'bg-transparent text-aphelion-text-primary underline-offset-4 hover:underline focus-visible:ring-aphelion-focus-ring',
       },
 
       size: {
@@ -50,17 +59,20 @@ const buttonVariants = cva(
         icon: 'h-10 w-10 p-0',
       },
 
-      shape: {
-        default: 'rounded-[6px]',
-        pill: 'rounded-full',
-        square: 'rounded-none',
+      radius: {
+        none: 'rounded-none',
+        sm: 'rounded-radius-aphelion-sm',
+        md: 'rounded-radius-aphelion-md',
+        lg: 'rounded-[var(--radius-aphelion-lg)]',
+        xl: 'rounded-[var(--radius-aphelion-xl)]',
+        full: 'rounded-[var(--radius-aphelion-full)]',
       },
     },
 
     defaultVariants: {
       variant: 'primary',
       size: 'md',
-      shape: 'default',
+      radius: 'md',
     },
   }
 );
@@ -92,7 +104,6 @@ function Spinner({ size = 16 }: { size?: number }) {
         strokeWidth="4"
         className="opacity-25"
       />
-
       <path
         fill="currentColor"
         className="opacity-75"
@@ -103,17 +114,12 @@ function Spinner({ size = 16 }: { size?: number }) {
 }
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   loading?: boolean;
-
   fullWidth?: boolean;
-
   leftIcon?: React.ReactNode;
-
   rightIcon?: React.ReactNode;
-  theme?: 'dark' | 'light';
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -121,7 +127,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       variant,
       size,
-      shape,
+      radius,
       loading = false,
       disabled,
       fullWidth = false,
@@ -143,14 +149,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-busy={loading}
-        style={{
-          fontFamily: 'sans-serif',
-        }}
         className={cn(
           buttonVariants({
             variant,
             size,
-            shape,
+            radius,
           }),
           fullWidth && 'w-full',
           className
@@ -162,9 +165,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           <>
             {leftIcon && <span aria-hidden="true">{leftIcon}</span>}
-
             {children}
-
             {rightIcon && <span aria-hidden="true">{rightIcon}</span>}
           </>
         )}

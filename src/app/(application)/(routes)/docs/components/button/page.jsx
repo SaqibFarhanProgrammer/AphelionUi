@@ -31,7 +31,11 @@ const buttonData = {
         {
           label: 'Primary',
           code: "<Button variant='primary'>Primary</Button>",
-          preview: <Button variant="primary">Primary</Button>,
+          preview: (
+            <Button radius={'sm'} variant="primary">
+              Primary
+            </Button>
+          ),
         },
         {
           label: 'Secondary',
