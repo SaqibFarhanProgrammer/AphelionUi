@@ -3,92 +3,136 @@ APHELION UI
 DESIGN TOKEN SYSTEM
 ===================================================== */
 
-
 /* =====================================================
 TAILWIND v4 TOKEN MAPPING
 ===================================================== */
 
 @theme inline {
-
   /* ================= COLORS ================= */
 
-  --color-aphelion-primary: var(--aphelion-primary);
-  --color-aphelion-primary-foreground: var(--aphelion-primary-foreground);
-  --color-aphelion-primary-hover: var(--aphelion-primary-hover);
-  --color-aphelion-primary-border: var(--aphelion-primary-border);
+  /* --- LIGHT MODE COLORS --- */
 
-  --color-aphelion-secondary: var(--aphelion-secondary);
-  --color-aphelion-secondary-foreground: var(--aphelion-secondary-foreground);
-  --color-aphelion-secondary-hover: var(--aphelion-secondary-hover);
-  --color-aphelion-secondary-border: var(--aphelion-secondary-border);
+  --color-light-background: var(--aphelion-light-background);
+  --color-light-foreground: var(--aphelion-light-foreground);
+  --color-light-card: var(--aphelion-light-card);
+  --color-light-popover: var(--aphelion-light-popover);
+  --color-light-muted: var(--aphelion-light-muted);
 
+  --color-light-brand-primary: var(--aphelion-light-brand-primary);
+  --color-light-brand-secondary: var(--aphelion-light-brand-secondary);
+  --color-light-brand-accent: var(--aphelion-light-brand-accent);
 
-  --color-aphelion-background: var(--aphelion-background);
-  --color-aphelion-foreground: var(--aphelion-foreground);
+  --color-light-primary: var(--aphelion-light-primary);
+  --color-light-primary-foreground: var(--aphelion-light-primary-foreground);
+  --color-light-primary-hover: var(--aphelion-light-primary-hover);
+  --color-light-primary-border: var(--aphelion-light-primary-border);
 
-  --color-aphelion-card: var(--aphelion-card);
+  --color-light-secondary: var(--aphelion-light-secondary);
+  --color-light-secondary-foreground: var(
+    --aphelion-light-secondary-foreground
+  );
+  --color-light-secondary-hover: var(--aphelion-light-secondary-hover);
+  --color-light-secondary-border: var(--aphelion-light-secondary-border);
 
-  --color-aphelion-popover: var(--aphelion-popover);
+  --color-light-text-primary: var(--aphelion-light-text-primary);
+  --color-light-text-secondary: var(--aphelion-light-text-secondary);
+  --color-light-text-muted: var(--aphelion-light-text-muted);
+  --color-light-text-disabled: var(--aphelion-light-text-disabled);
 
-  --color-aphelion-muted: var(--aphelion-muted);
+  --color-light-border: var(--aphelion-light-border);
+  --color-light-border-strong: var(--aphelion-light-border-strong);
+  --color-light-divider: var(--aphelion-light-divider);
+  --color-light-input-border: var(--aphelion-light-input-border);
 
+  --color-light-hover: var(--aphelion-light-hover);
+  --color-light-active: var(--aphelion-light-active);
+  --color-light-selected: var(--aphelion-light-selected);
+  --color-light-focus-ring: var(--aphelion-light-focus-ring);
 
-  /* TEXT */
+  --color-light-success: var(--aphelion-light-success);
+  --color-light-success-background: var(--aphelion-light-success-background);
+  --color-light-success-foreground: var(--aphelion-light-success-foreground);
+  --color-light-success-border: var(--aphelion-light-success-border);
 
-  --color-aphelion-text-primary: var(--aphelion-text-primary);
-  --color-aphelion-text-secondary: var(--aphelion-text-secondary);
-  --color-aphelion-text-muted: var(--aphelion-text-muted);
-  --color-aphelion-text-disabled: var(--aphelion-text-disabled);
+  --color-light-warning: var(--aphelion-light-warning);
+  --color-light-warning-background: var(--aphelion-light-warning-background);
+  --color-light-warning-foreground: var(--aphelion-light-warning-foreground);
+  --color-light-warning-border: var(--aphelion-light-warning-border);
 
+  --color-light-destructive: var(--aphelion-light-destructive);
+  --color-light-destructive-background: var(
+    --aphelion-light-destructive-background
+  );
+  --color-light-destructive-foreground: var(
+    --aphelion-light-destructive-foreground
+  );
+  --color-light-destructive-border: var(--aphelion-light-destructive-border);
 
+  --color-light-info: var(--aphelion-light-info);
+  --color-light-info-background: var(--aphelion-light-info-background);
+  --color-light-info-foreground: var(--aphelion-light-info-foreground);
+  --color-light-info-border: var(--aphelion-light-info-border);
 
-  /* BORDER */
+  /* --- DARK MODE COLORS --- */
 
-  --color-aphelion-border: var(--aphelion-border);
-  --color-aphelion-border-strong: var(--aphelion-border-strong);
+  --color-dark-background: var(--aphelion-dark-background);
+  --color-dark-foreground: var(--aphelion-dark-foreground);
+  --color-dark-card: var(--aphelion-dark-card);
+  --color-dark-popover: var(--aphelion-dark-popover);
+  --color-dark-muted: var(--aphelion-dark-muted);
 
-  --color-aphelion-divider: var(--aphelion-divider);
+  --color-dark-brand-primary: var(--aphelion-dark-brand-primary);
+  --color-dark-brand-secondary: var(--aphelion-dark-brand-secondary);
+  --color-dark-brand-accent: var(--aphelion-dark-brand-accent);
 
-  --color-aphelion-input-border: var(--aphelion-input-border);
+  --color-dark-primary: var(--aphelion-dark-primary);
+  --color-dark-primary-foreground: var(--aphelion-dark-primary-foreground);
+  --color-dark-primary-hover: var(--aphelion-dark-primary-hover);
+  --color-dark-primary-border: var(--aphelion-dark-primary-border);
 
+  --color-dark-secondary: var(--aphelion-dark-secondary);
+  --color-dark-secondary-foreground: var(--aphelion-dark-secondary-foreground);
+  --color-dark-secondary-hover: var(--aphelion-dark-secondary-hover);
+  --color-dark-secondary-border: var(--aphelion-dark-secondary-border);
 
+  --color-dark-text-primary: var(--aphelion-dark-text-primary);
+  --color-dark-text-secondary: var(--aphelion-dark-text-secondary);
+  --color-dark-text-muted: var(--aphelion-dark-text-muted);
+  --color-dark-text-disabled: var(--aphelion-dark-text-disabled);
 
-  /* INTERACTION */
+  --color-dark-border: var(--aphelion-dark-border);
+  --color-dark-border-strong: var(--aphelion-dark-border-strong);
+  --color-dark-divider: var(--aphelion-dark-divider);
+  --color-dark-input-border: var(--aphelion-dark-input-border);
 
-  --color-aphelion-hover: var(--aphelion-hover);
-  --color-aphelion-active: var(--aphelion-active);
-  --color-aphelion-selected: var(--aphelion-selected);
+  --color-dark-hover: var(--aphelion-dark-hover);
+  --color-dark-active: var(--aphelion-dark-active);
+  --color-dark-selected: var(--aphelion-dark-selected);
+  --color-dark-focus-ring: var(--aphelion-dark-focus-ring);
 
-  --color-aphelion-ring: var(--aphelion-focus-ring);
+  --color-dark-success: var(--aphelion-dark-success);
+  --color-dark-success-background: var(--aphelion-dark-success-background);
+  --color-dark-success-foreground: var(--aphelion-dark-success-foreground);
+  --color-dark-success-border: var(--aphelion-dark-success-border);
 
+  --color-dark-warning: var(--aphelion-dark-warning);
+  --color-dark-warning-background: var(--aphelion-dark-warning-background);
+  --color-dark-warning-foreground: var(--aphelion-dark-warning-foreground);
+  --color-dark-warning-border: var(--aphelion-dark-warning-border);
 
+  --color-dark-destructive: var(--aphelion-dark-destructive);
+  --color-dark-destructive-background: var(
+    --aphelion-dark-destructive-background
+  );
+  --color-dark-destructive-foreground: var(
+    --aphelion-dark-destructive-foreground
+  );
+  --color-dark-destructive-border: var(--aphelion-dark-destructive-border);
 
-  /* STATUS */
-
-  --color-aphelion-success: var(--aphelion-success);
-  --color-aphelion-success-background: var(--aphelion-success-background);
-  --color-aphelion-success-foreground: var(--aphelion-success-foreground);
-  --color-aphelion-success-border: var(--aphelion-success-border);
-
-
-  --color-aphelion-warning: var(--aphelion-warning);
-  --color-aphelion-warning-background: var(--aphelion-warning-background);
-  --color-aphelion-warning-foreground: var(--aphelion-warning-foreground);
-  --color-aphelion-warning-border: var(--aphelion-warning-border);
-
-
-  --color-aphelion-destructive: var(--aphelion-destructive);
-  --color-aphelion-destructive-background: var(--aphelion-destructive-background);
-  --color-aphelion-destructive-foreground: var(--aphelion-destructive-foreground);
-  --color-aphelion-destructive-border: var(--aphelion-destructive-border);
-
-
-  --color-aphelion-info: var(--aphelion-info);
-  --color-aphelion-info-background: var(--aphelion-info-background);
-  --color-aphelion-info-foreground: var(--aphelion-info-foreground);
-  --color-aphelion-info-border: var(--aphelion-info-border);
-
-
+  --color-dark-info: var(--aphelion-dark-info);
+  --color-dark-info-background: var(--aphelion-dark-info-background);
+  --color-dark-info-foreground: var(--aphelion-dark-info-foreground);
+  --color-dark-info-border: var(--aphelion-dark-info-border);
 
   /* ================= RADIUS ================= */
 
@@ -108,8 +152,6 @@ TAILWIND v4 TOKEN MAPPING
 
   --radius-aphelion-full: var(--aphelion-radius-full);
 
-
-
   /* ================= SHADOW ================= */
 
   --shadow-aphelion-sm: var(--aphelion-shadow-sm);
@@ -117,257 +159,222 @@ TAILWIND v4 TOKEN MAPPING
   --shadow-aphelion-md: var(--aphelion-shadow-md);
 
   --shadow-aphelion-lg: var(--aphelion-shadow-lg);
-
 }
-
-
 
 /* =====================================================
 LIGHT THEME TOKENS
 ===================================================== */
 
-
 :root {
-
-
   /* BRAND */
 
-  --aphelion-brand-primary:#1c1c1c;
+  --aphelion-light-brand-primary: #1c1c1c;
 
-  --aphelion-brand-secondary:#656765;
+  --aphelion-light-brand-secondary: #656765;
 
-  --aphelion-brand-accent:#91989f;
-
-
+  --aphelion-light-brand-accent: #91989f;
 
   /* BACKGROUND */
 
-  --aphelion-background:#fafafa;
+  --aphelion-light-background: #fafafa;
 
-  --aphelion-foreground:#1c1c1c;
+  --aphelion-light-foreground: #1c1c1c;
 
-  --aphelion-card:#fefffb;
+  --aphelion-light-card: #fefffb;
 
-  --aphelion-popover:#ffffff;
+  --aphelion-light-popover: #ffffff;
 
-  --aphelion-muted:#f3f3f3;
-
-
+  --aphelion-light-muted: #f3f3f3;
 
   /* PRIMARY */
 
-  --aphelion-primary:var(--aphelion-brand-primary);
+  --aphelion-light-primary: #1c1c1c;
 
-  --aphelion-primary-foreground:#ffffff;
+  --aphelion-light-primary-foreground: #ffffff;
 
-  --aphelion-primary-hover:#080808;
+  --aphelion-light-primary-hover: #080808;
 
-  --aphelion-primary-border:#434343;
-
-
+  --aphelion-light-primary-border: #434343;
 
   /* SECONDARY */
 
-  --aphelion-secondary:#f3f3f3;
+  --aphelion-light-secondary: #f3f3f3;
 
-  --aphelion-secondary-foreground:#1c1c1c;
+  --aphelion-light-secondary-foreground: #1c1c1c;
 
-  --aphelion-secondary-hover:#eaeaea;
+  --aphelion-light-secondary-hover: #eaeaea;
 
-  --aphelion-secondary-border:#e2e2e2;
-
-
+  --aphelion-light-secondary-border: #e2e2e2;
 
   /* TEXT */
 
-  --aphelion-text-primary:#1c1c1c;
+  --aphelion-light-text-primary: #1c1c1c;
 
-  --aphelion-text-secondary:#434343;
+  --aphelion-light-text-secondary: #434343;
 
-  --aphelion-text-muted:#787878;
+  --aphelion-light-text-muted: #787878;
 
-  --aphelion-text-disabled:#bdc0ba;
-
-
+  --aphelion-light-text-disabled: #bdc0ba;
 
   /* BORDER */
 
-  --aphelion-border:#e2e2e2;
+  --aphelion-light-border: #e2e2e2;
 
-  --aphelion-border-strong:#bdc0ba;
+  --aphelion-light-border-strong: #bdc0ba;
 
-  --aphelion-divider:#f3f3f3;
+  --aphelion-light-divider: #f3f3f3;
 
-  --aphelion-input-border:#d1d1d1;
-
-
+  --aphelion-light-input-border: #d1d1d1;
 
   /* INTERACTION */
 
-  --aphelion-hover:rgba(0,0,0,.04);
+  --aphelion-light-hover: rgba(0, 0, 0, 0.04);
 
-  --aphelion-active:rgba(0,0,0,.08);
+  --aphelion-light-active: rgba(0, 0, 0, 0.08);
 
-  --aphelion-selected:rgba(0,0,0,.08);
+  --aphelion-light-selected: rgba(0, 0, 0, 0.08);
 
-  --aphelion-focus-ring:rgba(28,28,28,.4);
-
-
+  --aphelion-light-focus-ring: rgba(28, 28, 28, 0.4);
 
   /* STATUS */
 
-  --aphelion-success:#2e654c;
-  --aphelion-success-background:#eaf4ef;
-  --aphelion-success-foreground:#ffffff;
-  --aphelion-success-border:#b7dbc8;
+  --aphelion-light-success: #2e654c;
+  --aphelion-light-success-background: #eaf4ef;
+  --aphelion-light-success-foreground: #ffffff;
+  --aphelion-light-success-border: #b7dbc8;
 
+  --aphelion-light-warning: #b27c12;
+  --aphelion-light-warning-background: #fdf6e3;
+  --aphelion-light-warning-foreground: #ffffff;
+  --aphelion-light-warning-border: #ead39b;
 
-  --aphelion-warning:#b27c12;
-  --aphelion-warning-background:#fdf6e3;
-  --aphelion-warning-foreground:#ffffff;
-  --aphelion-warning-border:#ead39b;
+  --aphelion-light-destructive: #b02a37;
+  --aphelion-light-destructive-background: #fce8e8;
+  --aphelion-light-destructive-foreground: #ffffff;
+  --aphelion-light-destructive-border: #efb5b5;
 
-
-  --aphelion-destructive:#b02a37;
-  --aphelion-destructive-background:#fce8e8;
-  --aphelion-destructive-foreground:#ffffff;
-  --aphelion-destructive-border:#efb5b5;
-
-
-  --aphelion-info:#2563eb;
-  --aphelion-info-background:#eff6ff;
-  --aphelion-info-foreground:#ffffff;
-  --aphelion-info-border:#bfdbfe;
-
-
+  --aphelion-light-info: #2563eb;
+  --aphelion-light-info-background: #eff6ff;
+  --aphelion-light-info-foreground: #ffffff;
+  --aphelion-light-info-border: #bfdbfe;
 
   /* RADIUS */
 
-  --aphelion-radius-none:0;
+  --aphelion-radius-none: 0;
 
-  --aphelion-radius-xs:4px;
+  --aphelion-radius-xs: 4px;
 
-  --aphelion-radius-sm:6px;
+  --aphelion-radius-sm: 6px;
 
-  --aphelion-radius-md:8px;
+  --aphelion-radius-md: 8px;
 
-  --aphelion-radius-lg:12px;
+  --aphelion-radius-lg: 12px;
 
-  --aphelion-radius-xl:16px;
+  --aphelion-radius-xl: 16px;
 
-  --aphelion-radius-2xl:20px;
+  --aphelion-radius-2xl: 20px;
 
-  --aphelion-radius-full:9999px;
-
-
+  --aphelion-radius-full: 9999px;
 
   /* SHADOW */
 
-  --aphelion-shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --aphelion-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 
-  --aphelion-shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --aphelion-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-  --aphelion-shadow-lg:0 10px 30px rgba(0,0,0,.12);
-
+  --aphelion-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
-
-
 /* =====================================================
-DARK THEME
+DARK THEME TOKENS
 ===================================================== */
 
+:root {
+  /* BRAND */
 
-[data-theme="dark"] {
+  --aphelion-dark-brand-primary: #080808;
 
+  --aphelion-dark-brand-secondary: #656765;
 
-  --aphelion-background:#080808;
+  --aphelion-dark-brand-accent: #91989f;
 
-  --aphelion-foreground:#fafafa;
+  /* BACKGROUND */
 
-  --aphelion-card:#0c0c0c;
+  --aphelion-dark-background: #080808;
 
-  --aphelion-popover:#1c1c1c;
+  --aphelion-dark-foreground: #fafafa;
 
-  --aphelion-muted:#222222;
+  --aphelion-dark-card: #0c0c0c;
 
+  --aphelion-dark-popover: #1c1c1c;
 
+  --aphelion-dark-muted: #222222;
 
-  --aphelion-primary:#fafafa;
+  /* PRIMARY */
 
-  --aphelion-primary-foreground:#080808;
+  --aphelion-dark-primary: #fafafa;
 
-  --aphelion-primary-hover:#ffffff;
+  --aphelion-dark-primary-foreground: #080808;
 
-  --aphelion-primary-border:#434343;
+  --aphelion-dark-primary-hover: #ffffff;
 
+  --aphelion-dark-primary-border: #434343;
 
+  /* SECONDARY */
 
-  --aphelion-secondary:#1c1c1c;
+  --aphelion-dark-secondary: #1c1c1c;
 
-  --aphelion-secondary-foreground:#fafafa;
+  --aphelion-dark-secondary-foreground: #fafafa;
 
-  --aphelion-secondary-hover:#222222;
+  --aphelion-dark-secondary-hover: #222222;
 
-  --aphelion-secondary-border:#333333;
+  --aphelion-dark-secondary-border: #333333;
 
+  /* TEXT */
 
+  --aphelion-dark-text-primary: #fafafa;
 
-  --aphelion-text-primary:#fafafa;
+  --aphelion-dark-text-secondary: #bdc0ba;
 
-  --aphelion-text-secondary:#bdc0ba;
+  --aphelion-dark-text-muted: #787d7b;
 
-  --aphelion-text-muted:#787d7b;
+  --aphelion-dark-text-disabled: #434343;
 
-  --aphelion-text-disabled:#434343;
+  /* BORDER */
 
+  --aphelion-dark-border: #2c2c2c;
 
+  --aphelion-dark-border-strong: #434343;
 
-  --aphelion-border:#2c2c2c;
+  --aphelion-dark-divider: #1c1c1c;
 
-  --aphelion-border-strong:#434343;
+  --aphelion-dark-input-border: #333333;
 
-  --aphelion-divider:#1c1c1c;
+  /* INTERACTION */
 
-  --aphelion-input-border:#333333;
+  --aphelion-dark-hover: rgba(255, 255, 255, 0.06);
 
+  --aphelion-dark-active: rgba(255, 255, 255, 0.1);
 
+  --aphelion-dark-selected: rgba(255, 255, 255, 0.08);
 
-  --aphelion-hover:rgba(255,255,255,.06);
+  --aphelion-dark-focus-ring: rgba(250, 250, 250, 0.4);
 
-  --aphelion-active:rgba(255,255,255,.1);
+  /* STATUS */
 
-  --aphelion-selected:rgba(255,255,255,.08);
+  --aphelion-dark-success: #4daa7f;
+  --aphelion-dark-success-background: #0e291e;
+  --aphelion-dark-success-foreground: #080808;
 
-  --aphelion-focus-ring:rgba(250,250,250,.4);
+  --aphelion-dark-warning: #f5b83d;
+  --aphelion-dark-warning-background: #3b2a05;
+  --aphelion-dark-warning-foreground: #080808;
 
+  --aphelion-dark-destructive: #ef4444;
+  --aphelion-dark-destructive-background: #451115;
+  --aphelion-dark-destructive-foreground: #080808;
 
-
-  --aphelion-success:#4daa7f;
-
-  --aphelion-success-background:#0e291e;
-
-  --aphelion-success-foreground:#080808;
-
-
-  --aphelion-warning:#f5b83d;
-
-  --aphelion-warning-background:#3b2a05;
-
-  --aphelion-warning-foreground:#080808;
-
-
-  --aphelion-destructive:#ef4444;
-
-  --aphelion-destructive-background:#451115;
-
-  --aphelion-destructive-foreground:#080808;
-
-
-  --aphelion-info:#60a5fa;
-
-  --aphelion-info-background:#0d2857;
-
-  --aphelion-info-foreground:#080808;
-
+  --aphelion-dark-info: #60a5fa;
+  --aphelion-dark-info-background: #0d2857;
+  --aphelion-dark-info-foreground: #080808;
 }
