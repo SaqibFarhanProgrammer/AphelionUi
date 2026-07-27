@@ -175,7 +175,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         <SearchIcon
           className={cn(
             'shrink-0',
-            isDark ? 'text-white/40' : 'text-neutral-400'
+            isDark ? 'text-aphelion-light-text-primary' : 'text-neutral-400'
           )}
         />
         <input
@@ -333,7 +333,7 @@ function MobileNav({ nav, logo, cta, theme = 'dark' }: MobileNavProps) {
                 <p
                   className={cn(
                     'text-sm font-medium uppercase tracking-wider',
-                    isDark ? 'text-white/40' : 'text-neutral-400'
+                    isDark ? 'text-aphelion-light-text-primary' : 'text-neutral-400'
                   )}
                 >
                   {category.name}

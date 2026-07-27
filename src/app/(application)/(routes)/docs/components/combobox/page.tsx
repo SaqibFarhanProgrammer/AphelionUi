@@ -396,7 +396,7 @@ return (
         Clear
       </button>
     </div>
-    <div className="text-sm text-white/40">
+    <div className="text-sm text-aphelion-light-text-primary">
       Selected: {value || 'none'}
     </div>
     <Combobox
@@ -438,7 +438,7 @@ return (
         Clear
       </button>
     </div>
-    <div className="text-sm text-white/40">
+    <div className="text-sm text-aphelion-light-text-primary">
       Value: {combobox.value || 'none'}
     </div>
     <Combobox
@@ -672,7 +672,7 @@ const combobox = useCombobox('banana');
           Clear
         </button>
       </div>
-      <div className="text-sm text-white/40">Selected: {value || 'none'}</div>
+      <div className="text-sm text-aphelion-light-text-primary">Selected: {value || 'none'}</div>
       <Combobox
         options={FRUITS}
         value={value}
@@ -711,7 +711,7 @@ const combobox = useCombobox('banana');
           Clear
         </button>
       </div>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Value: {combobox.value || 'none'}
       </div>
       <Combobox

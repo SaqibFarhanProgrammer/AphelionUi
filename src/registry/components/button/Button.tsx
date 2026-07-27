@@ -25,29 +25,31 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-aphelion-primary text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-ring',
+          'bg-light-primary dark:bg-dark-primary text-light-primary-foreground dark:text-dark-primary-foreground border border-light-primary-border dark:border-dark-primary-border hover:bg-light-primary-hover dark:hover:bg-dark-primary-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         secondary:
-          'bg-aphelion-secondary text-aphelion-secondary-foreground border border-aphelion-secondary-border hover:bg-aphelion-secondary-hover focus-visible:ring-aphelion-ring',
+          'bg-light-secondary dark:bg-dark-secondary text-light-secondary-foreground dark:text-dark-secondary-foreground border border-light-secondary-border dark:border-dark-secondary-border hover:bg-light-secondary-hover dark:hover:bg-dark-secondary-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         outline:
-          'bg-transparent text-aphelion-text-primary border border-aphelion-border hover:bg-aphelion-hover focus-visible:ring-aphelion-ring',
+          'bg-transparent text-light-text-primary dark:text-dark-text-primary border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         ghost:
-          'bg-transparent text-aphelion-text-primary hover:bg-aphelion-hover focus-visible:ring-aphelion-ring',
+          'bg-transparent text-light-text-primary dark:text-dark-text-primary hover:bg-light-hover dark:hover:bg-dark-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         destructive:
-          'bg-aphelion-destructive text-aphelion-destructive-foreground border border-aphelion-destructive-border hover:bg-aphelion-destructive/80 focus-visible:ring-aphelion-ring',
+          'bg-light-destructive dark:bg-dark-destructive text-light-destructive-foreground dark:text-dark-destructive-foreground border border-light-destructive-border dark:border-dark-destructive-border hover:bg-light-destructive/80 dark:hover:bg-dark-destructive/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         success:
-          'bg-aphelion-success text-aphelion-success-foreground border border-aphelion-success-border hover:bg-aphelion-success/80 focus-visible:ring-aphelion-ring',
+          'bg-light-success dark:bg-dark-success text-light-success-foreground dark:text-dark-success-foreground border border-light-success-border dark:border-dark-success-border hover:bg-light-success/80 dark:hover:bg-dark-success/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
         warning:
-          'bg-aphelion-warning text-aphelion-warning-foreground border border-aphelion-warning-border hover:bg-aphelion-warning/80 focus-visible:ring-aphelion-ring',
+          'bg-light-warning dark:bg-dark-warning text-light-warning-foreground dark:text-dark-warning-foreground border border-light-warning-border dark:border-dark-warning-border hover:bg-light-warning/80 dark:hover:bg-dark-warning/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
-        info: 'bg-aphelion-info text-aphelion-info-foreground border border-aphelion-info-border hover:bg-aphelion-info/80 focus-visible:ring-aphelion-ring',
+        info:
+          'bg-light-info dark:bg-dark-info text-light-info-foreground dark:text-dark-info-foreground border border-light-info-border dark:border-dark-info-border hover:bg-light-info/80 dark:hover:bg-dark-info/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
 
-        link: 'bg-transparent text-aphelion-text-primary underline-offset-4 hover:underline focus-visible:ring-aphelion-ring',
+        link:
+          'bg-transparent text-light-text-primary dark:text-dark-text-primary underline-offset-4 hover:underline focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
       },
 
       size: {
@@ -60,12 +62,14 @@ const buttonVariants = cva(
       },
 
       radius: {
-        none: 'rounded-none',
-        sm: 'rounded-radius-aphelion-sm',
-        md: 'rounded-radius-aphelion-md',
-        lg: 'rounded-[var(--radius-aphelion-lg)]',
-        xl: 'rounded-[var(--radius-aphelion-xl)]',
-        full: 'rounded-[var(--radius-aphelion-full)]',
+        none: 'rounded-aphelion-none',
+        xs: 'rounded-aphelion-xs',
+        sm: 'rounded-aphelion-sm',
+        md: 'rounded-aphelion-md',
+        lg: 'rounded-aphelion-lg',
+        xl: 'rounded-aphelion-xl',
+        '2xl': 'rounded-aphelion-2xl',
+        full: 'rounded-aphelion-full',
       },
     },
 

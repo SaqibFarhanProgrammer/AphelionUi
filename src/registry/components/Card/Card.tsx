@@ -237,7 +237,7 @@ const helperVariants = cva(['block', 'mt-1.5', 'text-xs'], {
   variants: {
     theme: {
       light: 'text-neutral-500',
-      dark: 'text-white/40',
+      dark: 'text-aphelion-light-text-primary',
     },
   },
   defaultVariants: {
@@ -1266,7 +1266,7 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
           <div
             className={cn(
               'pointer-events-none absolute top-0 right-3 bottom-0 flex items-center',
-              theme === 'dark' ? 'text-white/40' : 'text-black/40'
+              theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-black/40'
             )}
           >
             <ChevronDown size={16} strokeWidth={2.5} />

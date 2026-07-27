@@ -168,12 +168,12 @@ const spinnerData = {
           label: "Page Loading",
           code: `<div className="flex flex-col items-center gap-3 py-8">
   <Spinner size="xl" variant="pinwheel" theme="dark" />
-  <p className="text-sm text-white/40">Loading content...</p>
+  <p className="text-sm text-aphelion-light-text-primary">Loading content...</p>
 </div>`,
           preview: (
             <div className="flex flex-col items-center gap-3 py-8">
               <Spinner size="xl" variant="pinwheel" theme="dark" />
-              <p className="text-sm text-white/40">Loading content...</p>
+              <p className="text-sm text-aphelion-light-text-primary">Loading content...</p>
             </div>
           ),
         },
@@ -223,35 +223,35 @@ const spinnerData = {
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <DefaultSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Default</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Default</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <CircleSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Circle</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Circle</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <PinwheelSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Pinwheel</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Pinwheel</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <CircleFilledSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Filled</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Filled</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <EllipsisSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Ellipsis</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Ellipsis</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <RingSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Ring</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Ring</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <BarsSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Bars</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Bars</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <InfiniteSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-white/40">Infinite</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">Infinite</span>
               </div>
             </div>
           ),
@@ -423,7 +423,7 @@ function InteractiveSpinnerPreview() {
         />
         <span
           className={`text-sm ${
-            currentTheme === "light" ? "text-black/60" : "text-white/40"
+            currentTheme === "light" ? "text-black/60" : "text-aphelion-light-text-primary"
           }`}
         >
           {currentVariant} • {currentSize} • {currentTheme}

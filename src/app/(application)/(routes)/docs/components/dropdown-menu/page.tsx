@@ -671,7 +671,7 @@ function ControlledDropdownPreview() {
       >
         Close
       </button>
-      <span className="text-sm text-white/40">
+      <span className="text-sm text-aphelion-light-text-primary">
         State: {open ? "Open" : "Closed"}
       </span>
     </div>

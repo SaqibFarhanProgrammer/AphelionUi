@@ -598,8 +598,7 @@ add({
 />`,
           preview: (
             <Alert
-              theme="light"
-              variant="error"
+              theme="dark"
               size="lg"
               width="lg"
               title="Payment Failed"
@@ -607,7 +606,7 @@ add({
               dismissible
               actions={
                 <>
-                  <Button className="text-sm font-medium text-red-400 hover:text-red-300 transition-colors">
+                  <Button  variant={"primary"} className="">
                     Retry
                   </Button>
                   <Button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">

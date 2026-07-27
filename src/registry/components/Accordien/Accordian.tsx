@@ -6,12 +6,25 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// ─── Utility ─────────────────────────────────────────────────────────────
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Helper: Theme-based class resolver ──────────────────────────────────
 
+function themeClass(
+  theme: 'light' | 'dark' | undefined,
+  lightClass: string,
+  darkClass: string
+): string {
+  if (theme === 'light') return lightClass;
+  if (theme === 'dark') return darkClass;
+  return `${lightClass} ${darkClass}`;
+}
+
+// ─── Accordion Variants ──────────────────────────────────────────────────
 
 const accordionVariants = cva(['w-full'], {
   variants: {
@@ -31,29 +44,31 @@ const accordionVariants = cva(['w-full'], {
     },
   },
   compoundVariants: [
-    { theme: 'dark', variant: 'default', className: '' },
-    {
-      theme: 'dark',
-      variant: 'bordered',
-      className: 'border border-white/[0.08] rounded-[12px] overflow-hidden',
-    },
-    {
-      theme: 'dark',
-      variant: 'card',
-      className:
-        'border border-white/[0.08] rounded-[12px] overflow-hidden bg-white/[0.02]',
-    },
+    // ✨ LIGHT THEME
     { theme: 'light', variant: 'default', className: '' },
     {
       theme: 'light',
       variant: 'bordered',
-      className: 'border border-black/[0.08] rounded-[12px] overflow-hidden',
+      className: 'border border-light-border rounded-xl overflow-hidden',
     },
     {
       theme: 'light',
       variant: 'card',
       className:
-        'border border-black/[0.08] rounded-[12px] overflow-hidden bg-black/[0.02]',
+        'border border-light-border rounded-xl overflow-hidden bg-light-secondary',
+    },
+    // ✨ DARK THEME
+    { theme: 'dark', variant: 'default', className: '' },
+    {
+      theme: 'dark',
+      variant: 'bordered',
+      className: 'border border-dark-border rounded-xl overflow-hidden',
+    },
+    {
+      theme: 'dark',
+      variant: 'card',
+      className:
+        'border border-dark-border rounded-xl overflow-hidden bg-dark-secondary',
     },
   ],
   defaultVariants: {
@@ -62,6 +77,8 @@ const accordionVariants = cva(['w-full'], {
     size: 'md',
   },
 });
+
+// ─── Item Variants ───────────────────────────────────────────────────────
 
 const itemVariants = cva(['w-full'], {
   variants: {
@@ -76,12 +93,38 @@ const itemVariants = cva(['w-full'], {
     },
   },
   compoundVariants: [
-    { theme: 'dark', variant: 'default', className: 'border-white/[0.08]' },
-    { theme: 'dark', variant: 'bordered', className: 'border-white/[0.06]' },
-    { theme: 'dark', variant: 'card', className: 'border-white/[0.06]' },
-    { theme: 'light', variant: 'default', className: 'border-black/[0.08]' },
-    { theme: 'light', variant: 'bordered', className: 'border-black/[0.06]' },
-    { theme: 'light', variant: 'card', className: 'border-black/[0.06]' },
+    // ✨ LIGHT THEME
+    {
+      theme: 'light',
+      variant: 'default',
+      className: 'border-light-divider',
+    },
+    {
+      theme: 'light',
+      variant: 'bordered',
+      className: 'border-light-divider',
+    },
+    {
+      theme: 'light',
+      variant: 'card',
+      className: 'border-light-divider',
+    },
+    // ✨ DARK THEME
+    {
+      theme: 'dark',
+      variant: 'default',
+      className: 'border-dark-divider',
+    },
+    {
+      theme: 'dark',
+      variant: 'bordered',
+      className: 'border-dark-divider',
+    },
+    {
+      theme: 'dark',
+      variant: 'card',
+      className: 'border-dark-divider',
+    },
   ],
   defaultVariants: {
     theme: 'dark',
@@ -89,12 +132,15 @@ const itemVariants = cva(['w-full'], {
   },
 });
 
+// ─── Trigger Variants ────────────────────────────────────────────────────
+
 const triggerVariants = cva(
   [
     'flex',
     'w-full',
     'items-center',
     'justify-between',
+    
     'gap-4',
     'text-left',
     'transition-colors',
@@ -103,12 +149,26 @@ const triggerVariants = cva(
     'outline-none',
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
+    'font-medium',
+          "bg-aphelion-light-foreground",
+
   ],
   {
     variants: {
       theme: {
-        dark: 'text-white hover:bg-white/[0.02] focus-visible:ring-white/20',
-        light: 'text-black hover:bg-black/[0.02] focus-visible:ring-black/20',
+        light: [
+          'text-light-text-primary',
+          'hover:bg-light-hover',
+          "bg-aphelion-light-background",
+          'focus-visible:ring-light-focus-ring',
+        ],
+        dark: [
+          'text-dark-text-primary',
+          "bg-aphelion-light-foreground",
+
+          'hover:bg-dark-hover',
+          'focus-visible:ring-dark-focus-ring',
+        ],
       },
       size: {
         sm: 'px-4 py-3 text-sm',
@@ -123,11 +183,13 @@ const triggerVariants = cva(
   }
 );
 
+// ─── Content Variants ────────────────────────────────────────────────────
+
 const contentVariants = cva(['overflow-hidden'], {
   variants: {
     theme: {
-      dark: 'text-white/60',
-      light: 'text-black/60',
+      light: 'text-light-text-muted',
+      dark: 'text-dark-text-muted',
     },
     size: {
       sm: 'px-4 pb-3 text-sm',
@@ -141,6 +203,7 @@ const contentVariants = cva(['overflow-hidden'], {
   },
 });
 
+// ─── Chevron Icon ────────────────────────────────────────────────────────
 
 function ChevronIcon({
   open,
@@ -149,6 +212,9 @@ function ChevronIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
+  const iconColor =
+    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+
   return (
     <motion.svg
       width="16"
@@ -161,15 +227,14 @@ function ChevronIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? 180 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn(
-        'shrink-0',
-        theme === 'dark' ? 'text-white/40' : 'text-black/40'
-      )}
+      className={cn('shrink-0', iconColor)}
     >
       <path d="M6 9l6 6 6-6" />
     </motion.svg>
   );
 }
+
+// ─── Left Chevron Icon ───────────────────────────────────────────────────
 
 function LeftChevronIcon({
   open,
@@ -178,6 +243,9 @@ function LeftChevronIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
+  const iconColor =
+    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+
   return (
     <motion.svg
       width="16"
@@ -190,15 +258,14 @@ function LeftChevronIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? -90 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn(
-        'shrink-0',
-        theme === 'dark' ? 'text-white/40' : 'text-black/40'
-      )}
+      className={cn('shrink-0', iconColor)}
     >
       <path d="M9 18l6-6-6-6" />
     </motion.svg>
   );
 }
+
+// ─── Plus Minus Icon ─────────────────────────────────────────────────────
 
 function PlusMinusIcon({
   open,
@@ -207,11 +274,14 @@ function PlusMinusIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
+  const iconColor =
+    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+
   return (
     <motion.span
       className={cn(
         'inline-flex h-5 w-5 shrink-0 items-center justify-center text-lg leading-none font-light',
-        theme === 'dark' ? 'text-white/50' : 'text-black/50'
+        iconColor
       )}
       animate={{ rotate: open ? 90 : 0 }}
       transition={{ duration: 0.2 }}
@@ -234,6 +304,7 @@ function PlusMinusIcon({
   );
 }
 
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface AccordionItem {
   id: string;
@@ -259,6 +330,7 @@ export interface AccordionProps
   contentClassName?: string;
 }
 
+// ─── Accordion Component ─────────────────────────────────────────────────
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   function Accordion(
@@ -377,6 +449,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
 
 Accordion.displayName = 'Accordion';
 
+// ─── useAccordion Hook ───────────────────────────────────────────────────
 
 export function useAccordion(defaultOpen: string[] = []) {
   const [openItems, setOpenItems] = React.useState<string[]>(defaultOpen);
@@ -399,6 +472,7 @@ export function useAccordion(defaultOpen: string[] = []) {
   };
 }
 
+// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Accordion,

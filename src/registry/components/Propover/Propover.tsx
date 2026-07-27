@@ -591,7 +591,7 @@ const PopoverHeader = React.forwardRef<HTMLDivElement, PopoverHeaderProps>(
             className={cn(
               "inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition-colors",
               theme === "dark"
-                ? "text-white/40 hover:bg-white/[0.08] hover:text-white"
+                ? "text-aphelion-light-text-primary hover:bg-white/[0.08] hover:text-white"
                 : "text-black/40 hover:bg-black/[0.08] hover:text-black",
             )}
             aria-label="Close"
@@ -1109,7 +1109,7 @@ function PopoverShare({
           className={cn(
             "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors",
             theme === "dark"
-              ? "text-white/40 hover:bg-white/[0.08] hover:text-white"
+              ? "text-aphelion-light-text-primary hover:bg-white/[0.08] hover:text-white"
               : "text-black/40 hover:bg-black/[0.08] hover:text-black",
           )}
           aria-label="Copy URL"

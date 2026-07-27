@@ -319,7 +319,7 @@ return (
       <button onClick={() => setIsOpen(true)}>Open Sheet</button>
       <button onClick={() => setIsOpen(false)}>Close Sheet</button>
     </div>
-    <div className="text-sm text-white/40">
+    <div className="text-sm text-aphelion-light-text-primary">
       Status: {isOpen ? 'Open' : 'Closed'}
     </div>
     <Sheet
@@ -353,7 +353,7 @@ return (
       <button onClick={sheet.onClose}>Close</button>
       <button onClick={sheet.onToggle}>Toggle</button>
     </div>
-    <div className="text-sm text-white/40">
+    <div className="text-sm text-aphelion-light-text-primary">
       Status: {sheet.open ? 'Open' : 'Closed'}
     </div>
     <Sheet
@@ -687,7 +687,7 @@ function ControlledSheetPreview() {
           Close Sheet
         </button>
       </div>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Status: {isOpen ? 'Open' : 'Closed'}
       </div>
       <Sheet
@@ -748,7 +748,7 @@ function HookSheetPreview() {
           Toggle
         </button>
       </div>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Status: {sheet.open ? 'Open' : 'Closed'}
       </div>
       <Sheet

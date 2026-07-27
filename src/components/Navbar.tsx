@@ -43,7 +43,7 @@ export default function Navbar() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full text-white/40 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+            className="flex items-center justify-center w-8 h-8 rounded-full text-aphelion-light-text-primary hover:text-white hover:bg-white/[0.06] transition-all duration-200"
             aria-label="GitHub"
           >
             <FaGithub size={15} />
@@ -52,7 +52,7 @@ export default function Navbar() {
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full text-white/40 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+            className="flex items-center justify-center w-8 h-8 rounded-full text-aphelion-light-text-primary hover:text-white hover:bg-white/[0.06] transition-all duration-200"
             aria-label="X (Twitter)"
           >
             <FaXTwitter size={14} strokeWidth={1.8} />

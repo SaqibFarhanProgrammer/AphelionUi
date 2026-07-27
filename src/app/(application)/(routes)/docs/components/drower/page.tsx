@@ -274,7 +274,7 @@ const drawerData = {
     {Array.from({ length: 12 }, (_, i) => (
       <div key={i} className="rounded-lg border border-white/10 p-3">
         <h4 className="text-white/80">Item {i + 1}</h4>
-        <p className="text-sm text-white/40">Description for item {i + 1}.</p>
+        <p className="text-sm text-aphelion-light-text-primary">Description for item {i + 1}.</p>
       </div>
     ))}
   </div>
@@ -297,7 +297,7 @@ return (
   <div className="flex items-center gap-3">
     <Button onClick={() => setOpen(true)}>Open</Button>
     <Button variant="outline" onClick={() => setOpen(false)}>Close</Button>
-    <span className="text-sm text-white/40">{open ? "Open" : "Closed"}</span>
+    <span className="text-sm text-aphelion-light-text-primary">{open ? "Open" : "Closed"}</span>
     <Drawer open={open} onOpenChange={setOpen} side="right" title="Controlled">
       <p>Content</p>
     </Drawer>
@@ -670,7 +670,7 @@ function DrawerLongContentPreview() {
           {Array.from({ length: 8 }, (_, i) => (
             <div key={i} className="rounded-lg border border-white/10 p-3">
               <h4 className="text-sm text-white/80">Item {i + 1}</h4>
-              <p className="text-xs text-white/40">
+              <p className="text-xs text-aphelion-light-text-primary">
                 Description for item {i + 1}.
               </p>
             </div>
@@ -692,7 +692,7 @@ function DrawerControlledPreview() {
       <Button variant="outline" onClick={() => setOpen(false)} size="sm">
         Close
       </Button>
-      <span className="text-sm text-white/40">
+      <span className="text-sm text-aphelion-light-text-primary">
         State: {open ? 'Open' : 'Closed'}
       </span>
       <Drawer
@@ -782,7 +782,7 @@ function DrawerHookPreview() {
       <Button variant="outline" onClick={drawer.onToggle} size="sm">
         Toggle
       </Button>
-      <span className="text-sm text-white/40">
+      <span className="text-sm text-aphelion-light-text-primary">
         {drawer.open ? 'Open' : 'Closed'}
       </span>
       <Drawer

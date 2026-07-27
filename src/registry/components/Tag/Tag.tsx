@@ -655,7 +655,7 @@
                 open={isOpen}
                 className={cn(
                 "shrink-0 ml-auto",
-                theme === "dark" ? "text-white/40" : "text-neutral-400"
+                theme === "dark" ? "text-aphelion-light-text-primary" : "text-neutral-400"
                 )}
             />
             </div>
@@ -669,7 +669,7 @@
             <span
                 className={cn(
                 "block mt-1.5 text-xs",
-                theme === "dark" ? "text-white/40" : "text-neutral-500"
+                theme === "dark" ? "text-aphelion-light-text-primary" : "text-neutral-500"
                 )}
             >
                 {helperText}
@@ -750,7 +750,7 @@
                             className={cn(
                                 "text-xs font-semibold uppercase tracking-wider",
                                 theme === "dark"
-                                ? "text-white/40"
+                                ? "text-aphelion-light-text-primary"
                                 : "text-neutral-400"
                             )}
                             >

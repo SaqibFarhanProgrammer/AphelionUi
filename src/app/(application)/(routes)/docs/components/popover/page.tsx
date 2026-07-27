@@ -481,7 +481,7 @@ return (
       <button onClick={() => setIsOpen(true)} className="...">Open</button>
       <button onClick={() => setIsOpen(false)} className="...">Close</button>
     </div>
-    <div className="text-sm text-white/40">Status: {isOpen ? 'Open' : 'Closed'}</div>
+    <div className="text-sm text-aphelion-light-text-primary">Status: {isOpen ? 'Open' : 'Closed'}</div>
     <Popover open={isOpen} onOpenChange={setIsOpen} triggerText="Controlled" triggerVariant="solid">
       <PopoverBody>
         <p className="text-sm text-white/60">Controlled externally</p>
@@ -509,7 +509,7 @@ return (
       <button onClick={popover.closePopover}>Close</button>
       <button onClick={popover.toggle}>Toggle</button>
     </div>
-    <div className="text-sm text-white/40">Status: {popover.open ? 'Open' : 'Closed'}</div>
+    <div className="text-sm text-aphelion-light-text-primary">Status: {popover.open ? 'Open' : 'Closed'}</div>
     <Popover open={popover.open} onOpenChange={popover.setOpen} triggerText="Hook" triggerVariant="solid">
       <PopoverBody>
         <p className="text-sm text-white/60">Controlled by usePopover hook</p>
@@ -806,7 +806,7 @@ function ControlledPopoverPreview() {
           Close
         </button>
       </div>
-      <div className="text-sm text-white/40">Status: {isOpen ? 'Open' : 'Closed'}</div>
+      <div className="text-sm text-aphelion-light-text-primary">Status: {isOpen ? 'Open' : 'Closed'}</div>
       <Popover open={isOpen} onOpenChange={setIsOpen} triggerText="Controlled" triggerVariant="solid">
         <PopoverBody>
           <p className="text-sm text-white/60">Controlled externally</p>
@@ -840,7 +840,7 @@ function HookPopoverPreview() {
           Toggle
         </button>
       </div>
-      <div className="text-sm text-white/40">Status: {popover.open ? 'Open' : 'Closed'}</div>
+      <div className="text-sm text-aphelion-light-text-primary">Status: {popover.open ? 'Open' : 'Closed'}</div>
       <Popover open={popover.open} onOpenChange={popover.setOpen} triggerText="Hook" triggerVariant="solid">
         <PopoverBody>
           <p className="text-sm text-white/60">Controlled by usePopover hook</p>

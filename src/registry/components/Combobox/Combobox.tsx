@@ -140,7 +140,7 @@ const groupLabelVariants = cva(
   {
     variants: {
       theme: {
-        dark: 'text-white/40',
+        dark: 'text-aphelion-light-text-primary',
         light: 'text-black/40',
       },
     },
@@ -357,7 +357,7 @@ function ChevronDownIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? 180 : 0 }}
       transition={{ duration: 0.2 }}
-      className={theme === 'dark' ? 'text-white/40' : 'text-black/40'}
+      className={theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-black/40'}
     >
       <path d="M6 9l6 6 6-6" />
     </motion.svg>
@@ -787,7 +787,7 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
           <span
             className={cn(
               'block mt-1.5 text-xs',
-              theme === 'dark' ? 'text-white/40' : 'text-neutral-500'
+              theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-neutral-500'
             )}
           >
             {helperText}

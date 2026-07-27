@@ -370,7 +370,7 @@ const timelineData = {
           preview: (
             <div className="space-y-6">
               <div>
-                <p className="mb-2 text-[11px] uppercase tracking-wider text-white/40">VerticalLeftTimeline</p>
+                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">VerticalLeftTimeline</p>
                 <VerticalLeftTimeline
                   items={sampleItems.slice(0, 2)}
                   theme="dark"
@@ -378,7 +378,7 @@ const timelineData = {
                 />
               </div>
               <div>
-                <p className="mb-2 text-[11px] uppercase tracking-wider text-white/40">HorizontalTimeline</p>
+                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">HorizontalTimeline</p>
                 <HorizontalTimeline
                   items={sampleItems.slice(0, 3)}
                   theme="dark"

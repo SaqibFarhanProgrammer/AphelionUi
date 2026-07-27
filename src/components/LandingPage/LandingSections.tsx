@@ -328,7 +328,7 @@ export function Testimonials() {
                   <p className="text-xs text-white/25 mt-1">{t.handle}</p>
                 </div>
               </div>
-              <p className="text-sm text-white/40 leading-relaxed flex-1">
+              <p className="text-sm text-aphelion-light-text-primary leading-relaxed flex-1">
                 {t.content}
               </p>
             </motion.div>
@@ -557,7 +557,7 @@ export function PricingSection() {
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2.5">
                     <div className="w-1 h-1 rounded-full bg-white/30" />
-                    <span className="text-sm text-white/40">{feature}</span>
+                    <span className="text-sm text-aphelion-light-text-primary">{feature}</span>
                   </li>
                 ))}
               </ul>

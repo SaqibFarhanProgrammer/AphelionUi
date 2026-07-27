@@ -245,21 +245,21 @@ function DropdownContent({
           onClick={onBack}
           className="relative mx-1 flex w-[calc(100%-8px)] items-center gap-2.5 rounded-lg px-3 py-2 text-left text-[13px] transition-all duration-150 outline-none text-white/70 hover:bg-white/[0.06] hover:text-white cursor-pointer"
         >
-          <ChevronLeftIcon className="flex-shrink-0 text-white/40" />
+          <ChevronLeftIcon className="flex-shrink-0 text-aphelion-light-text-primary" />
           <span className="font-medium">Back</span>
         </button>
       )}
 
       {/* Title (when not at root) */}
       {!isRoot && currentNav.title && (
-        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-white/40 uppercase">
+        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase">
           {currentNav.title}
         </div>
       )}
 
       {/* Root label */}
       {isRoot && (
-        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-white/40 uppercase">
+        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase">
           Menu Actions
         </div>
       )}
@@ -325,7 +325,7 @@ function DropdownContent({
 
             {/* Submenu arrow */}
             {isSubmenu && (
-              <ChevronRightIcon className="flex-shrink-0 text-white/40" />
+              <ChevronRightIcon className="flex-shrink-0 text-aphelion-light-text-primary" />
             )}
 
             {/* Shortcut */}
@@ -668,7 +668,7 @@ export function DropdownMenuLabel({
 }) {
   return (
     <div
-      className={`mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-white/40 uppercase ${className}`}
+      className={`mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase ${className}`}
       style={{ fontFamily: 'sans-serif' }}
     >
       {children}

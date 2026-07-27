@@ -25,7 +25,7 @@ function Step({
   return (
     <div className="relative">
       <div className="absolute -left-2.5 -top-2.5 w-7 h-7 rounded-full bg-[#0A0A0A] border border-white/[0.08] flex items-center justify-center">
-        <span className="font-['inter-semi'] text-[14px] text-white/40">
+        <span className="font-['inter-semi'] text-[14px] text-aphelion-light-text-primary">
           {number}
         </span>
       </div>

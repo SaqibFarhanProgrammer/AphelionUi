@@ -658,7 +658,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               className={cn(
                 "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                 theme === "dark"
-                  ? "text-white/40 hover:bg-white/10 hover:text-white"
+                  ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
                   : "text-black/40 hover:bg-black/10 hover:text-black",
               )}
             >
@@ -688,7 +688,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               className={cn(
                 "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                 theme === "dark"
-                  ? "text-white/40 hover:bg-white/10 hover:text-white"
+                  ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
                   : "text-black/40 hover:bg-black/10 hover:text-black",
               )}
             >
@@ -722,7 +722,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 className={cn(
                   "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                   theme === "dark"
-                    ? "text-white/40 hover:bg-white/10 hover:text-white"
+                    ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
                     : "text-black/40 hover:bg-black/10 hover:text-black",
                 )}
               >
@@ -744,7 +744,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 className={cn(
                   "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
                   theme === "dark"
-                    ? "text-white/40 hover:bg-white/10 hover:text-white"
+                    ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
                     : "text-black/40 hover:bg-black/10 hover:text-black",
                 )}
               >
@@ -792,7 +792,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 key={day}
                 className={cn(
                   "flex items-center justify-center pb-2 text-xs font-medium",
-                  theme === "dark" ? "text-white/40" : "text-black/40",
+                  theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40",
                   size === "sm" ? "h-8" : size === "md" ? "h-10" : "h-12",
                 )}
               >
@@ -865,7 +865,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         >
           <span
             className={
-              value ? "" : theme === "dark" ? "text-white/40" : "text-black/40"
+              value ? "" : theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40"
             }
           >
             {value
@@ -883,7 +883,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
-            className={theme === "dark" ? "text-white/40" : "text-black/40"}
+            className={theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40"}
           >
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
             <line x1="16" y1="2" x2="16" y2="6" />

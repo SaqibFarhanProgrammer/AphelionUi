@@ -711,7 +711,7 @@ function ControlledAccordionPreview() {
           Open Item 3
         </button>
       </div>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Currently open: {openItems.length ? openItems.join(', ') : 'None'}
       </div>
       <Accordion
@@ -776,7 +776,7 @@ function HookAccordionPreview() {
           Toggle Item 3
         </button>
       </div>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Open:{' '}
         {accordion.openItems.length ? accordion.openItems.join(', ') : 'None'}
       </div>

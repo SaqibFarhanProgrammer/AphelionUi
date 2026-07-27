@@ -578,7 +578,7 @@ function SingleCalendarPreview() {
           variant="bordered"
         />
       </CalendarWrapper>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
       </div>
     </div>
@@ -599,7 +599,7 @@ function RangeCalendarPreview() {
           presets={presets}
         />
       </CalendarWrapper>
-      <div className="text-sm text-white/40 space-y-1">
+      <div className="text-sm text-aphelion-light-text-primary space-y-1">
         <p>From: <span className="text-white/70">{range?.from ? range.from.toDateString() : 'None'}</span></p>
         <p>To: <span className="text-white/70">{range?.to ? range.to.toDateString() : 'None'}</span></p>
       </div>
@@ -620,7 +620,7 @@ function MultipleCalendarPreview() {
           variant="bordered"
         />
       </CalendarWrapper>
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Selected ({dates.length}):{' '}
         <span className="text-white/70">
           {dates.length ? dates.map((d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })).join(', ') : 'None'}
@@ -648,7 +648,7 @@ function TimeSlotCalendarPreview() {
           size="lg"
         />
       </CalendarWrapper>
-      <div className="text-sm text-white/40 space-y-1">
+      <div className="text-sm text-aphelion-light-text-primary space-y-1">
         <p>Date: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span></p>
         <p>Time: <span className="text-white/70">{time || 'None'}</span></p>
       </div>
@@ -670,7 +670,7 @@ function PresetCalendarPreview() {
           presets={presets}
         />
       </CalendarWrapper>
-      <div className="text-sm text-white/40 space-y-1">
+      <div className="text-sm text-aphelion-light-text-primary space-y-1">
         <p>From: <span className="text-white/70">{range?.from ? range.from.toDateString() : 'None'}</span></p>
         <p>To: <span className="text-white/70">{range?.to ? range.to.toDateString() : 'None'}</span></p>
       </div>
@@ -689,7 +689,7 @@ function DatePickerPreview({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
         theme={theme}
         variant="bordered"
       />
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
       </div>
     </div>
@@ -712,7 +712,7 @@ function DatePickerWithPresetsPreview() {
           { label: 'Next Week', value: new Date(Date.now() + 7 * 86400000) },
         ]}
       />
-      <div className="text-sm text-white/40">
+      <div className="text-sm text-aphelion-light-text-primary">
         Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
       </div>
     </div>

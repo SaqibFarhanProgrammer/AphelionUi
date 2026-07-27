@@ -248,7 +248,7 @@ LIGHT THEME TOKENS
   --aphelion-light-warning-foreground: #ffffff;
   --aphelion-light-warning-border: #ead39b;
 
-  --aphelion-light-destructive: #b02a37;
+  --aphelion-light-destructive: #FF6467;
   --aphelion-light-destructive-background: #fce8e8;
   --aphelion-light-destructive-foreground: #ffffff;
   --aphelion-light-destructive-border: #efb5b5;
@@ -370,7 +370,7 @@ DARK THEME TOKENS
   --aphelion-dark-warning-background: #3b2a05;
   --aphelion-dark-warning-foreground: #080808;
 
-  --aphelion-dark-destructive: #ef4444;
+  --aphelion-dark-destructive: #FF6467;
   --aphelion-dark-destructive-background: #451115;
   --aphelion-dark-destructive-foreground: #080808;
 

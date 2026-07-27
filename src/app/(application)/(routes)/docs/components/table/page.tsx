@@ -107,7 +107,7 @@ const userColumns = [
         <Avatar src={row.avatar} fallback={row.name} />
         <div>
           <div className="font-medium">{row.name}</div>
-          <div className="text-xs text-white/40">{row.email}</div>
+          <div className="text-xs text-aphelion-light-text-primary">{row.email}</div>
         </div>
       </div>
     ),
@@ -346,7 +346,7 @@ const data = [
         <Avatar src={row.avatar} fallback={row.name} />
         <div>
           <div className="font-medium">{row.name}</div>
-          <div className="text-xs text-white/40">{row.email}</div>
+          <div className="text-xs text-aphelion-light-text-primary">{row.email}</div>
         </div>
       </div>
     ),
@@ -370,7 +370,7 @@ const data = [
                       <Avatar src={row.avatar} fallback={row.name} />
                       <div>
                         <div className="font-medium">{row.name}</div>
-                        <div className="text-xs text-white/40">{row.email}</div>
+                        <div className="text-xs text-aphelion-light-text-primary">{row.email}</div>
                       </div>
                     </div>
                   ),

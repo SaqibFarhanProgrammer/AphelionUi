@@ -39,7 +39,7 @@ export default function AboutSection() {
               <span className="text-white text-[32px] md:text-[40px] font-bold leading-none tracking-[-0.02em]">
                 50+
               </span>
-              <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
+              <p className="text-aphelion-light-text-primary text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
                 UI Components
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function AboutSection() {
               <span className="text-white text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
                 100%
               </span>
-              <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
+              <p className="text-aphelion-light-text-primary text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
                 Customizable
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function AboutSection() {
               <span className="text-white font-[a] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
                 v4
               </span>
-              <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
+              <p className="text-aphelion-light-text-primary text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
                 Tailwind CSS
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function AboutSection() {
               <span className="text-white font-[b] text-[32px] md:text-[36px] font-bold leading-none tracking-[-0.02em]">
                 16
               </span>
-              <p className="text-white/40 text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
+              <p className="text-aphelion-light-text-primary text-[11px] font-medium uppercase tracking-[0.08em] mt-1">
                 Next.js App Router
               </p>
             </div>
