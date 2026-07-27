@@ -25,29 +25,29 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-aphelion-primary  text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-focus-ring',
+          'bg-aphelion-primary text-aphelion-primary-foreground border border-aphelion-primary-border hover:bg-aphelion-primary-hover focus-visible:ring-aphelion-ring',
 
         secondary:
-          'bg-aphelion-secondary text-aphelion-secondary-foreground border border-aphelion-secondary-border hover:bg-aphelion-secondary-hover focus-visible:ring-aphelion-focus-ring',
+          'bg-aphelion-secondary text-aphelion-secondary-foreground border border-aphelion-secondary-border hover:bg-aphelion-secondary-hover focus-visible:ring-aphelion-ring',
 
         outline:
-          'bg-transparent text-aphelion-text-primary border border-aphelion-border hover:bg-aphelion-hover focus-visible:ring-aphelion-focus-ring',
+          'bg-transparent text-aphelion-text-primary border border-aphelion-border hover:bg-aphelion-hover focus-visible:ring-aphelion-ring',
 
         ghost:
-          'bg-transparent text-aphelion-text-primary hover:bg-aphelion-hover focus-visible:ring-aphelion-focus-ring',
+          'bg-transparent text-aphelion-text-primary hover:bg-aphelion-hover focus-visible:ring-aphelion-ring',
 
         destructive:
-          'bg-aphelion-destructive text-aphelion-destructive-foreground border border-aphelion-destructive-border hover:bg-aphelion-destructive/80 focus-visible:ring-aphelion-destructive/40',
+          'bg-aphelion-destructive text-aphelion-destructive-foreground border border-aphelion-destructive-border hover:bg-aphelion-destructive/80 focus-visible:ring-aphelion-ring',
 
         success:
-          'bg-aphelion-success text-aphelion-success-foreground border border-aphelion-success-border hover:bg-aphelion-success/80 focus-visible:ring-aphelion-success/40',
+          'bg-aphelion-success text-aphelion-success-foreground border border-aphelion-success-border hover:bg-aphelion-success/80 focus-visible:ring-aphelion-ring',
 
         warning:
-          'bg-aphelion-warning text-aphelion-warning-foreground border border-aphelion-warning-border hover:bg-aphelion-warning/80 focus-visible:ring-aphelion-warning/40',
+          'bg-aphelion-warning text-aphelion-warning-foreground border border-aphelion-warning-border hover:bg-aphelion-warning/80 focus-visible:ring-aphelion-ring',
 
-        info: 'bg-aphelion-info text-aphelion-info-foreground border border-aphelion-info-border hover:bg-aphelion-info/80 focus-visible:ring-aphelion-info/40',
+        info: 'bg-aphelion-info text-aphelion-info-foreground border border-aphelion-info-border hover:bg-aphelion-info/80 focus-visible:ring-aphelion-ring',
 
-        link: 'bg-transparent text-aphelion-text-primary underline-offset-4 hover:underline focus-visible:ring-aphelion-focus-ring',
+        link: 'bg-transparent text-aphelion-text-primary underline-offset-4 hover:underline focus-visible:ring-aphelion-ring',
       },
 
       size: {

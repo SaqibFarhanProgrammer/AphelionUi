@@ -10,12 +10,13 @@ import {
   StatsSection,
   Testimonials,
 } from '@/components/LandingPage/LandingSections';
+import AphelionTokenShowcase from '@/components/ui/Demo';
 
 function page() {
   return (
     <div className="bg-black">
       <Navbar />
-      <Hero />
+      {/* <Hero />
       <LogoCloud />
       <About />
       <FeaturesSection />
@@ -23,8 +24,11 @@ function page() {
       <StatsSection />
       <Testimonials />
       <CTASection />
-      <Footer />
+      <Footer /> */}
+      <AphelionTokenShowcase/>
     </div>
+
+
   );
 }
 

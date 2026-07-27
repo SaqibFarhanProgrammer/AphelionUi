@@ -72,15 +72,11 @@ export default function Hero() {
             >
               Get Started
             </a>
-            <button
-              className="py-2 px-20 test-radius bg-aphelion-background  text-black "
-              style={{ borderRadius: 'var(--aphelion-radius-md)' }}
-            >
+            <button className="py-2 px-20 test-radius rounded-aphelion-md bg-aphelion-destructive  text-black ">
               hello
             </button>
           </div>
 
-          {/* Social Proof — sirf itna hi */}
         </div>
       </div>
     </section>
