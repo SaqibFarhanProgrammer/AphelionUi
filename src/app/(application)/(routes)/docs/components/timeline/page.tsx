@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Timeline,
@@ -6,98 +6,96 @@ import {
   VerticalLeftTimeline,
   AlternatingTimeline,
   HorizontalTimeline,
-} from "@/registry/components/Timeline/Timeline";
-import InstallCommand from "@/components/docs/InstallCommand";
-import CodeBlock from "@/components/docs/CodeBlock";
-import ComponentPreview from "@/components/docs/ComponentPreview";
-import PropsTable from "@/components/docs/PropsTable";
-import DocsSection from "@/components/docs/DocsSection";
-import DocsPageLayout from "@/components/docs/DocsPageLayout";
-import BottomNav from "@/components/docs/BottomNav";
-import DocsFooter from "@/components/docs/DocsFooter";
-import { useState } from "react";
-import { Button } from "@/registry/components/button/Button";
-
+} from '@/registry/components/Timeline/Timeline';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
+import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 const sampleItems = [
   {
-    id: "1",
-    date: "2024-01-15",
-    title: "Project Kickoff",
-    description: "Initial project planning and team alignment meeting.",
-    state: "completed" as const,
+    id: '1',
+    date: '2024-01-15',
+    title: 'Project Kickoff',
+    description: 'Initial project planning and team alignment meeting.',
+    state: 'completed' as const,
   },
   {
-    id: "2",
-    date: "2024-01-22",
-    title: "Design Phase",
-    description: "UI/UX design and prototyping completed.",
-    state: "completed" as const,
+    id: '2',
+    date: '2024-01-22',
+    title: 'Design Phase',
+    description: 'UI/UX design and prototyping completed.',
+    state: 'completed' as const,
   },
   {
-    id: "3",
-    date: "2024-02-01",
-    title: "Development Sprint 1",
-    description: "Core features implementation and testing.",
-    state: "active" as const,
+    id: '3',
+    date: '2024-02-01',
+    title: 'Development Sprint 1',
+    description: 'Core features implementation and testing.',
+    state: 'active' as const,
   },
   {
-    id: "4",
-    date: "2024-02-15",
-    title: "Development Sprint 2",
-    description: "Advanced features and performance optimization.",
-    state: "pending" as const,
+    id: '4',
+    date: '2024-02-15',
+    title: 'Development Sprint 2',
+    description: 'Advanced features and performance optimization.',
+    state: 'pending' as const,
   },
   {
-    id: "5",
-    date: "2024-03-01",
-    title: "Project Launch",
-    description: "Final release and deployment to production.",
-    state: "pending" as const,
+    id: '5',
+    date: '2024-03-01',
+    title: 'Project Launch',
+    description: 'Final release and deployment to production.',
+    state: 'pending' as const,
   },
 ];
 
 const eventItems = [
   {
-    id: "1",
-    date: "9:00 AM",
-    title: "Registration",
-    description: "Check-in and welcome coffee.",
-    state: "completed" as const,
+    id: '1',
+    date: '9:00 AM',
+    title: 'Registration',
+    description: 'Check-in and welcome coffee.',
+    state: 'completed' as const,
   },
   {
-    id: "2",
-    date: "10:00 AM",
-    title: "Keynote Speech",
-    description: "Opening presentation by CEO.",
-    state: "completed" as const,
+    id: '2',
+    date: '10:00 AM',
+    title: 'Keynote Speech',
+    description: 'Opening presentation by CEO.',
+    state: 'completed' as const,
   },
   {
-    id: "3",
-    date: "11:30 AM",
-    title: "Workshop Session",
-    description: "Hands-on workshop with experts.",
-    state: "active" as const,
+    id: '3',
+    date: '11:30 AM',
+    title: 'Workshop Session',
+    description: 'Hands-on workshop with experts.',
+    state: 'active' as const,
   },
   {
-    id: "4",
-    date: "1:00 PM",
-    title: "Lunch Break",
-    description: "Networking and refreshments.",
-    state: "pending" as const,
+    id: '4',
+    date: '1:00 PM',
+    title: 'Lunch Break',
+    description: 'Networking and refreshments.',
+    state: 'pending' as const,
   },
 ];
 
-
 const timelineData = {
-  name: "Timeline",
-  slug: "timeline",
-  title: "Timeline",
+  name: 'Timeline',
+  slug: 'timeline',
+  title: 'Timeline',
   description:
-    "A versatile timeline component with three layouts (vertical-left, alternating, horizontal), three item states, two themes, and customizable dot sizes. Built with pure Tailwind CSS.",
-  category: "Display",
+    'A versatile timeline component with three layouts (vertical-left, alternating, horizontal), three item states, two themes, and customizable dot sizes. Built with pure Tailwind CSS.',
+  category: 'Display',
   installation: {
-    command: "shadcn@latest add aphelio/c/timeline",
+    command: 'shadcn@latest add aphelio/c/timeline',
   },
   usage: {
     import: `import {
@@ -118,12 +116,13 @@ const timelineData = {
   },
   sections: [
     {
-      id: "layouts",
-      title: "Layouts",
-      description: "Three distinct layouts for different use cases and screen sizes.",
+      id: 'layouts',
+      title: 'Layouts',
+      description:
+        'Three distinct layouts for different use cases and screen sizes.',
       examples: [
         {
-          label: "Vertical Left",
+          label: 'Vertical Left',
           code: `<Timeline
   items={items}
   layout="vertical-left"
@@ -139,7 +138,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Alternating",
+          label: 'Alternating',
           code: `<Timeline
   items={items}
   layout="alternating"
@@ -155,7 +154,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Horizontal",
+          label: 'Horizontal',
           code: `<Timeline
   items={items}
   layout="horizontal"
@@ -163,23 +162,20 @@ const timelineData = {
   dotSize="md"
 />`,
           preview: (
-            <HorizontalTimeline
-              items={sampleItems}
-              theme="dark"
-              dotSize="md"
-            />
+            <HorizontalTimeline items={sampleItems} theme="dark" dotSize="md" />
           ),
         },
       ],
     },
-   
+
     {
-      id: "states",
-      title: "States",
-      description: "Three visual states to indicate item progress: completed, active, and pending.",
+      id: 'states',
+      title: 'States',
+      description:
+        'Three visual states to indicate item progress: completed, active, and pending.',
       examples: [
         {
-          label: "Completed",
+          label: 'Completed',
           code: `<Timeline
   items={[
     { id: "1", title: "Task Done", state: "completed" },
@@ -191,11 +187,11 @@ const timelineData = {
             <VerticalLeftTimeline
               items={[
                 {
-                  id: "1",
-                  date: "2024-01-15",
-                  title: "Task Completed",
-                  description: "All requirements fulfilled.",
-                  state: "completed",
+                  id: '1',
+                  date: '2024-01-15',
+                  title: 'Task Completed',
+                  description: 'All requirements fulfilled.',
+                  state: 'completed',
                 },
               ]}
               theme="dark"
@@ -204,7 +200,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Active",
+          label: 'Active',
           code: `<Timeline
   items={[
     { id: "1", title: "In Progress", state: "active" },
@@ -216,11 +212,11 @@ const timelineData = {
             <VerticalLeftTimeline
               items={[
                 {
-                  id: "1",
-                  date: "2024-01-15",
-                  title: "Task In Progress",
-                  description: "Currently working on this task.",
-                  state: "active",
+                  id: '1',
+                  date: '2024-01-15',
+                  title: 'Task In Progress',
+                  description: 'Currently working on this task.',
+                  state: 'active',
                 },
               ]}
               theme="dark"
@@ -229,7 +225,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Pending",
+          label: 'Pending',
           code: `<Timeline
   items={[
     { id: "1", title: "Awaiting", state: "pending" },
@@ -241,11 +237,11 @@ const timelineData = {
             <VerticalLeftTimeline
               items={[
                 {
-                  id: "1",
-                  date: "2024-01-15",
-                  title: "Task Pending",
-                  description: "Awaiting action.",
-                  state: "pending",
+                  id: '1',
+                  date: '2024-01-15',
+                  title: 'Task Pending',
+                  description: 'Awaiting action.',
+                  state: 'pending',
                 },
               ]}
               theme="dark"
@@ -256,12 +252,12 @@ const timelineData = {
       ],
     },
     {
-      id: "dot-sizes",
-      title: "Dot Sizes",
-      description: "Three dot sizes for different visual emphasis.",
+      id: 'dot-sizes',
+      title: 'Dot Sizes',
+      description: 'Three dot sizes for different visual emphasis.',
       examples: [
         {
-          label: "Small",
+          label: 'Small',
           code: `<Timeline items={items} layout="vertical-left" dotSize="sm" />`,
           preview: (
             <VerticalLeftTimeline
@@ -272,7 +268,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Medium (Default)",
+          label: 'Medium (Default)',
           code: `<Timeline items={items} layout="vertical-left" dotSize="md" />`,
           preview: (
             <VerticalLeftTimeline
@@ -283,7 +279,7 @@ const timelineData = {
           ),
         },
         {
-          label: "Large",
+          label: 'Large',
           code: `<Timeline items={items} layout="vertical-left" dotSize="lg" />`,
           preview: (
             <VerticalLeftTimeline
@@ -296,12 +292,12 @@ const timelineData = {
       ],
     },
     {
-      id: "project-timeline",
-      title: "Project Timeline",
-      description: "A real-world project timeline example with mixed states.",
+      id: 'project-timeline',
+      title: 'Project Timeline',
+      description: 'A real-world project timeline example with mixed states.',
       examples: [
         {
-          label: "Development Roadmap",
+          label: 'Development Roadmap',
           code: `<Timeline
   layout="vertical-left"
   theme="dark"
@@ -316,32 +312,32 @@ const timelineData = {
             <VerticalLeftTimeline
               items={[
                 {
-                  id: "1",
-                  date: "Week 1",
-                  title: "Research & Discovery",
-                  description: "User interviews and market analysis.",
-                  state: "completed",
+                  id: '1',
+                  date: 'Week 1',
+                  title: 'Research & Discovery',
+                  description: 'User interviews and market analysis.',
+                  state: 'completed',
                 },
                 {
-                  id: "2",
-                  date: "Week 2-3",
-                  title: "Design & Prototyping",
-                  description: "Wireframes and interactive prototypes.",
-                  state: "completed",
+                  id: '2',
+                  date: 'Week 2-3',
+                  title: 'Design & Prototyping',
+                  description: 'Wireframes and interactive prototypes.',
+                  state: 'completed',
                 },
                 {
-                  id: "3",
-                  date: "Week 4-6",
-                  title: "Development",
-                  description: "Frontend and backend implementation.",
-                  state: "active",
+                  id: '3',
+                  date: 'Week 4-6',
+                  title: 'Development',
+                  description: 'Frontend and backend implementation.',
+                  state: 'active',
                 },
                 {
-                  id: "4",
-                  date: "Week 7",
-                  title: "Testing & Deployment",
-                  description: "QA testing and production deployment.",
-                  state: "pending",
+                  id: '4',
+                  date: 'Week 7',
+                  title: 'Testing & Deployment',
+                  description: 'QA testing and production deployment.',
+                  state: 'pending',
                 },
               ]}
               theme="dark"
@@ -351,14 +347,15 @@ const timelineData = {
         },
       ],
     },
- 
+
     {
-      id: "individual-exports",
-      title: "Individual Exports",
-      description: "Import each layout directly for tree-shaking and explicit usage.",
+      id: 'individual-exports',
+      title: 'Individual Exports',
+      description:
+        'Import each layout directly for tree-shaking and explicit usage.',
       examples: [
         {
-          label: "Named Layout Exports",
+          label: 'Named Layout Exports',
           code: `import {
   VerticalLeftTimeline,
   AlternatingTimeline,
@@ -371,7 +368,9 @@ const timelineData = {
           preview: (
             <div className="space-y-6">
               <div>
-                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">VerticalLeftTimeline</p>
+                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">
+                  VerticalLeftTimeline
+                </p>
                 <VerticalLeftTimeline
                   items={sampleItems.slice(0, 2)}
                   theme="dark"
@@ -379,7 +378,9 @@ const timelineData = {
                 />
               </div>
               <div>
-                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">HorizontalTimeline</p>
+                <p className="mb-2 text-[11px] uppercase tracking-wider text-aphelion-light-text-primary">
+                  HorizontalTimeline
+                </p>
                 <HorizontalTimeline
                   items={sampleItems.slice(0, 3)}
                   theme="dark"
@@ -391,150 +392,150 @@ const timelineData = {
         },
       ],
     },
-  
   ],
   props: [
     {
-      name: "layout",
+      name: 'layout',
       type: "'vertical-left' | 'alternating' | 'horizontal'",
       default: '"vertical-left"',
-      description: "Layout style of the timeline.",
+      description: 'Layout style of the timeline.',
     },
     {
-      name: "theme",
+      name: 'theme',
       type: "'dark' | 'light'",
       default: '"dark"',
-      description: "Color theme. Dark uses white dots/lines, light uses black.",
+      description: 'Color theme. Dark uses white dots/lines, light uses black.',
     },
     {
-      name: "items",
-      type: "TimelineItem[]",
-      default: "required",
-      description: "Array of timeline items with id, title, description, date, and state.",
+      name: 'items',
+      type: 'TimelineItem[]',
+      default: 'required',
+      description:
+        'Array of timeline items with id, title, description, date, and state.',
     },
     {
-      name: "dotSize",
+      name: 'dotSize',
       type: "'sm' | 'md' | 'lg'",
       default: '"md"',
-      description: "Size of the dot markers.",
+      description: 'Size of the dot markers.',
     },
     {
-      name: "className",
-      type: "string",
+      name: 'className',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the timeline container.",
+      description: 'Additional classes for the timeline container.',
     },
     {
-      name: "itemClassName",
-      type: "string",
+      name: 'itemClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for each timeline item.",
+      description: 'Additional classes for each timeline item.',
     },
     {
-      name: "dotClassName",
-      type: "string",
+      name: 'dotClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for each dot marker.",
+      description: 'Additional classes for each dot marker.',
     },
     {
-      name: "lineClassName",
-      type: "string",
+      name: 'lineClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the connecting line.",
+      description: 'Additional classes for the connecting line.',
     },
     {
-      name: "contentClassName",
-      type: "string",
+      name: 'contentClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the content area.",
+      description: 'Additional classes for the content area.',
     },
     {
-      name: "dateClassName",
-      type: "string",
+      name: 'dateClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the date text.",
+      description: 'Additional classes for the date text.',
     },
     {
-      name: "titleClassName",
-      type: "string",
+      name: 'titleClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the title text.",
+      description: 'Additional classes for the title text.',
     },
     {
-      name: "descriptionClassName",
-      type: "string",
+      name: 'descriptionClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the description text.",
+      description: 'Additional classes for the description text.',
     },
   ],
   itemProps: [
     {
-      name: "id",
-      type: "string",
-      default: "required",
-      description: "Unique identifier for the timeline item.",
+      name: 'id',
+      type: 'string',
+      default: 'required',
+      description: 'Unique identifier for the timeline item.',
     },
     {
-      name: "title",
-      type: "string",
-      default: "required",
-      description: "Main title text displayed for the item.",
+      name: 'title',
+      type: 'string',
+      default: 'required',
+      description: 'Main title text displayed for the item.',
     },
     {
-      name: "description",
-      type: "string",
-      default: "undefined",
-      description: "Optional description text below the title.",
+      name: 'description',
+      type: 'string',
+      default: 'undefined',
+      description: 'Optional description text below the title.',
     },
     {
-      name: "date",
-      type: "string",
-      default: "undefined",
-      description: "Optional date or timestamp displayed above the title.",
+      name: 'date',
+      type: 'string',
+      default: 'undefined',
+      description: 'Optional date or timestamp displayed above the title.',
     },
     {
-      name: "state",
+      name: 'state',
       type: "'completed' | 'active' | 'pending'",
-      default: "auto-detected",
-      description: "Visual state of the item. Auto-detected from position if not provided.",
+      default: 'auto-detected',
+      description:
+        'Visual state of the item. Auto-detected from position if not provided.',
     },
   ],
 };
 
 const bottomNavItems = [
   {
-    label: "Loading-Spinner",
-    href: "/docs/components/loading-spinner",
-    description: "Loading indicators with multiple variants.",
+    label: 'Loading-Spinner',
+    href: '/docs/components/loading-spinner',
+    description: 'Loading indicators with multiple variants.',
   },
   {
-    label: "Accordion",
-    href: "/docs/components/accordion",
-    description: "Collapsible content sections.",
+    label: 'Accordion',
+    href: '/docs/components/accordion',
+    description: 'Collapsible content sections.',
   },
 ];
 
-
 function InteractiveTimelinePreview() {
-  const [currentLayout, setCurrentLayout] = useState("vertical-left");
-  const [currentTheme, setCurrentTheme] = useState("dark");
-  const [currentDotSize, setCurrentDotSize] = useState("md");
+  const [currentLayout, setCurrentLayout] = useState('vertical-left');
+  const [currentTheme, setCurrentTheme] = useState('dark');
+  const [currentDotSize, setCurrentDotSize] = useState('md');
 
   const layouts = [
-    { id: "vertical-left", label: "Vertical Left" },
-    { id: "alternating", label: "Alternating" },
-    { id: "horizontal", label: "Horizontal" },
+    { id: 'vertical-left', label: 'Vertical Left' },
+    { id: 'alternating', label: 'Alternating' },
+    { id: 'horizontal', label: 'Horizontal' },
   ];
 
   const themes = [
-    { id: "dark", label: "Dark" },
-    { id: "light", label: "Light" },
+    { id: 'dark', label: 'Dark' },
+    { id: 'light', label: 'Light' },
   ];
 
   const dotSizes = [
-    { id: "sm", label: "Small" },
-    { id: "md", label: "Medium" },
-    { id: "lg", label: "Large" },
+    { id: 'sm', label: 'Small' },
+    { id: 'md', label: 'Medium' },
+    { id: 'lg', label: 'Large' },
   ];
 
   return (
@@ -552,8 +553,8 @@ function InteractiveTimelinePreview() {
                 onClick={() => setCurrentLayout(l.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentLayout === l.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {l.label}
@@ -572,8 +573,8 @@ function InteractiveTimelinePreview() {
                 onClick={() => setCurrentTheme(t.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentTheme === t.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {t.label}
@@ -592,8 +593,8 @@ function InteractiveTimelinePreview() {
                 onClick={() => setCurrentDotSize(s.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentDotSize === s.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {s.label}
@@ -606,7 +607,7 @@ function InteractiveTimelinePreview() {
       {/* Live Preview */}
       <div
         className={`rounded-aphelion-xl border border-white/[0.06] p-6 ${
-          currentTheme === "light" ? "bg-white" : "bg-white/[0.02]"
+          currentTheme === 'light' ? 'bg-white' : 'bg-white/[0.02]'
         }`}
       >
         <Timeline
@@ -620,7 +621,6 @@ function InteractiveTimelinePreview() {
   );
 }
 
-
 export default function TimelinePage() {
   return (
     <DocsPageLayout
@@ -628,16 +628,16 @@ export default function TimelinePage() {
       title={timelineData.title}
       description={timelineData.description}
       sideMapGroup={[
-        { id: "installation", title: "Installation" },
-        { id: "usage", title: "Usage" },
-        { id: "examples", title: "Examples" },
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
         ...timelineData.sections.map((section) => ({
           id: section.id,
           title: section.title,
           level: 3,
         })),
-        { id: "props", title: "Props" },
-        { id: "item-props", title: "TimelineItem Props" },
+        { id: 'props', title: 'Props' },
+        { id: 'item-props', title: 'TimelineItem Props' },
       ]}
     >
       <section className="mb-14" id="installation">

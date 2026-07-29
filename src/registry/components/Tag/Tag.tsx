@@ -1,219 +1,213 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { AnimatePresence, motion } from "framer-motion";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-
 const tagsContainerVariants = cva(
   [
-    "relative",
-    "w-full",
-    "min-h-[42px]",
-    "flex",
-    "flex-wrap",
-    "items-center",
-    "gap-2",
-    "border",
-    "rounded-aphelion-lg",
-    "px-3",
-    "py-2",
-    "transition-all",
-    "duration-150",
-    "cursor-text",
-    "focus-within:ring-2",
-    "focus-within:ring-offset-1",
+    'relative',
+    'w-full',
+    'min-h-[42px]',
+    'flex',
+    'flex-wrap',
+    'items-center',
+    'gap-2',
+    'border',
+    'rounded-aphelion-lg',
+    'px-3',
+    'py-2',
+    'transition-all',
+    'duration-150',
+    'cursor-text',
+    'focus-within:ring-2',
+    'focus-within:ring-offset-1',
   ],
   {
     variants: {
       theme: {
         light: [
-          "bg-light-background",
-          "border-light-input-border",
-          "text-light-text-primary",
-          "focus-within:border-light-border-strong",
-          "focus-within:ring-light-focus-ring",
-          "focus-within:ring-offset-light-background",
+          'bg-light-background',
+          'border-light-input-border',
+          'text-light-text-primary',
+          'focus-within:border-light-border-strong',
+          'focus-within:ring-light-focus-ring',
+          'focus-within:ring-offset-light-background',
         ],
         dark: [
-          "bg-dark-background",
-          "border-dark-input-border",
-          "text-dark-text-primary",
-          "focus-within:border-dark-border-strong",
-          "focus-within:ring-dark-focus-ring",
-          "focus-within:ring-offset-dark-background",
+          'bg-dark-background',
+          'border-dark-input-border',
+          'text-dark-text-primary',
+          'focus-within:border-dark-border-strong',
+          'focus-within:ring-dark-focus-ring',
+          'focus-within:ring-offset-dark-background',
         ],
       },
       disabled: {
-        true: "opacity-50 cursor-not-allowed",
-        false: "",
+        true: 'opacity-50 cursor-not-allowed',
+        false: '',
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
       disabled: false,
     },
   }
 );
 
-
 const tagVariants = cva(
   [
-    "inline-flex",
-    "items-center",
-    "gap-1.5",
-    "px-2.5",
-    "py-1",
-    "rounded-aphelion-full",
-    "text-sm",
-    "font-medium",
-    "transition-all",
-    "duration-150",
-    "select-none",
+    'inline-flex',
+    'items-center',
+    'gap-1.5',
+    'px-2.5',
+    'py-1',
+    'rounded-aphelion-full',
+    'text-sm',
+    'font-medium',
+    'transition-all',
+    'duration-150',
+    'select-none',
   ],
   {
     variants: {
       theme: {
-        light: "bg-light-primary text-light-primary-foreground",
-        dark: "bg-dark-primary text-dark-primary-foreground",
+        light: 'bg-light-primary text-light-primary-foreground',
+        dark: 'bg-dark-primary text-dark-primary-foreground',
       },
       size: {
-        sm: "text-xs px-2 py-0.5",
-        md: "text-sm px-2.5 py-1",
-        lg: "text-base px-3 py-1.5",
+        sm: 'text-xs px-2 py-0.5',
+        md: 'text-sm px-2.5 py-1',
+        lg: 'text-base px-3 py-1.5',
       },
     },
     defaultVariants: {
-      theme: "dark",
-      size: "md",
+      theme: 'dark',
+      size: 'md',
     },
   }
 );
-
 
 const dropdownVariants = cva(
   [
-    "absolute",
-    "z-50",
-    "w-full",
-    "mt-1.5",
-    "rounded-aphelion-xl",
-    "border",
-    "overflow-hidden",
-    "outline-none",
+    'absolute',
+    'z-50',
+    'w-full',
+    'mt-1.5',
+    'rounded-aphelion-xl',
+    'border',
+    'overflow-hidden',
+    'outline-none',
   ],
   {
     variants: {
       theme: {
-        light: ["bg-light-card", "border-light-border", "shadow-aphelion-lg"],
-        dark: ["bg-dark-card", "border-dark-border", "shadow-aphelion-lg"],
+        light: ['bg-light-card', 'border-light-border', 'shadow-aphelion-lg'],
+        dark: ['bg-dark-card', 'border-dark-border', 'shadow-aphelion-lg'],
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
 
-
 const optionVariants = cva(
   [
-    "relative",
-    "flex",
-    "items-center",
-    "gap-3",
-    "px-3",
-    "py-2.5",
-    "text-sm",
-    "rounded-aphelion-lg",
-    "cursor-pointer",
-    "select-none",
-    "transition-all",
-    "duration-150",
-    "outline-none",
-    "mx-1",
+    'relative',
+    'flex',
+    'items-center',
+    'gap-3',
+    'px-3',
+    'py-2.5',
+    'text-sm',
+    'rounded-aphelion-lg',
+    'cursor-pointer',
+    'select-none',
+    'transition-all',
+    'duration-150',
+    'outline-none',
+    'mx-1',
   ],
   {
     variants: {
       theme: {
         light: [
-          "text-light-text-secondary",
-          "hover:bg-light-hover",
-          "hover:text-light-text-primary",
+          'text-light-text-secondary',
+          'hover:bg-light-hover',
+          'hover:text-light-text-primary',
         ],
         dark: [
-          "text-dark-text-secondary",
-          "hover:bg-dark-hover",
-          "hover:text-dark-text-primary",
+          'text-dark-text-secondary',
+          'hover:bg-dark-hover',
+          'hover:text-dark-text-primary',
         ],
       },
       selected: {
-        true: "",
-        false: "",
+        true: '',
+        false: '',
       },
       highlighted: {
-        true: "",
-        false: "",
+        true: '',
+        false: '',
       },
     },
     compoundVariants: [
       {
-        theme: "light",
+        theme: 'light',
         selected: true,
-        className: "bg-light-selected text-light-text-primary font-medium",
+        className: 'bg-light-selected text-light-text-primary font-medium',
       },
       {
-        theme: "dark",
+        theme: 'dark',
         selected: true,
-        className: "bg-dark-selected text-dark-text-primary font-medium",
+        className: 'bg-dark-selected text-dark-text-primary font-medium',
       },
       {
-        theme: "light",
+        theme: 'light',
         highlighted: true,
-        className: "bg-light-hover",
+        className: 'bg-light-hover',
       },
       {
-        theme: "dark",
+        theme: 'dark',
         highlighted: true,
-        className: "bg-dark-hover",
+        className: 'bg-dark-hover',
       },
     ],
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
       selected: false,
       highlighted: false,
     },
   }
 );
 
-
 const searchInputVariants = cva(
   [
-    "w-full",
-    "bg-transparent",
-    "outline-none",
-    "text-sm",
-    "placeholder:text-light-text-muted",
+    'w-full',
+    'bg-transparent',
+    'outline-none',
+    'text-sm',
+    'placeholder:text-light-text-muted',
   ],
   {
     variants: {
       theme: {
-        light: "text-light-text-primary",
-        dark: "text-dark-text-primary",
+        light: 'text-light-text-primary',
+        dark: 'text-dark-text-primary',
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
-
 
 export interface TagOption {
   value: string;
@@ -226,8 +220,9 @@ export interface TagGroup {
   options: TagOption[];
 }
 
-export interface TagsInputProps
-  extends VariantProps<typeof tagsContainerVariants> {
+export interface TagsInputProps extends VariantProps<
+  typeof tagsContainerVariants
+> {
   options?: TagOption[];
   groups?: TagGroup[];
   value?: string[];
@@ -246,11 +241,10 @@ export interface TagsInputProps
   maxDropdownHeight?: string;
   className?: string;
   containerClassName?: string;
-  tagSize?: "sm" | "md" | "lg";
+  tagSize?: 'sm' | 'md' | 'lg';
   onCreateTag?: (value: string) => void;
   emptyMessage?: string;
 }
-
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -333,7 +327,6 @@ function ChevronDownIcon({
   );
 }
 
-
 const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
   function TagsInput(
     {
@@ -342,8 +335,8 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
       value: controlledValue,
       defaultValue,
       onChange,
-      placeholder = "Select a tag...",
-      searchPlaceholder = "Add or remove tags...",
+      placeholder = 'Select a tag...',
+      searchPlaceholder = 'Add or remove tags...',
       label,
       helperText,
       error,
@@ -352,13 +345,13 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
       searchable = true,
       creatable = false,
       maxTags = 3,
-      maxDropdownHeight = "280px",
-      theme = "dark",
-      tagSize = "md",
+      maxDropdownHeight = '280px',
+      theme = 'dark',
+      tagSize = 'md',
       className,
       containerClassName,
       onCreateTag,
-      emptyMessage = "No matching tags found.",
+      emptyMessage = 'No matching tags found.',
     },
     ref
   ) {
@@ -367,13 +360,13 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
     const dropdownRef = React.useRef<HTMLDivElement>(null);
 
     const [isOpen, setIsOpen] = React.useState(false);
-    const [searchQuery, setSearchQuery] = React.useState("");
+    const [searchQuery, setSearchQuery] = React.useState('');
     const [highlightedIndex, setHighlightedIndex] = React.useState(0);
     const [createdOptions, setCreatedOptions] = React.useState<TagOption[]>([]);
 
     const allGroups = React.useMemo<TagGroup[]>(() => {
       if (propGroups) return propGroups;
-      if (propOptions) return [{ label: "", options: propOptions }];
+      if (propOptions) return [{ label: '', options: propOptions }];
       return [];
     }, [propGroups, propOptions]);
 
@@ -439,7 +432,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
         onChange?.(next);
         if (!currentValue.includes(option.value)) {
           setIsOpen(false);
-          setSearchQuery("");
+          setSearchQuery('');
         }
       }
     };
@@ -453,7 +446,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
 
     const createTag = () => {
       if (!creatable || !searchQuery.trim()) return;
-      const newValue = searchQuery.toLowerCase().replace(/\s+/g, "-");
+      const newValue = searchQuery.toLowerCase().replace(/\s+/g, '-');
       const newOpt: TagOption = {
         value: newValue,
         label: searchQuery.trim(),
@@ -461,7 +454,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
       setCreatedOptions((prev) => [...prev, newOpt]);
       toggleOption(newOpt);
       onCreateTag?.(newValue);
-      setSearchQuery("");
+      setSearchQuery('');
     };
 
     const openDropdown = () => {
@@ -474,7 +467,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
 
     const closeDropdown = () => {
       setIsOpen(false);
-      setSearchQuery("");
+      setSearchQuery('');
       setHighlightedIndex(0);
     };
 
@@ -482,32 +475,29 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
       if (!isOpen) return;
       const handleClick = (e: MouseEvent) => {
         const target = e.target as Node;
-        if (
-          containerRef.current &&
-          !containerRef.current.contains(target)
-        ) {
+        if (containerRef.current && !containerRef.current.contains(target)) {
           closeDropdown();
         }
       };
-      document.addEventListener("mousedown", handleClick);
-      return () => document.removeEventListener("mousedown", handleClick);
+      document.addEventListener('mousedown', handleClick);
+      return () => document.removeEventListener('mousedown', handleClick);
     }, [isOpen]);
 
     React.useEffect(() => {
       if (!isOpen) return;
       const handleKeyDown = (e: KeyboardEvent) => {
         switch (e.key) {
-          case "ArrowDown":
+          case 'ArrowDown':
             e.preventDefault();
             setHighlightedIndex((prev) =>
               Math.min(prev + 1, filteredFlat.length - 1)
             );
             break;
-          case "ArrowUp":
+          case 'ArrowUp':
             e.preventDefault();
             setHighlightedIndex((prev) => Math.max(prev - 1, 0));
             break;
-          case "Enter":
+          case 'Enter':
             e.preventDefault();
             if (filteredFlat[highlightedIndex]) {
               toggleOption(filteredFlat[highlightedIndex]);
@@ -515,20 +505,20 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
               createTag();
             }
             break;
-          case "Escape":
+          case 'Escape':
             e.preventDefault();
             closeDropdown();
             break;
-          case "Backspace":
-            if (searchQuery === "" && selectedLabels.length > 0) {
+          case 'Backspace':
+            if (searchQuery === '' && selectedLabels.length > 0) {
               const lastTag = selectedLabels[selectedLabels.length - 1];
               removeTag(lastTag.value);
             }
             break;
         }
       };
-      document.addEventListener("keydown", handleKeyDown);
-      return () => document.removeEventListener("keydown", handleKeyDown);
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, highlightedIndex, filteredFlat, searchQuery, selectedLabels]);
 
     React.useEffect(() => {
@@ -536,7 +526,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
       const highlightedEl = dropdownRef.current.querySelector(
         `[data-index="${highlightedIndex}"]`
       );
-      highlightedEl?.scrollIntoView({ block: "nearest" });
+      highlightedEl?.scrollIntoView({ block: 'nearest' });
     }, [highlightedIndex, isOpen]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -563,45 +553,76 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
         ? selectedLabels.length - maxTags
         : 0;
 
-    const isDark = theme === "dark";
-    const labelColor = isDark ? "text-dark-text-primary" : "text-light-text-primary";
-    const chevronColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const errorBorder = "border-light-destructive focus-within:ring-light-focus-ring";
-    const errorText = "text-light-destructive";
-    const helperColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const dropdownStickyBg = isDark ? "bg-dark-card" : "bg-light-card";
-    const searchInnerBg = isDark ? "bg-dark-background" : "bg-light-background";
-    const searchInnerBorder = isDark ? "border-dark-border" : "border-light-border";
-    const searchIconColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const searchInnerTextColor = isDark ? "text-dark-text-primary" : "text-light-text-primary";
-    const searchInnerPlaceholder = isDark ? "placeholder:text-dark-text-muted" : "placeholder:text-light-text-muted";
-    const emptyColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const groupLabelColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const separatorColor = isDark ? "bg-dark-divider" : "bg-light-divider";
-    const createOptionColor = isDark ? "text-dark-text-muted" : "text-light-text-muted";
-    const remainingBg = isDark ? "bg-dark-muted" : "bg-light-muted";
-    const remainingText = isDark ? "text-dark-text-secondary" : "text-light-text-muted";
-    const tagRemoveHoverBg = isDark ? "hover:bg-dark-hover" : "hover:bg-light-hover";
-    const tagRemoveDefault = isDark ? "text-dark-primary-foreground/60 hover:text-dark-primary-foreground" : "text-light-primary-foreground/60 hover:text-light-primary-foreground";
-    const checkboxUnchecked = isDark ? "border-dark-border" : "border-light-border";
-    const checkboxChecked = isDark ? "border-dark-primary bg-dark-primary text-dark-primary-foreground" : "border-light-primary bg-light-primary text-light-primary-foreground";
-    const singleCheckColor = isDark ? "text-dark-text-primary" : "text-light-text-primary";
+    const isDark = theme === 'dark';
+    const labelColor = isDark
+      ? 'text-dark-text-primary'
+      : 'text-light-text-primary';
+    const chevronColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const errorBorder =
+      'border-light-destructive focus-within:ring-light-focus-ring';
+    const errorText = 'text-light-destructive';
+    const helperColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const dropdownStickyBg = isDark ? 'bg-dark-card' : 'bg-light-card';
+    const searchInnerBg = isDark ? 'bg-dark-background' : 'bg-light-background';
+    const searchInnerBorder = isDark
+      ? 'border-dark-border'
+      : 'border-light-border';
+    const searchIconColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const searchInnerTextColor = isDark
+      ? 'text-dark-text-primary'
+      : 'text-light-text-primary';
+    const searchInnerPlaceholder = isDark
+      ? 'placeholder:text-dark-text-muted'
+      : 'placeholder:text-light-text-muted';
+    const emptyColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const groupLabelColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const separatorColor = isDark ? 'bg-dark-divider' : 'bg-light-divider';
+    const createOptionColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
+    const remainingBg = isDark ? 'bg-dark-muted' : 'bg-light-muted';
+    const remainingText = isDark
+      ? 'text-dark-text-secondary'
+      : 'text-light-text-muted';
+    const tagRemoveHoverBg = isDark
+      ? 'hover:bg-dark-hover'
+      : 'hover:bg-light-hover';
+    const tagRemoveDefault = isDark
+      ? 'text-dark-primary-foreground/60 hover:text-dark-primary-foreground'
+      : 'text-light-primary-foreground/60 hover:text-light-primary-foreground';
+    const checkboxUnchecked = isDark
+      ? 'border-dark-border'
+      : 'border-light-border';
+    const checkboxChecked = isDark
+      ? 'border-dark-primary bg-dark-primary text-dark-primary-foreground'
+      : 'border-light-primary bg-light-primary text-light-primary-foreground';
+    const singleCheckColor = isDark
+      ? 'text-dark-text-primary'
+      : 'text-light-text-primary';
 
     return (
       <div
         ref={(node) => {
           containerRef.current = node;
-          if (typeof ref === "function") ref(node);
+          if (typeof ref === 'function') ref(node);
           else if (ref)
             (ref as React.MutableRefObject<HTMLDivElement | null>).current =
               node;
         }}
-        className={cn("relative w-full", containerClassName)}
+        className={cn('relative w-full', containerClassName)}
       >
         {label && (
-          <label
-            className={cn("block text-sm font-medium mb-2", labelColor)}
-          >
+          <label className={cn('block text-sm font-medium mb-2', labelColor)}>
             {label}
           </label>
         )}
@@ -637,7 +658,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                   removeTag(tag.value);
                 }}
                 className={cn(
-                  "inline-flex items-center justify-center rounded-aphelion-full p-0.5 transition-colors",
+                  'inline-flex items-center justify-center rounded-aphelion-full p-0.5 transition-colors',
                   tagRemoveDefault,
                   tagRemoveHoverBg
                 )}
@@ -651,7 +672,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
           {remainingCount > 0 && (
             <span
               className={cn(
-                "inline-flex items-center px-2 py-1 rounded-aphelion-full text-xs font-medium",
+                'inline-flex items-center px-2 py-1 rounded-aphelion-full text-xs font-medium',
                 remainingBg,
                 remainingText
               )}
@@ -666,28 +687,31 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
             value={searchQuery}
             onChange={handleSearchChange}
             onFocus={openDropdown}
-            placeholder={selectedLabels.length === 0 ? placeholder : ""}
+            placeholder={selectedLabels.length === 0 ? placeholder : ''}
             disabled={disabled}
             className={cn(
               searchInputVariants({ theme }),
-              "flex-1 min-w-[80px] h-6",
-              !multiple && selectedLabels.length > 0 && "hidden"
+              'flex-1 min-w-[80px] h-6',
+              !multiple && selectedLabels.length > 0 && 'hidden'
             )}
           />
 
           <ChevronDownIcon
             open={isOpen}
-            className={cn("shrink-0 ml-auto", chevronColor)}
+            className={cn('shrink-0 ml-auto', chevronColor)}
           />
         </div>
 
         {hasError && (
-          <span role="alert" className={cn("block mt-1.5 text-xs font-medium", errorText)}>
+          <span
+            role="alert"
+            className={cn('block mt-1.5 text-xs font-medium', errorText)}
+          >
             {error}
           </span>
         )}
         {!hasError && helperText && (
-          <span className={cn("block mt-1.5 text-xs", helperColor)}>
+          <span className={cn('block mt-1.5 text-xs', helperColor)}>
             {helperText}
           </span>
         )}
@@ -703,16 +727,19 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
               className={cn(dropdownVariants({ theme }))}
               style={{
                 maxHeight: maxDropdownHeight,
-                overflowY: "auto",
+                overflowY: 'auto',
               }}
             >
               {searchable && (
                 <div
-                  className={cn("sticky top-0 z-10 px-3 py-2", dropdownStickyBg)}
+                  className={cn(
+                    'sticky top-0 z-10 px-3 py-2',
+                    dropdownStickyBg
+                  )}
                 >
                   <div
                     className={cn(
-                      "flex items-center gap-2 rounded-aphelion-lg border px-3 py-2",
+                      'flex items-center gap-2 rounded-aphelion-lg border px-3 py-2',
                       searchInnerBorder,
                       searchInnerBg
                     )}
@@ -725,7 +752,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                       onChange={handleSearchChange}
                       placeholder={searchPlaceholder}
                       className={cn(
-                        "flex-1 bg-transparent outline-none text-sm",
+                        'flex-1 bg-transparent outline-none text-sm',
                         searchInnerTextColor,
                         searchInnerPlaceholder
                       )}
@@ -737,7 +764,9 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
 
               <div className="py-1">
                 {filteredGroups.length === 0 && !canCreate && (
-                  <div className={cn("px-3 py-8 text-center text-sm", emptyColor)}>
+                  <div
+                    className={cn('px-3 py-8 text-center text-sm', emptyColor)}
+                  >
                     {emptyMessage}
                   </div>
                 )}
@@ -748,7 +777,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                       <div className="px-3 pt-3 pb-1">
                         <span
                           className={cn(
-                            "text-xs font-semibold uppercase tracking-wider",
+                            'text-xs font-semibold uppercase tracking-wider',
                             groupLabelColor
                           )}
                         >
@@ -777,7 +806,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                           {multiple && (
                             <span
                               className={cn(
-                                "inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-aphelion-xs border transition-all duration-150",
+                                'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-aphelion-xs border transition-all duration-150',
                                 selected ? checkboxChecked : checkboxUnchecked
                               )}
                             >
@@ -793,8 +822,8 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
 
                           <span
                             className={cn(
-                              "flex-1",
-                              !multiple && selected && "pl-6"
+                              'flex-1',
+                              !multiple && selected && 'pl-6'
                             )}
                           >
                             {option.label}
@@ -804,7 +833,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                     })}
 
                     {groupIdx < filteredGroups.length - 1 && (
-                      <div className={cn("h-px mx-3 my-1", separatorColor)} />
+                      <div className={cn('h-px mx-3 my-1', separatorColor)} />
                     )}
                   </React.Fragment>
                 ))}
@@ -812,7 +841,7 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                 {canCreate && (
                   <>
                     {filteredGroups.length > 0 && (
-                      <div className={cn("h-px mx-3 my-1", separatorColor)} />
+                      <div className={cn('h-px mx-3 my-1', separatorColor)} />
                     )}
                     <div
                       className={cn(
@@ -820,14 +849,14 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
                           theme,
                           highlighted: highlightedIndex === filteredFlat.length,
                         }),
-                        "mx-1"
+                        'mx-1'
                       )}
                       onClick={createTag}
                       onMouseEnter={() =>
                         setHighlightedIndex(filteredFlat.length)
                       }
                     >
-                      <span className={cn("text-sm", createOptionColor)}>
+                      <span className={cn('text-sm', createOptionColor)}>
                         Create "{searchQuery.trim()}"
                       </span>
                     </div>
@@ -842,12 +871,11 @@ const TagsInput = React.forwardRef<HTMLDivElement, TagsInputProps>(
   }
 );
 
-TagsInput.displayName = "TagsInput";
-
+TagsInput.displayName = 'TagsInput';
 
 export function useTagsInput(defaultValue?: string[]) {
   const [value, setValue] = React.useState<string[]>(defaultValue ?? []);
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   return {
     value,
@@ -856,15 +884,14 @@ export function useTagsInput(defaultValue?: string[]) {
     setSearchQuery,
     add: (val: string) =>
       setValue((prev) => (prev.includes(val) ? prev : [...prev, val])),
-    remove: (val: string) =>
-      setValue((prev) => prev.filter((v) => v !== val)),
+    remove: (val: string) => setValue((prev) => prev.filter((v) => v !== val)),
     toggle: (val: string) =>
       setValue((prev) =>
         prev.includes(val) ? prev.filter((v) => v !== val) : [...prev, val]
       ),
     clear: () => {
       setValue([]);
-      setSearchQuery("");
+      setSearchQuery('');
     },
   };
 }

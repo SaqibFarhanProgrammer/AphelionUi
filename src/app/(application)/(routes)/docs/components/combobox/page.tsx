@@ -66,7 +66,6 @@ const groupedOptions = [
 
 // ─── Combobox Data ───────────────────────────────────────────────────────
 
-
 const comboboxData = {
   name: 'Combobox',
   slug: 'combobox',
@@ -647,7 +646,7 @@ const bottomNavItems = [
 // ─── Controlled Preview Component ────────────────────────────────────────
 
 function ControlledComboboxPreview() {
-const combobox = useCombobox('banana');
+  const combobox = useCombobox('banana');
 
   const [value, setValue] = useState('');
 
@@ -673,7 +672,9 @@ const combobox = useCombobox('banana');
           Clear
         </Button>
       </div>
-      <div className="text-sm text-aphelion-light-text-primary">Selected: {value || 'none'}</div>
+      <div className="text-sm text-aphelion-light-text-primary">
+        Selected: {value || 'none'}
+      </div>
       <Combobox
         options={FRUITS}
         value={value}
@@ -688,7 +689,7 @@ const combobox = useCombobox('banana');
 // ─── Hook Preview Component ──────────────────────────────────────────────
 
 function HookComboboxPreview() {
-const combobox = useCombobox('banana');
+  const combobox = useCombobox('banana');
 
   return (
     <div className="space-y-4">
@@ -729,7 +730,7 @@ const combobox = useCombobox('banana');
 // ─── Main Page ───────────────────────────────────────────────────────────
 
 export default function ComboboxPage() {
-const combobox = useCombobox('banana');
+  const combobox = useCombobox('banana');
 
   return (
     <DocsPageLayout

@@ -73,25 +73,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'default',
-        className: 'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'default',
-        className: 'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'default',
-        className: 'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'default',
-        className: 'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       // Primary
       {
@@ -105,25 +109,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'primary',
-        className: 'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'primary',
-        className: 'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'primary',
-        className: 'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'primary',
-        className: 'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       // Secondary
       {
@@ -137,25 +145,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'secondary',
-        className: 'border-dark-border-strong text-dark-text-secondary focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-border-strong text-dark-text-secondary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'secondary',
-        className: 'bg-dark-secondary text-dark-secondary-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-secondary text-dark-secondary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'secondary',
-        className: 'text-dark-text-secondary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-text-secondary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'secondary',
-        className: 'bg-dark-muted text-dark-text-secondary focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-muted text-dark-text-secondary focus-visible:ring-dark-focus-ring',
       },
       // Success
       {
@@ -169,25 +181,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'success',
-        className: 'border-dark-success-border text-dark-success focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-success-border text-dark-success focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'success',
-        className: 'bg-dark-success text-dark-success-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-success text-dark-success-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'success',
-        className: 'text-dark-success hover:bg-dark-success-background focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-success hover:bg-dark-success-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'success',
-        className: 'bg-dark-success-background text-dark-success focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-success-background text-dark-success focus-visible:ring-dark-focus-ring',
       },
       // Destructive
       {
@@ -201,25 +217,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'destructive',
-        className: 'border-dark-destructive-border text-dark-destructive focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-destructive-border text-dark-destructive focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'destructive',
-        className: 'bg-dark-destructive text-dark-destructive-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-destructive text-dark-destructive-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'destructive',
-        className: 'text-dark-destructive hover:bg-dark-destructive-background focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-destructive hover:bg-dark-destructive-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'destructive',
-        className: 'bg-dark-destructive-background text-dark-destructive focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-destructive-background text-dark-destructive focus-visible:ring-dark-focus-ring',
       },
       // Warning
       {
@@ -233,25 +253,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'warning',
-        className: 'border-dark-warning-border text-dark-warning focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-warning-border text-dark-warning focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'warning',
-        className: 'bg-dark-warning text-dark-warning-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-warning text-dark-warning-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'warning',
-        className: 'text-dark-warning hover:bg-dark-warning-background focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-warning hover:bg-dark-warning-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'warning',
-        className: 'bg-dark-warning-background text-dark-warning focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-warning-background text-dark-warning focus-visible:ring-dark-focus-ring',
       },
       // Info
       {
@@ -265,25 +289,29 @@ const badgeVariants = cva(
         theme: 'dark',
         variant: 'outline',
         color: 'info',
-        className: 'border-dark-info-border text-dark-info focus-visible:ring-dark-focus-ring',
+        className:
+          'border-dark-info-border text-dark-info focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'info',
-        className: 'bg-dark-info text-dark-info-foreground focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-info text-dark-info-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'info',
-        className: 'text-dark-info hover:bg-dark-info-background focus-visible:ring-dark-focus-ring',
+        className:
+          'text-dark-info hover:bg-dark-info-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'info',
-        className: 'bg-dark-info-background text-dark-info focus-visible:ring-dark-focus-ring',
+        className:
+          'bg-dark-info-background text-dark-info focus-visible:ring-dark-focus-ring',
       },
 
       // ─── Light Theme ────────────────────────────────────────────
@@ -299,25 +327,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'default',
-        className: 'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'default',
-        className: 'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'default',
-        className: 'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'default',
-        className: 'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       // Primary
       {
@@ -331,25 +363,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'primary',
-        className: 'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'primary',
-        className: 'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'primary',
-        className: 'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'primary',
-        className: 'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       // Secondary
       {
@@ -363,25 +399,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'secondary',
-        className: 'border-light-border-strong text-light-text-secondary focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-border-strong text-light-text-secondary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'secondary',
-        className: 'bg-light-secondary text-light-secondary-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-secondary text-light-secondary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'secondary',
-        className: 'text-light-text-secondary hover:bg-light-hover focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-text-secondary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'secondary',
-        className: 'bg-light-muted text-light-text-secondary focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-muted text-light-text-secondary focus-visible:ring-light-focus-ring',
       },
       // Success
       {
@@ -395,25 +435,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'success',
-        className: 'border-light-success-border text-light-success focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-success-border text-light-success focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'success',
-        className: 'bg-light-success text-light-success-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-success text-light-success-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'success',
-        className: 'text-light-success hover:bg-light-success-background focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-success hover:bg-light-success-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'success',
-        className: 'bg-light-success-background text-light-success focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-success-background text-light-success focus-visible:ring-light-focus-ring',
       },
       // Destructive
       {
@@ -427,25 +471,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'destructive',
-        className: 'border-light-destructive-border text-light-destructive focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-destructive-border text-light-destructive focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'destructive',
-        className: 'bg-light-destructive text-light-destructive-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-destructive text-light-destructive-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'destructive',
-        className: 'text-light-destructive hover:bg-light-destructive-background focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-destructive hover:bg-light-destructive-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'destructive',
-        className: 'bg-light-destructive-background text-light-destructive focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-destructive-background text-light-destructive focus-visible:ring-light-focus-ring',
       },
       // Warning
       {
@@ -459,25 +507,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'warning',
-        className: 'border-light-warning-border text-light-warning focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-warning-border text-light-warning focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'warning',
-        className: 'bg-light-warning text-light-warning-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-warning text-light-warning-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'warning',
-        className: 'text-light-warning hover:bg-light-warning-background focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-warning hover:bg-light-warning-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'warning',
-        className: 'bg-light-warning-background text-light-warning focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-warning-background text-light-warning focus-visible:ring-light-focus-ring',
       },
       // Info
       {
@@ -491,25 +543,29 @@ const badgeVariants = cva(
         theme: 'light',
         variant: 'outline',
         color: 'info',
-        className: 'border-light-info-border text-light-info focus-visible:ring-light-focus-ring',
+        className:
+          'border-light-info-border text-light-info focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'info',
-        className: 'bg-light-info text-light-info-foreground focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-info text-light-info-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'info',
-        className: 'text-light-info hover:bg-light-info-background focus-visible:ring-light-focus-ring',
+        className:
+          'text-light-info hover:bg-light-info-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'info',
-        className: 'bg-light-info-background text-light-info focus-visible:ring-light-focus-ring',
+        className:
+          'bg-light-info-background text-light-info focus-visible:ring-light-focus-ring',
       },
     ],
     defaultVariants: {
@@ -665,7 +721,8 @@ const DotIndicator = React.forwardRef<HTMLSpanElement, DotIndicatorProps>(
     ref
   ) {
     const colorMap: Record<string, string> = {
-      default: theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary',
+      default:
+        theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary',
       success: 'bg-dark-success',
       destructive: 'bg-dark-destructive',
       warning: 'bg-dark-warning',
@@ -780,9 +837,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
 
       {/* Prefix */}
       {prefix && (
-        <span className={cn('shrink-0', prefixTextColor)}>
-          {prefix}
-        </span>
+        <span className={cn('shrink-0', prefixTextColor)}>{prefix}</span>
       )}
 
       {/* Content */}

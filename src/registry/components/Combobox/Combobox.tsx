@@ -124,16 +124,8 @@ const dropdownVariants = cva(
   {
     variants: {
       theme: {
-        dark: [
-          'bg-dark-card',
-          'border-dark-border',
-          'shadow-aphelion-lg',
-        ],
-        light: [
-          'bg-light-card',
-          'border-light-border',
-          'shadow-aphelion-lg',
-        ],
+        dark: ['bg-dark-card', 'border-dark-border', 'shadow-aphelion-lg'],
+        light: ['bg-light-card', 'border-light-border', 'shadow-aphelion-lg'],
       },
     },
     defaultVariants: {
@@ -730,8 +722,7 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
         : 'placeholder:text-light-text-muted';
     const helperTextColor =
       theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
-    const dropdownBgColor =
-      theme === 'dark' ? 'bg-dark-card' : 'bg-light-card';
+    const dropdownBgColor = theme === 'dark' ? 'bg-dark-card' : 'bg-light-card';
     const searchInnerBgColor =
       theme === 'dark' ? 'bg-dark-background' : 'bg-light-background';
     const searchInnerBorderColor =
@@ -741,9 +732,13 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
     const checkboxUncheckedBorder =
       theme === 'dark' ? 'border-dark-border' : 'border-light-border';
     const checkboxCheckedBg =
-      theme === 'dark' ? 'bg-dark-primary border-dark-primary' : 'bg-light-primary border-light-primary';
+      theme === 'dark'
+        ? 'bg-dark-primary border-dark-primary'
+        : 'bg-light-primary border-light-primary';
     const checkboxCheckedText =
-      theme === 'dark' ? 'text-dark-primary-foreground' : 'text-light-primary-foreground';
+      theme === 'dark'
+        ? 'text-dark-primary-foreground'
+        : 'text-light-primary-foreground';
 
     return (
       <div
@@ -758,9 +753,7 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
       >
         {/* ─── Label ────────────────────────────────────────────── */}
         {label && (
-          <label
-            className={cn('block text-sm font-medium mb-2', labelColor)}
-          >
+          <label className={cn('block text-sm font-medium mb-2', labelColor)}>
             {label}
           </label>
         )}
@@ -947,9 +940,7 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
                                   : checkboxUncheckedBorder
                               )}
                             >
-                              {selected && (
-                                <CheckIcon theme={theme} />
-                              )}
+                              {selected && <CheckIcon theme={theme} />}
                             </span>
                           )}
 

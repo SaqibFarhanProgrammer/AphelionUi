@@ -1,20 +1,15 @@
-"use client";
+'use client';
 
-import { Button } from "@/registry/components/button/Button";
+import { Button } from '@/registry/components/button/Button';
 
 export default function AphelionTokenShowcase() {
   return (
     <main className="min-h-screen bg-aphelion-background p-10 text-aphelion-foreground">
-
       <div className="mx-auto max-w-7xl space-y-14">
-
-
         {/* COLORS */}
 
         <Section title="Color System">
-
           <div className="grid gap-5 md:grid-cols-4">
-
             <Box
               title="Primary"
               className="
@@ -31,7 +26,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Background"
               className="
@@ -40,7 +34,6 @@ export default function AphelionTokenShowcase() {
               border-aphelion-border
               "
             />
-
 
             <Box
               title="Card"
@@ -51,7 +44,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Popover"
               className="
@@ -61,75 +53,50 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Muted"
               className="
               bg-aphelion-muted
               "
             />
-
-
           </div>
-
         </Section>
-
-
-
 
         {/* TEXT */}
 
-
         <Section title="Text System">
-
-          <div className="
+          <div
+            className="
           space-y-4
           rounded-aphelion-lg
           bg-aphelion-card
           border
           border-aphelion-border
           p-6
-          ">
-
-
+          "
+          >
             <TextToken className="text-aphelion-text-primary">
               Primary Text
             </TextToken>
-
 
             <TextToken className="text-aphelion-text-secondary">
               Secondary Text
             </TextToken>
 
-
             <TextToken className="text-aphelion-text-muted">
               Muted Text
             </TextToken>
 
-
             <TextToken className="text-aphelion-text-disabled">
               Disabled Text
             </TextToken>
-
-
           </div>
-
         </Section>
-
-
-
-
 
         {/* STATUS */}
 
-
-
         <Section title="Status Colors">
-
-
           <div className="grid gap-5 md:grid-cols-4">
-
-
             <Box
               title="Success"
               className="
@@ -137,7 +104,6 @@ export default function AphelionTokenShowcase() {
               text-aphelion-success-foreground
               "
             />
-
 
             <Box
               title="Warning"
@@ -147,7 +113,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Destructive"
               className="
@@ -156,7 +121,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Info"
               className="
@@ -164,35 +128,19 @@ export default function AphelionTokenShowcase() {
               text-aphelion-info-foreground
               "
             />
-
-
           </div>
-
-
         </Section>
-
-
-
-
-
 
         {/* STATUS BACKGROUND */}
 
-
-
         <Section title="Status Background">
-
-
           <div className="grid gap-5 md:grid-cols-4">
-
-
             <Box
               title="Success Background"
               className="
               bg-aphelion-success-background
               "
             />
-
 
             <Box
               title="Warning Background"
@@ -201,7 +149,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Danger Background"
               className="
@@ -209,79 +156,37 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
             <Box
               title="Info Background"
               className="
               bg-aphelion-info-background
               "
             />
-
-
           </div>
-
-
         </Section>
-
-
-
-
-
-
 
         {/* BORDER */}
 
-
-
         <Section title="Border System">
-
-
           <div className="grid gap-5 md:grid-cols-4">
-
-
-            <BorderBox className="border-aphelion-border">
-              Default
-            </BorderBox>
-
+            <BorderBox className="border-aphelion-border">Default</BorderBox>
 
             <BorderBox className="border-aphelion-border-strong">
               Strong
             </BorderBox>
 
-
             <BorderBox className="border-aphelion-input-border">
               Input
             </BorderBox>
 
-
-            <BorderBox className="border-aphelion-divider">
-              Divider
-            </BorderBox>
-
-
+            <BorderBox className="border-aphelion-divider">Divider</BorderBox>
           </div>
-
-
         </Section>
-
-
-
-
-
-
-
 
         {/* INTERACTION */}
 
-
-
-
         <Section title="Interaction">
-
-
           <div className="grid gap-5 md:grid-cols-3">
-
-
             <Button
               className="
               rounded-aphelion-md
@@ -294,8 +199,6 @@ export default function AphelionTokenShowcase() {
             >
               Hover State
             </Button>
-
-
 
             <Button
               className="
@@ -310,8 +213,6 @@ export default function AphelionTokenShowcase() {
               Active State
             </Button>
 
-
-
             <Button
               className="
               rounded-aphelion-md
@@ -325,130 +226,46 @@ export default function AphelionTokenShowcase() {
             >
               Focus Ring
             </Button>
-
-
-
           </div>
-
-
         </Section>
-
-
-
-
-
-
-
 
         {/* RADIUS */}
 
-
-
         <Section title="Radius">
-
-
           <div className="flex flex-wrap gap-5">
+            <RadiusBox className="rounded-aphelion-none">none</RadiusBox>
 
+            <RadiusBox className="rounded-aphelion-xs">xs</RadiusBox>
 
-            <RadiusBox className="rounded-aphelion-none">
-              none
-            </RadiusBox>
+            <RadiusBox className="rounded-aphelion-sm">sm</RadiusBox>
 
+            <RadiusBox className="rounded-aphelion-md">md</RadiusBox>
 
-            <RadiusBox className="rounded-aphelion-xs">
-              xs
-            </RadiusBox>
+            <RadiusBox className="rounded-aphelion-lg">lg</RadiusBox>
 
+            <RadiusBox className="rounded-aphelion-xl">xl</RadiusBox>
 
-            <RadiusBox className="rounded-aphelion-sm">
-              sm
-            </RadiusBox>
+            <RadiusBox className="rounded-aphelion-2xl">2xl</RadiusBox>
 
-
-            <RadiusBox className="rounded-aphelion-md">
-              md
-            </RadiusBox>
-
-
-            <RadiusBox className="rounded-aphelion-lg">
-              lg
-            </RadiusBox>
-
-
-            <RadiusBox className="rounded-aphelion-xl">
-              xl
-            </RadiusBox>
-
-
-            <RadiusBox className="rounded-aphelion-2xl">
-              2xl
-            </RadiusBox>
-
-
-            <RadiusBox className="rounded-aphelion-full">
-              full
-            </RadiusBox>
-
-
+            <RadiusBox className="rounded-aphelion-full">full</RadiusBox>
           </div>
-
-
         </Section>
-
-
-
-
-
-
-
-
 
         {/* SHADOW */}
 
-
-
         <Section title="Shadow">
-
-
           <div className="grid gap-6 md:grid-cols-3">
+            <Shadow className="shadow-aphelion-sm">Small</Shadow>
 
+            <Shadow className="shadow-aphelion-md">Medium</Shadow>
 
-            <Shadow className="shadow-aphelion-sm">
-              Small
-            </Shadow>
-
-
-            <Shadow className="shadow-aphelion-md">
-              Medium
-            </Shadow>
-
-
-            <Shadow className="shadow-aphelion-lg">
-              Large
-            </Shadow>
-
-
+            <Shadow className="shadow-aphelion-lg">Large</Shadow>
           </div>
-
-
         </Section>
-
-
-
-
-
-
-
-
 
         {/* REAL COMPONENT */}
 
-
-
-
         <Section title="Component Example">
-
-
           <div
             className="
             rounded-aphelion-xl
@@ -459,26 +276,24 @@ export default function AphelionTokenShowcase() {
             p-8
             "
           >
-
-
-            <h3 className="
+            <h3
+              className="
             text-xl
             font-bold
             text-aphelion-text-primary
-            ">
+            "
+            >
               Aphelion Card
             </h3>
 
-
-
-            <p className="
+            <p
+              className="
             mt-2
             text-aphelion-text-secondary
-            ">
+            "
+            >
               Fully powered by semantic tokens.
             </p>
-
-
 
             <input
               placeholder="Input example"
@@ -494,8 +309,6 @@ export default function AphelionTokenShowcase() {
               "
             />
 
-
-
             <Button
               className="
               mt-5
@@ -508,61 +321,33 @@ export default function AphelionTokenShowcase() {
             >
               Primary Button
             </Button>
-
-
           </div>
-
-
         </Section>
-
-
       </div>
-
-
     </main>
   );
 }
 
-
-
-
-
-
-
 function Section({
   title,
-  children
-}:{
-  title:string;
-  children:React.ReactNode;
-}){
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="space-y-5">
+      <h2 className="text-2xl font-bold">{title}</h2>
 
-return(
-<section className="space-y-5">
-
-<h2 className="text-2xl font-bold">
-{title}
-</h2>
-
-{children}
-
-</section>
-)
-
+      {children}
+    </section>
+  );
 }
 
-
-
-function Box({
-title,
-className
-}:{
-title:string;
-className:string;
-}){
-
-return(
-<div className={`
+function Box({ title, className }: { title: string; className: string }) {
+  return (
+    <div
+      className={`
 h-28
 flex
 items-center
@@ -571,42 +356,32 @@ rounded-aphelion-lg
 border
 border-aphelion-border
 ${className}
-`}>
-{title}
-</div>
-)
-
+`}
+    >
+      {title}
+    </div>
+  );
 }
 
-
-
-function BorderBox({
-children,
-className
-}:any){
-
-return(
-<div className={`
+function BorderBox({ children, className }: any) {
+  return (
+    <div
+      className={`
 rounded-aphelion-md
 border
 p-6
 ${className}
-`}>
-{children}
-</div>
-)
-
+`}
+    >
+      {children}
+    </div>
+  );
 }
 
-
-
-function RadiusBox({
-children,
-className
-}:any){
-
-return(
-<div className={`
+function RadiusBox({ children, className }: any) {
+  return (
+    <div
+      className={`
 h-20
 w-20
 flex
@@ -615,22 +390,17 @@ justify-center
 bg-aphelion-primary
 text-aphelion-primary-foreground
 ${className}
-`}>
-{children}
-</div>
-)
-
+`}
+    >
+      {children}
+    </div>
+  );
 }
 
-
-
-function Shadow({
-children,
-className
-}:any){
-
-return(
-<div className={`
+function Shadow({ children, className }: any) {
+  return (
+    <div
+      className={`
 h-28
 rounded-aphelion-lg
 bg-aphelion-card
@@ -640,24 +410,13 @@ flex
 items-center
 justify-center
 ${className}
-`}>
-{children}
-</div>
-)
-
+`}
+    >
+      {children}
+    </div>
+  );
 }
 
-
-
-function TextToken({
-children,
-className
-}:any){
-
-return(
-<p className={className}>
-{children}
-</p>
-)
-
+function TextToken({ children, className }: any) {
+  return <p className={className}>{children}</p>;
 }

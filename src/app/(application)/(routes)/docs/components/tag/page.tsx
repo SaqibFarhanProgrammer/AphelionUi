@@ -1,80 +1,78 @@
-"use client";
+'use client';
 
-import TagsInput, { useTagsInput } from "@/registry/components/Tag/Tag";
-import InstallCommand from "@/components/docs/InstallCommand";
-import CodeBlock from "@/components/docs/CodeBlock";
-import ComponentPreview from "@/components/docs/ComponentPreview";
-import PropsTable from "@/components/docs/PropsTable";
-import DocsSection from "@/components/docs/DocsSection";
-import DocsPageLayout from "@/components/docs/DocsPageLayout";
-import BottomNav from "@/components/docs/BottomNav";
-import DocsFooter from "@/components/docs/DocsFooter";
-import { useState } from "react";
-import { Button } from "@/registry/components/button/Button";
-
+import TagsInput, { useTagsInput } from '@/registry/components/Tag/Tag';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
+import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 const frameworkOptions = [
-  { value: "react", label: "React" },
-  { value: "vue", label: "Vue.js" },
-  { value: "angular", label: "Angular" },
-  { value: "svelte", label: "Svelte" },
-  { value: "nextjs", label: "Next.js" },
-  { value: "nuxt", label: "Nuxt.js" },
-  { value: "remix", label: "Remix" },
-  { value: "solid", label: "Solid.js" },
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue.js' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+  { value: 'nextjs', label: 'Next.js' },
+  { value: 'nuxt', label: 'Nuxt.js' },
+  { value: 'remix', label: 'Remix' },
+  { value: 'solid', label: 'Solid.js' },
 ];
 
 const skillOptions = [
-  { value: "javascript", label: "JavaScript" },
-  { value: "typescript", label: "TypeScript" },
-  { value: "python", label: "Python" },
-  { value: "rust", label: "Rust" },
-  { value: "go", label: "Go" },
-  { value: "java", label: "Java" },
-  { value: "csharp", label: "C#" },
-  { value: "php", label: "PHP" },
+  { value: 'javascript', label: 'JavaScript' },
+  { value: 'typescript', label: 'TypeScript' },
+  { value: 'python', label: 'Python' },
+  { value: 'rust', label: 'Rust' },
+  { value: 'go', label: 'Go' },
+  { value: 'java', label: 'Java' },
+  { value: 'csharp', label: 'C#' },
+  { value: 'php', label: 'PHP' },
 ];
 
 const groupedOptions = [
   {
-    label: "Frontend",
+    label: 'Frontend',
     options: [
-      { value: "react", label: "React" },
-      { value: "vue", label: "Vue.js" },
-      { value: "angular", label: "Angular" },
-      { value: "svelte", label: "Svelte" },
+      { value: 'react', label: 'React' },
+      { value: 'vue', label: 'Vue.js' },
+      { value: 'angular', label: 'Angular' },
+      { value: 'svelte', label: 'Svelte' },
     ],
   },
   {
-    label: "Backend",
+    label: 'Backend',
     options: [
-      { value: "node", label: "Node.js" },
-      { value: "python", label: "Python" },
-      { value: "rust", label: "Rust" },
-      { value: "go", label: "Go" },
+      { value: 'node', label: 'Node.js' },
+      { value: 'python', label: 'Python' },
+      { value: 'rust', label: 'Rust' },
+      { value: 'go', label: 'Go' },
     ],
   },
   {
-    label: "Database",
+    label: 'Database',
     options: [
-      { value: "postgres", label: "PostgreSQL" },
-      { value: "mysql", label: "MySQL" },
-      { value: "mongodb", label: "MongoDB" },
-      { value: "redis", label: "Redis" },
+      { value: 'postgres', label: 'PostgreSQL' },
+      { value: 'mysql', label: 'MySQL' },
+      { value: 'mongodb', label: 'MongoDB' },
+      { value: 'redis', label: 'Redis' },
     ],
   },
 ];
 
-
 const tagsInputData = {
-  name: "Tag",
-  slug: "tag",
-  title: "Tags Input",
+  name: 'Tag',
+  slug: 'tag',
+  title: 'Tags Input',
   description:
-    "A versatile tags input component with support for search, creatable tags, grouped options, single/multiple selection, max tags limit, disabled and error states, and two color themes. Built with Framer Motion animations.",
-  category: "Inputs",
+    'A versatile tags input component with support for search, creatable tags, grouped options, single/multiple selection, max tags limit, disabled and error states, and two color themes. Built with Framer Motion animations.',
+  category: 'Inputs',
   installation: {
-    command: "shadcn@latest add aphelio/c/tag",
+    command: 'shadcn@latest add aphelio/c/tag',
   },
   usage: {
     import: `import TagsInput, { useTagsInput } from "@/components/ui/tag";`,
@@ -90,12 +88,12 @@ const tagsInputData = {
   },
   sections: [
     {
-      id: "basic",
-      title: "Basic",
-      description: "Simple tags input with a list of predefined options.",
+      id: 'basic',
+      title: 'Basic',
+      description: 'Simple tags input with a list of predefined options.',
       examples: [
         {
-          label: "Default",
+          label: 'Default',
           code: `<TagsInput
   options={[
     { value: "react", label: "React" },
@@ -120,12 +118,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "searchable",
-      title: "Searchable",
-      description: "Enable search to filter options by typing.",
+      id: 'searchable',
+      title: 'Searchable',
+      description: 'Enable search to filter options by typing.',
       examples: [
         {
-          label: "With Search",
+          label: 'With Search',
           code: `<TagsInput
   options={options}
   placeholder="Search skills..."
@@ -148,12 +146,13 @@ const tagsInputData = {
       ],
     },
     {
-      id: "creatable",
-      title: "Creatable",
-      description: "Allow users to create new tags that don't exist in the options.",
+      id: 'creatable',
+      title: 'Creatable',
+      description:
+        "Allow users to create new tags that don't exist in the options.",
       examples: [
         {
-          label: "Create New Tags",
+          label: 'Create New Tags',
           code: `<TagsInput
   options={[
     { value: "red", label: "Red" },
@@ -169,11 +168,11 @@ const tagsInputData = {
           preview: (
             <TagsInput
               options={[
-                { value: "red", label: "Red" },
-                { value: "blue", label: "Blue" },
-                { value: "green", label: "Green" },
-                { value: "yellow", label: "Yellow" },
-                { value: "purple", label: "Purple" },
+                { value: 'red', label: 'Red' },
+                { value: 'blue', label: 'Blue' },
+                { value: 'green', label: 'Green' },
+                { value: 'yellow', label: 'Yellow' },
+                { value: 'purple', label: 'Purple' },
               ]}
               placeholder="Type to create..."
               searchPlaceholder="Create new tags..."
@@ -186,12 +185,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "single-select",
-      title: "Single Select",
-      description: "Restrict selection to a single tag only.",
+      id: 'single-select',
+      title: 'Single Select',
+      description: 'Restrict selection to a single tag only.',
       examples: [
         {
-          label: "One Selection",
+          label: 'One Selection',
           code: `<TagsInput
   options={frameworkOptions}
   placeholder="Select one framework..."
@@ -212,12 +211,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "grouped",
-      title: "Grouped Options",
-      description: "Organize options into labeled groups for better structure.",
+      id: 'grouped',
+      title: 'Grouped Options',
+      description: 'Organize options into labeled groups for better structure.',
       examples: [
         {
-          label: "Technology Stack",
+          label: 'Technology Stack',
           code: `<TagsInput
   groups={[
     {
@@ -248,7 +247,7 @@ const tagsInputData = {
           ),
         },
         {
-          label: "Grouped with Search",
+          label: 'Grouped with Search',
           code: `<TagsInput
   groups={groups}
   placeholder="Search technologies..."
@@ -271,12 +270,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "max-tags",
-      title: "Max Tags",
-      description: "Limit the number of tags that can be selected.",
+      id: 'max-tags',
+      title: 'Max Tags',
+      description: 'Limit the number of tags that can be selected.',
       examples: [
         {
-          label: "Limit to 3",
+          label: 'Limit to 3',
           code: `<TagsInput
   options={skillOptions}
   placeholder="Add up to 3 skills..."
@@ -297,12 +296,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "states",
-      title: "States",
-      description: "Disabled and error states for form validation.",
+      id: 'states',
+      title: 'States',
+      description: 'Disabled and error states for form validation.',
       examples: [
         {
-          label: "Disabled",
+          label: 'Disabled',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   defaultValue={["react", "nextjs"]}
@@ -312,14 +311,14 @@ const tagsInputData = {
           preview: (
             <TagsInput
               options={frameworkOptions.slice(0, 4)}
-              defaultValue={["react", "nextjs"]}
+              defaultValue={['react', 'nextjs']}
               placeholder="Disabled state"
               disabled
             />
           ),
         },
         {
-          label: "With Error",
+          label: 'With Error',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   placeholder="Error state"
@@ -338,12 +337,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "themes",
-      title: "Themes",
-      description: "Dark and light themes for different backgrounds.",
+      id: 'themes',
+      title: 'Themes',
+      description: 'Dark and light themes for different backgrounds.',
       examples: [
         {
-          label: "Dark Theme",
+          label: 'Dark Theme',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   placeholder="Dark theme..."
@@ -360,7 +359,7 @@ const tagsInputData = {
           ),
         },
         {
-          label: "Light Theme",
+          label: 'Light Theme',
           code: `<div className="rounded-aphelion-xl bg-white p-6">
   <TagsInput
     options={frameworkOptions.slice(0, 4)}
@@ -383,12 +382,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "sizes",
-      title: "Sizes",
-      description: "Three predefined tag sizes for different contexts.",
+      id: 'sizes',
+      title: 'Sizes',
+      description: 'Three predefined tag sizes for different contexts.',
       examples: [
         {
-          label: "Small",
+          label: 'Small',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   defaultValue={["react"]}
@@ -398,14 +397,14 @@ const tagsInputData = {
           preview: (
             <TagsInput
               options={frameworkOptions.slice(0, 4)}
-              defaultValue={["react"]}
+              defaultValue={['react']}
               placeholder="Small tags..."
               tagSize="sm"
             />
           ),
         },
         {
-          label: "Medium (Default)",
+          label: 'Medium (Default)',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   defaultValue={["react", "nextjs"]}
@@ -415,14 +414,14 @@ const tagsInputData = {
           preview: (
             <TagsInput
               options={frameworkOptions.slice(0, 4)}
-              defaultValue={["react", "nextjs"]}
+              defaultValue={['react', 'nextjs']}
               placeholder="Medium tags..."
               tagSize="md"
             />
           ),
         },
         {
-          label: "Large",
+          label: 'Large',
           code: `<TagsInput
   options={frameworkOptions.slice(0, 4)}
   defaultValue={["react", "nextjs", "vue"]}
@@ -432,7 +431,7 @@ const tagsInputData = {
           preview: (
             <TagsInput
               options={frameworkOptions.slice(0, 4)}
-              defaultValue={["react", "nextjs", "vue"]}
+              defaultValue={['react', 'nextjs', 'vue']}
               placeholder="Large tags..."
               tagSize="lg"
             />
@@ -441,12 +440,12 @@ const tagsInputData = {
       ],
     },
     {
-      id: "hook",
-      title: "useTagsInput Hook",
-      description: "Programmatically control tags with the useTagsInput hook.",
+      id: 'hook',
+      title: 'useTagsInput Hook',
+      description: 'Programmatically control tags with the useTagsInput hook.',
       examples: [
         {
-          label: "Hook Controlled",
+          label: 'Hook Controlled',
           code: `const tags = useTagsInput(["react", "typescript"]);
 
 return (
@@ -465,241 +464,235 @@ return (
   ],
   props: [
     {
-      name: "options",
-      type: "TagOption[]",
-      default: "[]",
-      description: "Array of tag options with value, label, and optional disabled.",
+      name: 'options',
+      type: 'TagOption[]',
+      default: '[]',
+      description:
+        'Array of tag options with value, label, and optional disabled.',
     },
     {
-      name: "groups",
-      type: "TagGroup[]",
-      default: "[]",
-      description: "Grouped options with label and options array.",
+      name: 'groups',
+      type: 'TagGroup[]',
+      default: '[]',
+      description: 'Grouped options with label and options array.',
     },
     {
-      name: "value",
-      type: "string[]",
-      default: "undefined",
-      description: "Controlled selected values.",
+      name: 'value',
+      type: 'string[]',
+      default: 'undefined',
+      description: 'Controlled selected values.',
     },
     {
-      name: "defaultValue",
-      type: "string[]",
-      default: "[]",
-      description: "Default selected values for uncontrolled usage.",
+      name: 'defaultValue',
+      type: 'string[]',
+      default: '[]',
+      description: 'Default selected values for uncontrolled usage.',
     },
     {
-      name: "onChange",
-      type: "(values: string[]) => void",
-      default: "undefined",
-      description: "Callback fired when selected tags change.",
+      name: 'onChange',
+      type: '(values: string[]) => void',
+      default: 'undefined',
+      description: 'Callback fired when selected tags change.',
     },
     {
-      name: "placeholder",
-      type: "string",
+      name: 'placeholder',
+      type: 'string',
       default: '"Select a tag..."',
-      description: "Placeholder text for the input field.",
+      description: 'Placeholder text for the input field.',
     },
     {
-      name: "searchPlaceholder",
-      type: "string",
+      name: 'searchPlaceholder',
+      type: 'string',
       default: '"Add or remove tags..."',
-      description: "Placeholder text for the search input in dropdown.",
+      description: 'Placeholder text for the search input in dropdown.',
     },
     {
-      name: "label",
-      type: "string",
-      default: "undefined",
-      description: "Label text displayed above the input.",
+      name: 'label',
+      type: 'string',
+      default: 'undefined',
+      description: 'Label text displayed above the input.',
     },
     {
-      name: "helperText",
-      type: "string",
-      default: "undefined",
-      description: "Helper text displayed below the input.",
+      name: 'helperText',
+      type: 'string',
+      default: 'undefined',
+      description: 'Helper text displayed below the input.',
     },
     {
-      name: "error",
-      type: "string",
-      default: "undefined",
-      description: "Error message displayed below the input.",
+      name: 'error',
+      type: 'string',
+      default: 'undefined',
+      description: 'Error message displayed below the input.',
     },
     {
-      name: "disabled",
-      type: "boolean",
-      default: "false",
-      description: "Disables the tags input.",
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disables the tags input.',
     },
     {
-      name: "multiple",
-      type: "boolean",
-      default: "true",
-      description: "Allow multiple tag selections.",
+      name: 'multiple',
+      type: 'boolean',
+      default: 'true',
+      description: 'Allow multiple tag selections.',
     },
     {
-      name: "searchable",
-      type: "boolean",
-      default: "true",
-      description: "Enable search filtering in the dropdown.",
+      name: 'searchable',
+      type: 'boolean',
+      default: 'true',
+      description: 'Enable search filtering in the dropdown.',
     },
     {
-      name: "creatable",
-      type: "boolean",
-      default: "false",
-      description: "Allow creating new tags not in the options.",
+      name: 'creatable',
+      type: 'boolean',
+      default: 'false',
+      description: 'Allow creating new tags not in the options.',
     },
     {
-      name: "maxTags",
-      type: "number",
-      default: "3",
-      description: "Maximum number of tags that can be selected.",
+      name: 'maxTags',
+      type: 'number',
+      default: '3',
+      description: 'Maximum number of tags that can be selected.',
     },
     {
-      name: "maxDropdownHeight",
-      type: "string",
+      name: 'maxDropdownHeight',
+      type: 'string',
       default: '"280px"',
-      description: "Maximum height of the dropdown menu.",
+      description: 'Maximum height of the dropdown menu.',
     },
     {
-      name: "theme",
+      name: 'theme',
       type: "'dark' | 'light'",
       default: '"dark"',
-      description: "Color theme of the component.",
+      description: 'Color theme of the component.',
     },
     {
-      name: "tagSize",
+      name: 'tagSize',
       type: "'sm' | 'md' | 'lg'",
       default: '"md"',
-      description: "Size of the selected tag pills.",
+      description: 'Size of the selected tag pills.',
     },
     {
-      name: "className",
-      type: "string",
+      name: 'className',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the input container.",
+      description: 'Additional classes for the input container.',
     },
     {
-      name: "containerClassName",
-      type: "string",
+      name: 'containerClassName',
+      type: 'string',
       default: '""',
-      description: "Additional classes for the outer wrapper.",
+      description: 'Additional classes for the outer wrapper.',
     },
     {
-      name: "onCreateTag",
-      type: "(value: string) => void",
-      default: "undefined",
-      description: "Callback fired when a new tag is created.",
+      name: 'onCreateTag',
+      type: '(value: string) => void',
+      default: 'undefined',
+      description: 'Callback fired when a new tag is created.',
     },
     {
-      name: "emptyMessage",
-      type: "string",
+      name: 'emptyMessage',
+      type: 'string',
       default: '"No matching tags found."',
-      description: "Message shown when no options match the search.",
+      description: 'Message shown when no options match the search.',
     },
   ],
   hookProps: [
     {
-      name: "value",
-      type: "string[]",
-      default: "[]",
-      description: "Currently selected tag values.",
+      name: 'value',
+      type: 'string[]',
+      default: '[]',
+      description: 'Currently selected tag values.',
     },
     {
-      name: "setValue",
-      type: "(values: string[]) => void",
-      default: "undefined",
-      description: "Set the selected values directly.",
+      name: 'setValue',
+      type: '(values: string[]) => void',
+      default: 'undefined',
+      description: 'Set the selected values directly.',
     },
     {
-      name: "searchQuery",
-      type: "string",
+      name: 'searchQuery',
+      type: 'string',
       default: '""',
-      description: "Current search query string.",
+      description: 'Current search query string.',
     },
     {
-      name: "setSearchQuery",
-      type: "(query: string) => void",
-      default: "undefined",
-      description: "Set the search query.",
+      name: 'setSearchQuery',
+      type: '(query: string) => void',
+      default: 'undefined',
+      description: 'Set the search query.',
     },
     {
-      name: "add",
-      type: "(val: string) => void",
-      default: "undefined",
-      description: "Add a tag to the selection.",
+      name: 'add',
+      type: '(val: string) => void',
+      default: 'undefined',
+      description: 'Add a tag to the selection.',
     },
     {
-      name: "remove",
-      type: "(val: string) => void",
-      default: "undefined",
-      description: "Remove a tag from the selection.",
+      name: 'remove',
+      type: '(val: string) => void',
+      default: 'undefined',
+      description: 'Remove a tag from the selection.',
     },
     {
-      name: "toggle",
-      type: "(val: string) => void",
-      default: "undefined",
+      name: 'toggle',
+      type: '(val: string) => void',
+      default: 'undefined',
       description: "Toggle a tag's selection state.",
     },
     {
-      name: "clear",
-      type: "() => void",
-      default: "undefined",
-      description: "Clear all selected tags and search query.",
+      name: 'clear',
+      type: '() => void',
+      default: 'undefined',
+      description: 'Clear all selected tags and search query.',
     },
   ],
 };
 
 const bottomNavItems = [
   {
-    label: "Input",
-    href: "/docs/components/input",
-    description: "Text input with labels, icons, and error states.",
+    label: 'Input',
+    href: '/docs/components/input',
+    description: 'Text input with labels, icons, and error states.',
   },
   {
-    label: "Switch",
-    href: "/docs/components/switch",
-    description: "Toggle switch component.",
+    label: 'Switch',
+    href: '/docs/components/switch',
+    description: 'Toggle switch component.',
   },
 ];
 
-
 function HookControlledPreview() {
-  const tags = useTagsInput(["react", "typescript"]);
+  const tags = useTagsInput(['react', 'typescript']);
 
   const options = [
-    { value: "react", label: "React" },
-    { value: "vue", label: "Vue.js" },
-    { value: "angular", label: "Angular" },
-    { value: "svelte", label: "Svelte" },
-    { value: "typescript", label: "TypeScript" },
-    { value: "javascript", label: "JavaScript" },
+    { value: 'react', label: 'React' },
+    { value: 'vue', label: 'Vue.js' },
+    { value: 'angular', label: 'Angular' },
+    { value: 'svelte', label: 'Svelte' },
+    { value: 'typescript', label: 'TypeScript' },
+    { value: 'javascript', label: 'JavaScript' },
   ];
 
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         <Button
-          onClick={() => tags.add("react")}
+          onClick={() => tags.add('react')}
           className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add React
         </Button>
         <Button
-          onClick={() => tags.add("vue")}
+          onClick={() => tags.add('vue')}
           className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add Vue
         </Button>
-        <Button
-          onClick={() => tags.remove("react")}
-          variant={"destructive"}
-        >
+        <Button onClick={() => tags.remove('react')} variant={'destructive'}>
           Remove React
         </Button>
-        <Button
-          onClick={tags.clear}
-          variant={"primary"}
-        >
+        <Button onClick={tags.clear} variant={'primary'}>
           Clear All
         </Button>
       </div>
@@ -715,7 +708,6 @@ function HookControlledPreview() {
   );
 }
 
-
 export default function TagsInputPage() {
   return (
     <DocsPageLayout
@@ -723,16 +715,16 @@ export default function TagsInputPage() {
       title={tagsInputData.title}
       description={tagsInputData.description}
       sideMapGroup={[
-        { id: "installation", title: "Installation" },
-        { id: "usage", title: "Usage" },
-        { id: "examples", title: "Examples" },
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
         ...tagsInputData.sections.map((section) => ({
           id: section.id,
           title: section.title,
           level: 3,
         })),
-        { id: "props", title: "Props" },
-        { id: "hook-props", title: "useTagsInput Hook" },
+        { id: 'props', title: 'Props' },
+        { id: 'hook-props', title: 'useTagsInput Hook' },
       ]}
     >
       <section className="mb-14" id="installation">

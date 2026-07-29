@@ -37,7 +37,8 @@ const accordionVariants = cva(['w-full'], {
     {
       theme: 'light',
       variant: 'bordered',
-      className: 'border border-light-border rounded-aphelion-xl overflow-hidden',
+      className:
+        'border border-light-border rounded-aphelion-xl overflow-hidden',
     },
     {
       theme: 'light',
@@ -50,7 +51,8 @@ const accordionVariants = cva(['w-full'], {
     {
       theme: 'dark',
       variant: 'bordered',
-      className: 'border border-dark-border rounded-aphelion-xl overflow-hidden',
+      className:
+        'border border-dark-border rounded-aphelion-xl overflow-hidden',
     },
     {
       theme: 'dark',

@@ -465,7 +465,6 @@ export default function DialogPage() {
           <DocsSection
             key={section.id}
             title={section.title}
-
             description={section.description}
           >
             <div className="space-y-4">

@@ -428,11 +428,7 @@ const navbarData = {
                   { label: 'Home', href: '/' },
                   { label: 'About', href: '/about' },
                 ]}
-                ctaSecondary={
-                  <Button variant={"primary"}>
-                    Sign In
-                  </Button>
-                }
+                ctaSecondary={<Button variant={'primary'}>Sign In</Button>}
                 ctaPrimary={
                   <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl font-medium hover:bg-white/90 transition-colors">
                     Get Started

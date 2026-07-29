@@ -606,7 +606,7 @@ add({
               dismissible
               actions={
                 <>
-                  <Button  variant={"primary"} className="">
+                  <Button variant={'primary'} className="">
                     Retry
                   </Button>
                   <Button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">

@@ -29,7 +29,11 @@ const cardVariants = cva(
     variants: {
       theme: {
         dark: ['bg-dark-card', 'border-dark-border', 'text-dark-text-primary'],
-        light: ['bg-light-card', 'border-light-border', 'text-light-text-primary'],
+        light: [
+          'bg-light-card',
+          'border-light-border',
+          'text-light-text-primary',
+        ],
       },
       variant: {
         default: '',
@@ -229,7 +233,8 @@ const inputVariants = cva(
       {
         theme: 'dark',
         error: true,
-        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+        className:
+          'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
       },
     ],
     defaultVariants: {
@@ -509,7 +514,13 @@ const textareaVariants = cva(
       size: {
         sm: ['px-3', 'py-2', 'text-sm', 'rounded-aphelion-lg', 'min-h-[80px]'],
         md: ['px-4', 'py-3', 'text-sm', 'rounded-aphelion-lg', 'min-h-[100px]'],
-        lg: ['px-4', 'py-3', 'text-base', 'rounded-aphelion-xl', 'min-h-[120px]'],
+        lg: [
+          'px-4',
+          'py-3',
+          'text-base',
+          'rounded-aphelion-xl',
+          'min-h-[120px]',
+        ],
       },
       theme: {
         light: [
@@ -538,7 +549,8 @@ const textareaVariants = cva(
       {
         theme: 'dark',
         error: true,
-        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+        className:
+          'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
       },
     ],
     defaultVariants: {
@@ -602,7 +614,8 @@ const selectVariants = cva(
       {
         theme: 'dark',
         error: true,
-        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+        className:
+          'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
       },
     ],
     defaultVariants: {
@@ -677,7 +690,8 @@ const tabTriggerVariants = cva(
       {
         theme: 'light',
         active: true,
-        className: 'bg-light-selected text-light-text-primary shadow-aphelion-sm',
+        className:
+          'bg-light-selected text-light-text-primary shadow-aphelion-sm',
       },
     ],
     defaultVariants: {
@@ -724,7 +738,11 @@ const sliderThumbVariants = cva(
     variants: {
       theme: {
         dark: ['bg-dark-background', 'border-dark-primary', 'hover:scale-110'],
-        light: ['bg-light-background', 'border-light-primary', 'hover:scale-110'],
+        light: [
+          'bg-light-background',
+          'border-light-primary',
+          'hover:scale-110',
+        ],
       },
     },
     defaultVariants: {
@@ -919,11 +937,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
               <div className="flex-1">
                 {(icon || badge) && !image && (
                   <div className="mb-3 flex items-center gap-2">
-                    {icon && (
-                      <span className={iconColor}>
-                        {icon}
-                      </span>
-                    )}
+                    {icon && <span className={iconColor}>{icon}</span>}
                     {badge && !image && <span>{badge}</span>}
                   </div>
                 )}
@@ -1009,7 +1023,10 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
           >
             {label}
             {required && (
-              <span className="ml-0.5 text-light-destructive" aria-hidden="true">
+              <span
+                className="ml-0.5 text-light-destructive"
+                aria-hidden="true"
+              >
                 *
               </span>
             )}
@@ -1098,7 +1115,10 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
           >
             {label}
             {required && (
-              <span className="ml-0.5 text-light-destructive" aria-hidden="true">
+              <span
+                className="ml-0.5 text-light-destructive"
+                aria-hidden="true"
+              >
                 *
               </span>
             )}
@@ -1405,8 +1425,7 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
   ) {
     const labelColor =
       theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
-    const fillColor =
-      theme === 'dark' ? 'bg-dark-primary' : 'bg-light-primary';
+    const fillColor = theme === 'dark' ? 'bg-dark-primary' : 'bg-light-primary';
 
     return (
       <div className={cn('w-full flex flex-col', className)}>

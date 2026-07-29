@@ -254,20 +254,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <div
-      className={cn(
-        'flex flex-col',
-        fullWidth && 'w-full',
-        containerClassName
-      )}
+      className={cn('flex flex-col', fullWidth && 'w-full', containerClassName)}
     >
       {label && (
         <label htmlFor={inputId} className={labelVariants({ theme })}>
           {label}
           {required && (
-            <span
-              className={cn('ml-0.5', requiredColor)}
-              aria-hidden="true"
-            >
+            <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
               *
             </span>
           )}

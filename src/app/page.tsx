@@ -25,10 +25,8 @@ function page() {
       <Testimonials />
       <CTASection />
       <Footer /> */}
-      <AphelionTokenShowcase/>
+      <AphelionTokenShowcase />
     </div>
-
-
   );
 }
 

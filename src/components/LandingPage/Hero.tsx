@@ -76,7 +76,6 @@ export default function Hero() {
               hello
             </Button>
           </div>
-
         </div>
       </div>
     </section>

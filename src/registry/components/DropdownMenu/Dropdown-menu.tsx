@@ -236,22 +236,44 @@ function DropdownContent({
   const { setOpen, theme } = useDropdown();
 
   const menuBg = theme === 'dark' ? 'bg-dark-card' : 'bg-light-card';
-  const menuBorder = theme === 'dark' ? 'border-dark-border' : 'border-light-border';
-  const itemDefaultText = theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
-  const itemHoverText = theme === 'dark' ? 'hover:text-dark-text-primary' : 'hover:text-light-text-primary';
-  const itemHoverBg = theme === 'dark' ? 'hover:bg-dark-hover' : 'hover:bg-light-hover';
-  const itemDisabledText = theme === 'dark' ? 'text-dark-text-disabled' : 'text-light-text-disabled';
-  const dangerText = theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive';
-  const dangerHoverText = theme === 'dark' ? 'hover:text-dark-destructive' : 'hover:text-light-destructive';
-  const dangerHoverBg = theme === 'dark' ? 'hover:bg-dark-destructive-background' : 'hover:bg-light-destructive-background';
-  const mutedIconColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const shortcutColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const separatorColor = theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
-  const labelColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const radioDefault = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const radioSelected = theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
-  const checkboxBorder = theme === 'dark' ? 'border-dark-border' : 'border-light-border';
-  const checkboxCheckedColor = theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+  const menuBorder =
+    theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+  const itemDefaultText =
+    theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+  const itemHoverText =
+    theme === 'dark'
+      ? 'hover:text-dark-text-primary'
+      : 'hover:text-light-text-primary';
+  const itemHoverBg =
+    theme === 'dark' ? 'hover:bg-dark-hover' : 'hover:bg-light-hover';
+  const itemDisabledText =
+    theme === 'dark' ? 'text-dark-text-disabled' : 'text-light-text-disabled';
+  const dangerText =
+    theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive';
+  const dangerHoverText =
+    theme === 'dark'
+      ? 'hover:text-dark-destructive'
+      : 'hover:text-light-destructive';
+  const dangerHoverBg =
+    theme === 'dark'
+      ? 'hover:bg-dark-destructive-background'
+      : 'hover:bg-light-destructive-background';
+  const mutedIconColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const shortcutColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const separatorColor =
+    theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
+  const labelColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const radioDefault =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const radioSelected =
+    theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+  const checkboxBorder =
+    theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+  const checkboxCheckedColor =
+    theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
 
   const handleItemClick = (item: DropdownItem) => {
     if (item.disabled) return;
@@ -371,7 +393,9 @@ function DropdownContent({
                 {isChecked ? (
                   <CheckIcon className={checkboxCheckedColor} />
                 ) : (
-                  <span className={cn('h-3.5 w-3.5 rounded border', checkboxBorder)} />
+                  <span
+                    className={cn('h-3.5 w-3.5 rounded border', checkboxBorder)}
+                  />
                 )}
               </span>
             )}
@@ -387,12 +411,16 @@ function DropdownContent({
 
             {/* Submenu arrow */}
             {isSubmenu && (
-              <ChevronRightIcon className={cn('flex-shrink-0', mutedIconColor)} />
+              <ChevronRightIcon
+                className={cn('flex-shrink-0', mutedIconColor)}
+              />
             )}
 
             {/* Shortcut */}
             {item.shortcut && (
-              <span className={cn('ml-2 text-[11px] font-medium', shortcutColor)}>
+              <span
+                className={cn('ml-2 text-[11px] font-medium', shortcutColor)}
+              >
                 {item.shortcut}
               </span>
             )}
@@ -726,7 +754,8 @@ export function DropdownMenuLabel({
   className?: string;
   theme?: 'dark' | 'light';
 }) {
-  const labelColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const labelColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
   return (
     <div
       className={cn(
@@ -747,7 +776,8 @@ export function DropdownMenuSeparator({
   className?: string;
   theme?: 'dark' | 'light';
 }) {
-  const separatorColor = theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
+  const separatorColor =
+    theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
   return <div className={cn('mx-3 my-1 h-px', separatorColor, className)} />;
 }
 

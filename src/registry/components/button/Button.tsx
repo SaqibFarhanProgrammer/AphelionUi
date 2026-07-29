@@ -45,11 +45,9 @@ const buttonVariants = cva(
         warning:
           'bg-light-warning text-light-warning-foreground border border-light-warning-border hover:bg-light-warning/80 focus-visible:ring-light-focus-ring',
 
-        info:
-          'bg-light-info text-light-info-foreground border border-light-info-border hover:bg-light-info/80 focus-visible:ring-light-focus-ring',
+        info: 'bg-light-info text-light-info-foreground border border-light-info-border hover:bg-light-info/80 focus-visible:ring-light-focus-ring',
 
-        link:
-          'bg-transparent text-light-text-primary underline-offset-4 hover:underline focus-visible:ring-light-focus-ring',
+        link: 'bg-transparent text-light-text-primary underline-offset-4 hover:underline focus-visible:ring-light-focus-ring',
       },
 
       theme: {
@@ -131,8 +129,7 @@ const buttonVariants = cva(
       {
         theme: 'dark',
         variant: 'link',
-        className:
-          'text-dark-text-primary focus-visible:ring-dark-focus-ring',
+        className: 'text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
     ],
 
@@ -186,7 +183,8 @@ function Spinner({ size = 16 }: { size?: number }) {
 // ─── Types ───────────────────────────────────────────────────────────────
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   theme?: 'light' | 'dark';
   loading?: boolean;

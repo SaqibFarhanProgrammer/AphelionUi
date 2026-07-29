@@ -1,8 +1,8 @@
-"use client";
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+'use client';
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -11,72 +11,75 @@ function cn(...inputs: ClassValue[]) {
 // ─── Spinner Variants ────────────────────────────────────────────────────
 
 const spinnerVariants = cva(
-  ["inline-flex", "items-center", "justify-center", "shrink-0"],
+  ['inline-flex', 'items-center', 'justify-center', 'shrink-0'],
   {
     variants: {
       variant: {
-        default: "",
-        circle: "",
-        pinwheel: "",
-        "circle-filled": "",
-        ellipsis: "",
-        ring: "",
-        bars: "",
-        infinite: "",
+        default: '',
+        circle: '',
+        pinwheel: '',
+        'circle-filled': '',
+        ellipsis: '',
+        ring: '',
+        bars: '',
+        infinite: '',
       },
       size: {
-        sm: "h-4 w-4",
-        md: "h-6 w-6",
-        lg: "h-8 w-8",
-        xl: "h-10 w-10",
-        "2xl": "h-12 w-12",
+        sm: 'h-4 w-4',
+        md: 'h-6 w-6',
+        lg: 'h-8 w-8',
+        xl: 'h-10 w-10',
+        '2xl': 'h-12 w-12',
       },
       theme: {
-        dark: "",
-        light: "",
+        dark: '',
+        light: '',
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "md",
-      theme: "dark",
+      variant: 'default',
+      size: 'md',
+      theme: 'dark',
     },
   }
 );
 
 export interface SpinnerProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof spinnerVariants> {
   className?: string;
 }
 
 // ─── Theme Color Resolver ────────────────────────────────────────────────
 
-function getStrokeColor(theme?: "dark" | "light"): string {
-  return theme === "dark" ? "var(--color-dark-text-primary)" : "var(--color-light-text-primary)";
+function getStrokeColor(theme?: 'dark' | 'light'): string {
+  return theme === 'dark'
+    ? 'var(--color-dark-text-primary)'
+    : 'var(--color-light-text-primary)';
 }
 
-function getDotColor(theme?: "dark" | "light"): string {
-  return theme === "dark" ? "bg-dark-text-primary" : "bg-light-text-primary";
+function getDotColor(theme?: 'dark' | 'light'): string {
+  return theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary';
 }
 
 // ─── Size Map ────────────────────────────────────────────────────────────
 
-const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-const dotSizeMap = { sm: 3, md: 4, lg: 5, xl: 6, "2xl": 7 };
-const barSizeMap = { sm: 10, md: 16, lg: 20, xl: 24, "2xl": 28 };
+const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, '2xl': 48 };
+const dotSizeMap = { sm: 3, md: 4, lg: 5, xl: 6, '2xl': 7 };
+const barSizeMap = { sm: 10, md: 16, lg: 20, xl: 24, '2xl': 28 };
 
 type SpinnerSize = keyof typeof sizeMap;
 
 // ─── Default Spinner ─────────────────────────────────────────────────────
 
 function DefaultSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -87,8 +90,8 @@ function DefaultSpinner({
       height={s}
       viewBox="0 0 24 24"
       fill="none"
-      className={cn("animate-spin", className)}
-      style={{ animationDuration: "1s" }}
+      className={cn('animate-spin', className)}
+      style={{ animationDuration: '1s' }}
     >
       <g stroke={getStrokeColor(theme)} strokeWidth="2.5" strokeLinecap="round">
         <line x1="12" y1="2" x2="12" y2="6" opacity="1" />
@@ -107,12 +110,12 @@ function DefaultSpinner({
 // ─── Circle Spinner ──────────────────────────────────────────────────────
 
 function CircleSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -123,8 +126,8 @@ function CircleSpinner({
       height={s}
       viewBox="0 0 24 24"
       fill="none"
-      className={cn("animate-spin", className)}
-      style={{ animationDuration: "1s" }}
+      className={cn('animate-spin', className)}
+      style={{ animationDuration: '1s' }}
     >
       <circle
         cx="12"
@@ -153,12 +156,12 @@ function CircleSpinner({
 // ─── Pinwheel Spinner ────────────────────────────────────────────────────
 
 function PinwheelSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -169,8 +172,8 @@ function PinwheelSpinner({
       height={s}
       viewBox="0 0 24 24"
       fill="none"
-      className={cn("animate-spin", className)}
-      style={{ animationDuration: "1.2s" }}
+      className={cn('animate-spin', className)}
+      style={{ animationDuration: '1.2s' }}
     >
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10"
@@ -199,12 +202,12 @@ function PinwheelSpinner({
 // ─── Circle Filled Spinner ───────────────────────────────────────────────
 
 function CircleFilledSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -215,8 +218,8 @@ function CircleFilledSpinner({
       height={s}
       viewBox="0 0 24 24"
       fill="none"
-      className={cn("animate-spin", className)}
-      style={{ animationDuration: "0.8s" }}
+      className={cn('animate-spin', className)}
+      style={{ animationDuration: '0.8s' }}
     >
       <circle
         cx="12"
@@ -234,43 +237,52 @@ function CircleFilledSpinner({
 // ─── Ellipsis Spinner ────────────────────────────────────────────────────
 
 function EllipsisSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const d = dotSizeMap[size];
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
+    <div className={cn('flex items-center gap-1', className)}>
       <span
-        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
+        className={cn(
+          getDotColor(theme),
+          'rounded-aphelion-full animate-bounce'
+        )}
         style={{
           width: d,
           height: d,
-          animationDuration: "0.6s",
-          animationDelay: "0s",
+          animationDuration: '0.6s',
+          animationDelay: '0s',
         }}
       />
       <span
-        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
+        className={cn(
+          getDotColor(theme),
+          'rounded-aphelion-full animate-bounce'
+        )}
         style={{
           width: d,
           height: d,
-          animationDuration: "0.6s",
-          animationDelay: "0.15s",
+          animationDuration: '0.6s',
+          animationDelay: '0.15s',
         }}
       />
       <span
-        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
+        className={cn(
+          getDotColor(theme),
+          'rounded-aphelion-full animate-bounce'
+        )}
         style={{
           width: d,
           height: d,
-          animationDuration: "0.6s",
-          animationDelay: "0.3s",
+          animationDuration: '0.6s',
+          animationDelay: '0.3s',
         }}
       />
     </div>
@@ -280,12 +292,12 @@ function EllipsisSpinner({
 // ─── Ring Spinner ────────────────────────────────────────────────────────
 
 function RingSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -296,8 +308,8 @@ function RingSpinner({
       height={s}
       viewBox="0 0 24 24"
       fill="none"
-      className={cn("animate-ping", className)}
-      style={{ animationDuration: "1.5s" }}
+      className={cn('animate-ping', className)}
+      style={{ animationDuration: '1.5s' }}
     >
       <circle
         cx="12"
@@ -314,44 +326,44 @@ function RingSpinner({
 // ─── Bars Spinner ────────────────────────────────────────────────────────
 
 function BarsSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const h = barSizeMap[size];
   const w = Math.max(2, Math.floor(h / 5));
 
   return (
-    <div className={cn("flex items-center gap-[2px]", className)}>
+    <div className={cn('flex items-center gap-[2px]', className)}>
       <span
-        className={cn(getDotColor(theme), "animate-pulse")}
+        className={cn(getDotColor(theme), 'animate-pulse')}
         style={{
           width: w,
           height: h,
-          animationDuration: "0.8s",
-          animationDelay: "0s",
+          animationDuration: '0.8s',
+          animationDelay: '0s',
         }}
       />
       <span
-        className={cn(getDotColor(theme), "animate-pulse")}
+        className={cn(getDotColor(theme), 'animate-pulse')}
         style={{
           width: w,
           height: h,
-          animationDuration: "0.8s",
-          animationDelay: "0.2s",
+          animationDuration: '0.8s',
+          animationDelay: '0.2s',
         }}
       />
       <span
-        className={cn(getDotColor(theme), "animate-pulse")}
+        className={cn(getDotColor(theme), 'animate-pulse')}
         style={{
           width: w,
           height: h,
-          animationDuration: "0.8s",
-          animationDelay: "0.4s",
+          animationDuration: '0.8s',
+          animationDelay: '0.4s',
         }}
       />
     </div>
@@ -361,12 +373,12 @@ function BarsSpinner({
 // ─── Infinite Spinner ────────────────────────────────────────────────────
 
 function InfiniteSpinner({
-  size = "md",
-  theme = "dark",
+  size = 'md',
+  theme = 'dark',
   className,
 }: {
   size?: SpinnerSize;
-  theme?: "dark" | "light";
+  theme?: 'dark' | 'light';
   className?: string;
 }) {
   const s = sizeMap[size];
@@ -386,7 +398,7 @@ function InfiniteSpinner({
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-pulse"
-        style={{ animationDuration: "1.5s" }}
+        style={{ animationDuration: '1.5s' }}
       />
     </svg>
   );
@@ -394,52 +406,44 @@ function InfiniteSpinner({
 
 // ─── Spinner Component ───────────────────────────────────────────────────
 
-const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner(
-    {
-      variant = "default",
-      size = "md",
-      theme = "dark",
-      className,
-      ...props
-    },
-    ref
-  ) {
-    const renderSpinner = () => {
-      switch (variant) {
-        case "circle":
-          return <CircleSpinner size={size as SpinnerSize} theme={theme} />;
-        case "pinwheel":
-          return <PinwheelSpinner size={size as SpinnerSize} theme={theme} />;
-        case "circle-filled":
-          return <CircleFilledSpinner size={size as SpinnerSize} theme={theme} />;
-        case "ellipsis":
-          return <EllipsisSpinner size={size as SpinnerSize} theme={theme} />;
-        case "ring":
-          return <RingSpinner size={size as SpinnerSize} theme={theme} />;
-        case "bars":
-          return <BarsSpinner size={size as SpinnerSize} theme={theme} />;
-        case "infinite":
-          return <InfiniteSpinner size={size as SpinnerSize} theme={theme} />;
-        default:
-          return <DefaultSpinner size={size as SpinnerSize} theme={theme} />;
-      }
-    };
+const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(function Spinner(
+  { variant = 'default', size = 'md', theme = 'dark', className, ...props },
+  ref
+) {
+  const renderSpinner = () => {
+    switch (variant) {
+      case 'circle':
+        return <CircleSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'pinwheel':
+        return <PinwheelSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'circle-filled':
+        return <CircleFilledSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'ellipsis':
+        return <EllipsisSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'ring':
+        return <RingSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'bars':
+        return <BarsSpinner size={size as SpinnerSize} theme={theme} />;
+      case 'infinite':
+        return <InfiniteSpinner size={size as SpinnerSize} theme={theme} />;
+      default:
+        return <DefaultSpinner size={size as SpinnerSize} theme={theme} />;
+    }
+  };
 
-    return (
-      <div
-        ref={ref}
-        className={cn(spinnerVariants({ variant, size, theme }), className)}
-        role="status"
-        aria-label="Loading"
-        {...props}
-      >
-        {renderSpinner()}
-      </div>
-    );
-  }
-);
-Spinner.displayName = "Spinner";
+  return (
+    <div
+      ref={ref}
+      className={cn(spinnerVariants({ variant, size, theme }), className)}
+      role="status"
+      aria-label="Loading"
+      {...props}
+    >
+      {renderSpinner()}
+    </div>
+  );
+});
+Spinner.displayName = 'Spinner';
 
 export {
   Spinner,

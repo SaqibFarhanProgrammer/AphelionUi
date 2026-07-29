@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { motion, type Transition, type Variants } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { motion, type Transition, type Variants } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 // --- Utility ----------------------------------------------------------------
 function cn(...inputs: (string | undefined | null | boolean)[]): string {
@@ -14,57 +14,43 @@ function cn(...inputs: (string | undefined | null | boolean)[]): string {
 
 // --- Overlay Variants -------------------------------------------------------
 const overlayVariants = cva(
-  ["fixed", "inset-0", "z-40", "transition-colors", "duration-300"],
+  ['fixed', 'inset-0', 'z-40', 'transition-colors', 'duration-300'],
   {
     variants: {
       theme: {
-        light: "bg-light-background/30",
-        dark: "bg-dark-background/60",
+        light: 'bg-light-background/30',
+        dark: 'bg-dark-background/60',
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
 
 // --- Sheet Variants ---------------------------------------------------------
-const sheetVariants = cva(
-  [
-    "fixed",
-    "z-50",
-    "flex",
-    "flex-col",
-  ],
-  {
-    variants: {
-      side: {
-        top: ["inset-x-0", "top-0", "border-b", "h-auto", "max-h-[85vh]"],
-        bottom: ["inset-x-0", "bottom-0", "border-t", "h-auto", "max-h-[85vh]"],
-        left: ["inset-y-0", "left-0", "border-r", "w-full", "sm:max-w-[420px]"],
-        right: [
-          "inset-y-0",
-          "right-0",
-          "border-l",
-          "w-full",
-          "sm:max-w-[420px]",
-        ],
-      },
-      theme: {
-        light: ["bg-light-card", "border-light-border", "shadow-aphelion-lg"],
-        dark: ["bg-dark-card", "border-dark-border", "shadow-aphelion-lg"],
-      },
+const sheetVariants = cva(['fixed', 'z-50', 'flex', 'flex-col'], {
+  variants: {
+    side: {
+      top: ['inset-x-0', 'top-0', 'border-b', 'h-auto', 'max-h-[85vh]'],
+      bottom: ['inset-x-0', 'bottom-0', 'border-t', 'h-auto', 'max-h-[85vh]'],
+      left: ['inset-y-0', 'left-0', 'border-r', 'w-full', 'sm:max-w-[420px]'],
+      right: ['inset-y-0', 'right-0', 'border-l', 'w-full', 'sm:max-w-[420px]'],
     },
-    defaultVariants: {
-      side: "right",
-      theme: "dark",
+    theme: {
+      light: ['bg-light-card', 'border-light-border', 'shadow-aphelion-lg'],
+      dark: ['bg-dark-card', 'border-dark-border', 'shadow-aphelion-lg'],
     },
-  }
-);
+  },
+  defaultVariants: {
+    side: 'right',
+    theme: 'dark',
+  },
+});
 
 // --- Header Variants --------------------------------------------------------
 const headerVariants = cva(
-  ["flex", "items-start", "justify-between", "gap-4", "p-6", "pb-0"],
+  ['flex', 'items-start', 'justify-between', 'gap-4', 'p-6', 'pb-0'],
   {
     variants: {
       theme: {
@@ -73,40 +59,40 @@ const headerVariants = cva(
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
 
 // --- Title Variants ---------------------------------------------------------
-const titleVariants = cva(["text-lg", "font-semibold", "leading-tight"], {
+const titleVariants = cva(['text-lg', 'font-semibold', 'leading-tight'], {
   variants: {
     theme: {
-      light: "text-light-text-primary",
-      dark: "text-dark-text-primary",
+      light: 'text-light-text-primary',
+      dark: 'text-dark-text-primary',
     },
   },
   defaultVariants: {
-    theme: "dark",
+    theme: 'dark',
   },
 });
 
 // --- Subtitle Variants ------------------------------------------------------
-const subtitleVariants = cva(["mt-1", "text-sm", "leading-relaxed"], {
+const subtitleVariants = cva(['mt-1', 'text-sm', 'leading-relaxed'], {
   variants: {
     theme: {
-      light: "text-light-text-muted",
-      dark: "text-dark-text-secondary",
+      light: 'text-light-text-muted',
+      dark: 'text-dark-text-secondary',
     },
   },
   defaultVariants: {
-    theme: "dark",
+    theme: 'dark',
   },
 });
 
 // --- Body Variants ----------------------------------------------------------
 const bodyVariants = cva(
-  ["flex-1", "overflow-y-auto", "p-6", "scrollbar-hide"],
+  ['flex-1', 'overflow-y-auto', 'p-6', 'scrollbar-hide'],
   {
     variants: {
       theme: {
@@ -115,14 +101,14 @@ const bodyVariants = cva(
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
 
 // --- Footer Variants --------------------------------------------------------
 const footerVariants = cva(
-  ["flex", "items-center", "justify-end", "gap-3", "p-6", "pt-0"],
+  ['flex', 'items-center', 'justify-end', 'gap-3', 'p-6', 'pt-0'],
   {
     variants: {
       theme: {
@@ -131,7 +117,7 @@ const footerVariants = cva(
       },
     },
     defaultVariants: {
-      theme: "dark",
+      theme: 'dark',
     },
   }
 );
@@ -164,44 +150,44 @@ const overlayAnimation = {
 };
 
 const sheetAnimation: Record<
-  NonNullable<VariantProps<typeof sheetVariants>["side"]>,
+  NonNullable<VariantProps<typeof sheetVariants>['side']>,
   {
-    initial: Variants["initial"];
-    animate: Variants["animate"];
-    exit: Variants["exit"];
+    initial: Variants['initial'];
+    animate: Variants['animate'];
+    exit: Variants['exit'];
     transition: Transition;
   }
 > = {
   top: {
-    initial: { y: "-100%", opacity: 0 },
+    initial: { y: '-100%', opacity: 0 },
     animate: { y: 0, opacity: 1 },
-    exit: { y: "-100%", opacity: 0 },
+    exit: { y: '-100%', opacity: 0 },
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   bottom: {
-    initial: { y: "100%", opacity: 0 },
+    initial: { y: '100%', opacity: 0 },
     animate: { y: 0, opacity: 1 },
-    exit: { y: "100%", opacity: 0 },
+    exit: { y: '100%', opacity: 0 },
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   left: {
-    initial: { x: "-100%", opacity: 0 },
+    initial: { x: '-100%', opacity: 0 },
     animate: { x: 0, opacity: 1 },
-    exit: { x: "-100%", opacity: 0 },
+    exit: { x: '-100%', opacity: 0 },
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   right: {
-    initial: { x: "100%", opacity: 0 },
+    initial: { x: '100%', opacity: 0 },
     animate: { x: 0, opacity: 1 },
-    exit: { x: "100%", opacity: 0 },
+    exit: { x: '100%', opacity: 0 },
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
 // --- Props type -------------------------------------------------------------
 export interface SheetProps {
-  theme?: "light" | "dark";
-  side?: "top" | "bottom" | "left" | "right";
+  theme?: 'light' | 'dark';
+  side?: 'top' | 'bottom' | 'left' | 'right';
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   title?: React.ReactNode;
@@ -224,8 +210,8 @@ export interface SheetProps {
 // --- Sheet Component --------------------------------------------------------
 const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
   {
-    theme = "dark",
-    side = "right",
+    theme = 'dark',
+    side = 'right',
     open = false,
     onOpenChange,
     title,
@@ -255,26 +241,28 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
   React.useEffect(() => {
     if (!closeOnEscape || !open) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
+      if (e.key === 'Escape') handleClose();
     };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [closeOnEscape, open]);
 
   React.useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflow = open ? 'hidden' : '';
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [open]);
 
-  const anim = sheetAnimation[side ?? "right"];
+  const anim = sheetAnimation[side ?? 'right'];
 
-  const isDark = theme === "dark";
-  const descriptionColor = isDark ? "text-dark-text-secondary" : "text-light-text-secondary";
+  const isDark = theme === 'dark';
+  const descriptionColor = isDark
+    ? 'text-dark-text-secondary'
+    : 'text-light-text-secondary';
   const closeBtnColor = isDark
-    ? "text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary"
-    : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary";
+    ? 'text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary'
+    : 'text-light-text-muted hover:bg-light-hover hover:text-light-text-primary';
 
   return (
     <AnimatePresence>
@@ -305,7 +293,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
                 type="button"
                 onClick={handleClose}
                 className={cn(
-                  "absolute top-4 right-4 z-10 rounded-aphelion-md p-1.5 transition-colors",
+                  'absolute top-4 right-4 z-10 rounded-aphelion-md p-1.5 transition-colors',
                   closeBtnColor
                 )}
                 aria-label="Close"
@@ -347,7 +335,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                       className={cn(
-                        "mt-3 text-sm leading-relaxed",
+                        'mt-3 text-sm leading-relaxed',
                         descriptionColor
                       )}
                     >
@@ -388,7 +376,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
   );
 });
 
-Sheet.displayName = "Sheet";
+Sheet.displayName = 'Sheet';
 
 // --- useSheet hook ----------------------------------------------------------
 export function useSheet(defaultOpen = false) {

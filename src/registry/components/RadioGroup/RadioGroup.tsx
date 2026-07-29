@@ -295,8 +295,7 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
     onChange?.(true);
   };
 
-  const dotColor =
-    theme === 'light' ? 'bg-light-primary' : 'bg-dark-primary';
+  const dotColor = theme === 'light' ? 'bg-light-primary' : 'bg-dark-primary';
   const requiredColor = 'text-light-destructive';
 
   return (
@@ -399,20 +398,36 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     };
 
     // Theme-aware color helpers
-    const labelColor = theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
-    const descColor = theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
-    const iconColor = theme === 'light' ? 'text-light-text-secondary' : 'text-dark-text-secondary';
-    const priceColor = theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
-    const metaColor = theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+    const labelColor =
+      theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
+    const descColor =
+      theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+    const iconColor =
+      theme === 'light'
+        ? 'text-light-text-secondary'
+        : 'text-dark-text-secondary';
+    const priceColor =
+      theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
+    const metaColor =
+      theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
     const checkBg = theme === 'light' ? 'bg-light-primary' : 'bg-dark-primary';
-    const checkText = theme === 'light' ? 'text-light-primary-foreground' : 'text-dark-primary-foreground';
+    const checkText =
+      theme === 'light'
+        ? 'text-light-primary-foreground'
+        : 'text-dark-primary-foreground';
 
     // Default option border colors
-    const defaultBorder = theme === 'light' ? 'border-light-border' : 'border-dark-border';
+    const defaultBorder =
+      theme === 'light' ? 'border-light-border' : 'border-dark-border';
     const defaultBg = theme === 'light' ? 'bg-light-card' : 'bg-dark-card';
-    const defaultHoverBorder = theme === 'light' ? 'hover:border-light-border-strong' : 'hover:border-dark-border-strong';
-    const checkedBorder = theme === 'light' ? 'border-light-primary' : 'border-dark-primary';
-    const checkedBg = theme === 'light' ? 'bg-light-selected' : 'bg-dark-selected';
+    const defaultHoverBorder =
+      theme === 'light'
+        ? 'hover:border-light-border-strong'
+        : 'hover:border-dark-border-strong';
+    const checkedBorder =
+      theme === 'light' ? 'border-light-primary' : 'border-dark-primary';
+    const checkedBg =
+      theme === 'light' ? 'bg-light-selected' : 'bg-dark-selected';
 
     const renderDefault = (option: RadioOption) => {
       const isChecked = currentValue === option.value;
@@ -523,9 +538,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
               </p>
             )}
             {option.specs && (
-              <p className={cn('text-xs', descColor)}>
-                {option.specs}
-              </p>
+              <p className={cn('text-xs', descColor)}>{option.specs}</p>
             )}
             {option.price && (
               <p className={cn('text-xl font-bold mt-2', priceColor)}>

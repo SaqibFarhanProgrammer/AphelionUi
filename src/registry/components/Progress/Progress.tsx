@@ -207,17 +207,18 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     const labelColor =
       theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
     const valueColor =
-      theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+      theme === 'dark'
+        ? 'text-dark-text-secondary'
+        : 'text-light-text-secondary';
     const descriptionColor =
       theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
     const insideValueColor =
-      theme === 'dark' ? 'text-dark-primary-foreground/70' : 'text-light-primary-foreground/90';
+      theme === 'dark'
+        ? 'text-dark-primary-foreground/70'
+        : 'text-light-primary-foreground/90';
 
     return (
-      <div
-        className={cn('flex flex-col gap-1.5', className)}
-        {...props}
-      >
+      <div className={cn('flex flex-col gap-1.5', className)} {...props}>
         {/* ─── Label Row ──────────────────────────────────────────── */}
         {(label || (showValue && valuePosition === 'outside')) && (
           <div className="flex items-center justify-between">
@@ -227,7 +228,9 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
               </span>
             )}
             {showValue && valuePosition === 'outside' && (
-              <span className={cn('text-sm font-medium tabular-nums', valueColor)}>
+              <span
+                className={cn('text-sm font-medium tabular-nums', valueColor)}
+              >
                 {Math.round(percentage)}%
               </span>
             )}
@@ -291,17 +294,13 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
 
         {/* ─── Description ────────────────────────────────────────── */}
         {description && (
-          <p className={cn('text-xs', descriptionColor)}>
-            {description}
-          </p>
+          <p className={cn('text-xs', descriptionColor)}>{description}</p>
         )}
 
         {/* ─── Value Bottom ───────────────────────────────────────── */}
         {showValue && valuePosition === 'bottom' && (
           <div className="flex justify-between text-xs">
-            <span className={descriptionColor}>
-              {min}
-            </span>
+            <span className={descriptionColor}>{min}</span>
             <span className={valueColor}>
               {clampedValue} / {max}
             </span>

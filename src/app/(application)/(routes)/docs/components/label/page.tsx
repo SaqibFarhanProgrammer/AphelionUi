@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import InstallCommand from '@/components/docs/InstallCommand';
 import CodeBlock from '@/components/docs/CodeBlock';
 import ComponentPreview from '@/components/docs/ComponentPreview';
@@ -32,17 +32,30 @@ const labelData = {
         {
           label: 'Small',
           code: "<Label size='sm'>Small Label</Label>",
-          preview: <Label theme='dark' size="sm">Small Label</Label>,
+          preview: (
+            <Label theme="dark" size="sm">
+              Small Label
+            </Label>
+          ),
         },
         {
           label: 'Medium',
           code: "<Label size='md'>Medium Label</Label>",
-          preview: <Label size="md"theme={"dark"} >Medium Label</Label>,
+          preview: (
+            <Label size="md" theme={'dark'}>
+              Medium Label
+            </Label>
+          ),
         },
         {
           label: 'Large',
           code: "<Label size='lg'>Large Label</Label>",
-          preview: <Label size="lg"theme={'dark'} > Large Label</Label>,
+          preview: (
+            <Label size="lg" theme={'dark'}>
+              {' '}
+              Large Label
+            </Label>
+          ),
         },
       ],
     },

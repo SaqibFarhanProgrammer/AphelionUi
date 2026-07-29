@@ -53,15 +53,7 @@ function DismissButton({
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
 const alertVariants = cva(
-  [
-    'relative',
-    'flex',
-    'items-start',
-    'gap-3',
-    'border',
-    'p-4',
-    'w-full',
-  ],
+  ['relative', 'flex', 'items-start', 'gap-3', 'border', 'p-4', 'w-full'],
   {
     variants: {
       theme: {
@@ -233,7 +225,13 @@ const alertVariants = cva(
 );
 
 const iconVariants = cva(
-  ['flex', 'shrink-0', 'items-center', 'justify-center', 'rounded-aphelion-full'],
+  [
+    'flex',
+    'shrink-0',
+    'items-center',
+    'justify-center',
+    'rounded-aphelion-full',
+  ],
   {
     variants: {
       size: {
@@ -530,7 +528,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   const textSize = sizeTextMap[size ?? 'md'];
 
   const descriptionTextColor =
-    theme === 'light' ? 'text-light-text-secondary' : 'text-dark-text-secondary';
+    theme === 'light'
+      ? 'text-light-text-secondary'
+      : 'text-dark-text-secondary';
 
   return (
     <div
@@ -588,9 +588,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
       </div>
 
       {/* Dismiss */}
-      {dismissible && (
-        <DismissButton onClick={onDismiss} theme={theme} />
-      )}
+      {dismissible && <DismissButton onClick={onDismiss} theme={theme} />}
     </div>
   );
 });

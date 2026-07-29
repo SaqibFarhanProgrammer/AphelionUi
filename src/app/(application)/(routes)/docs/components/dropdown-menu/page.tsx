@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   DropdownMenu,
@@ -6,16 +6,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuGroup,
   useDropdownMenu,
-} from "@/registry/components/DropdownMenu/Dropdown-menu";
-import InstallCommand from "@/components/docs/InstallCommand";
-import CodeBlock from "@/components/docs/CodeBlock";
-import ComponentPreview from "@/components/docs/ComponentPreview";
-import PropsTable from "@/components/docs/PropsTable";
-import DocsSection from "@/components/docs/DocsSection";
-import DocsPageLayout from "@/components/docs/DocsPageLayout";
-import BottomNav from "@/components/docs/BottomNav";
-import DocsFooter from "@/components/docs/DocsFooter";
-import { useState } from "react";
+} from '@/registry/components/DropdownMenu/Dropdown-menu';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
+import { useState } from 'react';
 import {
   User,
   Settings,
@@ -39,102 +39,168 @@ import {
   Volume2,
   Shield,
   Zap,
-} from "lucide-react";
-import { Button } from "@/registry/components/button/Button";
+} from 'lucide-react';
+import { Button } from '@/registry/components/button/Button';
 
 // ─── Demo Data ──────────────────────────────────────────────────────────
 
 const basicItems = [
-  { id: "profile", label: "Your Profile", icon: <User className="h-4 w-4" />, shortcut: "⌘P" },
-  { id: "settings", label: "Settings", icon: <Settings className="h-4 w-4" />, shortcut: "⌘," },
-  { id: "separator-1", separator: true },
-  { id: "logout", label: "Logout", icon: <LogOut className="h-4 w-4" />, danger: true },
+  {
+    id: 'profile',
+    label: 'Your Profile',
+    icon: <User className="h-4 w-4" />,
+    shortcut: '⌘P',
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    icon: <Settings className="h-4 w-4" />,
+    shortcut: '⌘,',
+  },
+  { id: 'separator-1', separator: true },
+  {
+    id: 'logout',
+    label: 'Logout',
+    icon: <LogOut className="h-4 w-4" />,
+    danger: true,
+  },
 ];
 
 const submenuItems = [
   {
-    id: "file",
-    label: "File",
+    id: 'file',
+    label: 'File',
     icon: <FileText className="h-4 w-4" />,
     items: [
-      { id: "file-new", label: "New", icon: <Plus className="h-4 w-4" /> },
-      { id: "file-open", label: "Open", icon: <FileText className="h-4 w-4" /> },
+      { id: 'file-new', label: 'New', icon: <Plus className="h-4 w-4" /> },
       {
-        id: "file-export",
-        label: "Export",
+        id: 'file-open',
+        label: 'Open',
+        icon: <FileText className="h-4 w-4" />,
+      },
+      {
+        id: 'file-export',
+        label: 'Export',
         icon: <Share2 className="h-4 w-4" />,
         items: [
-          { id: "export-pdf", label: "Export as PDF" },
-          { id: "export-csv", label: "Export as CSV" },
+          { id: 'export-pdf', label: 'Export as PDF' },
+          { id: 'export-csv', label: 'Export as CSV' },
         ],
       },
     ],
   },
   {
-    id: "edit",
-    label: "Edit",
+    id: 'edit',
+    label: 'Edit',
     icon: <Edit3 className="h-4 w-4" />,
     items: [
-      { id: "edit-undo", label: "Undo", shortcut: "⌘Z" },
-      { id: "edit-redo", label: "Redo", shortcut: "⌘⇧Z" },
+      { id: 'edit-undo', label: 'Undo', shortcut: '⌘Z' },
+      { id: 'edit-redo', label: 'Redo', shortcut: '⌘⇧Z' },
     ],
   },
-  { id: "separator-2", separator: true },
+  { id: 'separator-2', separator: true },
   {
-    id: "delete",
-    label: "Delete",
+    id: 'delete',
+    label: 'Delete',
     icon: <Trash2 className="h-4 w-4" />,
     danger: true,
   },
 ];
 
 const radioItems = [
-  { id: "theme-label", label: "Theme Mode", separator: true },
-  { id: "light", label: "Light Mode", icon: <Sun className="h-4 w-4" />, radio: true, radioGroup: "theme" },
-  { id: "dark", label: "Dark Mode", icon: <Moon className="h-4 w-4" />, radio: true, radioGroup: "theme" },
-  { id: "system", label: "System Default", icon: <Layout className="h-4 w-4" />, radio: true, radioGroup: "theme" },
+  { id: 'theme-label', label: 'Theme Mode', separator: true },
+  {
+    id: 'light',
+    label: 'Light Mode',
+    icon: <Sun className="h-4 w-4" />,
+    radio: true,
+    radioGroup: 'theme',
+  },
+  {
+    id: 'dark',
+    label: 'Dark Mode',
+    icon: <Moon className="h-4 w-4" />,
+    radio: true,
+    radioGroup: 'theme',
+  },
+  {
+    id: 'system',
+    label: 'System Default',
+    icon: <Layout className="h-4 w-4" />,
+    radio: true,
+    radioGroup: 'theme',
+  },
 ];
 
 const checkboxItems = [
-  { id: "notif-label", label: "Notifications", separator: true },
-  { id: "audio", label: "Enable Audio", icon: <Volume2 className="h-4 w-4" />, checked: true },
-  { id: "security", label: "Security Alerts", icon: <Shield className="h-4 w-4" />, checked: false },
-  { id: "updates", label: "Product Updates", icon: <Zap className="h-4 w-4" />, checked: false },
+  { id: 'notif-label', label: 'Notifications', separator: true },
+  {
+    id: 'audio',
+    label: 'Enable Audio',
+    icon: <Volume2 className="h-4 w-4" />,
+    checked: true,
+  },
+  {
+    id: 'security',
+    label: 'Security Alerts',
+    icon: <Shield className="h-4 w-4" />,
+    checked: false,
+  },
+  {
+    id: 'updates',
+    label: 'Product Updates',
+    icon: <Zap className="h-4 w-4" />,
+    checked: false,
+  },
 ];
 
 const shortcutItems = [
-  { id: "copy", label: "Copy", shortcut: "⌘C" },
-  { id: "paste", label: "Paste", shortcut: "⌘V" },
-  { id: "cut", label: "Cut", shortcut: "⌘X" },
-  { id: "separator-3", separator: true },
-  { id: "select-all", label: "Select All", shortcut: "⌘A" },
-  { id: "find", label: "Find", shortcut: "⌘F" },
+  { id: 'copy', label: 'Copy', shortcut: '⌘C' },
+  { id: 'paste', label: 'Paste', shortcut: '⌘V' },
+  { id: 'cut', label: 'Cut', shortcut: '⌘X' },
+  { id: 'separator-3', separator: true },
+  { id: 'select-all', label: 'Select All', shortcut: '⌘A' },
+  { id: 'find', label: 'Find', shortcut: '⌘F' },
 ];
 
 const disabledItems = [
-  { id: "active-1", label: "Active Item", icon: <Check className="h-4 w-4" /> },
-  { id: "disabled-1", label: "Disabled Item", icon: <AlertTriangle className="h-4 w-4" />, disabled: true },
-  { id: "active-2", label: "Another Active", icon: <Star className="h-4 w-4" /> },
+  { id: 'active-1', label: 'Active Item', icon: <Check className="h-4 w-4" /> },
+  {
+    id: 'disabled-1',
+    label: 'Disabled Item',
+    icon: <AlertTriangle className="h-4 w-4" />,
+    disabled: true,
+  },
+  {
+    id: 'active-2',
+    label: 'Another Active',
+    icon: <Star className="h-4 w-4" />,
+  },
 ];
 
 const dangerItems = [
-  { id: "edit", label: "Edit Profile", icon: <Edit3 className="h-4 w-4" /> },
-  { id: "share", label: "Share", icon: <Share2 className="h-4 w-4" /> },
-  { id: "separator-4", separator: true },
-  { id: "delete", label: "Delete Account", icon: <Trash2 className="h-4 w-4" />, danger: true },
+  { id: 'edit', label: 'Edit Profile', icon: <Edit3 className="h-4 w-4" /> },
+  { id: 'share', label: 'Share', icon: <Share2 className="h-4 w-4" /> },
+  { id: 'separator-4', separator: true },
+  {
+    id: 'delete',
+    label: 'Delete Account',
+    icon: <Trash2 className="h-4 w-4" />,
+    danger: true,
+  },
 ];
 
 // ─── Dropdown Data ───────────────────────────────────────────────────────
 
 const dropdownData = {
-  name: "DropdownMenu",
-  slug: "dropdown-menu",
-  title: "Dropdown Menu",
+  name: 'DropdownMenu',
+  slug: 'dropdown-menu',
+  title: 'Dropdown Menu',
   description:
-    "A versatile dropdown menu component with nested submenus, radio groups, checkboxes, keyboard navigation, shortcuts, disabled states, and smooth Framer Motion animations.",
-  category: "Overlay",
+    'A versatile dropdown menu component with nested submenus, radio groups, checkboxes, keyboard navigation, shortcuts, disabled states, and smooth Framer Motion animations.',
+  category: 'Overlay',
   installation: {
-    command: "shadcn@latest add aphelio/c/dropdown-menu",
+    command: 'shadcn@latest add aphelio/c/dropdown-menu',
   },
   usage: {
     import: `import {
@@ -155,12 +221,13 @@ const dropdownData = {
   },
   sections: [
     {
-      id: "basic",
-      title: "Basic",
-      description: "A simple dropdown menu with icons, shortcuts, and a danger item.",
+      id: 'basic',
+      title: 'Basic',
+      description:
+        'A simple dropdown menu with icons, shortcuts, and a danger item.',
       examples: [
         {
-          label: "Default",
+          label: 'Default',
           code: `<DropdownMenu
   trigger={<Button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white">Open Menu</Button>}
   items={[
@@ -173,11 +240,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Open Menu
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Open Menu</Button>}
               items={basicItems}
               align="start"
             />
@@ -186,50 +249,38 @@ const dropdownData = {
       ],
     },
     {
-      id: "alignment",
-      title: "Alignment",
-      description: "Control horizontal alignment relative to the trigger.",
+      id: 'alignment',
+      title: 'Alignment',
+      description: 'Control horizontal alignment relative to the trigger.',
       examples: [
         {
-          label: "Start",
+          label: 'Start',
           code: `<DropdownMenu trigger={<Button>Start</Button>} items={basicItems} align="start" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Start
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Start</Button>}
               items={basicItems}
               align="start"
             />
           ),
         },
         {
-          label: "Center",
+          label: 'Center',
           code: `<DropdownMenu trigger={<Button>Center</Button>} items={basicItems} align="center" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Center
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Center</Button>}
               items={basicItems}
               align="center"
             />
           ),
         },
         {
-          label: "End",
+          label: 'End',
           code: `<DropdownMenu trigger={<Button>End</Button>} items={basicItems} align="end" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  End
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>End</Button>}
               items={basicItems}
               align="end"
             />
@@ -238,20 +289,16 @@ const dropdownData = {
       ],
     },
     {
-      id: "sides",
-      title: "Sides",
-      description: "Position the dropdown on different sides of the trigger.",
+      id: 'sides',
+      title: 'Sides',
+      description: 'Position the dropdown on different sides of the trigger.',
       examples: [
         {
-          label: "Bottom (Default)",
+          label: 'Bottom (Default)',
           code: `<DropdownMenu trigger={<Button>Bottom</Button>} items={basicItems} side="bottom" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Bottom
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Bottom</Button>}
               items={basicItems}
               side="bottom"
               align="start"
@@ -259,15 +306,11 @@ const dropdownData = {
           ),
         },
         {
-          label: "Top",
+          label: 'Top',
           code: `<DropdownMenu trigger={<Button>Top</Button>} items={basicItems} side="top" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Top
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Top</Button>}
               items={basicItems}
               side="top"
               align="start"
@@ -275,15 +318,11 @@ const dropdownData = {
           ),
         },
         {
-          label: "Right",
+          label: 'Right',
           code: `<DropdownMenu trigger={<Button>Right</Button>} items={basicItems} side="right" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Right
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Right</Button>}
               items={basicItems}
               side="right"
               align="start"
@@ -291,15 +330,11 @@ const dropdownData = {
           ),
         },
         {
-          label: "Left",
+          label: 'Left',
           code: `<DropdownMenu trigger={<Button>Left</Button>} items={basicItems} side="left" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Left
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Left</Button>}
               items={basicItems}
               side="left"
               align="start"
@@ -309,12 +344,13 @@ const dropdownData = {
       ],
     },
     {
-      id: "submenus",
-      title: "Submenus",
-      description: "Nested dropdown menus with infinite depth support and back navigation.",
+      id: 'submenus',
+      title: 'Submenus',
+      description:
+        'Nested dropdown menus with infinite depth support and back navigation.',
       examples: [
         {
-          label: "Nested Menus",
+          label: 'Nested Menus',
           code: `<DropdownMenu
   trigger={<Button>File Menu</Button>}
   items={[
@@ -350,11 +386,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  File Menu
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>File Menu</Button>}
               items={submenuItems}
               align="start"
             />
@@ -363,12 +395,12 @@ const dropdownData = {
       ],
     },
     {
-      id: "radio",
-      title: "Radio Groups",
-      description: "Single-selection radio items within a dropdown menu.",
+      id: 'radio',
+      title: 'Radio Groups',
+      description: 'Single-selection radio items within a dropdown menu.',
       examples: [
         {
-          label: "Theme Selection",
+          label: 'Theme Selection',
           code: `<DropdownMenu
   trigger={<Button>Theme</Button>}
   items={[
@@ -381,11 +413,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Theme
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Theme</Button>}
               items={radioItems}
               align="start"
             />
@@ -394,12 +422,12 @@ const dropdownData = {
       ],
     },
     {
-      id: "checkbox",
-      title: "Checkboxes",
-      description: "Multi-selection checkbox items for toggling options.",
+      id: 'checkbox',
+      title: 'Checkboxes',
+      description: 'Multi-selection checkbox items for toggling options.',
       examples: [
         {
-          label: "Notification Settings",
+          label: 'Notification Settings',
           code: `<DropdownMenu
   trigger={<Button>Notifications</Button>}
   items={[
@@ -412,11 +440,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Notifications
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Notifications</Button>}
               items={checkboxItems}
               align="start"
             />
@@ -425,12 +449,12 @@ const dropdownData = {
       ],
     },
     {
-      id: "shortcuts",
-      title: "Shortcuts",
-      description: "Display keyboard shortcuts next to menu items.",
+      id: 'shortcuts',
+      title: 'Shortcuts',
+      description: 'Display keyboard shortcuts next to menu items.',
       examples: [
         {
-          label: "With Shortcuts",
+          label: 'With Shortcuts',
           code: `<DropdownMenu
   trigger={<Button>Edit</Button>}
   items={[
@@ -445,11 +469,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Edit
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Edit</Button>}
               items={shortcutItems}
               align="start"
             />
@@ -458,12 +478,12 @@ const dropdownData = {
       ],
     },
     {
-      id: "disabled",
-      title: "Disabled",
-      description: "Disable individual items or the entire dropdown menu.",
+      id: 'disabled',
+      title: 'Disabled',
+      description: 'Disable individual items or the entire dropdown menu.',
       examples: [
         {
-          label: "Disabled Items",
+          label: 'Disabled Items',
           code: `<DropdownMenu
   trigger={<Button>Menu</Button>}
   items={[
@@ -475,18 +495,14 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Menu
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Menu</Button>}
               items={disabledItems}
               align="start"
             />
           ),
         },
         {
-          label: "Disabled Dropdown",
+          label: 'Disabled Dropdown',
           code: `<DropdownMenu
   trigger={<Button>Disabled</Button>}
   items={basicItems}
@@ -494,11 +510,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Disabled
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Disabled</Button>}
               items={basicItems}
               disabled
             />
@@ -507,12 +519,12 @@ const dropdownData = {
       ],
     },
     {
-      id: "danger",
-      title: "Danger Items",
-      description: "Destructive actions styled with red accent colors.",
+      id: 'danger',
+      title: 'Danger Items',
+      description: 'Destructive actions styled with red accent colors.',
       examples: [
         {
-          label: "Danger Actions",
+          label: 'Danger Actions',
           code: `<DropdownMenu
   trigger={<Button>Account</Button>}
   items={[
@@ -525,11 +537,7 @@ const dropdownData = {
 />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Account
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Account</Button>}
               items={dangerItems}
               align="start"
             />
@@ -538,12 +546,13 @@ const dropdownData = {
       ],
     },
     {
-      id: "controlled",
-      title: "Controlled",
-      description: "Control the dropdown open state externally with value and onOpenChange.",
+      id: 'controlled',
+      title: 'Controlled',
+      description:
+        'Control the dropdown open state externally with value and onOpenChange.',
       examples: [
         {
-          label: "Controlled State",
+          label: 'Controlled State',
           code: `const [open, setOpen] = useState(false);
 
 return (
@@ -564,20 +573,16 @@ return (
       ],
     },
     {
-      id: "width",
-      title: "Width",
-      description: "Customize the dropdown menu width.",
+      id: 'width',
+      title: 'Width',
+      description: 'Customize the dropdown menu width.',
       examples: [
         {
-          label: "Narrow (180px)",
+          label: 'Narrow (180px)',
           code: `<DropdownMenu trigger={<Button>Narrow</Button>} items={basicItems} width={180} align="start" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Narrow
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Narrow</Button>}
               items={basicItems}
               width={180}
               align="start"
@@ -585,15 +590,11 @@ return (
           ),
         },
         {
-          label: "Wide (320px)",
+          label: 'Wide (320px)',
           code: `<DropdownMenu trigger={<Button>Wide</Button>} items={basicItems} width={320} align="start" />`,
           preview: (
             <DropdownMenu
-              trigger={
-                <Button variant={"primary"}>
-                  Wide
-                </Button>
-              }
+              trigger={<Button variant={'primary'}>Wide</Button>}
               items={basicItems}
               width={320}
               align="start"
@@ -604,42 +605,196 @@ return (
     },
   ],
   props: [
-    { name: "trigger", type: "React.ReactNode", default: "required", description: "Element that opens the dropdown when clicked." },
-    { name: "items", type: "DropdownItem[]", default: "required", description: "Array of menu items with labels, icons, shortcuts, and nested submenus." },
-    { name: "align", type: "'start' | 'center' | 'end'", default: '"center"', description: "Horizontal alignment of the dropdown relative to the trigger." },
-    { name: "side", type: "'top' | 'right' | 'bottom' | 'left'", default: '"bottom"', description: "Which side of the trigger the dropdown appears on." },
-    { name: "sideOffset", type: "number", default: "8", description: "Distance in pixels between the trigger and the dropdown." },
-    { name: "alignOffset", type: "number", default: "0", description: "Horizontal offset in pixels for alignment adjustment." },
-    { name: "width", type: "number | string", default: "220", description: "Width of the dropdown menu in pixels or CSS value." },
-    { name: "open", type: "boolean", default: "undefined", description: "Controlled open state. When provided, the dropdown becomes controlled." },
-    { name: "onOpenChange", type: "(open: boolean) => void", default: "undefined", description: "Callback fired when the dropdown open state changes." },
-    { name: "defaultOpen", type: "boolean", default: "false", description: "Default open state for uncontrolled usage." },
-    { name: "closeOnItemClick", type: "boolean", default: "true", description: "Whether the dropdown closes when an item is clicked." },
-    { name: "closeOnOutsideClick", type: "boolean", default: "true", description: "Whether the dropdown closes when clicking outside." },
-    { name: "closeOnEscape", type: "boolean", default: "true", description: "Whether the dropdown closes when the Escape key is pressed." },
-    { name: "disabled", type: "boolean", default: "false", description: "Disables the dropdown trigger and prevents opening." },
-    { name: "className", type: "string", default: "undefined", description: "Additional classes for the dropdown container." },
+    {
+      name: 'trigger',
+      type: 'React.ReactNode',
+      default: 'required',
+      description: 'Element that opens the dropdown when clicked.',
+    },
+    {
+      name: 'items',
+      type: 'DropdownItem[]',
+      default: 'required',
+      description:
+        'Array of menu items with labels, icons, shortcuts, and nested submenus.',
+    },
+    {
+      name: 'align',
+      type: "'start' | 'center' | 'end'",
+      default: '"center"',
+      description:
+        'Horizontal alignment of the dropdown relative to the trigger.',
+    },
+    {
+      name: 'side',
+      type: "'top' | 'right' | 'bottom' | 'left'",
+      default: '"bottom"',
+      description: 'Which side of the trigger the dropdown appears on.',
+    },
+    {
+      name: 'sideOffset',
+      type: 'number',
+      default: '8',
+      description: 'Distance in pixels between the trigger and the dropdown.',
+    },
+    {
+      name: 'alignOffset',
+      type: 'number',
+      default: '0',
+      description: 'Horizontal offset in pixels for alignment adjustment.',
+    },
+    {
+      name: 'width',
+      type: 'number | string',
+      default: '220',
+      description: 'Width of the dropdown menu in pixels or CSS value.',
+    },
+    {
+      name: 'open',
+      type: 'boolean',
+      default: 'undefined',
+      description:
+        'Controlled open state. When provided, the dropdown becomes controlled.',
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      default: 'undefined',
+      description: 'Callback fired when the dropdown open state changes.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Default open state for uncontrolled usage.',
+    },
+    {
+      name: 'closeOnItemClick',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether the dropdown closes when an item is clicked.',
+    },
+    {
+      name: 'closeOnOutsideClick',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether the dropdown closes when clicking outside.',
+    },
+    {
+      name: 'closeOnEscape',
+      type: 'boolean',
+      default: 'true',
+      description:
+        'Whether the dropdown closes when the Escape key is pressed.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disables the dropdown trigger and prevents opening.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      default: 'undefined',
+      description: 'Additional classes for the dropdown container.',
+    },
   ],
   dropdownItemProps: [
-    { name: "id", type: "string", default: "required", description: "Unique identifier for the menu item." },
-    { name: "label", type: "string", default: "required", description: "Display text for the menu item." },
-    { name: "icon", type: "React.ReactNode", default: "undefined", description: "Icon rendered on the left side of the item." },
-    { name: "shortcut", type: "string", default: "undefined", description: "Keyboard shortcut displayed on the right side." },
-    { name: "disabled", type: "boolean", default: "false", description: "Disables the individual menu item." },
-    { name: "danger", type: "boolean", default: "false", description: "Styles the item with destructive red colors." },
-    { name: "href", type: "string", default: "undefined", description: "URL for link-based menu items." },
-    { name: "onClick", type: "() => void", default: "undefined", description: "Click handler for the menu item." },
-    { name: "items", type: "DropdownItem[]", default: "undefined", description: "Nested submenu items." },
-    { name: "separator", type: "boolean", default: "false", description: "Renders a horizontal separator instead of a clickable item." },
-    { name: "checked", type: "boolean", default: "undefined", description: "Checkbox state for the item." },
-    { name: "radio", type: "boolean", default: "false", description: "Renders the item as a radio option." },
-    { name: "radioGroup", type: "string", default: "undefined", description: "Group name for radio selection. Items with the same group are mutually exclusive." },
+    {
+      name: 'id',
+      type: 'string',
+      default: 'required',
+      description: 'Unique identifier for the menu item.',
+    },
+    {
+      name: 'label',
+      type: 'string',
+      default: 'required',
+      description: 'Display text for the menu item.',
+    },
+    {
+      name: 'icon',
+      type: 'React.ReactNode',
+      default: 'undefined',
+      description: 'Icon rendered on the left side of the item.',
+    },
+    {
+      name: 'shortcut',
+      type: 'string',
+      default: 'undefined',
+      description: 'Keyboard shortcut displayed on the right side.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disables the individual menu item.',
+    },
+    {
+      name: 'danger',
+      type: 'boolean',
+      default: 'false',
+      description: 'Styles the item with destructive red colors.',
+    },
+    {
+      name: 'href',
+      type: 'string',
+      default: 'undefined',
+      description: 'URL for link-based menu items.',
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      default: 'undefined',
+      description: 'Click handler for the menu item.',
+    },
+    {
+      name: 'items',
+      type: 'DropdownItem[]',
+      default: 'undefined',
+      description: 'Nested submenu items.',
+    },
+    {
+      name: 'separator',
+      type: 'boolean',
+      default: 'false',
+      description:
+        'Renders a horizontal separator instead of a clickable item.',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      default: 'undefined',
+      description: 'Checkbox state for the item.',
+    },
+    {
+      name: 'radio',
+      type: 'boolean',
+      default: 'false',
+      description: 'Renders the item as a radio option.',
+    },
+    {
+      name: 'radioGroup',
+      type: 'string',
+      default: 'undefined',
+      description:
+        'Group name for radio selection. Items with the same group are mutually exclusive.',
+    },
   ],
 };
 
 const bottomNavItems = [
-  { label: "Dialog", href: "/docs/components/dialog", description: "Modal overlay for confirmations and forms." },
-  { label: "Tooltip", href: "/docs/components/tooltip", description: "Contextual information on hover." },
+  {
+    label: 'Dialog',
+    href: '/docs/components/dialog',
+    description: 'Modal overlay for confirmations and forms.',
+  },
+  {
+    label: 'Tooltip',
+    href: '/docs/components/tooltip',
+    description: 'Contextual information on hover.',
+  },
 ];
 
 // ─── Controlled Preview Component ───────────────────────────────────────
@@ -650,11 +805,7 @@ function ControlledDropdownPreview() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <DropdownMenu
-        trigger={
-          <Button variant={"primary"}>
-            Controlled
-          </Button>
-        }
+        trigger={<Button variant={'primary'}>Controlled</Button>}
         items={basicItems}
         open={open}
         onOpenChange={setOpen}
@@ -673,7 +824,7 @@ function ControlledDropdownPreview() {
         Close
       </Button>
       <span className="text-sm text-aphelion-light-text-primary">
-        State: {open ? "Open" : "Closed"}
+        State: {open ? 'Open' : 'Closed'}
       </span>
     </div>
   );
@@ -688,16 +839,16 @@ export default function DropdownMenuPage() {
       title={dropdownData.title}
       description={dropdownData.description}
       sideMapGroup={[
-        { id: "installation", title: "Installation" },
-        { id: "usage", title: "Usage" },
-        { id: "examples", title: "Examples" },
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
         ...dropdownData.sections.map((section) => ({
           id: section.id,
           title: section.title,
           level: 3,
         })),
-        { id: "props", title: "Props" },
-        { id: "item-props", title: "DropdownItem Props" },
+        { id: 'props', title: 'Props' },
+        { id: 'item-props', title: 'DropdownItem Props' },
       ]}
     >
       <section className="mb-14" id="installation">

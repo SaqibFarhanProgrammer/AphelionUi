@@ -14,10 +14,23 @@ import { useState } from 'react';
 // ─── Demo Data ───────────────────────────────────────────────────────────
 
 const timeSlots = [
-  '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM',
-  '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM',
-  '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM',
-  '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM',
+  '09:00 AM',
+  '09:30 AM',
+  '10:00 AM',
+  '10:30 AM',
+  '11:00 AM',
+  '11:30 AM',
+  '12:00 PM',
+  '12:30 PM',
+  '01:00 PM',
+  '01:30 PM',
+  '02:00 PM',
+  '02:30 PM',
+  '03:00 PM',
+  '03:30 PM',
+  '04:00 PM',
+  '04:30 PM',
+  '05:00 PM',
 ];
 
 const presets = [
@@ -131,7 +144,12 @@ const calendarData = {
 />`,
           preview: (
             <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" size="sm" />
+              <Calendar
+                mode="single"
+                theme="dark"
+                variant="bordered"
+                size="sm"
+              />
             </CalendarWrapper>
           ),
         },
@@ -147,7 +165,12 @@ const calendarData = {
 />`,
           preview: (
             <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" size="md" />
+              <Calendar
+                mode="single"
+                theme="dark"
+                variant="bordered"
+                size="md"
+              />
             </CalendarWrapper>
           ),
         },
@@ -163,7 +186,12 @@ const calendarData = {
 />`,
           preview: (
             <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" size="lg" />
+              <Calendar
+                mode="single"
+                theme="dark"
+                variant="bordered"
+                size="lg"
+              />
             </CalendarWrapper>
           ),
         },
@@ -221,8 +249,8 @@ const calendarData = {
   variant="bordered"
 />`,
           preview: (
-            <CalendarWrapper >
-              <Calendar mode="single"  theme="dark" variant="bordered" />
+            <CalendarWrapper>
+              <Calendar mode="single" theme="dark" variant="bordered" />
             </CalendarWrapper>
           ),
         },
@@ -239,7 +267,12 @@ const calendarData = {
 </div>`,
           preview: (
             <div className="rounded-aphelion-xl bg-white p-6">
-              <Calendar mode="single" theme="light" className='' variant="bordered" />
+              <Calendar
+                mode="single"
+                theme="light"
+                className=""
+                variant="bordered"
+              />
             </div>
           ),
         },
@@ -310,7 +343,12 @@ const calendarData = {
 />`,
           preview: (
             <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" disabled={isDateDisabled} />
+              <Calendar
+                mode="single"
+                theme="dark"
+                variant="bordered"
+                disabled={isDateDisabled}
+              />
             </CalendarWrapper>
           ),
         },
@@ -333,7 +371,12 @@ const calendarData = {
 />`,
           preview: (
             <CalendarWrapper>
-              <Calendar mode="single" theme="dark" variant="bordered" showMonthYearSelect />
+              <Calendar
+                mode="single"
+                theme="dark"
+                variant="bordered"
+                showMonthYearSelect
+              />
             </CalendarWrapper>
           ),
         },
@@ -579,7 +622,10 @@ function SingleCalendarPreview() {
         />
       </CalendarWrapper>
       <div className="text-sm text-aphelion-light-text-primary">
-        Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
+        Selected:{' '}
+        <span className="text-white/70">
+          {date ? date.toDateString() : 'None'}
+        </span>
       </div>
     </div>
   );
@@ -600,8 +646,18 @@ function RangeCalendarPreview() {
         />
       </CalendarWrapper>
       <div className="text-sm text-aphelion-light-text-primary space-y-1">
-        <p>From: <span className="text-white/70">{range?.from ? range.from.toDateString() : 'None'}</span></p>
-        <p>To: <span className="text-white/70">{range?.to ? range.to.toDateString() : 'None'}</span></p>
+        <p>
+          From:{' '}
+          <span className="text-white/70">
+            {range?.from ? range.from.toDateString() : 'None'}
+          </span>
+        </p>
+        <p>
+          To:{' '}
+          <span className="text-white/70">
+            {range?.to ? range.to.toDateString() : 'None'}
+          </span>
+        </p>
       </div>
     </div>
   );
@@ -623,7 +679,16 @@ function MultipleCalendarPreview() {
       <div className="text-sm text-aphelion-light-text-primary">
         Selected ({dates.length}):{' '}
         <span className="text-white/70">
-          {dates.length ? dates.map((d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })).join(', ') : 'None'}
+          {dates.length
+            ? dates
+                .map((d) =>
+                  d.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                  })
+                )
+                .join(', ')
+            : 'None'}
         </span>
       </div>
     </div>
@@ -649,8 +714,15 @@ function TimeSlotCalendarPreview() {
         />
       </CalendarWrapper>
       <div className="text-sm text-aphelion-light-text-primary space-y-1">
-        <p>Date: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span></p>
-        <p>Time: <span className="text-white/70">{time || 'None'}</span></p>
+        <p>
+          Date:{' '}
+          <span className="text-white/70">
+            {date ? date.toDateString() : 'None'}
+          </span>
+        </p>
+        <p>
+          Time: <span className="text-white/70">{time || 'None'}</span>
+        </p>
       </div>
     </div>
   );
@@ -671,8 +743,18 @@ function PresetCalendarPreview() {
         />
       </CalendarWrapper>
       <div className="text-sm text-aphelion-light-text-primary space-y-1">
-        <p>From: <span className="text-white/70">{range?.from ? range.from.toDateString() : 'None'}</span></p>
-        <p>To: <span className="text-white/70">{range?.to ? range.to.toDateString() : 'None'}</span></p>
+        <p>
+          From:{' '}
+          <span className="text-white/70">
+            {range?.from ? range.from.toDateString() : 'None'}
+          </span>
+        </p>
+        <p>
+          To:{' '}
+          <span className="text-white/70">
+            {range?.to ? range.to.toDateString() : 'None'}
+          </span>
+        </p>
       </div>
     </div>
   );
@@ -690,7 +772,10 @@ function DatePickerPreview({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
         variant="bordered"
       />
       <div className="text-sm text-aphelion-light-text-primary">
-        Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
+        Selected:{' '}
+        <span className="text-white/70">
+          {date ? date.toDateString() : 'None'}
+        </span>
       </div>
     </div>
   );
@@ -713,7 +798,10 @@ function DatePickerWithPresetsPreview() {
         ]}
       />
       <div className="text-sm text-aphelion-light-text-primary">
-        Selected: <span className="text-white/70">{date ? date.toDateString() : 'None'}</span>
+        Selected:{' '}
+        <span className="text-white/70">
+          {date ? date.toDateString() : 'None'}
+        </span>
       </div>
     </div>
   );

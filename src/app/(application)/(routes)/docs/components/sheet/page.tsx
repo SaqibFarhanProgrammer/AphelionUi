@@ -646,18 +646,10 @@ function SheetPreview({
         closeOnOverlayClick={closeOnOverlayClick}
         footer={
           <div className="flex items-center justify-end gap-3">
-            <Button
-              onClick={sheet.onClose}
-              variant={"primary"}
-            >
+            <Button onClick={sheet.onClose} variant={'primary'}>
               Cancel
             </Button>
-            <Button
-              onClick={sheet.onClose}
-
-            >
-              Save
-            </Button>
+            <Button onClick={sheet.onClose}>Save</Button>
           </div>
         }
       >
@@ -699,18 +691,10 @@ function ControlledSheetPreview() {
         subtitle="Managed by external state"
         footer={
           <div className="flex items-center justify-end gap-3">
-            <Button
-              onClick={() => setIsOpen(false)}
-              variant={"primary"}
-            >
+            <Button onClick={() => setIsOpen(false)} variant={'primary'}>
               Cancel
             </Button>
-            <Button
-              onClick={() => setIsOpen(false)}
-
-            >
-              Done
-            </Button>
+            <Button onClick={() => setIsOpen(false)}>Done</Button>
           </div>
         }
       >
@@ -760,18 +744,10 @@ function HookSheetPreview() {
         subtitle="Controlled by useSheet hook"
         footer={
           <div className="flex items-center justify-end gap-3">
-            <Button
-              onClick={sheet.onClose}
-              variant={"primary"}
-            >
+            <Button onClick={sheet.onClose} variant={'primary'}>
               Cancel
             </Button>
-            <Button
-              onClick={sheet.onClose}
-
-            >
-              Done
-            </Button>
+            <Button onClick={sheet.onClose}>Done</Button>
           </div>
         }
       >

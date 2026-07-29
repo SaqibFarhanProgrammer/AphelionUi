@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 // ─── Utility ─────────────────────────────────────────────────────────────
 
@@ -15,54 +15,54 @@ function cn(...inputs: ClassValue[]) {
 
 const labelVariants = cva(
   [
-    "inline-flex",
-    "items-center",
-    "gap-2",
-    "rounded-aphelion-full",
-    "font-medium",
-    "leading-none",
-    "transition-all",
-    "duration-200",
-    "select-none",
-    "whitespace-nowrap",
+    'inline-flex',
+    'items-center',
+    'gap-2',
+    'rounded-aphelion-full',
+    'font-medium',
+    'leading-none',
+    'transition-all',
+    'duration-200',
+    'select-none',
+    'whitespace-nowrap',
   ],
   {
     variants: {
       size: {
-        sm: ["px-3", "py-1.5", "text-xs"],
-        md: ["px-4", "py-2", "text-sm"],
-        lg: ["px-5", "py-2.5", "text-sm"],
+        sm: ['px-3', 'py-1.5', 'text-xs'],
+        md: ['px-4', 'py-2', 'text-sm'],
+        lg: ['px-5', 'py-2.5', 'text-sm'],
       },
       theme: {
         light: [
-          "bg-light-muted",
-          "text-light-text-secondary",
-          "border",
-          "border-light-border",
-          "hover:bg-light-hover",
-          "hover:border-light-border-strong",
+          'bg-light-muted',
+          'text-light-text-secondary',
+          'border',
+          'border-light-border',
+          'hover:bg-light-hover',
+          'hover:border-light-border-strong',
         ],
         dark: [
-          "bg-dark-muted",
-          "text-dark-text-primary",
-          "border",
-          "border-dark-border",
-          "hover:bg-dark-hover",
-          "hover:border-dark-border-strong",
+          'bg-dark-muted',
+          'text-dark-text-primary',
+          'border',
+          'border-dark-border',
+          'hover:bg-dark-hover',
+          'hover:border-dark-border-strong',
         ],
-        "light-primary": [
-          "bg-light-primary",
-          "text-light-primary-foreground",
-          "border",
-          "border-light-primary-border",
-          "hover:bg-light-primary-hover",
+        'light-primary': [
+          'bg-light-primary',
+          'text-light-primary-foreground',
+          'border',
+          'border-light-primary-border',
+          'hover:bg-light-primary-hover',
         ],
-        "dark-primary": [
-          "bg-dark-primary",
-          "text-dark-primary-foreground",
-          "border",
-          "border-dark-primary-border",
-          "hover:bg-dark-primary-hover",
+        'dark-primary': [
+          'bg-dark-primary',
+          'text-dark-primary-foreground',
+          'border',
+          'border-dark-primary-border',
+          'hover:bg-dark-primary-hover',
         ],
       },
       variant: {
@@ -73,41 +73,41 @@ const labelVariants = cva(
     },
     compoundVariants: [
       {
-        theme: "light",
-        variant: "outline",
+        theme: 'light',
+        variant: 'outline',
         className:
-          "bg-transparent border-light-border text-light-text-secondary hover:bg-light-hover",
+          'bg-transparent border-light-border text-light-text-secondary hover:bg-light-hover',
       },
       {
-        theme: "dark",
-        variant: "outline",
+        theme: 'dark',
+        variant: 'outline',
         className:
-          "bg-transparent border-dark-border-strong text-dark-text-primary hover:bg-dark-hover",
+          'bg-transparent border-dark-border-strong text-dark-text-primary hover:bg-dark-hover',
       },
       {
-        theme: "light",
-        variant: "ghost",
+        theme: 'light',
+        variant: 'ghost',
         className:
-          "bg-transparent border-transparent text-light-text-secondary hover:bg-light-hover",
+          'bg-transparent border-transparent text-light-text-secondary hover:bg-light-hover',
       },
       {
-        theme: "dark",
-        variant: "ghost",
+        theme: 'dark',
+        variant: 'ghost',
         className:
-          "bg-transparent border-transparent text-dark-text-primary hover:bg-dark-hover",
+          'bg-transparent border-transparent text-dark-text-primary hover:bg-dark-hover',
       },
     ],
     defaultVariants: {
-      size: "md",
-      theme: "light",
-      variant: "default",
+      size: 'md',
+      theme: 'light',
+      variant: 'default',
     },
   }
 );
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
-export type LabelIcon = "dot" | "circle" | "check" | "user" | React.ReactNode;
+export type LabelIcon = 'dot' | 'circle' | 'check' | 'user' | React.ReactNode;
 
 export interface LabelProps
   extends
@@ -124,55 +124,54 @@ export interface LabelProps
 // ─── Helper: Check if theme is "primary" or "dark" variant ───────────────
 
 function isDarkOrPrimary(theme: string): boolean {
-  return theme === "dark" || theme === "dark-primary" || theme === "light-primary";
+  return (
+    theme === 'dark' || theme === 'dark-primary' || theme === 'light-primary'
+  );
 }
 
 // ─── Icon Renderer ───────────────────────────────────────────────────────
 
-function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
+function renderIcon(icon: LabelIcon, theme: string = 'light'): React.ReactNode {
   if (!icon) return null;
 
   const iconColor = isDarkOrPrimary(theme)
-    ? "text-light-primary-foreground"
-    : "text-light-text-muted";
+    ? 'text-light-primary-foreground'
+    : 'text-light-text-muted';
 
   const dotBg = isDarkOrPrimary(theme)
-    ? "bg-light-primary-foreground"
-    : "bg-light-text-muted";
+    ? 'bg-light-primary-foreground'
+    : 'bg-light-text-muted';
 
   const circleBorder = isDarkOrPrimary(theme)
-    ? "border-light-primary-foreground"
-    : "border-light-text-muted";
+    ? 'border-light-primary-foreground'
+    : 'border-light-text-muted';
 
   if (React.isValidElement(icon)) {
     return (
-      <span className={cn("inline-flex items-center", iconColor)}>{icon}</span>
+      <span className={cn('inline-flex items-center', iconColor)}>{icon}</span>
     );
   }
 
   switch (icon) {
-    case "dot":
+    case 'dot':
       return (
         <span
-          className={cn(
-            "inline-block h-2 w-2 rounded-aphelion-full",
-            dotBg
-          )}
+          className={cn('inline-block h-2 w-2 rounded-aphelion-full', dotBg)}
         />
       );
-    case "circle":
+    case 'circle':
       return (
         <span
           className={cn(
-            "inline-block h-3 w-3 rounded-aphelion-full border-2",
+            'inline-block h-3 w-3 rounded-aphelion-full border-2',
             circleBorder
           )}
         />
       );
-    case "check":
+    case 'check':
       return (
         <svg
-          className={cn("h-3.5 w-3.5", iconColor)}
+          className={cn('h-3.5 w-3.5', iconColor)}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -185,10 +184,10 @@ function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
           />
         </svg>
       );
-    case "user":
+    case 'user':
       return (
         <svg
-          className={cn("h-3.5 w-3.5", iconColor)}
+          className={cn('h-3.5 w-3.5', iconColor)}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -220,10 +219,10 @@ function DismissButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "ml-1 inline-flex h-4 w-4 items-center justify-center rounded-aphelion-full transition-colors",
+        'ml-1 inline-flex h-4 w-4 items-center justify-center rounded-aphelion-full transition-colors',
         isPrimary
-          ? "text-light-primary-foreground/70 hover:bg-light-primary-foreground/20 hover:text-light-primary-foreground"
-          : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary"
+          ? 'text-light-primary-foreground/70 hover:bg-light-primary-foreground/20 hover:text-light-primary-foreground'
+          : 'text-light-text-muted hover:bg-light-hover hover:text-light-text-primary'
       )}
       aria-label="Dismiss"
     >
@@ -248,9 +247,9 @@ function DismissButton({
 
 const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
   {
-    size = "md",
-    theme = "light",
-    variant = "default",
+    size = 'md',
+    theme = 'light',
+    variant = 'default',
     icon,
     iconRight,
     children,
@@ -283,6 +282,6 @@ const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
   );
 });
 
-Label.displayName = "Label";
+Label.displayName = 'Label';
 
 export default Label;

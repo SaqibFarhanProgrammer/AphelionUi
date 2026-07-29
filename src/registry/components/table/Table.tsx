@@ -9,14 +9,12 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-
 const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
   variants: {
     layout: {
       default: '',
       card: 'rounded-aphelion-xl border overflow-hidden',
-      vertical:
-        'rounded-aphelion-xl border overflow-hidden max-w-[480px]',
+      vertical: 'rounded-aphelion-xl border overflow-hidden max-w-[480px]',
     },
     theme: {
       dark: 'bg-dark-background',
@@ -51,7 +49,6 @@ const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
   },
 });
 
-
 const tableVariants = cva(['w-full', 'border-collapse', 'text-left'], {
   variants: {
     variant: {
@@ -79,7 +76,6 @@ const tableVariants = cva(['w-full', 'border-collapse', 'text-left'], {
     size: 'md',
   },
 });
-
 
 const headerRowVariants = cva(['border-b'], {
   variants: {
@@ -127,7 +123,6 @@ const headerCellVariants = cva(
     },
   }
 );
-
 
 const bodyRowVariants = cva(['transition-colors', 'duration-150'], {
   variants: {
@@ -275,7 +270,6 @@ const bodyCellVariants = cva(['whitespace-nowrap', 'text-left'], {
   },
 });
 
-
 const footerRowVariants = cva(['border-t'], {
   variants: {
     theme: {
@@ -309,7 +303,6 @@ const footerCellVariants = cva(
   }
 );
 
-
 function Checkbox({
   checked,
   onChange,
@@ -322,7 +315,9 @@ function Checkbox({
   className?: string;
 }) {
   const isDark = theme === 'dark';
-  const uncheckedBorder = isDark ? 'border-dark-border hover:border-dark-border-strong' : 'border-light-border hover:border-light-border-strong';
+  const uncheckedBorder = isDark
+    ? 'border-dark-border hover:border-dark-border-strong'
+    : 'border-light-border hover:border-light-border-strong';
   const checkedClasses = isDark
     ? 'border-dark-primary bg-dark-primary text-dark-primary-foreground'
     : 'border-light-primary bg-light-primary text-light-primary-foreground';
@@ -359,7 +354,6 @@ function Checkbox({
   );
 }
 
-
 function SortIcon({ direction }: { direction?: 'asc' | 'desc' | null }) {
   return (
     <span className="ml-1.5 inline-flex flex-col">
@@ -391,7 +385,6 @@ function SortIcon({ direction }: { direction?: 'asc' | 'desc' | null }) {
   );
 }
 
-
 function CheckIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
   return (
     <svg
@@ -417,7 +410,9 @@ function CrossIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="2.5"
-      className={theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive'}
+      className={
+        theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive'
+      }
     >
       <path
         strokeLinecap="round"
@@ -427,7 +422,6 @@ function CrossIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
     </svg>
   );
 }
-
 
 function Avatar({
   src,
@@ -468,14 +462,20 @@ function Avatar({
           onError={() => setError(true)}
         />
       ) : (
-        <span className={cn('font-medium', theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary')}>
+        <span
+          className={cn(
+            'font-medium',
+            theme === 'dark'
+              ? 'text-dark-text-secondary'
+              : 'text-light-text-secondary'
+          )}
+        >
           {fallback?.charAt(0).toUpperCase() || '?'}
         </span>
       )}
     </div>
   );
 }
-
 
 function StatusBadge({
   status,
@@ -487,18 +487,25 @@ function StatusBadge({
   const isActive = status.toLowerCase() === 'active';
   const isDark = theme === 'dark';
   const dotColor = isActive
-    ? isDark ? 'bg-dark-success' : 'bg-light-success'
-    : isDark ? 'bg-dark-text-muted' : 'bg-light-text-muted';
-  const textColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
+    ? isDark
+      ? 'bg-dark-success'
+      : 'bg-light-success'
+    : isDark
+      ? 'bg-dark-text-muted'
+      : 'bg-light-text-muted';
+  const textColor = isDark
+    ? 'text-dark-text-primary'
+    : 'text-light-text-primary';
 
   return (
     <span className={cn('inline-flex items-center gap-1.5 text-sm', textColor)}>
-      <span className={cn('inline-block h-2 w-2 rounded-aphelion-full', dotColor)} />
+      <span
+        className={cn('inline-block h-2 w-2 rounded-aphelion-full', dotColor)}
+      />
       {status}
     </span>
   );
 }
-
 
 function IntentBadge({
   label,
@@ -535,7 +542,6 @@ function IntentBadge({
   );
 }
 
-
 function FilterInput({
   placeholder,
   value,
@@ -566,7 +572,6 @@ function FilterInput({
     />
   );
 }
-
 
 export interface TableColumn<T = any> {
   key: string;
@@ -640,15 +645,16 @@ function Table<T = any>({
   const isVertical = variant === 'vertical';
   const isDark = theme === 'dark';
 
-  const emptyTextColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const verticalLabelColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const emptyTextColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
+  const verticalLabelColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
   const stripedEvenBg = isDark ? 'bg-dark-selected' : 'bg-light-selected';
 
   return (
-    <div
-      className={cn('flex flex-col gap-4', className)}
-      {...props}
-    >
+    <div className={cn('flex flex-col gap-4', className)} {...props}>
       {filters && (
         <div className="flex flex-wrap items-center gap-3">{filters}</div>
       )}
@@ -839,7 +845,6 @@ function Table<T = any>({
     </div>
   );
 }
-
 
 export {
   Table,

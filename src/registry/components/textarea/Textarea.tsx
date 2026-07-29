@@ -150,12 +150,18 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     // ─── Theme-aware colors ──────────────────────────────────────────────
     const isDark = theme === 'dark';
-    const labelDefaultColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const labelDefaultColor = isDark
+      ? 'text-dark-text-primary'
+      : 'text-light-text-primary';
     const labelErrorColor = 'text-light-destructive';
     const requiredColor = 'text-light-destructive';
-    const optionalColor = isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+    const optionalColor = isDark
+      ? 'text-dark-text-secondary'
+      : 'text-light-text-secondary';
     const hintColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
-    const charCountColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+    const charCountColor = isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted';
     const charCountErrorColor = 'text-light-destructive';
     const disabledBg = isDark ? 'bg-dark-muted' : 'bg-light-muted';
 
@@ -173,7 +179,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             >
               {label}
               {required && (
-                <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
+                <span
+                  className={cn('ml-0.5', requiredColor)}
+                  aria-hidden="true"
+                >
                   *
                 </span>
               )}
@@ -194,11 +203,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           maxLength={maxLength}
           className={cn(
             textareaVariants({ theme, state: isError ? 'error' : 'default' }),
-            disabled && [
-              'cursor-not-allowed',
-              'opacity-50',
-              disabledBg,
-            ],
+            disabled && ['cursor-not-allowed', 'opacity-50', disabledBg],
             className
           )}
           value={value}
@@ -214,7 +219,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         <div className="flex items-center justify-between min-h-[20px]">
           <div className="flex-1">
             {error ? (
-              <span id={`${props.id}-error`} className="text-xs text-light-destructive">
+              <span
+                id={`${props.id}-error`}
+                className="text-xs text-light-destructive"
+              >
                 {error}
               </span>
             ) : hint ? (

@@ -345,24 +345,44 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
   // ─── Theme-aware colors ────────────────────────────────────────────────
 
   const isDark = theme === 'dark';
-  const placeholderColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const chevronColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const placeholderColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
+  const chevronColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
   const labelErrorColor = 'text-light-destructive';
   const requiredColor = 'text-light-destructive';
   const dropdownBg = isDark ? 'bg-dark-card' : 'bg-light-card';
   const dropdownBorder = isDark ? 'border-dark-border' : 'border-light-border';
   const searchBg = isDark ? 'bg-dark-muted' : 'bg-light-muted';
   const searchBorder = isDark ? 'border-dark-border' : 'border-light-border';
-  const searchIconColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
-  const searchTextColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
-  const noResultsColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const searchIconColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
+  const searchTextColor = isDark
+    ? 'text-dark-text-primary'
+    : 'text-light-text-primary';
+  const noResultsColor = isDark
+    ? 'text-dark-text-muted'
+    : 'text-light-text-muted';
   const optionHoverBg = isDark ? 'hover:bg-dark-hover' : 'hover:bg-light-hover';
   const optionSelectedBg = isDark ? 'bg-dark-selected' : 'bg-light-selected';
-  const optionSelectedText = isDark ? 'text-dark-text-primary font-medium' : 'text-light-text-primary font-medium';
-  const optionDefaultText = isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary';
-  const optionCircleSelected = isDark ? 'border-dark-primary bg-dark-primary' : 'border-light-primary bg-light-primary';
-  const optionCircleUnselected = isDark ? 'border-dark-border' : 'border-light-border';
-  const openBorder = isDark ? 'border-dark-border-strong' : 'border-light-border-strong';
+  const optionSelectedText = isDark
+    ? 'text-dark-text-primary font-medium'
+    : 'text-light-text-primary font-medium';
+  const optionDefaultText = isDark
+    ? 'text-dark-text-secondary'
+    : 'text-light-text-secondary';
+  const optionCircleSelected = isDark
+    ? 'border-dark-primary bg-dark-primary'
+    : 'border-light-primary bg-light-primary';
+  const optionCircleUnselected = isDark
+    ? 'border-dark-border'
+    : 'border-light-border';
+  const openBorder = isDark
+    ? 'border-dark-border-strong'
+    : 'border-light-border-strong';
 
   return (
     <div className={cn('relative flex flex-col', containerClassName)}>
@@ -408,12 +428,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
         )}
         {...props}
       >
-        <span
-          className={cn(
-            'truncate',
-            !selectedOption && placeholderColor
-          )}
-        >
+        <span className={cn('truncate', !selectedOption && placeholderColor)}>
           {selectedOption?.label || placeholder}
         </span>
         <ChevronIcon open={isOpen} className={chevronColor} />
@@ -448,7 +463,9 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
                     searchBorder
                   )}
                 >
-                  <SearchIcon className={cn('h-4 w-4 shrink-0', searchIconColor)} />
+                  <SearchIcon
+                    className={cn('h-4 w-4 shrink-0', searchIconColor)}
+                  />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -512,7 +529,9 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
                     <span
                       className={cn(
                         'h-2.5 w-2.5 shrink-0 rounded-aphelion-full border-2 transition-colors duration-150',
-                        isSelected ? optionCircleSelected : optionCircleUnselected
+                        isSelected
+                          ? optionCircleSelected
+                          : optionCircleUnselected
                       )}
                     />
                     <span className="truncate">{option.label}</span>

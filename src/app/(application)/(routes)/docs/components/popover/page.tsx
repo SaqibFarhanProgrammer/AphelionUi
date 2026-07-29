@@ -25,7 +25,6 @@ import DocsFooter from '@/components/docs/DocsFooter';
 import { useState } from 'react';
 import { Button } from '@/registry/components/button/Button';
 
-
 const notifications = [
   {
     name: 'Alice Johnson',
@@ -57,14 +56,14 @@ const stepperSteps = [
   },
   {
     title: 'Customization',
-    description: 'Popovers can be customized with themes, sizes, and positions.',
+    description:
+      'Popovers can be customized with themes, sizes, and positions.',
   },
   {
     title: 'Done!',
     description: "You've completed the tour. Click finish to close.",
   },
 ];
-
 
 const popoverData = {
   name: 'Popover',
@@ -116,10 +115,14 @@ const popoverData = {
   </PopoverBody>
 </Popover>`,
           preview: (
-            <Popover triggerText="Share" triggerVariant="outline" hasArrow size="lg">
+            <Popover
+              triggerText="Share"
+              triggerVariant="outline"
+              hasArrow
+              size="lg"
+            >
               <PopoverHeader title="Share" description="Share with others" />
-              <PopoverBody>
-              </PopoverBody>
+              <PopoverBody></PopoverBody>
             </Popover>
           ),
         },
@@ -182,14 +185,29 @@ const popoverData = {
 </Popover>`,
           preview: (
             <Popover triggerText="Edit Profile" triggerVariant="solid">
-              <PopoverHeader title="Edit Profile" description="Update your info" />
+              <PopoverHeader
+                title="Edit Profile"
+                description="Update your info"
+              />
               <PopoverBody>
-                <PopoverFormRow label="Name" value="" placeholder="Enter name" />
-                <PopoverFormRow label="Email" value="" placeholder="Enter email" />
+                <PopoverFormRow
+                  label="Name"
+                  value=""
+                  placeholder="Enter name"
+                />
+                <PopoverFormRow
+                  label="Email"
+                  value=""
+                  placeholder="Enter email"
+                />
               </PopoverBody>
               <PopoverFooter>
-                <PopoverButton variant="ghost" size="sm">Cancel</PopoverButton>
-                <PopoverButton variant="solid" size="sm">Update</PopoverButton>
+                <PopoverButton variant="ghost" size="sm">
+                  Cancel
+                </PopoverButton>
+                <PopoverButton variant="solid" size="sm">
+                  Update
+                </PopoverButton>
               </PopoverFooter>
             </Popover>
           ),
@@ -240,7 +258,8 @@ const popoverData = {
     {
       id: 'positions',
       title: 'Positions',
-      description: 'Place the popover on any side of the trigger with alignment options.',
+      description:
+        'Place the popover on any side of the trigger with alignment options.',
       examples: [
         {
           label: 'Sides',
@@ -261,16 +280,32 @@ const popoverData = {
           preview: (
             <div className="flex flex-wrap items-center gap-6">
               <Popover triggerText="Top" side="top" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Top</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Top</p>
+                </PopoverBody>
               </Popover>
-              <Popover triggerText="Bottom" side="bottom" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Bottom</p></PopoverBody>
+              <Popover
+                triggerText="Bottom"
+                side="bottom"
+                triggerVariant="outline"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Bottom</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Left" side="left" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Left</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Left</p>
+                </PopoverBody>
               </Popover>
-              <Popover triggerText="Right" side="right" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Right</p></PopoverBody>
+              <Popover
+                triggerText="Right"
+                side="right"
+                triggerVariant="outline"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Right</p>
+                </PopoverBody>
               </Popover>
             </div>
           ),
@@ -290,14 +325,35 @@ const popoverData = {
 </div>`,
           preview: (
             <div className="flex flex-wrap items-center gap-6">
-              <Popover triggerText="Start" side="bottom" align="start" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Start</p></PopoverBody>
+              <Popover
+                triggerText="Start"
+                side="bottom"
+                align="start"
+                triggerVariant="outline"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Start</p>
+                </PopoverBody>
               </Popover>
-              <Popover triggerText="Center" side="bottom" align="center" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Center</p></PopoverBody>
+              <Popover
+                triggerText="Center"
+                side="bottom"
+                align="center"
+                triggerVariant="outline"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Center</p>
+                </PopoverBody>
               </Popover>
-              <Popover triggerText="End" side="bottom" align="end" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">End</p></PopoverBody>
+              <Popover
+                triggerText="End"
+                side="bottom"
+                align="end"
+                triggerVariant="outline"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">End</p>
+                </PopoverBody>
               </Popover>
             </div>
           ),
@@ -325,13 +381,19 @@ const popoverData = {
           preview: (
             <div className="flex flex-wrap items-center gap-6">
               <Popover triggerText="Small" size="sm" triggerVariant="outline">
-                <PopoverBody><p className="text-xs text-white/60">Small</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-xs text-white/60">Small</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Medium" size="md" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Medium (default)</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Medium (default)</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Large" size="lg" triggerVariant="outline">
-                <PopoverBody><p className="text-base text-white/60">Large</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-base text-white/60">Large</p>
+                </PopoverBody>
               </Popover>
             </div>
           ),
@@ -362,16 +424,24 @@ const popoverData = {
           preview: (
             <div className="flex flex-wrap items-center gap-6">
               <Popover triggerText="Default" triggerVariant="default">
-                <PopoverBody><p className="text-sm text-white/60">Default trigger</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Default trigger</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Outline" triggerVariant="outline">
-                <PopoverBody><p className="text-sm text-white/60">Outline trigger</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Outline trigger</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Ghost" triggerVariant="ghost">
-                <PopoverBody><p className="text-sm text-white/60">Ghost trigger</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Ghost trigger</p>
+                </PopoverBody>
               </Popover>
               <Popover triggerText="Solid" triggerVariant="solid">
-                <PopoverBody><p className="text-sm text-white/60">Solid trigger</p></PopoverBody>
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Solid trigger</p>
+                </PopoverBody>
               </Popover>
             </div>
           ),
@@ -395,11 +465,25 @@ const popoverData = {
 </div>`,
           preview: (
             <div className="flex flex-wrap items-center gap-6">
-              <Popover triggerText="Bottom Arrow" triggerVariant="solid" hasArrow side="bottom">
-                <PopoverBody><p className="text-sm text-white/60">Arrow pointing up</p></PopoverBody>
+              <Popover
+                triggerText="Bottom Arrow"
+                triggerVariant="solid"
+                hasArrow
+                side="bottom"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Arrow pointing up</p>
+                </PopoverBody>
               </Popover>
-              <Popover triggerText="Top Arrow" triggerVariant="outline" hasArrow side="top">
-                <PopoverBody><p className="text-sm text-white/60">Arrow pointing down</p></PopoverBody>
+              <Popover
+                triggerText="Top Arrow"
+                triggerVariant="outline"
+                hasArrow
+                side="top"
+              >
+                <PopoverBody>
+                  <p className="text-sm text-white/60">Arrow pointing down</p>
+                </PopoverBody>
               </Popover>
             </div>
           ),
@@ -430,8 +514,12 @@ const popoverData = {
                 <p className="text-sm text-white/60">Dark theme popover</p>
               </PopoverBody>
               <PopoverFooter theme="dark">
-                <PopoverButton variant="ghost" size="sm" theme="dark">Cancel</PopoverButton>
-                <PopoverButton variant="solid" size="sm" theme="dark">Confirm</PopoverButton>
+                <PopoverButton variant="ghost" size="sm" theme="dark">
+                  Cancel
+                </PopoverButton>
+                <PopoverButton variant="solid" size="sm" theme="dark">
+                  Confirm
+                </PopoverButton>
               </PopoverFooter>
             </Popover>
           ),
@@ -452,14 +540,26 @@ const popoverData = {
 </div>`,
           preview: (
             <div className="rounded-aphelion-xl bg-white p-6">
-              <Popover triggerText="Light" triggerVariant="outline" theme="light">
-                <PopoverHeader title="Light Mode" description="Clean look" theme="light" />
+              <Popover
+                triggerText="Light"
+                triggerVariant="outline"
+                theme="light"
+              >
+                <PopoverHeader
+                  title="Light Mode"
+                  description="Clean look"
+                  theme="light"
+                />
                 <PopoverBody>
                   <p className="text-sm text-black/60">Light theme popover</p>
                 </PopoverBody>
                 <PopoverFooter theme="light">
-                  <PopoverButton variant="ghost" size="sm" theme="light">Cancel</PopoverButton>
-                  <PopoverButton variant="solid" size="sm" theme="light">Confirm</PopoverButton>
+                  <PopoverButton variant="ghost" size="sm" theme="light">
+                    Cancel
+                  </PopoverButton>
+                  <PopoverButton variant="solid" size="sm" theme="light">
+                    Confirm
+                  </PopoverButton>
                 </PopoverFooter>
               </Popover>
             </div>
@@ -470,7 +570,8 @@ const popoverData = {
     {
       id: 'controlled',
       title: 'Controlled',
-      description: 'Control the popover state externally with open and onOpenChange.',
+      description:
+        'Control the popover state externally with open and onOpenChange.',
       examples: [
         {
           label: 'Controlled State',
@@ -497,7 +598,8 @@ return (
     {
       id: 'hook',
       title: 'usePopover Hook',
-      description: 'Programmatically control the popover with the usePopover hook.',
+      description:
+        'Programmatically control the popover with the usePopover hook.',
       examples: [
         {
           label: 'Hook Controlled',
@@ -698,7 +800,6 @@ const bottomNavItems = [
   },
 ];
 
-
 function SettingsPopoverPreview() {
   const [checked, setChecked] = useState(false);
   return (
@@ -706,14 +807,22 @@ function SettingsPopoverPreview() {
       <PopoverHeader title="Preferences" />
       <PopoverBody>
         <div className="space-y-3">
-          <PopoverCheckbox label="Enable notifications" checked={checked} onChange={setChecked} />
+          <PopoverCheckbox
+            label="Enable notifications"
+            checked={checked}
+            onChange={setChecked}
+          />
           <PopoverCheckbox label="Dark mode" checked />
           <PopoverCheckbox label="Auto-save" />
         </div>
       </PopoverBody>
       <PopoverFooter>
-        <PopoverButton variant="ghost" size="sm">Reset</PopoverButton>
-        <PopoverButton variant="solid" size="sm">Save</PopoverButton>
+        <PopoverButton variant="ghost" size="sm">
+          Reset
+        </PopoverButton>
+        <PopoverButton variant="solid" size="sm">
+          Save
+        </PopoverButton>
       </PopoverFooter>
     </Popover>
   );
@@ -724,7 +833,14 @@ function NotificationPopoverPreview() {
     <Popover
       trigger={
         <Button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 hover:border-white/20 hover:text-white transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
@@ -736,7 +852,11 @@ function NotificationPopoverPreview() {
       hasArrow
       size="lg"
     >
-      <PopoverHeader title="Notifications" description="Recent activity" showClose />
+      <PopoverHeader
+        title="Notifications"
+        description="Recent activity"
+        showClose
+      />
       <PopoverBody>
         <div className="max-h-64 space-y-0.5 overflow-y-auto">
           {notifications.map((notif, i) => (
@@ -753,8 +873,12 @@ function NotificationPopoverPreview() {
         </div>
       </PopoverBody>
       <PopoverFooter>
-        <PopoverButton variant="ghost" size="sm">Mark all read</PopoverButton>
-        <PopoverButton variant="outline" size="sm">View all</PopoverButton>
+        <PopoverButton variant="ghost" size="sm">
+          Mark all read
+        </PopoverButton>
+        <PopoverButton variant="outline" size="sm">
+          View all
+        </PopoverButton>
       </PopoverFooter>
     </Popover>
   );
@@ -772,12 +896,17 @@ function StepperPopoverPreview() {
       hasArrow
       size="lg"
     >
-      <PopoverHeader title="Quick Tour" description={`Step ${step + 1} of ${stepperSteps.length}`} />
+      <PopoverHeader
+        title="Quick Tour"
+        description={`Step ${step + 1} of ${stepperSteps.length}`}
+      />
       <PopoverBody>
         <PopoverStepper
           steps={stepperSteps}
           currentStep={step}
-          onNext={() => setStep((s) => Math.min(s + 1, stepperSteps.length - 1))}
+          onNext={() =>
+            setStep((s) => Math.min(s + 1, stepperSteps.length - 1))
+          }
           onPrev={() => setStep((s) => Math.max(s - 1, 0))}
           onFinish={() => {
             popover.closePopover();
@@ -807,8 +936,15 @@ function ControlledPopoverPreview() {
           Close
         </Button>
       </div>
-      <div className="text-sm text-aphelion-light-text-primary">Status: {isOpen ? 'Open' : 'Closed'}</div>
-      <Popover open={isOpen} onOpenChange={setIsOpen} triggerText="Controlled" triggerVariant="solid">
+      <div className="text-sm text-aphelion-light-text-primary">
+        Status: {isOpen ? 'Open' : 'Closed'}
+      </div>
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        triggerText="Controlled"
+        triggerVariant="solid"
+      >
         <PopoverBody>
           <p className="text-sm text-white/60">Controlled externally</p>
         </PopoverBody>
@@ -841,8 +977,15 @@ function HookPopoverPreview() {
           Toggle
         </Button>
       </div>
-      <div className="text-sm text-aphelion-light-text-primary">Status: {popover.open ? 'Open' : 'Closed'}</div>
-      <Popover open={popover.open} onOpenChange={popover.setOpen} triggerText="Hook" triggerVariant="solid">
+      <div className="text-sm text-aphelion-light-text-primary">
+        Status: {popover.open ? 'Open' : 'Closed'}
+      </div>
+      <Popover
+        open={popover.open}
+        onOpenChange={popover.setOpen}
+        triggerText="Hook"
+        triggerVariant="solid"
+      >
         <PopoverBody>
           <p className="text-sm text-white/60">Controlled by usePopover hook</p>
         </PopoverBody>
@@ -850,7 +993,6 @@ function HookPopoverPreview() {
     </div>
   );
 }
-
 
 export default function PopoverPage() {
   return (

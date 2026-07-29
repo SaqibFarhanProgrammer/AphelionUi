@@ -10,33 +10,67 @@ import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
 
-
 const IconCheck = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M5 13l4 4L19 7" />
   </svg>
 );
 
 const IconUser = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </svg>
 );
 
 const IconStar = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
 );
 
 const IconTag = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
     <line x1="7" y1="7" x2="7.01" y2="7" />
   </svg>
 );
-
 
 const badgeData = {
   name: 'Badge',
@@ -79,8 +113,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline">Outline</Badge>
-              <Badge variant="outline" color="success">Success</Badge>
-              <Badge variant="outline" color="destructive">Danger</Badge>
+              <Badge variant="outline" color="success">
+                Success
+              </Badge>
+              <Badge variant="outline" color="destructive">
+                Danger
+              </Badge>
             </div>
           ),
         },
@@ -92,8 +130,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="solid">Solid</Badge>
-              <Badge variant="solid" color="success">Success</Badge>
-              <Badge variant="solid" color="destructive">Danger</Badge>
+              <Badge variant="solid" color="success">
+                Success
+              </Badge>
+              <Badge variant="solid" color="destructive">
+                Danger
+              </Badge>
             </div>
           ),
         },
@@ -105,8 +147,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="ghost">Ghost</Badge>
-              <Badge variant="ghost" color="success">Success</Badge>
-              <Badge variant="ghost" color="destructive">Danger</Badge>
+              <Badge variant="ghost" color="success">
+                Success
+              </Badge>
+              <Badge variant="ghost" color="destructive">
+                Danger
+              </Badge>
             </div>
           ),
         },
@@ -118,8 +164,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="soft">Soft</Badge>
-              <Badge variant="soft" color="success">Success</Badge>
-              <Badge variant="soft" color="destructive">Danger</Badge>
+              <Badge variant="soft" color="success">
+                Success
+              </Badge>
+              <Badge variant="soft" color="destructive">
+                Danger
+              </Badge>
             </div>
           ),
         },
@@ -205,18 +255,30 @@ const badgeData = {
         {
           label: 'Left Icon',
           code: '<Badge leftIcon={<IconCheck />} color="success">Verified</Badge>',
-          preview: <Badge leftIcon={<IconCheck />} color="success">Verified</Badge>,
+          preview: (
+            <Badge leftIcon={<IconCheck />} color="success">
+              Verified
+            </Badge>
+          ),
         },
         {
           label: 'Right Icon',
           code: '<Badge rightIcon={<IconStar />} color="warning">Featured</Badge>',
-          preview: <Badge rightIcon={<IconStar />} color="warning">Featured</Badge>,
+          preview: (
+            <Badge rightIcon={<IconStar />} color="warning">
+              Featured
+            </Badge>
+          ),
         },
         {
           label: 'Both Icons',
           code: '<Badge leftIcon={<IconUser />} rightIcon={<IconCheck />} color="success">User</Badge>',
           preview: (
-            <Badge leftIcon={<IconUser />} rightIcon={<IconCheck />} color="success">
+            <Badge
+              leftIcon={<IconUser />}
+              rightIcon={<IconCheck />}
+              color="success"
+            >
               User
             </Badge>
           ),
@@ -237,10 +299,7 @@ const badgeData = {
   Alice Johnson
 </Badge>`,
           preview: (
-            <Badge
-              avatarFallback="A"
-              color="primary"
-            >
+            <Badge avatarFallback="A" color="primary">
               Alice Johnson
             </Badge>
           ),
@@ -248,7 +307,11 @@ const badgeData = {
         {
           label: 'Avatar with Fallback',
           code: '<Badge avatarFallback="JD" color="destructive">John Doe</Badge>',
-          preview: <Badge avatarFallback="JD" color="destructive">John Doe</Badge>,
+          preview: (
+            <Badge avatarFallback="JD" color="destructive">
+              John Doe
+            </Badge>
+          ),
         },
       ],
     },
@@ -266,11 +329,21 @@ const badgeData = {
 <Badge dot dotColor="info" color="info">Info</Badge>`,
           preview: (
             <div className="flex flex-wrap gap-2">
-              <Badge dot color="default">Default</Badge>
-              <Badge dot dotColor="success" color="success">Online</Badge>
-              <Badge dot dotColor="destructive" color="destructive">Offline</Badge>
-              <Badge dot dotColor="warning" color="warning">Pending</Badge>
-              <Badge dot dotColor="info" color="info">Info</Badge>
+              <Badge dot color="default">
+                Default
+              </Badge>
+              <Badge dot dotColor="success" color="success">
+                Online
+              </Badge>
+              <Badge dot dotColor="destructive" color="destructive">
+                Offline
+              </Badge>
+              <Badge dot dotColor="warning" color="warning">
+                Pending
+              </Badge>
+              <Badge dot dotColor="info" color="info">
+                Info
+              </Badge>
             </div>
           ),
         },
@@ -288,9 +361,15 @@ const badgeData = {
 <Badge prefix="Priority:" color="destructive">High</Badge>`,
           preview: (
             <div className="flex flex-wrap gap-2">
-              <Badge prefix="Dept:" color="primary">Engineering</Badge>
-              <Badge prefix="Status:" color="success">Active</Badge>
-              <Badge prefix="Priority:" color="destructive">High</Badge>
+              <Badge prefix="Dept:" color="primary">
+                Engineering
+              </Badge>
+              <Badge prefix="Status:" color="success">
+                Active
+              </Badge>
+              <Badge prefix="Priority:" color="destructive">
+                High
+              </Badge>
             </div>
           ),
         },
@@ -309,8 +388,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge dismissible>Dismiss me</Badge>
-              <Badge dismissible color="success" variant="solid">Completed</Badge>
-              <Badge dismissible color="destructive" variant="outline">Error</Badge>
+              <Badge dismissible color="success" variant="solid">
+                Completed
+              </Badge>
+              <Badge dismissible color="destructive" variant="outline">
+                Error
+              </Badge>
             </div>
           ),
         },
@@ -329,8 +412,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge disabled>Disabled</Badge>
-              <Badge disabled color="success">Success</Badge>
-              <Badge disabled variant="solid" color="destructive">Solid</Badge>
+              <Badge disabled color="success">
+                Success
+              </Badge>
+              <Badge disabled variant="solid" color="destructive">
+                Solid
+              </Badge>
             </div>
           ),
         },
@@ -366,8 +453,12 @@ const badgeData = {
           preview: (
             <BadgeGroup gap="md">
               <Badge variant="outline">Design</Badge>
-              <Badge variant="outline" color="success">UX</Badge>
-              <Badge variant="outline" color="info">Research</Badge>
+              <Badge variant="outline" color="success">
+                UX
+              </Badge>
+              <Badge variant="outline" color="info">
+                Research
+              </Badge>
             </BadgeGroup>
           ),
         },
@@ -381,10 +472,18 @@ const badgeData = {
 </BadgeGroup>`,
           preview: (
             <BadgeGroup gap="lg" wrap>
-              <Badge leftIcon={<IconTag />} color="primary">Frontend</Badge>
-              <Badge leftIcon={<IconTag />} color="success">Backend</Badge>
-              <Badge leftIcon={<IconTag />} color="destructive">DevOps</Badge>
-              <Badge leftIcon={<IconTag />} color="info">Cloud</Badge>
+              <Badge leftIcon={<IconTag />} color="primary">
+                Frontend
+              </Badge>
+              <Badge leftIcon={<IconTag />} color="success">
+                Backend
+              </Badge>
+              <Badge leftIcon={<IconTag />} color="destructive">
+                DevOps
+              </Badge>
+              <Badge leftIcon={<IconTag />} color="info">
+                Cloud
+              </Badge>
             </BadgeGroup>
           ),
         },
@@ -403,8 +502,12 @@ const badgeData = {
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge theme="dark">Default</Badge>
-              <Badge theme="dark" color="success">Success</Badge>
-              <Badge theme="dark" variant="solid" color="primary">Solid</Badge>
+              <Badge theme="dark" color="success">
+                Success
+              </Badge>
+              <Badge theme="dark" variant="solid" color="primary">
+                Solid
+              </Badge>
             </div>
           ),
         },
@@ -418,8 +521,12 @@ const badgeData = {
           preview: (
             <div className="rounded-aphelion-xl border border-black/10 bg-white p-4 flex flex-wrap gap-2">
               <Badge theme="light">Default</Badge>
-              <Badge theme="light" color="success">Success</Badge>
-              <Badge theme="light" variant="solid" color="primary">Solid</Badge>
+              <Badge theme="light" color="success">
+                Success
+              </Badge>
+              <Badge theme="light" variant="solid" color="primary">
+                Solid
+              </Badge>
             </div>
           ),
         },
@@ -437,9 +544,15 @@ const badgeData = {
 <Badge dot dotColor="destructive" color="destructive">Offline</Badge>`,
           preview: (
             <div className="flex flex-wrap gap-2">
-              <Badge dot dotColor="success" color="success">Online</Badge>
-              <Badge dot dotColor="warning" color="warning">Away</Badge>
-              <Badge dot dotColor="destructive" color="destructive">Offline</Badge>
+              <Badge dot dotColor="success" color="success">
+                Online
+              </Badge>
+              <Badge dot dotColor="warning" color="warning">
+                Away
+              </Badge>
+              <Badge dot dotColor="destructive" color="destructive">
+                Offline
+              </Badge>
             </div>
           ),
         },
@@ -453,10 +566,18 @@ const badgeData = {
 </BadgeGroup>`,
           preview: (
             <BadgeGroup>
-              <Badge variant="soft" color="primary">React</Badge>
-              <Badge variant="soft" color="success">TypeScript</Badge>
-              <Badge variant="soft" color="warning">Tailwind</Badge>
-              <Badge variant="soft" color="info">Next.js</Badge>
+              <Badge variant="soft" color="primary">
+                React
+              </Badge>
+              <Badge variant="soft" color="success">
+                TypeScript
+              </Badge>
+              <Badge variant="soft" color="warning">
+                Tailwind
+              </Badge>
+              <Badge variant="soft" color="info">
+                Next.js
+              </Badge>
             </BadgeGroup>
           ),
         },
@@ -587,7 +708,6 @@ const bottomNavItems = [
     description: 'Clickable element that triggers an action.',
   },
 ];
-
 
 export default function BadgePage() {
   return (

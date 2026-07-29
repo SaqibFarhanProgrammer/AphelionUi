@@ -75,7 +75,8 @@ function HamburgerIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
-  const barColor = theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary';
+  const barColor =
+    theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary';
   return (
     <div className="relative w-4 h-3">
       <span
@@ -126,9 +127,15 @@ export type NavbarTheme = 'dark' | 'light';
 
 // ─── Inline Button ───────────────────────────────────────────────────────
 
-interface InlineButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'accent' | 'dark' | 'light';
+interface InlineButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'ghost'
+    | 'outline'
+    | 'accent'
+    | 'dark'
+    | 'light';
   size?: 'sm' | 'md' | 'lg' | 'pill' | 'icon';
   icon?: React.ReactNode;
   theme?: NavbarTheme;
@@ -529,7 +536,9 @@ function useThemeClasses(theme: NavbarTheme) {
     bg: isDark ? 'bg-transparent' : 'bg-light-background',
     border: isDark ? 'border-dark-border' : 'border-light-border',
     text: isDark ? 'text-dark-text-primary' : 'text-light-text-primary',
-    textMuted: isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary',
+    textMuted: isDark
+      ? 'text-dark-text-secondary'
+      : 'text-light-text-secondary',
     hoverBg: isDark ? 'hover:bg-dark-hover' : 'hover:bg-light-hover',
     pillBg: isDark ? 'bg-dark-card' : 'bg-light-card',
     pillBorder: isDark ? 'border-dark-border' : 'border-light-border',
@@ -539,7 +548,9 @@ function useThemeClasses(theme: NavbarTheme) {
     inputBorder: isDark ? 'border-dark-border' : 'border-light-border',
     dropdownBg: isDark ? 'bg-dark-card' : 'bg-light-card',
     dropdownBorder: isDark ? 'border-dark-border' : 'border-light-border',
-    dropdownText: isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary',
+    dropdownText: isDark
+      ? 'text-dark-text-secondary'
+      : 'text-light-text-secondary',
     dropdownHover: isDark
       ? 'hover:bg-dark-hover hover:text-dark-text-primary'
       : 'hover:bg-light-hover hover:text-light-text-primary',
@@ -576,7 +587,10 @@ function DefaultNavbar({
   const t = useThemeClasses(theme);
   return (
     <div className="relative flex items-center justify-between py-3">
-      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+      <a
+        href={logoHref}
+        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+      >
         {logo || <DefaultLogo />}
       </a>
 
@@ -706,7 +720,10 @@ function MinimalNavbar({
   const t = useThemeClasses(theme);
   return (
     <div className="flex items-center justify-between py-4">
-      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+      <a
+        href={logoHref}
+        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+      >
         {logo || <DefaultLogo />}
       </a>
 
@@ -738,7 +755,10 @@ function SplitNavbar({
   return (
     <div className="flex items-center justify-between py-3">
       <div className="flex items-center gap-6">
-        <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        <a
+          href={logoHref}
+          className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+        >
           {logo || <DefaultLogo />}
         </a>
         <div className="hidden md:flex">
@@ -786,7 +806,10 @@ function CenteredNavbar({
         />
       </div>
 
-      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+      <a
+        href={logoHref}
+        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+      >
         {logo || <DefaultLogo />}
       </a>
 
@@ -822,7 +845,10 @@ function SaasNavbar({
   const t = useThemeClasses(theme);
   return (
     <div className="flex items-center justify-between py-4">
-      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+      <a
+        href={logoHref}
+        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+      >
         {logo || <DefaultLogo />}
       </a>
 
@@ -837,7 +863,12 @@ function SaasNavbar({
           </InlineButton>
         )}
         {ctaPrimary || (
-          <InlineButton variant="accent" size="pill" theme={theme} className="px-5">
+          <InlineButton
+            variant="accent"
+            size="pill"
+            theme={theme}
+            className="px-5"
+          >
             Sign up
           </InlineButton>
         )}
@@ -867,7 +898,10 @@ function DashboardNavbar({
   return (
     <div className="flex items-center justify-between py-3">
       <div className="flex items-center gap-6">
-        <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        <a
+          href={logoHref}
+          className={cn('flex items-center gap-2.5 shrink-0', t.text)}
+        >
           {logo || <DashboardLogo isDark={isDark} />}
         </a>
         <div className="hidden md:flex">
@@ -884,7 +918,9 @@ function DashboardNavbar({
           />
         )}
         {avatar && (
-          <div className="w-8 h-8 rounded-aphelion-full overflow-hidden">{avatar}</div>
+          <div className="w-8 h-8 rounded-aphelion-full overflow-hidden">
+            {avatar}
+          </div>
         )}
         {ctaPrimary || (
           <InlineButton variant="secondary" size="sm" theme={theme}>

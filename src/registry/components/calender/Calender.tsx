@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { motion, AnimatePresence } from "framer-motion";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ─── Utility ─────────────────────────────────────────────────────────────
 
@@ -18,20 +18,20 @@ function cn(...inputs: ClassValue[]) {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────
 
-const DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 function getDaysInMonth(year: number, month: number): number {
@@ -65,190 +65,188 @@ function isDateInRange(date: Date, start: Date, end: Date): boolean {
 
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
-const calendarVariants = cva(["w-full", "select-none"], {
+const calendarVariants = cva(['w-full', 'select-none'], {
   variants: {
     theme: {
-      dark: "bg-dark-background text-dark-text-primary",
-      light: "bg-light-background text-light-text-primary",
+      dark: 'bg-dark-background text-dark-text-primary',
+      light: 'bg-light-background text-light-text-primary',
     },
     variant: {
-      default: "",
-      bordered: "border rounded-aphelion-xl overflow-hidden",
-      card: "border rounded-aphelion-xl overflow-hidden shadow-aphelion-lg",
+      default: '',
+      bordered: 'border rounded-aphelion-xl overflow-hidden',
+      card: 'border rounded-aphelion-xl overflow-hidden shadow-aphelion-lg',
     },
     size: {
-      sm: "max-w-[280px]",
-      md: "max-w-[320px]",
-      lg: "max-w-[380px]",
+      sm: 'max-w-[280px]',
+      md: 'max-w-[320px]',
+      lg: 'max-w-[380px]',
     },
   },
   compoundVariants: [
     {
-      theme: "dark",
-      variant: "bordered",
-      className: "border-dark-border",
+      theme: 'dark',
+      variant: 'bordered',
+      className: 'border-dark-border',
     },
     {
-      theme: "dark",
-      variant: "card",
-      className: "border-dark-border",
+      theme: 'dark',
+      variant: 'card',
+      className: 'border-dark-border',
     },
     {
-      theme: "light",
-      variant: "bordered",
-      className: "border-light-border",
+      theme: 'light',
+      variant: 'bordered',
+      className: 'border-light-border',
     },
     {
-      theme: "light",
-      variant: "card",
-      className: "border-light-border",
+      theme: 'light',
+      variant: 'card',
+      className: 'border-light-border',
     },
   ],
   defaultVariants: {
-    theme: "dark",
-    variant: "bordered",
-    size: "md",
+    theme: 'dark',
+    variant: 'bordered',
+    size: 'md',
   },
 });
 
 const dayCellVariants = cva(
   [
-    "inline-flex",
-    "items-center",
-    "justify-center",
-    "rounded-aphelion-sm",
-    "text-sm",
-    "font-medium",
-    "transition-all",
-    "duration-150",
-    "cursor-pointer",
-    "select-none",
-    "relative",
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    'rounded-aphelion-sm',
+    'text-sm',
+    'font-medium',
+    'transition-all',
+    'duration-150',
+    'cursor-pointer',
+    'select-none',
+    'relative',
   ],
   {
     variants: {
       theme: {
-        dark: "",
-        light: "",
+        dark: '',
+        light: '',
       },
       state: {
-        default: "",
-        selected: "",
-        "in-range": "",
-        "range-start": "",
-        "range-end": "",
-        disabled: "cursor-not-allowed",
-        "outside-month": "",
-        today: "",
+        default: '',
+        selected: '',
+        'in-range': '',
+        'range-start': '',
+        'range-end': '',
+        disabled: 'cursor-not-allowed',
+        'outside-month': '',
+        today: '',
       },
       size: {
-        sm: "h-8 w-8 text-xs",
-        md: "h-10 w-10 text-sm",
-        lg: "h-12 w-12 text-base",
+        sm: 'h-8 w-8 text-xs',
+        md: 'h-10 w-10 text-sm',
+        lg: 'h-12 w-12 text-base',
       },
     },
     compoundVariants: [
       // Dark theme
       {
-        theme: "dark",
-        state: "default",
-        className:
-          "text-dark-text-primary hover:bg-dark-hover",
+        theme: 'dark',
+        state: 'default',
+        className: 'text-dark-text-primary hover:bg-dark-hover',
       },
       {
-        theme: "dark",
-        state: "selected",
+        theme: 'dark',
+        state: 'selected',
         className:
-          "bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover",
+          'bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover',
       },
       {
-        theme: "dark",
-        state: "in-range",
+        theme: 'dark',
+        state: 'in-range',
         className:
-          "bg-dark-selected text-dark-text-primary rounded-aphelion-none hover:bg-dark-active",
+          'bg-dark-selected text-dark-text-primary rounded-aphelion-none hover:bg-dark-active',
       },
       {
-        theme: "dark",
-        state: "range-start",
+        theme: 'dark',
+        state: 'range-start',
         className:
-          "bg-dark-primary text-dark-primary-foreground rounded-r-aphelion-none hover:bg-dark-primary-hover",
+          'bg-dark-primary text-dark-primary-foreground rounded-r-aphelion-none hover:bg-dark-primary-hover',
       },
       {
-        theme: "dark",
-        state: "range-end",
+        theme: 'dark',
+        state: 'range-end',
         className:
-          "bg-dark-primary text-dark-primary-foreground rounded-l-aphelion-none hover:bg-dark-primary-hover",
+          'bg-dark-primary text-dark-primary-foreground rounded-l-aphelion-none hover:bg-dark-primary-hover',
       },
       {
-        theme: "dark",
-        state: "disabled",
+        theme: 'dark',
+        state: 'disabled',
         className:
-          "text-dark-text-disabled line-through cursor-not-allowed hover:bg-transparent",
+          'text-dark-text-disabled line-through cursor-not-allowed hover:bg-transparent',
       },
       {
-        theme: "dark",
-        state: "outside-month",
+        theme: 'dark',
+        state: 'outside-month',
         className:
-          "text-dark-text-disabled cursor-default hover:bg-transparent",
+          'text-dark-text-disabled cursor-default hover:bg-transparent',
       },
       {
-        theme: "dark",
-        state: "today",
-        className: "text-dark-text-primary font-bold",
+        theme: 'dark',
+        state: 'today',
+        className: 'text-dark-text-primary font-bold',
       },
       // Light theme
       {
-        theme: "light",
-        state: "default",
-        className:
-          "text-light-text-primary hover:bg-light-hover",
+        theme: 'light',
+        state: 'default',
+        className: 'text-light-text-primary hover:bg-light-hover',
       },
       {
-        theme: "light",
-        state: "selected",
+        theme: 'light',
+        state: 'selected',
         className:
-          "bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover",
+          'bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover',
       },
       {
-        theme: "light",
-        state: "in-range",
+        theme: 'light',
+        state: 'in-range',
         className:
-          "bg-light-selected text-light-text-primary rounded-aphelion-none hover:bg-light-active",
+          'bg-light-selected text-light-text-primary rounded-aphelion-none hover:bg-light-active',
       },
       {
-        theme: "light",
-        state: "range-start",
+        theme: 'light',
+        state: 'range-start',
         className:
-          "bg-light-primary text-light-primary-foreground rounded-r-aphelion-none hover:bg-light-primary-hover",
+          'bg-light-primary text-light-primary-foreground rounded-r-aphelion-none hover:bg-light-primary-hover',
       },
       {
-        theme: "light",
-        state: "range-end",
+        theme: 'light',
+        state: 'range-end',
         className:
-          "bg-light-primary text-light-primary-foreground rounded-l-aphelion-none hover:bg-light-primary-hover",
+          'bg-light-primary text-light-primary-foreground rounded-l-aphelion-none hover:bg-light-primary-hover',
       },
       {
-        theme: "light",
-        state: "disabled",
+        theme: 'light',
+        state: 'disabled',
         className:
-          "text-light-text-disabled line-through cursor-not-allowed hover:bg-transparent",
+          'text-light-text-disabled line-through cursor-not-allowed hover:bg-transparent',
       },
       {
-        theme: "light",
-        state: "outside-month",
+        theme: 'light',
+        state: 'outside-month',
         className:
-          "text-light-text-disabled cursor-default hover:bg-transparent",
+          'text-light-text-disabled cursor-default hover:bg-transparent',
       },
       {
-        theme: "light",
-        state: "today",
-        className: "text-light-text-primary font-bold",
+        theme: 'light',
+        state: 'today',
+        className: 'text-light-text-primary font-bold',
       },
     ],
     defaultVariants: {
-      theme: "dark",
-      state: "default",
-      size: "md",
+      theme: 'dark',
+      state: 'default',
+      size: 'md',
     },
   }
 );
@@ -262,7 +260,7 @@ function IconButton({
   className,
 }: {
   onClick?: () => void;
-  theme?: "light" | "dark";
+  theme?: 'light' | 'dark';
   children: React.ReactNode;
   className?: string;
 }) {
@@ -271,10 +269,10 @@ function IconButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "flex h-8 w-8 items-center justify-center rounded-aphelion-sm transition-colors",
-        theme === "dark"
-          ? "text-dark-text-secondary hover:bg-dark-hover hover:text-dark-text-primary"
-          : "text-light-text-secondary hover:bg-light-hover hover:text-light-text-primary",
+        'flex h-8 w-8 items-center justify-center rounded-aphelion-sm transition-colors',
+        theme === 'dark'
+          ? 'text-dark-text-secondary hover:bg-dark-hover hover:text-dark-text-primary'
+          : 'text-light-text-secondary hover:bg-light-hover hover:text-light-text-primary',
         className
       )}
     >
@@ -289,13 +287,13 @@ export interface CalendarProps
   extends
     React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof calendarVariants> {
-  mode?: "single" | "range" | "multiple";
+  mode?: 'single' | 'range' | 'multiple';
   selected?: Date | Date[] | { from: Date; to: Date } | null;
   onSelect?: (date: Date | Date[] | { from: Date; to: Date } | null) => void;
   disabled?: Date[] | ((date: Date) => boolean);
   showOutsideDays?: boolean;
   showWeekNumbers?: boolean;
-  navPosition?: "top" | "right";
+  navPosition?: 'top' | 'right';
   showMonthYearSelect?: boolean;
   presets?: { label: string; value: Date | { from: Date; to: Date } }[];
   timeSlots?: string[];
@@ -308,7 +306,7 @@ export interface CalendarProps
 
 export interface DatePickerProps extends Omit<
   CalendarProps,
-  "selected" | "onSelect"
+  'selected' | 'onSelect'
 > {
   placeholder?: string;
   value?: Date | null;
@@ -320,16 +318,16 @@ export interface DatePickerProps extends Omit<
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   function Calendar(
     {
-      theme = "dark",
-      variant = "bordered",
-      size = "md",
-      mode = "single",
+      theme = 'dark',
+      variant = 'bordered',
+      size = 'md',
+      mode = 'single',
       selected,
       onSelect,
       disabled,
       showOutsideDays = true,
       showWeekNumbers = false,
-      navPosition = "top",
+      navPosition = 'top',
       showMonthYearSelect = false,
       presets,
       timeSlots,
@@ -356,57 +354,57 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       if (Array.isArray(disabled)) {
         return disabled.some((d) => isSameDate(d, date));
       }
-      if (typeof disabled === "function") {
+      if (typeof disabled === 'function') {
         return disabled(date);
       }
       return false;
     };
 
     const getDayState = (date: Date): string => {
-      if (isDisabled(date)) return "disabled";
+      if (isDisabled(date)) return 'disabled';
 
       if (
-        mode === "single" &&
+        mode === 'single' &&
         selected instanceof Date &&
         isSameDate(selected, date)
       ) {
-        return "selected";
+        return 'selected';
       }
 
-      if (mode === "multiple" && Array.isArray(selected)) {
-        if (selected.some((d) => isSameDate(d, date))) return "selected";
+      if (mode === 'multiple' && Array.isArray(selected)) {
+        if (selected.some((d) => isSameDate(d, date))) return 'selected';
       }
 
       if (
-        mode === "range" &&
+        mode === 'range' &&
         selected &&
-        "from" in selected &&
-        "to" in selected
+        'from' in selected &&
+        'to' in selected
       ) {
         const { from, to } = selected;
-        if (isSameDate(from, date)) return "range-start";
-        if (isSameDate(to, date)) return "range-end";
-        if (isDateInRange(date, from, to)) return "in-range";
+        if (isSameDate(from, date)) return 'range-start';
+        if (isSameDate(to, date)) return 'range-end';
+        if (isDateInRange(date, from, to)) return 'in-range';
       }
 
-      if (isSameDate(date, today)) return "today";
-      return "default";
+      if (isSameDate(date, today)) return 'today';
+      return 'default';
     };
 
     const handleDayClick = (date: Date) => {
       if (isDisabled(date)) return;
 
-      if (mode === "single") {
+      if (mode === 'single') {
         onSelect?.(date);
-      } else if (mode === "multiple") {
+      } else if (mode === 'multiple') {
         const current = Array.isArray(selected) ? selected : [];
         const exists = current.some((d) => isSameDate(d, date));
         const next = exists
           ? current.filter((d) => !isSameDate(d, date))
           : [...current, date];
         onSelect?.(next);
-      } else if (mode === "range") {
-        const current = selected && "from" in selected ? selected : null;
+      } else if (mode === 'range') {
+        const current = selected && 'from' in selected ? selected : null;
         if (!current || (current.from && current.to)) {
           onSelect?.({ from: date, to: date });
         } else {
@@ -448,7 +446,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               key={`prev-${i}`}
               disabled
               className={cn(
-                dayCellVariants({ theme, state: "outside-month", size })
+                dayCellVariants({ theme, state: 'outside-month', size })
               )}
             >
               {day}
@@ -458,7 +456,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           days.push(
             <div
               key={`prev-${i}`}
-              className={cn(dayCellVariants({ theme, size }), "opacity-0")}
+              className={cn(dayCellVariants({ theme, size }), 'opacity-0')}
             />
           );
         }
@@ -480,23 +478,23 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             )}
           >
             {i}
-            {isToday && state === "default" && (
+            {isToday && state === 'default' && (
               <span
                 className={cn(
-                  "absolute bottom-1 h-1 w-1 rounded-aphelion-full",
-                  theme === "dark"
-                    ? "bg-dark-text-muted"
-                    : "bg-light-text-muted"
+                  'absolute bottom-1 h-1 w-1 rounded-aphelion-full',
+                  theme === 'dark'
+                    ? 'bg-dark-text-muted'
+                    : 'bg-light-text-muted'
                 )}
               />
             )}
-            {state === "selected" && (
+            {state === 'selected' && (
               <span
                 className={cn(
-                  "absolute bottom-1.5 h-1 w-1 rounded-aphelion-full",
-                  theme === "dark"
-                    ? "bg-dark-primary-foreground"
-                    : "bg-light-primary-foreground"
+                  'absolute bottom-1.5 h-1 w-1 rounded-aphelion-full',
+                  theme === 'dark'
+                    ? 'bg-dark-primary-foreground'
+                    : 'bg-light-primary-foreground'
                 )}
               />
             )}
@@ -512,7 +510,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               key={`next-${i}`}
               disabled
               className={cn(
-                dayCellVariants({ theme, state: "outside-month", size })
+                dayCellVariants({ theme, state: 'outside-month', size })
               )}
             >
               {i + 1}
@@ -522,7 +520,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           days.push(
             <div
               key={`next-${i}`}
-              className={cn(dayCellVariants({ theme, size }), "opacity-0")}
+              className={cn(dayCellVariants({ theme, size }), 'opacity-0')}
             />
           );
         }
@@ -539,7 +537,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       const weekCount = Math.ceil(totalCells / 7);
 
       const weekTextColor =
-        theme === "dark" ? "text-dark-text-disabled" : "text-light-text-disabled";
+        theme === 'dark'
+          ? 'text-dark-text-disabled'
+          : 'text-light-text-disabled';
 
       for (let i = 0; i < weekCount; i++) {
         const weekStart = new Date(
@@ -557,13 +557,13 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <div
             key={`week-${i}`}
             className={cn(
-              "flex items-center justify-center text-xs font-medium",
+              'flex items-center justify-center text-xs font-medium',
               weekTextColor,
-              size === "sm"
-                ? "h-8 w-8"
-                : size === "md"
-                  ? "h-10 w-10"
-                  : "h-12 w-12"
+              size === 'sm'
+                ? 'h-8 w-8'
+                : size === 'md'
+                  ? 'h-10 w-10'
+                  : 'h-12 w-12'
             )}
           >
             {weekNum}
@@ -578,19 +578,19 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       const selDate = selected instanceof Date ? selected : null;
 
       const borderColor =
-        theme === "dark" ? "border-dark-border" : "border-light-border";
+        theme === 'dark' ? 'border-dark-border' : 'border-light-border';
       const headingColor =
-        theme === "dark" ? "text-dark-text-primary" : "text-light-text-primary";
+        theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
 
       return (
-        <div className={cn("w-[130px] shrink-0 border-l pl-5", borderColor)}>
-          <p className={cn("mb-3 text-base font-semibold", headingColor)}>
+        <div className={cn('w-[130px] shrink-0 border-l pl-5', borderColor)}>
+          <p className={cn('mb-3 text-base font-semibold', headingColor)}>
             {selDate
-              ? selDate.toLocaleDateString("en-US", {
-                  weekday: "long",
-                  day: "numeric",
+              ? selDate.toLocaleDateString('en-US', {
+                  weekday: 'long',
+                  day: 'numeric',
                 })
-              : "Select date"}
+              : 'Select date'}
           </p>
           <div className="scrollbar-hide max-h-[260px] space-y-1.5 overflow-y-auto">
             {timeSlots.map((time) => (
@@ -600,14 +600,14 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onTimeSelect?.(time)}
                 className={cn(
-                  "w-full rounded-aphelion-md border px-3 py-2 text-sm font-medium transition-all",
+                  'w-full rounded-aphelion-md border px-3 py-2 text-sm font-medium transition-all',
                   selectedTime === time
-                    ? theme === "dark"
-                      ? "border-dark-primary bg-dark-primary text-dark-primary-foreground"
-                      : "border-light-primary bg-light-primary text-light-primary-foreground"
-                    : theme === "dark"
-                      ? "border-dark-border text-dark-text-secondary hover:border-dark-border-strong hover:bg-dark-hover"
-                      : "border-light-border text-light-text-secondary hover:border-light-border-strong hover:bg-light-hover"
+                    ? theme === 'dark'
+                      ? 'border-dark-primary bg-dark-primary text-dark-primary-foreground'
+                      : 'border-light-primary bg-light-primary text-light-primary-foreground'
+                    : theme === 'dark'
+                      ? 'border-dark-border text-dark-text-secondary hover:border-dark-border-strong hover:bg-dark-hover'
+                      : 'border-light-border text-light-text-secondary hover:border-light-border-strong hover:bg-light-hover'
                 )}
               >
                 {time}
@@ -621,12 +621,12 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     const renderPresets = () => {
       if (!presets) return null;
       const borderColor =
-        theme === "dark" ? "border-dark-border" : "border-light-border";
+        theme === 'dark' ? 'border-dark-border' : 'border-light-border';
 
       return (
         <div
           className={cn(
-            "w-[130px] shrink-0 space-y-0.5 border-r pr-5",
+            'w-[130px] shrink-0 space-y-0.5 border-r pr-5',
             borderColor
           )}
         >
@@ -646,10 +646,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 }
               }}
               className={cn(
-                "w-full rounded-aphelion-sm px-3 py-2 text-left text-sm font-medium transition-colors",
-                theme === "dark"
-                  ? "text-dark-text-primary hover:bg-dark-hover"
-                  : "text-light-text-primary hover:bg-light-hover"
+                'w-full rounded-aphelion-sm px-3 py-2 text-left text-sm font-medium transition-colors',
+                theme === 'dark'
+                  ? 'text-dark-text-primary hover:bg-dark-hover'
+                  : 'text-light-text-primary hover:bg-light-hover'
               )}
             >
               {preset.label}
@@ -660,10 +660,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     const selectClasses = cn(
-      "h-9 cursor-pointer appearance-none rounded-aphelion-md border bg-transparent px-3 text-sm font-semibold outline-none",
-      theme === "dark"
-        ? "border-dark-border text-dark-text-primary"
-        : "border-light-border text-light-text-primary"
+      'h-9 cursor-pointer appearance-none rounded-aphelion-md border bg-transparent px-3 text-sm font-semibold outline-none',
+      theme === 'dark'
+        ? 'border-dark-border text-dark-text-primary'
+        : 'border-light-border text-light-text-primary'
     );
 
     const headerContent = showMonthYearSelect ? (
@@ -671,7 +671,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         <select
           value={currentMonth}
           onChange={(e) => setCurrentMonth(Number(e.target.value))}
-          className={cn(selectClasses, "flex-1")}
+          className={cn(selectClasses, 'flex-1')}
         >
           {MONTHS.map((m, i) => (
             <option key={m} value={i}>
@@ -682,7 +682,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         <select
           value={currentYear}
           onChange={(e) => setCurrentYear(Number(e.target.value))}
-          className={cn(selectClasses, "flex-1")}
+          className={cn(selectClasses, 'flex-1')}
         >
           {Array.from({ length: 21 }, (_, i) => currentYear - 10 + i).map(
             (y) => (
@@ -695,7 +695,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       </div>
     ) : (
       <div className="mb-4 flex items-center justify-between">
-        {navPosition === "top" ? (
+        {navPosition === 'top' ? (
           <>
             <IconButton onClick={prevMonth} theme={theme}>
               <svg
@@ -713,10 +713,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             </IconButton>
             <span
               className={cn(
-                "text-base font-semibold",
-                theme === "dark"
-                  ? "text-dark-text-primary"
-                  : "text-light-text-primary"
+                'text-base font-semibold',
+                theme === 'dark'
+                  ? 'text-dark-text-primary'
+                  : 'text-light-text-primary'
               )}
             >
               {MONTHS[currentMonth]} {currentYear}
@@ -740,10 +740,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <>
             <span
               className={cn(
-                "text-lg font-semibold",
-                theme === "dark"
-                  ? "text-dark-text-primary"
-                  : "text-light-text-primary"
+                'text-lg font-semibold',
+                theme === 'dark'
+                  ? 'text-dark-text-primary'
+                  : 'text-light-text-primary'
               )}
             >
               {MONTHS[currentMonth]} {currentYear}
@@ -784,14 +784,16 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     );
 
     const dayLabelColor =
-      theme === "dark" ? "text-dark-text-secondary" : "text-light-text-secondary";
+      theme === 'dark'
+        ? 'text-dark-text-secondary'
+        : 'text-light-text-secondary';
 
     return (
       <div
         ref={ref}
         className={cn(
           calendarVariants({ theme, variant, size }),
-          (timeSlots || presets) && "flex max-w-none",
+          (timeSlots || presets) && 'flex max-w-none',
           className
         )}
         {...props}
@@ -801,8 +803,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           {headerContent}
           <div
             className={cn(
-              "mb-1 grid",
-              showWeekNumbers ? "grid-cols-8" : "grid-cols-7"
+              'mb-1 grid',
+              showWeekNumbers ? 'grid-cols-8' : 'grid-cols-7'
             )}
           >
             {showWeekNumbers && <div />}
@@ -810,9 +812,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               <div
                 key={day}
                 className={cn(
-                  "flex items-center justify-center pb-2 text-xs font-medium",
+                  'flex items-center justify-center pb-2 text-xs font-medium',
                   dayLabelColor,
-                  size === "sm" ? "h-8" : size === "md" ? "h-10" : "h-12"
+                  size === 'sm' ? 'h-8' : size === 'md' ? 'h-10' : 'h-12'
                 )}
               >
                 {day}
@@ -821,8 +823,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           </div>
           <div
             className={cn(
-              "grid",
-              showWeekNumbers ? "grid-cols-8" : "grid-cols-7"
+              'grid',
+              showWeekNumbers ? 'grid-cols-8' : 'grid-cols-7'
             )}
           >
             {showWeekNumbers && (
@@ -837,15 +839,15 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   }
 );
 
-Calendar.displayName = "Calendar";
+Calendar.displayName = 'Calendar';
 
 // ─── DatePicker Input ────────────────────────────────────────────────────
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   function DatePicker(
     {
-      theme = "dark",
-      placeholder = "Pick a date",
+      theme = 'dark',
+      placeholder = 'Pick a date',
       value,
       onChange,
       className,
@@ -865,24 +867,24 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           setOpen(false);
         }
       };
-      document.addEventListener("mousedown", handleClick);
-      return () => document.removeEventListener("mousedown", handleClick);
+      document.addEventListener('mousedown', handleClick);
+      return () => document.removeEventListener('mousedown', handleClick);
     }, []);
 
     const triggerBorderColor =
-      theme === "dark" ? "border-dark-border" : "border-light-border";
+      theme === 'dark' ? 'border-dark-border' : 'border-light-border';
     const triggerBgColor =
-      theme === "dark" ? "bg-dark-background" : "bg-light-background";
+      theme === 'dark' ? 'bg-dark-background' : 'bg-light-background';
     const triggerTextColor =
-      theme === "dark" ? "text-dark-text-primary" : "text-light-text-primary";
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
     const placeholderColor =
-      theme === "dark" ? "text-dark-text-muted" : "text-light-text-muted";
+      theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
     const iconColor =
-      theme === "dark" ? "text-dark-text-muted" : "text-light-text-muted";
+      theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
     const hoverBorderColor =
-      theme === "dark"
-        ? "hover:border-dark-border-strong"
-        : "hover:border-light-border-strong";
+      theme === 'dark'
+        ? 'hover:border-dark-border-strong'
+        : 'hover:border-light-border-strong';
 
     return (
       <div ref={containerRef} className="relative inline-block">
@@ -890,7 +892,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           type="button"
           onClick={() => setOpen(!open)}
           className={cn(
-            "flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-aphelion-sm border px-4 text-sm transition-colors",
+            'flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-aphelion-sm border px-4 text-sm transition-colors',
             triggerBorderColor,
             triggerBgColor,
             triggerTextColor,
@@ -898,12 +900,12 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
             className
           )}
         >
-          <span className={value ? "" : placeholderColor}>
+          <span className={value ? '' : placeholderColor}>
             {value
-              ? value.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
+              ? value.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
                 })
               : placeholder}
           </span>
@@ -950,7 +952,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   }
 );
 
-DatePicker.displayName = "DatePicker";
+DatePicker.displayName = 'DatePicker';
 
 // ─── Exports ─────────────────────────────────────────────────────────────
 

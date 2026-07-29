@@ -79,12 +79,42 @@ const USERS = [
 ];
 
 const COMPATIBILITY_DATA = [
-  { feature: 'Dark Mode', 'Basic Plan': true, 'Pro Plan': true, Enterprise: true },
-  { feature: 'Advanced Analytics', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
-  { feature: 'Team Collaboration', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
-  { feature: 'Priority Support', 'Basic Plan': false, 'Pro Plan': false, Enterprise: true },
-  { feature: 'Custom Integrations', 'Basic Plan': false, 'Pro Plan': false, Enterprise: true },
-  { feature: 'API Access', 'Basic Plan': false, 'Pro Plan': true, Enterprise: true },
+  {
+    feature: 'Dark Mode',
+    'Basic Plan': true,
+    'Pro Plan': true,
+    Enterprise: true,
+  },
+  {
+    feature: 'Advanced Analytics',
+    'Basic Plan': false,
+    'Pro Plan': true,
+    Enterprise: true,
+  },
+  {
+    feature: 'Team Collaboration',
+    'Basic Plan': false,
+    'Pro Plan': true,
+    Enterprise: true,
+  },
+  {
+    feature: 'Priority Support',
+    'Basic Plan': false,
+    'Pro Plan': false,
+    Enterprise: true,
+  },
+  {
+    feature: 'Custom Integrations',
+    'Basic Plan': false,
+    'Pro Plan': false,
+    Enterprise: true,
+  },
+  {
+    feature: 'API Access',
+    'Basic Plan': false,
+    'Pro Plan': true,
+    Enterprise: true,
+  },
 ];
 
 const INTENT_DATA = [
@@ -107,7 +137,9 @@ const userColumns = [
         <Avatar src={row.avatar} fallback={row.name} />
         <div>
           <div className="font-medium">{row.name}</div>
-          <div className="text-xs text-aphelion-light-text-primary">{row.email}</div>
+          <div className="text-xs text-aphelion-light-text-primary">
+            {row.email}
+          </div>
         </div>
       </div>
     ),
@@ -120,7 +152,12 @@ const userColumns = [
     sortable: true,
     render: (row: (typeof USERS)[0]) => <StatusBadge status={row.status} />,
   },
-  { key: 'projects', header: 'Projects', sortable: true, align: 'center' as const },
+  {
+    key: 'projects',
+    header: 'Projects',
+    sortable: true,
+    align: 'center' as const,
+  },
   { key: 'lastActive', header: 'Last Active', sortable: true },
 ];
 
@@ -159,14 +196,18 @@ const intentColumns = [
     key: 'status',
     header: 'Status',
     sortable: true,
-    render: (row: (typeof INTENT_DATA)[0]) => <StatusBadge status={row.status} />,
+    render: (row: (typeof INTENT_DATA)[0]) => (
+      <StatusBadge status={row.status} />
+    ),
   },
   {
     key: 'priority',
     header: 'Priority',
     sortable: true,
     align: 'center' as const,
-    render: (row: (typeof INTENT_DATA)[0]) => <IntentBadge label={row.priority} />,
+    render: (row: (typeof INTENT_DATA)[0]) => (
+      <IntentBadge label={row.priority} />
+    ),
   },
 ];
 
@@ -183,7 +224,8 @@ const tableData = {
     command: 'shadcn@latest add aphelio/c/table',
   },
   usage: {
-    import: "import Table, { Avatar, StatusBadge } from '@/components/ui/table'",
+    import:
+      "import Table, { Avatar, StatusBadge } from '@/components/ui/table'",
     basic: `const columns = [
   { key: 'name', header: 'Name', sortable: true },
   { key: 'email', header: 'Email', sortable: true },
@@ -245,7 +287,13 @@ const data = [
   data={data.slice(0, 5)}
   variant="striped"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="striped" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 5)}
+              variant="striped"
+            />
+          ),
         },
         {
           label: 'No Dividers',
@@ -254,7 +302,13 @@ const data = [
   data={data.slice(0, 5)}
   variant="no-dividers"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="no-dividers" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 5)}
+              variant="no-dividers"
+            />
+          ),
         },
         {
           label: 'Vertical Lines',
@@ -263,7 +317,13 @@ const data = [
   data={data.slice(0, 5)}
   variant="vertical-lines"
 />`,
-          preview: <Table columns={userColumns.slice(0, 5)} data={USERS.slice(0, 5)} variant="vertical-lines" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 5)}
+              data={USERS.slice(0, 5)}
+              variant="vertical-lines"
+            />
+          ),
         },
         {
           label: 'Dense',
@@ -273,7 +333,14 @@ const data = [
   variant="dense"
   size="sm"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="dense" size="sm" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 5)}
+              variant="dense"
+              size="sm"
+            />
+          ),
         },
         {
           label: 'Card',
@@ -283,7 +350,14 @@ const data = [
   variant="card"
   layout="card"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 5)} variant="card" layout="card" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 5)}
+              variant="card"
+              layout="card"
+            />
+          ),
         },
         {
           label: 'Vertical',
@@ -293,7 +367,14 @@ const data = [
   variant="vertical"
   layout="vertical"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 1)} variant="vertical" layout="vertical" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 1)}
+              variant="vertical"
+              layout="vertical"
+            />
+          ),
         },
       ],
     },
@@ -310,7 +391,14 @@ const data = [
   theme="dark"
   variant="striped"
 />`,
-          preview: <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 4)} theme="dark" variant="striped" />,
+          preview: (
+            <Table
+              columns={userColumns.slice(0, 4)}
+              data={USERS.slice(0, 4)}
+              theme="dark"
+              variant="striped"
+            />
+          ),
         },
         {
           label: 'Light Theme',
@@ -324,7 +412,12 @@ const data = [
 </div>`,
           preview: (
             <div className="rounded-aphelion-xl bg-white p-6">
-              <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 4)} theme="light" variant="striped" />
+              <Table
+                columns={userColumns.slice(0, 4)}
+                data={USERS.slice(0, 4)}
+                theme="light"
+                variant="striped"
+              />
             </div>
           ),
         },
@@ -370,7 +463,9 @@ const data = [
                       <Avatar src={row.avatar} fallback={row.name} />
                       <div>
                         <div className="font-medium">{row.name}</div>
-                        <div className="text-xs text-aphelion-light-text-primary">{row.email}</div>
+                        <div className="text-xs text-aphelion-light-text-primary">
+                          {row.email}
+                        </div>
                       </div>
                     </div>
                   ),
@@ -378,7 +473,9 @@ const data = [
                 {
                   key: 'status',
                   header: 'Status',
-                  render: (row: (typeof USERS)[0]) => <StatusBadge status={row.status} />,
+                  render: (row: (typeof USERS)[0]) => (
+                    <StatusBadge status={row.status} />
+                  ),
                 },
               ]}
               data={USERS.slice(0, 3)}
@@ -398,7 +495,13 @@ const data = [
 ];
 
 <Table columns={columns} data={data} variant="striped" />`,
-          preview: <Table columns={intentColumns} data={INTENT_DATA} variant="striped" />,
+          preview: (
+            <Table
+              columns={intentColumns}
+              data={INTENT_DATA}
+              variant="striped"
+            />
+          ),
         },
         {
           label: 'CheckIcon / CrossIcon',
@@ -413,7 +516,13 @@ const data = [
 ];
 
 <Table columns={columns} data={data} variant="no-dividers" />`,
-          preview: <Table columns={compatColumns} data={COMPATIBILITY_DATA} variant="no-dividers" />,
+          preview: (
+            <Table
+              columns={compatColumns}
+              data={COMPATIBILITY_DATA}
+              variant="no-dividers"
+            />
+          ),
         },
       ],
     },
@@ -435,7 +544,8 @@ const data = [
       name: 'columns',
       type: 'Column[]',
       default: 'required',
-      description: 'Array of column definitions with key, header, sortable, align, and render.',
+      description:
+        'Array of column definitions with key, header, sortable, align, and render.',
     },
     {
       name: 'data',
@@ -513,7 +623,8 @@ const data = [
       name: 'onSort',
       type: '(column: string) => void',
       default: 'undefined',
-      description: 'Callback fired when a column header is clicked for sorting.',
+      description:
+        'Callback fired when a column header is clicked for sorting.',
     },
     {
       name: 'filters',
@@ -558,9 +669,13 @@ const bottomNavItems = [
 // ─── Default Table Preview Component ───────────────────────────────────────
 
 function DefaultTablePreview() {
-  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(
+    new Set()
+  );
   const [sortColumn, setSortColumn] = useState<string | null>(null);
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
+    null
+  );
   const [searchFilter, setSearchFilter] = useState('');
 
   const handleSort = (column: string) => {
@@ -594,7 +709,9 @@ function DefaultTablePreview() {
       const aVal = a[sortColumn as keyof typeof a];
       const bVal = b[sortColumn as keyof typeof b];
       if (typeof aVal === 'string' && typeof bVal === 'string') {
-        return sortDirection === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+        return sortDirection === 'asc'
+          ? aVal.localeCompare(bVal)
+          : bVal.localeCompare(aVal);
       }
       if (typeof aVal === 'number' && typeof bVal === 'number') {
         return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
