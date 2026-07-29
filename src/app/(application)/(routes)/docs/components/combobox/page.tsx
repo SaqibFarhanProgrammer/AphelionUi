@@ -153,7 +153,7 @@ const comboboxData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl border border-black/10 bg-white p-4">
+          code: `<div className="rounded-aphelion-xl border border-black/10 bg-white p-4">
   <Combobox
     options={FRUITS}
     placeholder="Light theme..."
@@ -161,7 +161,7 @@ const comboboxData = {
   />
 </div>`,
           preview: (
-            <div className="rounded-xl border border-black/10 bg-white p-4">
+            <div className="rounded-aphelion-xl border border-black/10 bg-white p-4">
               <Combobox
                 options={FRUITS}
                 placeholder="Light theme..."
@@ -385,13 +385,13 @@ return (
     <div className="flex flex-wrap gap-2">
       <button
         onClick={() => setValue('apple')}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Select Apple
       </button>
       <button
         onClick={() => setValue('')}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Clear
       </button>
@@ -427,13 +427,13 @@ return (
     <div className="flex flex-wrap gap-2">
       <button
         onClick={() => combobox.setValue('cherry')}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Set Cherry
       </button>
       <button
         onClick={combobox.clear}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Clear
       </button>
@@ -655,19 +655,19 @@ const combobox = useCombobox('banana');
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setValue('apple')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Select Apple
         </button>
         <button
           onClick={() => setValue('banana')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Select Banana
         </button>
         <button
           onClick={() => setValue('')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Clear
         </button>
@@ -694,19 +694,19 @@ const combobox = useCombobox('banana');
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => combobox.setValue('cherry')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Set Cherry
         </button>
         <button
           onClick={() => combobox.setValue('grape')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Set Grape
         </button>
         <button
           onClick={combobox.clear}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Clear
         </button>

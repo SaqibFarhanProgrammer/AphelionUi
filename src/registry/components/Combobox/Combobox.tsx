@@ -47,10 +47,10 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: ['h-9', 'px-3', 'text-sm', 'rounded-lg'],
-        md: ['h-10', 'px-4', 'text-sm', 'rounded-lg'],
-        lg: ['h-11', 'px-4', 'text-base', 'rounded-xl'],
-        xl: ['h-12', 'px-5', 'text-base', 'rounded-xl'],
+        sm: ['h-9', 'px-3', 'text-sm', 'rounded-aphelion-lg'],
+        md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
+        lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-xl'],
+        xl: ['h-12', 'px-5', 'text-base', 'rounded-aphelion-xl'],
       },
       theme: {
         light: [
@@ -104,7 +104,7 @@ const dropdownVariants = cva(
     'z-50',
     'w-full',
     'mt-1.5',
-    'rounded-xl',
+    'rounded-aphelion-xl',
     'border',
     'shadow-xl',
     'overflow-hidden',
@@ -113,7 +113,7 @@ const dropdownVariants = cva(
   {
     variants: {
       theme: {
-        dark: ['bg-[#111111]', 'border-white/[0.08]', 'shadow-black/40'],
+        dark: ['bg-dark-brand-primary', 'border-white/[0.08]', 'shadow-black/40'],
         light: ['bg-white', 'border-black/[0.08]', 'shadow-black/10'],
       },
     },
@@ -159,7 +159,7 @@ const optionVariants = cva(
     'px-3',
     'py-2',
     'text-sm',
-    'rounded-lg',
+    'rounded-aphelion-lg',
     'cursor-pointer',
     'select-none',
     'transition-all',
@@ -811,12 +811,12 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
                 <div
                   className={cn(
                     'sticky top-0 z-10 px-3 py-2',
-                    theme === 'dark' ? 'bg-[#111111]' : 'bg-white'
+                    theme === 'dark' ? 'bg-dark-brand-primary' : 'bg-white'
                   )}
                 >
                   <div
                     className={cn(
-                      'flex items-center gap-2 rounded-lg border px-3 py-2',
+                      'flex items-center gap-2 rounded-aphelion-lg border px-3 py-2',
                       theme === 'dark'
                         ? 'border-white/[0.08] bg-[#0A0A0A]'
                         : 'border-black/[0.08] bg-neutral-50'

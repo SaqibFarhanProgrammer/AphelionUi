@@ -32,8 +32,8 @@ const inputVariants = cva(
     variants: {
       size: {
         sm: ['h-9', 'px-3', 'text-sm', 'rounded-md'],
-        md: ['h-10', 'px-4', 'text-sm', 'rounded-lg'],
-        lg: ['h-11', 'px-4', 'text-base', 'rounded-lg'],
+        md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
+        lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-lg'],
       },
       theme: {
         light: [

@@ -98,8 +98,8 @@ const triggerVariants = cva(
       },
       size: {
         sm: "h-8 px-3 text-xs rounded-md",
-        md: "h-9 px-4 text-sm rounded-lg",
-        lg: "h-10 px-5 text-sm rounded-lg",
+        md: "h-9 px-4 text-sm rounded-aphelion-lg",
+        lg: "h-10 px-5 text-sm rounded-aphelion-lg",
       },
       theme: {
         dark: "",
@@ -706,7 +706,7 @@ const PopoverButton = React.forwardRef<HTMLButtonElement, PopoverButtonProps>(
           size: {
             sm: "h-7 px-2.5 text-xs rounded-md",
             md: "h-8 px-3.5 text-xs rounded-md",
-            lg: "h-9 px-4 text-sm rounded-lg",
+            lg: "h-9 px-4 text-sm rounded-aphelion-lg",
           },
           theme: {
             dark: "",
@@ -887,7 +887,7 @@ function PopoverNotification({
     <div
       onClick={onClick}
       className={cn(
-        "-mx-1 flex cursor-pointer items-start gap-3 rounded-lg px-1 py-3 transition-colors",
+        "-mx-1 flex cursor-pointer items-start gap-3 rounded-aphelion-lg px-1 py-3 transition-colors",
         theme === "dark" ? "hover:bg-white/[0.03]" : "hover:bg-black/[0.03]",
         className,
       )}
@@ -993,7 +993,7 @@ function PopoverShare({
       "w-10",
       "items-center",
       "justify-center",
-      "rounded-lg",
+      "rounded-aphelion-lg",
       "border",
       "transition-all",
       "duration-150",
@@ -1089,7 +1089,7 @@ function PopoverShare({
 
       <div
         className={cn(
-          "flex items-center gap-2 rounded-lg border px-3 py-2.5",
+          "flex items-center gap-2 rounded-aphelion-lg border px-3 py-2.5",
           theme === "dark"
             ? "border-white/[0.08] bg-white/[0.02]"
             : "border-black/[0.08] bg-black/[0.02]",
@@ -1316,7 +1316,7 @@ function PopoverFormRow({
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
         className={cn(
-          "h-9 min-w-0 flex-1 rounded-lg border px-3 text-sm transition-all duration-150 outline-none",
+          "h-9 min-w-0 flex-1 rounded-aphelion-lg border px-3 text-sm transition-all duration-150 outline-none",
           theme === "dark"
             ? "border-white/[0.08] bg-white/[0.03] text-white placeholder:text-white/25 focus:border-white/20 focus:ring-1 focus:ring-white/10"
             : "border-black/[0.08] bg-black/[0.03] text-black placeholder:text-black/25 focus:border-black/20 focus:ring-1 focus:ring-black/10",

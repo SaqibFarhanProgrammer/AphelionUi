@@ -56,7 +56,7 @@ const dialogData = {
   footer={
     <>
       <button className="text-sm text-neutral-400 hover:text-white transition-colors">Cancel</button>
-      <button className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors">Save</button>
+      <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">Save</button>
     </>
   }
 />`,
@@ -70,7 +70,7 @@ const dialogData = {
                     <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
                     </button>
-                    <button className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors">
+                    <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                       Save
                     </button>
                   </>
@@ -102,9 +102,9 @@ const dialogData = {
   }
 >
   <div className="space-y-3">
-    <input placeholder="Name" className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white" />
-    <input placeholder="Email" className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white" />
-    <input placeholder="Password" type="password" className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white" />
+    <input placeholder="Name" className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white" />
+    <input placeholder="Email" className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white" />
+    <input placeholder="Password" type="password" className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white" />
   </div>
 </Dialog>`,
           preview: (
@@ -117,7 +117,7 @@ const dialogData = {
                     <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
                     </button>
-                    <button className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors">
+                    <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                       Create Account
                     </button>
                   </>
@@ -126,16 +126,16 @@ const dialogData = {
                 <div className="space-y-3">
                   <input
                     placeholder="Name"
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
                   />
                   <input
                     placeholder="Email"
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
                   />
                   <input
                     placeholder="Password"
                     type="password"
-                    className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+                    className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
                   />
                 </div>
               </DialogPreview>
@@ -169,7 +169,7 @@ const dialogData = {
                 title="Important Notice"
                 description="You must click a button to close this dialog."
                 footer={
-                  <button className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors">
+                  <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                     I Understand
                   </button>
                 }
@@ -202,7 +202,7 @@ const dialogData = {
     </>
   }
 >
-  <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-lg text-sm text-red-400">
+  <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-aphelion-lg text-sm text-red-400">
     Warning: All your data will be permanently removed.
   </div>
 </Dialog>`,
@@ -219,13 +219,13 @@ const dialogData = {
                     <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
                     </button>
-                    <button className="text-sm bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition-colors">
+                    <button className="text-sm bg-red-600 text-white px-4 py-2 rounded-aphelion-lg font-medium hover:bg-red-500 transition-colors">
                       Delete Account
                     </button>
                   </>
                 }
               >
-                <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-lg text-sm text-red-400">
+                <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-aphelion-lg text-sm text-red-400">
                   Warning: All your data will be permanently removed.
                 </div>
               </DialogPreview>

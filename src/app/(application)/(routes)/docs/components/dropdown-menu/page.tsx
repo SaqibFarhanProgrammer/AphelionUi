@@ -161,7 +161,7 @@ const dropdownData = {
         {
           label: "Default",
           code: `<DropdownMenu
-  trigger={<button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white">Open Menu</button>}
+  trigger={<button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white">Open Menu</button>}
   items={[
     { id: "profile", label: "Your Profile", icon: <User className="h-4 w-4" />, shortcut: "⌘P" },
     { id: "settings", label: "Settings", icon: <Settings className="h-4 w-4" />, shortcut: "⌘," },
@@ -173,7 +173,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Open Menu
                 </button>
               }
@@ -195,7 +195,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Start
                 </button>
               }
@@ -210,7 +210,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Center
                 </button>
               }
@@ -225,7 +225,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   End
                 </button>
               }
@@ -247,7 +247,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Bottom
                 </button>
               }
@@ -263,7 +263,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Top
                 </button>
               }
@@ -279,7 +279,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Right
                 </button>
               }
@@ -295,7 +295,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Left
                 </button>
               }
@@ -350,7 +350,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   File Menu
                 </button>
               }
@@ -381,7 +381,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Theme
                 </button>
               }
@@ -412,7 +412,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Notifications
                 </button>
               }
@@ -445,7 +445,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Edit
                 </button>
               }
@@ -475,7 +475,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Menu
                 </button>
               }
@@ -494,7 +494,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Disabled
                 </button>
               }
@@ -525,7 +525,7 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Account
                 </button>
               }
@@ -573,7 +573,7 @@ return (
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Narrow
                 </button>
               }
@@ -589,7 +589,7 @@ return (
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
                   Wide
                 </button>
               }
@@ -650,7 +650,7 @@ function ControlledDropdownPreview() {
     <div className="flex flex-wrap items-center gap-3">
       <DropdownMenu
         trigger={
-          <button className="rounded-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+          <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
             Controlled
           </button>
         }
@@ -661,13 +661,13 @@ function ControlledDropdownPreview() {
       />
       <button
         onClick={() => setOpen(!open)}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
       >
         Toggle
       </button>
       <button
         onClick={() => setOpen(false)}
-        className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/10"
+        className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/10"
       >
         Close
       </button>

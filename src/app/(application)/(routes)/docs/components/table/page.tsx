@@ -314,7 +314,7 @@ const data = [
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-aphelion-xl bg-white p-6">
   <Table
     columns={columns}
     data={data}
@@ -323,7 +323,7 @@ const data = [
   />
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-6">
+            <div className="rounded-aphelion-xl bg-white p-6">
               <Table columns={userColumns.slice(0, 4)} data={USERS.slice(0, 4)} theme="light" variant="striped" />
             </div>
           ),

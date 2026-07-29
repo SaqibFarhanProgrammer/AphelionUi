@@ -49,26 +49,26 @@ const accordionVariants = cva(['w-full'], {
     {
       theme: 'light',
       variant: 'bordered',
-      className: 'border border-light-border rounded-xl overflow-hidden',
+      className: 'border border-light-border rounded-aphelion-xl overflow-hidden',
     },
     {
       theme: 'light',
       variant: 'card',
       className:
-        'border border-light-border rounded-xl overflow-hidden bg-light-secondary',
+        'border border-light-border rounded-aphelion-xl overflow-hidden bg-light-secondary',
     },
     // ✨ DARK THEME
     { theme: 'dark', variant: 'default', className: '' },
     {
       theme: 'dark',
       variant: 'bordered',
-      className: 'border border-dark-border rounded-xl overflow-hidden',
+      className: 'border border-dark-border rounded-aphelion-xl overflow-hidden',
     },
     {
       theme: 'dark',
       variant: 'card',
       className:
-        'border border-dark-border rounded-xl overflow-hidden bg-dark-secondary',
+        'border border-dark-border rounded-aphelion-xl overflow-hidden bg-dark-secondary',
     },
   ],
   defaultVariants: {

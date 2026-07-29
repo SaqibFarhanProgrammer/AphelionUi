@@ -112,11 +112,11 @@ const buttonVariants = cva(
         light: 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200',
       },
       size: {
-        sm: 'px-3 py-1.5 text-xs rounded-lg',
-        md: 'px-4 py-2 text-sm rounded-xl',
-        lg: 'px-5 py-2.5 text-sm rounded-xl',
+        sm: 'px-3 py-1.5 text-xs rounded-aphelion-lg',
+        md: 'px-4 py-2 text-sm rounded-aphelion-xl',
+        lg: 'px-5 py-2.5 text-sm rounded-aphelion-xl',
         pill: 'px-5 py-2 text-sm rounded-full',
-        icon: 'w-8 h-8 rounded-lg',
+        icon: 'w-8 h-8 rounded-aphelion-lg',
       },
     },
     defaultVariants: {
@@ -165,7 +165,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
       <div
         style={{ fontFamily: 'sans-serif' }}
         className={cn(
-          'flex items-center gap-2 rounded-xl px-3 py-2 transition-all duration-200',
+          'flex items-center gap-2 rounded-aphelion-xl px-3 py-2 transition-all duration-200',
           isDark
             ? 'bg-white/5 border border-white/10 focus-within:border-white/20'
             : 'bg-neutral-100 border border-neutral-200 focus-within:border-neutral-300',
@@ -234,7 +234,7 @@ function Dropdown({
         <div
           style={{ fontFamily: 'sans-serif' }}
           className={cn(
-            'absolute top-full mt-2 min-w-[180px] rounded-xl border py-1.5 z-50 shadow-2xl',
+            'absolute top-full mt-2 min-w-[180px] rounded-aphelion-xl border py-1.5 z-50 shadow-2xl',
             isDark
               ? 'border-white/10 bg-[#1a1a1a] shadow-black/40'
               : 'border-neutral-200 bg-white shadow-black/10',
@@ -441,7 +441,7 @@ function NavLinks({
           key={link.label}
           href={link.href}
           className={cn(
-            'px-4 py-2 text-sm transition-colors duration-200 rounded-lg',
+            'px-4 py-2 text-sm transition-colors duration-200 rounded-aphelion-lg',
             isDark
               ? 'text-white/60 hover:text-white hover:bg-white/5'
               : 'text-neutral-600 hover:text-black hover:bg-neutral-100'
@@ -457,7 +457,7 @@ function NavLinks({
           trigger={
             <span
               className={cn(
-                'flex items-center gap-1 px-4 py-2 text-sm transition-colors duration-200 rounded-lg cursor-pointer',
+                'flex items-center gap-1 px-4 py-2 text-sm transition-colors duration-200 rounded-aphelion-lg cursor-pointer',
                 isDark
                   ? 'text-white/60 hover:text-white hover:bg-white/5'
                   : 'text-neutral-600 hover:text-black hover:bg-neutral-100'
@@ -954,7 +954,7 @@ function DashboardNavbar({
           {logo || (
             <div
               className={cn(
-                'w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold',
+                'w-8 h-8 rounded-aphelion-lg flex items-center justify-center text-xs font-bold',
                 isDark ? 'bg-white text-black' : 'bg-black text-white'
               )}
             >
@@ -1094,7 +1094,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(function Navbar(
               'mt-3 max-w-6xl',
               isScrolled &&
                 cn(
-                  'max-w-4xl rounded-2xl border backdrop-blur-xl lg:px-6',
+                  'max-w-4xl rounded-aphelion-2xl border backdrop-blur-xl lg:px-6',
                   t.scrolledBg,
                   t.border,
                   scrolledClassName

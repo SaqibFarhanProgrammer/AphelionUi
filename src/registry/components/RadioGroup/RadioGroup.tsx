@@ -102,7 +102,7 @@ const cardVariants = cva(
     'flex',
     'items-start',
     'gap-3',
-    'rounded-xl',
+    'rounded-aphelion-xl',
     'border-2',
     'p-4',
     'transition-all',
@@ -161,7 +161,7 @@ const tableRowVariants = cva(
     'flex',
     'items-center',
     'gap-4',
-    'rounded-lg',
+    'rounded-aphelion-lg',
     'border',
     'px-4',
     'py-3',
@@ -397,7 +397,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
           key={option.value}
           className={cn(
             'flex items-center justify-between gap-4',
-            'rounded-lg border px-4 py-3',
+            'rounded-aphelion-lg border px-4 py-3',
             'transition-all duration-150 cursor-pointer',
             theme === 'light'
               ? isChecked
@@ -615,7 +615,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
           key={option.value}
           className={cn(
             'flex items-center gap-3',
-            'rounded-lg border px-4 py-3',
+            'rounded-aphelion-lg border px-4 py-3',
             'transition-all duration-150 cursor-pointer',
             theme === 'light'
               ? isChecked

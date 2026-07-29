@@ -44,9 +44,9 @@ const dialogVariants = cva(
       },
       radius: {
         none: 'rounded-none',
-        sm: 'rounded-lg',
-        md: 'rounded-xl',
-        lg: 'rounded-2xl',
+        sm: 'rounded-aphelion-lg',
+        md: 'rounded-aphelion-xl',
+        lg: 'rounded-aphelion-2xl',
         xl: 'rounded-3xl',
       },
     },

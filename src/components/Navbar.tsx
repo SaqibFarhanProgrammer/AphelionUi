@@ -87,7 +87,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-3 py-2.5 text-[13px] font-medium text-white/60 hover:text-white hover:bg-white/[0.04] rounded-xl transition-colors duration-200"
+                className="px-3 py-2.5 text-[13px] font-medium text-white/60 hover:text-white hover:bg-white/[0.04] rounded-aphelion-xl transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -97,7 +97,7 @@ export default function Navbar() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-white/50 hover:text-white hover:bg-white/[0.04] rounded-xl transition-all duration-200"
+                className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-white/50 hover:text-white hover:bg-white/[0.04] rounded-aphelion-xl transition-all duration-200"
               >
                 <FaGithub size={15} />
                 GitHub
@@ -106,7 +106,7 @@ export default function Navbar() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-white/50 hover:text-white hover:bg-white/[0.04] rounded-xl transition-all duration-200"
+                className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-white/50 hover:text-white hover:bg-white/[0.04] rounded-aphelion-xl transition-all duration-200"
               >
                 <X size={14} strokeWidth={1.8} />X
               </a>

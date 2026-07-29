@@ -197,7 +197,7 @@ const accordionData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl border border-black/10 bg-white p-4">
+          code: `<div className="rounded-aphelion-xl border border-black/10 bg-white p-4">
   <Accordion 
     items={demoItems} 
     theme="light" 
@@ -205,7 +205,7 @@ const accordionData = {
   />
 </div>`,
           preview: (
-            <div className="rounded-xl border border-black/10 bg-white p-4">
+            <div className="rounded-aphelion-xl border border-black/10 bg-white p-4">
               <Accordion items={demoItems} theme="light" variant="bordered" />
             </div>
           ),
@@ -688,25 +688,25 @@ function ControlledAccordionPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setOpenItems([])}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close All
         </button>
         <button
           onClick={() => setOpenItems(['item-1'])}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 1
         </button>
         <button
           onClick={() => setOpenItems(['item-2'])}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 2
         </button>
         <button
           onClick={() => setOpenItems(['item-3'])}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 3
         </button>
@@ -753,25 +753,25 @@ function HookAccordionPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={accordion.closeAll}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close All
         </button>
         <button
           onClick={() => accordion.open('hook-1')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 1
         </button>
         <button
           onClick={() => accordion.open('hook-2')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 2
         </button>
         <button
           onClick={() => accordion.toggle('hook-3')}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle Item 3
         </button>

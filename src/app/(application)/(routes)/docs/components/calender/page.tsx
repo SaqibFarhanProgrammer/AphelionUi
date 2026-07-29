@@ -228,7 +228,7 @@ const calendarData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl z-10 bg-white p-6">
+          code: `<div className="rounded-aphelion-xl z-10 bg-white p-6">
   <Calendar
     mode="single"
     selected={date}
@@ -238,7 +238,7 @@ const calendarData = {
   />
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-6">
+            <div className="rounded-aphelion-xl bg-white p-6">
               <Calendar mode="single" theme="light" className='' variant="bordered" />
             </div>
           ),
@@ -372,7 +372,7 @@ const calendarData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-aphelion-xl bg-white p-6">
   <DatePicker
     value={date}
     onChange={setDate}
@@ -382,7 +382,7 @@ const calendarData = {
   />
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-6">
+            <div className="rounded-aphelion-xl bg-white p-6">
               <DatePickerPreview theme="light" />
             </div>
           ),

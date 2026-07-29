@@ -103,7 +103,7 @@ function LiveAlertDemoAllPositions() {
   ];
 
   return (
-    <div className="space-y-4 p-4 bg-neutral-900/50 rounded-xl border border-neutral-800">
+    <div className="space-y-4 p-4 bg-neutral-900/50 rounded-aphelion-xl border border-neutral-800">
       <p className="font-['inter-semi'] text-[13px] text-white/80 mb-2">
         Click any button to see alert at that position
       </p>
@@ -251,7 +251,7 @@ const alertData = {
   description="This alert uses the dark theme."
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Alert
                 theme="dark"
                 variant="info"
@@ -270,7 +270,7 @@ const alertData = {
   description="This alert uses the light theme."
 />`,
           preview: (
-            <div className="bg-white rounded-xl p-4 border border-neutral-200">
+            <div className="bg-white rounded-aphelion-xl p-4 border border-neutral-200">
               <Alert
                 theme="light"
                 variant="info"
@@ -528,7 +528,7 @@ const alertData = {
   <Alert variant="info" title="Info" description="New update available." />
 </AlertContainer>`,
           preview: (
-            <div className="relative h-[200px] bg-neutral-900/50 rounded-xl overflow-hidden">
+            <div className="relative h-[200px] bg-neutral-900/50 rounded-aphelion-xl overflow-hidden">
               <div className="absolute top-4 right-4 flex flex-col gap-3">
                 <Alert
                   theme="dark"

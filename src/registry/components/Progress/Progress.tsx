@@ -28,7 +28,7 @@ const progressVariants = cva(
         none: 'rounded-none',
         sm: 'rounded-sm',
         md: 'rounded',
-        lg: 'rounded-lg',
+        lg: 'rounded-aphelion-lg',
         full: 'rounded-full',
       },
       theme: {

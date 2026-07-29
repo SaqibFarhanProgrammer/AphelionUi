@@ -360,7 +360,7 @@ const tagsInputData = {
         },
         {
           label: "Light Theme",
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-aphelion-xl bg-white p-6">
   <TagsInput
     options={frameworkOptions.slice(0, 4)}
     placeholder="Light theme..."
@@ -369,7 +369,7 @@ const tagsInputData = {
   />
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-4">
+            <div className="rounded-aphelion-xl bg-white p-4">
               <TagsInput
                 options={frameworkOptions.slice(0, 4)}
                 placeholder="Light theme..."
@@ -679,25 +679,25 @@ function HookControlledPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => tags.add("react")}
-          className="rounded-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
+          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add React
         </button>
         <button
           onClick={() => tags.add("vue")}
-          className="rounded-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
+          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add Vue
         </button>
         <button
           onClick={() => tags.remove("react")}
-          className="rounded-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-red-400 transition-colors hover:bg-red-500/10"
+          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-red-400 transition-colors hover:bg-red-500/10"
         >
           Remove React
         </button>
         <button
           onClick={tags.clear}
-          className="rounded-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/50 transition-colors hover:bg-white/[0.06] hover:text-white"
+          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/50 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Clear All
         </button>

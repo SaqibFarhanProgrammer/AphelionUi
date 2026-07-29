@@ -128,11 +128,11 @@ const spinnerData = {
         },
         {
           label: "Light Theme",
-          code: `<div className="rounded-xl bg-white p-6 flex items-center justify-center">
+          code: `<div className="rounded-aphelion-xl bg-white p-6 flex items-center justify-center">
   <Spinner variant="circle" size="lg" theme="light" />
 </div>`,
           preview: (
-            <div className="flex items-center justify-center rounded-xl bg-white p-6">
+            <div className="flex items-center justify-center rounded-aphelion-xl bg-white p-6">
               <Spinner variant="circle" size="lg" theme="light" />
             </div>
           ),
@@ -146,12 +146,12 @@ const spinnerData = {
       examples: [
         {
           label: "Loading Button",
-          code: `<button className="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
+          code: `<button className="flex items-center gap-2 rounded-aphelion-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
   <Spinner size="sm" variant="circle" theme="light" />
   Loading...
 </button>`,
           preview: (
-            <button className="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
+            <button className="flex items-center gap-2 rounded-aphelion-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
               <Spinner size="sm" variant="circle" theme="light" />
               Loading...
             </button>
@@ -412,7 +412,7 @@ function InteractiveSpinnerPreview() {
       </div>
 
       <div
-        className={`flex items-center justify-center gap-4 rounded-xl border border-white/[0.06] p-8 ${
+        className={`flex items-center justify-center gap-4 rounded-aphelion-xl border border-white/[0.06] p-8 ${
           currentTheme === "light" ? "bg-white" : "bg-white/[0.02]"
         }`}
       >

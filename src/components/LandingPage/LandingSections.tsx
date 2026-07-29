@@ -131,7 +131,7 @@ export function FeaturesGrid() {
               </p>
 
               {/* Mock UI element inside card */}
-              <div className="mt-8 p-4 border border-white/[0.06] rounded-lg bg-white/[0.02]">
+              <div className="mt-8 p-4 border border-white/[0.06] rounded-aphelion-lg bg-white/[0.02]">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-md bg-white/[0.06]" />
                   <div>
@@ -230,7 +230,7 @@ export function IntegrationsSection() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className="bg-[#000000] p-8 flex flex-col items-center justify-center gap-3 group hover:bg-white/[0.02] transition-colors duration-500"
             >
-              <div className="w-10 h-10 rounded-lg border border-white/[0.08] flex items-center justify-center text-xs font-medium text-white/30 group-hover:border-white/20 group-hover:text-white/50 transition-all duration-300">
+              <div className="w-10 h-10 rounded-aphelion-lg border border-white/[0.08] flex items-center justify-center text-xs font-medium text-white/30 group-hover:border-white/20 group-hover:text-white/50 transition-all duration-300">
                 {item.name.charAt(0)}
               </div>
               <div className="text-center">

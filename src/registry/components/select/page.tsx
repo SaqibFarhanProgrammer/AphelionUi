@@ -30,8 +30,8 @@ const selectVariants = cva(
     variants: {
       size: {
         sm: ['h-9', 'px-3', 'text-sm', 'rounded-md'],
-        md: ['h-10', 'px-4', 'text-sm', 'rounded-lg'],
-        lg: ['h-11', 'px-4', 'text-base', 'rounded-lg'],
+        md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
+        lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-lg'],
       },
       theme: {
         light: [
@@ -370,7 +370,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
           id={`${selectId}-listbox`}
           role="listbox"
           className={cn(
-            'absolute z-50 mt-1.5 w-full overflow-hidden rounded-lg border',
+            'absolute z-50 mt-1.5 w-full overflow-hidden rounded-aphelion-lg border',
             theme === 'light'
               ? 'border-neutral-200 bg-white'
               : 'border-neutral-700 bg-neutral-900',

@@ -153,7 +153,7 @@ const drawerData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-aphelion-xl bg-white p-6">
   <Drawer
     open={open}
     onOpenChange={onOpenChange}
@@ -166,7 +166,7 @@ const drawerData = {
   </Drawer>
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-4">
+            <div className="rounded-aphelion-xl bg-white p-4">
               <DrawerPreview
                 side="right"
                 theme="light"
@@ -272,7 +272,7 @@ const drawerData = {
 >
   <div className="space-y-3">
     {Array.from({ length: 12 }, (_, i) => (
-      <div key={i} className="rounded-lg border border-white/10 p-3">
+      <div key={i} className="rounded-aphelion-lg border border-white/10 p-3">
         <h4 className="text-white/80">Item {i + 1}</h4>
         <p className="text-sm text-aphelion-light-text-primary">Description for item {i + 1}.</p>
       </div>
@@ -668,7 +668,7 @@ function DrawerLongContentPreview() {
       >
         <div className="space-y-2">
           {Array.from({ length: 8 }, (_, i) => (
-            <div key={i} className="rounded-lg border border-white/10 p-3">
+            <div key={i} className="rounded-aphelion-lg border border-white/10 p-3">
               <h4 className="text-sm text-white/80">Item {i + 1}</h4>
               <p className="text-xs text-aphelion-light-text-primary">
                 Description for item {i + 1}.

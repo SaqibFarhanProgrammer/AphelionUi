@@ -27,7 +27,7 @@ export default function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="md:col-span-2 relative rounded-[16px] overflow-hidden bg-[#111111] border border-white/[0.06] aspect-[2.8/1] min-h-[180px]">
+          <div className="md:col-span-2 relative rounded-[16px] overflow-hidden bg-dark-brand-primary border border-white/[0.06] aspect-[2.8/1] min-h-[180px]">
             <img
               src="https://ik.imagekit.io/05g48qteo/Aphelion%20Ui/987428d8834efb2e732d11b20021c1d0.jpg"
               alt="Visual masterpiece"
@@ -45,7 +45,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative rounded-[16px] overflow-hidden bg-[#111111] border border-white/[0.06] aspect-[4/3] min-h-[200px]">
+          <div className="relative rounded-[16px] overflow-hidden bg-dark-brand-primary border border-white/[0.06] aspect-[4/3] min-h-[200px]">
             <img
               src="https://i.pinimg.com/webp/736x/9f/65/14/9f65140fcff9648d7c73ce016279f8df.webp"
               alt="Creative work"
@@ -63,7 +63,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative rounded-[16px] overflow-hidden bg-[#111111] border border-white/[0.06] aspect-[4/3] min-h-[200px]">
+          <div className="relative rounded-[16px] overflow-hidden bg-dark-brand-primary border border-white/[0.06] aspect-[4/3] min-h-[200px]">
             <img
               src="https://ik.imagekit.io/05g48qteo/Aphelion%20Ui/Behance(JPG).jpg"
               alt="Experience"

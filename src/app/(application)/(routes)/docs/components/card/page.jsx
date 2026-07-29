@@ -539,7 +539,7 @@ const cardData = {
       theme="dark"
       label="Annual billing (Save 20%)"
     />
-    <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+    <div className="rounded-aphelion-lg border border-white/10 bg-white/5 p-4">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm text-white/60">Total</p>
@@ -1035,7 +1035,7 @@ function SubscriptionCardPreview() {
           defaultValue="pro"
         />
         <CardSwitch theme="dark" label="Annual billing (Save 20%)" />
-        <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+        <div className="rounded-aphelion-lg border border-white/10 bg-white/5 p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-white/60">Total</p>

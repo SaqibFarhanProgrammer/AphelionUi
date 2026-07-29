@@ -13,7 +13,7 @@ const textareaVariants = cva(
   [
     'w-full',
     'resize-none',
-    'rounded-lg',
+    'rounded-aphelion-lg',
     'border',
     'px-4',
     'py-3',

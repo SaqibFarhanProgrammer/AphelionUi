@@ -20,7 +20,7 @@ const alertVariants = cva(
     'flex',
     'items-start',
     'gap-3',
-    'rounded-xl',
+    'rounded-aphelion-xl',
     'border',
     'p-4',
     'shadow-sm',
@@ -41,9 +41,9 @@ const alertVariants = cva(
         neutral: [],
       },
       size: {
-        sm: ['gap-2.5', 'p-3', 'rounded-lg'],
-        md: ['gap-3', 'p-4', 'rounded-xl'],
-        lg: ['gap-4', 'p-5', 'rounded-2xl'],
+        sm: ['gap-2.5', 'p-3', 'rounded-aphelion-lg'],
+        md: ['gap-3', 'p-4', 'rounded-aphelion-xl'],
+        lg: ['gap-4', 'p-5', 'rounded-aphelion-2xl'],
       },
       width: {
         auto: '',

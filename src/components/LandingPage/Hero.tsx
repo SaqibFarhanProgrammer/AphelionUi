@@ -68,7 +68,7 @@ export default function Hero() {
           <div className="flex items-center justify-center gap-3 mb-12">
             <a
               href="/docs"
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-white hover:bg-white/90 text-[#0A0A0A] text-[13px] font-semibold rounded-lg transition-all duration-200"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-white hover:bg-white/90 text-[#0A0A0A] text-[13px] font-semibold rounded-aphelion-lg transition-all duration-200"
             >
               Get Started
             </a>

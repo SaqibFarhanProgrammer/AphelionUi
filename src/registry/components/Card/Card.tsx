@@ -26,7 +26,7 @@ const cardVariants = cva(
   {
     variants: {
       theme: {
-        dark: ['bg-[#111111]', 'border-white/[0.08]', 'text-white'],
+        dark: ['bg-dark-brand-primary', 'border-white/[0.08]', 'text-white'],
         light: ['bg-white', 'border-black/[0.08]', 'text-black'],
       },
       variant: {
@@ -36,9 +36,9 @@ const cardVariants = cva(
       },
       radius: {
         none: 'rounded-none',
-        sm: 'rounded-lg',
-        md: 'rounded-xl',
-        lg: 'rounded-2xl',
+        sm: 'rounded-aphelion-lg',
+        md: 'rounded-aphelion-xl',
+        lg: 'rounded-aphelion-2xl',
         xl: 'rounded-3xl',
       },
       padding: {
@@ -185,10 +185,10 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: ['h-9', 'px-3', 'text-sm', 'rounded-lg'],
-        md: ['h-10', 'px-4', 'text-sm', 'rounded-lg'],
-        lg: ['h-11', 'px-4', 'text-base', 'rounded-xl'],
-        xl: ['h-12', 'px-5', 'text-base', 'rounded-xl'],
+        sm: ['h-9', 'px-3', 'text-sm', 'rounded-aphelion-lg'],
+        md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
+        lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-xl'],
+        xl: ['h-12', 'px-5', 'text-base', 'rounded-aphelion-xl'],
       },
       theme: {
         light: [
@@ -277,11 +277,11 @@ const buttonVariants = cva(
         solid: '',
       },
       size: {
-        sm: 'h-8 px-3 text-xs rounded-lg',
-        md: 'h-10 px-4 text-sm rounded-lg',
-        lg: 'h-11 px-5 text-sm rounded-xl',
-        xl: 'h-12 px-6 text-base rounded-xl',
-        full: 'h-11 px-5 text-sm rounded-xl w-full',
+        sm: 'h-8 px-3 text-xs rounded-aphelion-lg',
+        md: 'h-10 px-4 text-sm rounded-aphelion-lg',
+        lg: 'h-11 px-5 text-sm rounded-aphelion-xl',
+        xl: 'h-12 px-6 text-base rounded-aphelion-xl',
+        full: 'h-11 px-5 text-sm rounded-aphelion-xl w-full',
       },
       theme: {
         dark: '',
@@ -474,9 +474,9 @@ const textareaVariants = cva(
   {
     variants: {
       size: {
-        sm: ['px-3', 'py-2', 'text-sm', 'rounded-lg', 'min-h-[80px]'],
-        md: ['px-4', 'py-3', 'text-sm', 'rounded-lg', 'min-h-[100px]'],
-        lg: ['px-4', 'py-3', 'text-base', 'rounded-xl', 'min-h-[120px]'],
+        sm: ['px-3', 'py-2', 'text-sm', 'rounded-aphelion-lg', 'min-h-[80px]'],
+        md: ['px-4', 'py-3', 'text-sm', 'rounded-aphelion-lg', 'min-h-[100px]'],
+        lg: ['px-4', 'py-3', 'text-base', 'rounded-aphelion-xl', 'min-h-[120px]'],
       },
       theme: {
         light: [
@@ -530,10 +530,10 @@ const selectVariants = cva(
   {
     variants: {
       size: {
-        sm: ['h-9', 'px-3', 'text-sm', 'rounded-lg'],
-        md: ['h-10', 'px-4', 'text-sm', 'rounded-lg'],
-        lg: ['h-11', 'px-4', 'text-base', 'rounded-xl'],
-        xl: ['h-12', 'px-5', 'text-base', 'rounded-xl'],
+        sm: ['h-9', 'px-3', 'text-sm', 'rounded-aphelion-lg'],
+        md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
+        lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-xl'],
+        xl: ['h-12', 'px-5', 'text-base', 'rounded-aphelion-xl'],
       },
       theme: {
         light: [
@@ -565,7 +565,7 @@ const selectVariants = cva(
 );
 
 const tabsVariants = cva(
-  ['inline-flex', 'items-center', 'gap-1', 'rounded-lg', 'p-1'],
+  ['inline-flex', 'items-center', 'gap-1', 'rounded-aphelion-lg', 'p-1'],
   {
     variants: {
       theme: {
@@ -666,7 +666,7 @@ const sliderThumbVariants = cva(
   {
     variants: {
       theme: {
-        dark: ['bg-[#111111]', 'border-white', 'hover:scale-110'],
+        dark: ['bg-dark-brand-primary', 'border-white', 'hover:scale-110'],
         light: ['bg-white', 'border-black', 'hover:scale-110'],
       },
     },
@@ -1266,7 +1266,9 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
           <div
             className={cn(
               'pointer-events-none absolute top-0 right-3 bottom-0 flex items-center',
-              theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-black/40'
+              theme === 'dark'
+                ? 'text-aphelion-light-text-primary'
+                : 'text-black/40'
             )}
           >
             <ChevronDown size={16} strokeWidth={2.5} />

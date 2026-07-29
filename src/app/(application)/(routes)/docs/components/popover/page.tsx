@@ -437,7 +437,7 @@ const popoverData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-6">
+          code: `<div className="rounded-aphelion-xl bg-white p-6">
   <Popover triggerText="Light" triggerVariant="outline" theme="light">
     <PopoverHeader title="Light Mode" description="Clean look" theme="light" />
     <PopoverBody>
@@ -450,7 +450,7 @@ const popoverData = {
   </Popover>
 </div>`,
           preview: (
-            <div className="rounded-xl bg-white p-6">
+            <div className="rounded-aphelion-xl bg-white p-6">
               <Popover triggerText="Light" triggerVariant="outline" theme="light">
                 <PopoverHeader title="Light Mode" description="Clean look" theme="light" />
                 <PopoverBody>
@@ -795,13 +795,13 @@ function ControlledPopoverPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setIsOpen(true)}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
         </button>
         <button
           onClick={() => setIsOpen(false)}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
         </button>
@@ -823,19 +823,19 @@ function HookPopoverPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={popover.openPopover}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
         </button>
         <button
           onClick={popover.closePopover}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
         </button>
         <button
           onClick={popover.toggle}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle
         </button>

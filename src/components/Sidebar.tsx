@@ -154,7 +154,7 @@ export default function Sidebar({
     <>
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-4 left-4 z-[60] w-9 h-9 flex items-center justify-center rounded-lg bg-[#111111] border border-white/[0.08] text-white/60 hover:text-white transition-all duration-200"
+        className="lg:hidden fixed top-4 left-4 z-[60] w-9 h-9 flex items-center justify-center rounded-aphelion-lg bg-dark-brand-primary border border-white/[0.08] text-white/60 hover:text-white transition-all duration-200"
       >
         {mobileOpen ? <X size={16} /> : <Menu size={16} />}
       </button>

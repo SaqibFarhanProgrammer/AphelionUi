@@ -148,7 +148,7 @@ const progressData = {
   label="Dark Theme"
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Progress
                 theme="dark"
                 variant="success"
@@ -167,7 +167,7 @@ const progressData = {
   label="Light Theme"
 />`,
           preview: (
-            <div className="bg-white rounded-xl p-4 border border-neutral-200">
+            <div className="bg-white rounded-aphelion-xl p-4 border border-neutral-200">
               <Progress
                 theme="light"
                 variant="success"

@@ -286,7 +286,7 @@ const sheetData = {
     </>
   }
 >
-  <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-lg text-sm text-red-400">
+  <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-aphelion-lg text-sm text-red-400">
     Warning: All your data will be permanently removed.
   </div>
 </Sheet>`,
@@ -566,23 +566,23 @@ function SheetPreview({
         <div className="space-y-3">
           <input
             placeholder="Name"
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+            className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
           />
           <input
             placeholder="Email"
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+            className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
           />
           <input
             placeholder="Password"
             type="password"
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
+            className="w-full bg-neutral-900 border border-neutral-800 rounded-aphelion-lg px-3 py-2 text-sm text-white placeholder:text-neutral-600 outline-none focus:border-neutral-700 transition-colors"
           />
         </div>
       );
     }
     if (bodyType === 'warning') {
       return (
-        <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-lg text-sm text-red-400">
+        <div className="p-3 bg-red-950/20 border border-red-900/30 rounded-aphelion-lg text-sm text-red-400">
           Warning: All your data will be permanently removed.
         </div>
       );
@@ -629,7 +629,7 @@ function SheetPreview({
     <>
       <button
         onClick={sheet.onOpen}
-        className="rounded-lg border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
+        className="rounded-aphelion-lg border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
       >
         {buttonLabel}
       </button>
@@ -653,7 +653,7 @@ function SheetPreview({
             </button>
             <button
               onClick={sheet.onClose}
-              className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors"
+              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
             >
               Save
             </button>
@@ -676,13 +676,13 @@ function ControlledSheetPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => setIsOpen(true)}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Sheet
         </button>
         <button
           onClick={() => setIsOpen(false)}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close Sheet
         </button>
@@ -706,7 +706,7 @@ function ControlledSheetPreview() {
             </button>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors"
+              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
             >
               Done
             </button>
@@ -731,19 +731,19 @@ function HookSheetPreview() {
       <div className="flex flex-wrap gap-2">
         <button
           onClick={sheet.onOpen}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
         </button>
         <button
           onClick={sheet.onClose}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
         </button>
         <button
           onClick={sheet.onToggle}
-          className="rounded-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
+          className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle
         </button>
@@ -767,7 +767,7 @@ function HookSheetPreview() {
             </button>
             <button
               onClick={sheet.onClose}
-              className="text-sm bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-colors"
+              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
             >
               Done
             </button>

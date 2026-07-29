@@ -604,7 +604,7 @@ function InteractiveTimelinePreview() {
 
       {/* Live Preview */}
       <div
-        className={`rounded-xl border border-white/[0.06] p-6 ${
+        className={`rounded-aphelion-xl border border-white/[0.06] p-6 ${
           currentTheme === "light" ? "bg-white" : "bg-white/[0.02]"
         }`}
       >

@@ -37,8 +37,8 @@ const avatarVariants = cva(
       },
       shape: {
         circle: 'rounded-full',
-        square: 'rounded-lg',
-        rounded: 'rounded-xl',
+        square: 'rounded-aphelion-lg',
+        rounded: 'rounded-aphelion-xl',
       },
     },
     defaultVariants: {
@@ -187,8 +187,8 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
             className={cn(
               'h-full w-full object-cover',
               shape === 'circle' && 'rounded-full',
-              shape === 'square' && 'rounded-lg',
-              shape === 'rounded' && 'rounded-xl',
+              shape === 'square' && 'rounded-aphelion-lg',
+              shape === 'rounded' && 'rounded-aphelion-xl',
               imageClassName
             )}
             onError={() => setError(true)}
@@ -199,8 +199,8 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
             className={cn(
               "flex h-full w-full select-none items-center justify-center font-['inter-semi'] text-white/50",
               shape === 'circle' && 'rounded-full',
-              shape === 'square' && 'rounded-lg',
-              shape === 'rounded' && 'rounded-xl',
+              shape === 'square' && 'rounded-aphelion-lg',
+              shape === 'rounded' && 'rounded-aphelion-xl',
               fallbackClassName
             )}
           >

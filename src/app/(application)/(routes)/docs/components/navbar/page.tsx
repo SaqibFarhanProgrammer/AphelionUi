@@ -43,7 +43,7 @@ const navbarData = {
   showSearch
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="default"
                 theme="dark"
@@ -69,7 +69,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="pill"
                 theme="dark"
@@ -94,7 +94,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="minimal"
                 theme="dark"
@@ -120,7 +120,7 @@ const navbarData = {
   showSearch
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="split"
                 theme="dark"
@@ -147,7 +147,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="centered"
                 theme="dark"
@@ -173,7 +173,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="saas"
                 theme="dark"
@@ -199,7 +199,7 @@ const navbarData = {
   showSearch
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="dashboard"
                 theme="dark"
@@ -231,7 +231,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 links={[
@@ -253,7 +253,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-white rounded-xl p-4 border border-neutral-200">
+            <div className="bg-white rounded-aphelion-xl p-4 border border-neutral-200">
               <Navbar
                 theme="light"
                 links={[
@@ -299,7 +299,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 links={[
@@ -347,7 +347,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 showSearch
@@ -383,7 +383,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 links={[
@@ -417,10 +417,10 @@ const navbarData = {
     { label: "About", href: "/about" },
   ]}
   ctaSecondary={<button className="text-sm text-white/60 hover:text-white">Sign In</button>}
-  ctaPrimary={<button className="text-sm bg-white text-black px-4 py-2 rounded-xl">Get Started</button>}
+  ctaPrimary={<button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl">Get Started</button>}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 links={[
@@ -433,7 +433,7 @@ const navbarData = {
                   </button>
                 }
                 ctaPrimary={
-                  <button className="text-sm bg-white text-black px-4 py-2 rounded-xl font-medium hover:bg-white/90 transition-colors">
+                  <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl font-medium hover:bg-white/90 transition-colors">
                     Get Started
                   </button>
                 }
@@ -476,7 +476,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 theme="dark"
                 links={[
@@ -540,7 +540,7 @@ const navbarData = {
   ]}
 />`,
           preview: (
-            <div className="bg-black rounded-xl p-4">
+            <div className="bg-black rounded-aphelion-xl p-4">
               <Navbar
                 variant="pill"
                 theme="dark"

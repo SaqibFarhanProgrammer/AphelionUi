@@ -236,14 +236,14 @@ function DropdownContent({
 
   return (
     <div
-      className="overflow-hidden rounded-xl border border-white/[0.08] bg-[#1a1a1a] py-1"
+      className="overflow-hidden rounded-aphelion-xl border border-white/[0.08] bg-[#1a1a1a] py-1"
       style={{ minWidth: 220, fontFamily: 'sans-serif' }}
     >
       {/* Back Button (when not at root) */}
       {!isRoot && (
         <button
           onClick={onBack}
-          className="relative mx-1 flex w-[calc(100%-8px)] items-center gap-2.5 rounded-lg px-3 py-2 text-left text-[13px] transition-all duration-150 outline-none text-white/70 hover:bg-white/[0.06] hover:text-white cursor-pointer"
+          className="relative mx-1 flex w-[calc(100%-8px)] items-center gap-2.5 rounded-aphelion-lg px-3 py-2 text-left text-[13px] transition-all duration-150 outline-none text-white/70 hover:bg-white/[0.06] hover:text-white cursor-pointer"
         >
           <ChevronLeftIcon className="flex-shrink-0 text-aphelion-light-text-primary" />
           <span className="font-medium">Back</span>
@@ -285,7 +285,7 @@ function DropdownContent({
             key={item.id || `item-${index}`}
             onClick={() => handleItemClick(item)}
             disabled={item.disabled}
-            className={`relative flex items-center gap-2.5 px-3 py-2 mx-1 rounded-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left ${
+            className={`relative flex items-center gap-2.5 px-3 py-2 mx-1 rounded-aphelion-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left ${
               item.disabled
                 ? 'opacity-40 cursor-not-allowed text-white/30'
                 : item.danger

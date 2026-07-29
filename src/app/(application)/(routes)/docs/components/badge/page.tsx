@@ -410,13 +410,13 @@ const badgeData = {
         },
         {
           label: 'Light Theme',
-          code: `<div className="rounded-xl bg-white p-4">
+          code: `<div className="rounded-aphelion-xl bg-white p-4">
   <Badge theme="light">Default</Badge>
   <Badge theme="light" color="success">Success</Badge>
   <Badge theme="light" variant="solid" color="primary">Solid</Badge>
 </div>`,
           preview: (
-            <div className="rounded-xl border border-black/10 bg-white p-4 flex flex-wrap gap-2">
+            <div className="rounded-aphelion-xl border border-black/10 bg-white p-4 flex flex-wrap gap-2">
               <Badge theme="light">Default</Badge>
               <Badge theme="light" color="success">Success</Badge>
               <Badge theme="light" variant="solid" color="primary">Solid</Badge>

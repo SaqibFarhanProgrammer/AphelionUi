@@ -20,7 +20,7 @@
         "items-center",
         "gap-2",
         "border",
-        "rounded-lg",
+        "rounded-aphelion-lg",
         "px-3",
         "py-2",
         "transition-all",
@@ -100,7 +100,7 @@
         "z-50",
         "w-full",
         "mt-1.5",
-        "rounded-xl",
+        "rounded-aphelion-xl",
         "border",
         "shadow-xl",
         "overflow-hidden",
@@ -110,7 +110,7 @@
         variants: {
         theme: {
             light: ["bg-white", "border-neutral-200", "shadow-black/10"],
-            dark: ["bg-[#111111]", "border-white/[0.08]", "shadow-black/40"],
+            dark: ["bg-dark-brand-primary", "border-white/[0.08]", "shadow-black/40"],
         },
         },
         defaultVariants: {
@@ -128,7 +128,7 @@
         "px-3",
         "py-2.5",
         "text-sm",
-        "rounded-lg",
+        "rounded-aphelion-lg",
         "cursor-pointer",
         "select-none",
         "transition-all",
@@ -695,12 +695,12 @@
                     <div
                     className={cn(
                         "sticky top-0 z-10 px-3 py-2",
-                        theme === "dark" ? "bg-[#111111]" : "bg-white"
+                        theme === "dark" ? "bg-dark-brand-primary" : "bg-white"
                     )}
                     >
                     <div
                         className={cn(
-                        "flex items-center gap-2 rounded-lg border px-3 py-2",
+                        "flex items-center gap-2 rounded-aphelion-lg border px-3 py-2",
                         theme === "dark"
                             ? "border-white/[0.08] bg-[#0A0A0A]"
                             : "border-neutral-200 bg-neutral-50"
