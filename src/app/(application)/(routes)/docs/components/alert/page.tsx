@@ -445,8 +445,8 @@ const alertData = {
   dismissible
   actions={
     <>
-      <button className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors">Save</button>
-      <button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">Discard</button>
+      <Button className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors">Save</Button>
+      <Button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">Discard</Button>
     </>
   }
 />`,
@@ -591,8 +591,8 @@ add({
   dismissible
   actions={
     <>
-      <button className="text-sm font-medium text-red-400 hover:text-red-300 transition-colors">Retry</button>
-      <button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">Contact Support</button>
+      <Button className="text-sm font-medium text-red-400 hover:text-red-300 transition-colors">Retry</Button>
+      <Button className="text-sm font-medium text-neutral-400 hover:text-neutral-300 transition-colors">Contact Support</Button>
     </>
   }
 />`,

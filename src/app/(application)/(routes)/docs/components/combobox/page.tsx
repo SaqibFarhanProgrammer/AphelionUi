@@ -10,6 +10,7 @@ import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
 import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 // ─── Demo Data ───────────────────────────────────────────────────────────
 
@@ -383,18 +384,18 @@ const comboboxData = {
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button
+      <Button
         onClick={() => setValue('apple')}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Select Apple
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => setValue('')}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Clear
-      </button>
+      </Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">
       Selected: {value || 'none'}
@@ -425,18 +426,18 @@ return (
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button
+      <Button
         onClick={() => combobox.setValue('cherry')}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Set Cherry
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={combobox.clear}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
       >
         Clear
-      </button>
+      </Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">
       Value: {combobox.value || 'none'}
@@ -653,24 +654,24 @@ const combobox = useCombobox('banana');
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => setValue('apple')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Select Apple
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setValue('banana')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Select Banana
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setValue('')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Clear
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">Selected: {value || 'none'}</div>
       <Combobox
@@ -692,24 +693,24 @@ const combobox = useCombobox('banana');
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => combobox.setValue('cherry')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Set Cherry
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => combobox.setValue('grape')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Set Grape
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={combobox.clear}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Clear
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">
         Value: {combobox.value || 'none'}

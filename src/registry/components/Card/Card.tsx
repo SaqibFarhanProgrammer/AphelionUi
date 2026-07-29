@@ -13,6 +13,8 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Card Variants ───────────────────────────────────────────────────────
+
 const cardVariants = cva(
   [
     'relative',
@@ -26,8 +28,8 @@ const cardVariants = cva(
   {
     variants: {
       theme: {
-        dark: ['bg-dark-brand-primary', 'border-white/[0.08]', 'text-white'],
-        light: ['bg-white', 'border-black/[0.08]', 'text-black'],
+        dark: ['bg-dark-card', 'border-dark-border', 'text-dark-text-primary'],
+        light: ['bg-light-card', 'border-light-border', 'text-light-text-primary'],
       },
       variant: {
         default: '',
@@ -35,11 +37,11 @@ const cardVariants = cva(
         ghost: 'border-transparent',
       },
       radius: {
-        none: 'rounded-none',
+        none: 'rounded-aphelion-none',
         sm: 'rounded-aphelion-lg',
         md: 'rounded-aphelion-xl',
         lg: 'rounded-aphelion-2xl',
-        xl: 'rounded-3xl',
+        xl: 'rounded-aphelion-2xl',
       },
       padding: {
         none: '',
@@ -71,25 +73,25 @@ const cardVariants = cva(
         theme: 'dark',
         variant: 'default',
         hover: true,
-        className: 'hover:border-white/[0.14] hover:bg-[#151515]',
+        className: 'hover:border-dark-border-strong hover:bg-dark-hover',
       },
       {
         theme: 'light',
         variant: 'default',
         hover: true,
-        className: 'hover:border-black/[0.14] hover:bg-neutral-50',
+        className: 'hover:border-light-border-strong hover:bg-light-hover',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         hover: true,
-        className: 'hover:bg-white/[0.02]',
+        className: 'hover:bg-dark-hover',
       },
       {
         theme: 'light',
         variant: 'ghost',
         hover: true,
-        className: 'hover:bg-black/[0.02]',
+        className: 'hover:bg-light-hover',
       },
     ],
     defaultVariants: {
@@ -103,6 +105,8 @@ const cardVariants = cva(
     },
   }
 );
+
+// ─── Card Header Variants ────────────────────────────────────────────────
 
 const cardHeaderVariants = cva(['flex', 'flex-col', 'gap-1.5'], {
   variants: {
@@ -119,13 +123,15 @@ const cardHeaderVariants = cva(['flex', 'flex-col', 'gap-1.5'], {
   },
 });
 
+// ─── Card Title Variants ─────────────────────────────────────────────────
+
 const cardTitleVariants = cva(
   ['text-2xl', 'font-semibold', 'leading-tight', 'tracking-tight'],
   {
     variants: {
       theme: {
-        dark: 'text-white',
-        light: 'text-black',
+        dark: 'text-dark-text-primary',
+        light: 'text-light-text-primary',
       },
     },
     defaultVariants: {
@@ -134,17 +140,21 @@ const cardTitleVariants = cva(
   }
 );
 
+// ─── Card Description Variants ───────────────────────────────────────────
+
 const cardDescriptionVariants = cva(['text-sm', 'leading-relaxed'], {
   variants: {
     theme: {
-      dark: 'text-white/50',
-      light: 'text-black/50',
+      dark: 'text-dark-text-muted',
+      light: 'text-light-text-muted',
     },
   },
   defaultVariants: {
     theme: 'dark',
   },
 });
+
+// ─── Card Footer Variants ────────────────────────────────────────────────
 
 const cardFooterVariants = cva(['flex', 'items-center', 'gap-3'], {
   variants: {
@@ -167,6 +177,8 @@ const cardFooterVariants = cva(['flex', 'items-center', 'gap-3'], {
     align: 'end',
   },
 });
+
+// ─── Input Variants ──────────────────────────────────────────────────────
 
 const inputVariants = cva(
   [
@@ -192,27 +204,34 @@ const inputVariants = cva(
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'placeholder:text-neutral-400',
-          'border-neutral-300',
-          'focus-visible:border-neutral-900',
-          'focus-visible:ring-neutral-900/15',
+          'bg-light-background',
+          'text-light-text-primary',
+          'placeholder:text-light-text-muted',
+          'border-light-input-border',
+          'focus-visible:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
         ],
         dark: [
-          'bg-[#0A0A0A]',
-          'text-white',
-          'placeholder:text-white/30',
-          'border-white/[0.08]',
-          'focus-visible:border-white/20',
-          'focus-visible:ring-white/10',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'placeholder:text-dark-text-muted',
+          'border-dark-input-border',
+          'focus-visible:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
         ],
       },
       error: {
-        true: 'border-red-500 focus-visible:ring-red-500/15 focus-visible:border-red-500',
+        true: 'border-light-destructive focus-visible:ring-light-focus-ring focus-visible:border-light-destructive',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        theme: 'dark',
+        error: true,
+        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+      },
+    ],
     defaultVariants: {
       size: 'lg',
       theme: 'dark',
@@ -221,11 +240,13 @@ const inputVariants = cva(
   }
 );
 
+// ─── Label Variants ──────────────────────────────────────────────────────
+
 const labelVariants = cva(['block', 'text-sm', 'font-medium', 'mb-2'], {
   variants: {
     theme: {
-      light: 'text-neutral-900',
-      dark: 'text-white',
+      light: 'text-light-text-primary',
+      dark: 'text-dark-text-primary',
     },
   },
   defaultVariants: {
@@ -233,25 +254,31 @@ const labelVariants = cva(['block', 'text-sm', 'font-medium', 'mb-2'], {
   },
 });
 
+// ─── Helper Text Variants ────────────────────────────────────────────────
+
 const helperVariants = cva(['block', 'mt-1.5', 'text-xs'], {
   variants: {
     theme: {
-      light: 'text-neutral-500',
-      dark: 'text-aphelion-light-text-primary',
+      light: 'text-light-text-muted',
+      dark: 'text-dark-text-muted',
     },
   },
   defaultVariants: {
     theme: 'dark',
   },
 });
+
+// ─── Error Variants ──────────────────────────────────────────────────────
 
 const errorVariants = cva([
   'block',
   'mt-1.5',
   'text-xs',
   'font-medium',
-  'text-red-500',
+  'text-light-destructive',
 ]);
+
+// ─── Button Variants ─────────────────────────────────────────────────────
 
 const buttonVariants = cva(
   [
@@ -293,49 +320,49 @@ const buttonVariants = cva(
         theme: 'dark',
         variant: 'default',
         className:
-          'bg-white/[0.06] text-white hover:bg-white/[0.10] border border-white/[0.08] focus-visible:ring-white/20',
+          'bg-dark-muted text-dark-text-primary hover:bg-dark-hover border border-dark-border focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         className:
-          'bg-transparent text-white hover:bg-white/[0.04] border border-white/[0.12] focus-visible:ring-white/20',
+          'bg-transparent text-dark-text-primary hover:bg-dark-hover border border-dark-border-strong focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         className:
-          'bg-transparent text-white hover:bg-white/[0.04] border border-transparent focus-visible:ring-white/20',
+          'bg-transparent text-dark-text-primary hover:bg-dark-hover border border-transparent focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         className:
-          'bg-white text-black hover:bg-white/90 border border-transparent focus-visible:ring-white/20',
+          'bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover border border-transparent focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'light',
         variant: 'default',
         className:
-          'bg-black/[0.06] text-black hover:bg-black/[0.10] border border-black/[0.08] focus-visible:ring-black/20',
+          'bg-light-muted text-light-text-primary hover:bg-light-hover border border-light-border focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         className:
-          'bg-transparent text-black hover:bg-black/[0.04] border border-black/[0.12] focus-visible:ring-black/20',
+          'bg-transparent text-light-text-primary hover:bg-light-hover border border-light-border-strong focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         className:
-          'bg-transparent text-black hover:bg-black/[0.04] border border-transparent focus-visible:ring-black/20',
+          'bg-transparent text-light-text-primary hover:bg-light-hover border border-transparent focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         className:
-          'bg-black text-white hover:bg-black/90 border border-transparent focus-visible:ring-black/20',
+          'bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover border border-transparent focus-visible:ring-light-focus-ring',
       },
     ],
     defaultVariants: {
@@ -346,6 +373,8 @@ const buttonVariants = cva(
   }
 );
 
+// ─── Switch Variants ─────────────────────────────────────────────────────
+
 const switchVariants = cva(
   [
     'relative',
@@ -353,7 +382,7 @@ const switchVariants = cva(
     'shrink-0',
     'cursor-pointer',
     'items-center',
-    'rounded-full',
+    'rounded-aphelion-full',
     'border-2',
     'border-transparent',
     'transition-colors',
@@ -374,14 +403,14 @@ const switchVariants = cva(
       },
       theme: {
         light: [
-          'bg-neutral-200',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'bg-light-muted',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'bg-white/10',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'bg-dark-muted',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -393,12 +422,12 @@ const switchVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['bg-neutral-900'],
+        className: ['bg-light-primary'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['bg-white'],
+        className: ['bg-dark-primary'],
       },
     ],
     defaultVariants: {
@@ -409,12 +438,14 @@ const switchVariants = cva(
   }
 );
 
+// ─── Switch Thumb Variants ───────────────────────────────────────────────
+
 const switchThumbVariants = cva(
   [
     'pointer-events-none',
     'block',
-    'rounded-full',
-    'shadow-sm',
+    'rounded-aphelion-full',
+    'shadow-aphelion-sm',
     'ring-0',
     'transition-all',
     'duration-200',
@@ -428,8 +459,8 @@ const switchThumbVariants = cva(
         lg: ['h-5', 'w-5'],
       },
       theme: {
-        light: ['bg-white'],
-        dark: ['bg-neutral-900'],
+        light: ['bg-light-background'],
+        dark: ['bg-dark-background'],
       },
       checked: {
         true: [],
@@ -440,12 +471,12 @@ const switchThumbVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['bg-white'],
+        className: ['bg-light-primary-foreground'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['bg-neutral-900'],
+        className: ['bg-dark-primary-foreground'],
       },
     ],
     defaultVariants: {
@@ -455,6 +486,8 @@ const switchThumbVariants = cva(
     },
   }
 );
+
+// ─── Textarea Variants ───────────────────────────────────────────────────
 
 const textareaVariants = cva(
   [
@@ -480,27 +513,34 @@ const textareaVariants = cva(
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'placeholder:text-neutral-400',
-          'border-neutral-300',
-          'focus-visible:border-neutral-900',
-          'focus-visible:ring-neutral-900/15',
+          'bg-light-background',
+          'text-light-text-primary',
+          'placeholder:text-light-text-muted',
+          'border-light-input-border',
+          'focus-visible:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
         ],
         dark: [
-          'bg-[#0A0A0A]',
-          'text-white',
-          'placeholder:text-white/30',
-          'border-white/[0.08]',
-          'focus-visible:border-white/20',
-          'focus-visible:ring-white/10',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'placeholder:text-dark-text-muted',
+          'border-dark-input-border',
+          'focus-visible:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
         ],
       },
       error: {
-        true: 'border-red-500 focus-visible:ring-red-500/15 focus-visible:border-red-500',
+        true: 'border-light-destructive focus-visible:ring-light-focus-ring focus-visible:border-light-destructive',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        theme: 'dark',
+        error: true,
+        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+      },
+    ],
     defaultVariants: {
       size: 'lg',
       theme: 'dark',
@@ -508,6 +548,8 @@ const textareaVariants = cva(
     },
   }
 );
+
+// ─── Select Variants ─────────────────────────────────────────────────────
 
 const selectVariants = cva(
   [
@@ -537,25 +579,32 @@ const selectVariants = cva(
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'border-neutral-300',
-          'focus-visible:border-neutral-900',
-          'focus-visible:ring-neutral-900/15',
+          'bg-light-background',
+          'text-light-text-primary',
+          'border-light-input-border',
+          'focus-visible:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
         ],
         dark: [
-          'bg-[#0A0A0A]',
-          'text-white',
-          'border-white/[0.08]',
-          'focus-visible:border-white/20',
-          'focus-visible:ring-white/10',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'border-dark-input-border',
+          'focus-visible:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
         ],
       },
       error: {
-        true: 'border-red-500 focus-visible:ring-red-500/15 focus-visible:border-red-500',
+        true: 'border-light-destructive focus-visible:ring-light-focus-ring focus-visible:border-light-destructive',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        theme: 'dark',
+        error: true,
+        className: 'border-dark-destructive focus-visible:ring-dark-focus-ring focus-visible:border-dark-destructive',
+      },
+    ],
     defaultVariants: {
       size: 'lg',
       theme: 'dark',
@@ -564,13 +613,15 @@ const selectVariants = cva(
   }
 );
 
+// ─── Tabs Variants ───────────────────────────────────────────────────────
+
 const tabsVariants = cva(
   ['inline-flex', 'items-center', 'gap-1', 'rounded-aphelion-lg', 'p-1'],
   {
     variants: {
       theme: {
-        dark: 'bg-white/[0.03]',
-        light: 'bg-black/[0.03]',
+        dark: 'bg-dark-muted',
+        light: 'bg-light-muted',
       },
     },
     defaultVariants: {
@@ -578,6 +629,8 @@ const tabsVariants = cva(
     },
   }
 );
+
+// ─── Tab Trigger Variants ────────────────────────────────────────────────
 
 const tabTriggerVariants = cva(
   [
@@ -588,7 +641,7 @@ const tabTriggerVariants = cva(
     'py-2',
     'text-sm',
     'font-medium',
-    'rounded-md',
+    'rounded-aphelion-md',
     'transition-all',
     'duration-150',
     'outline-none',
@@ -600,14 +653,14 @@ const tabTriggerVariants = cva(
     variants: {
       theme: {
         dark: [
-          'text-white/60',
-          'hover:text-white',
-          'focus-visible:ring-white/20',
+          'text-dark-text-muted',
+          'hover:text-dark-text-primary',
+          'focus-visible:ring-dark-focus-ring',
         ],
         light: [
-          'text-black/60',
-          'hover:text-black',
-          'focus-visible:ring-black/20',
+          'text-light-text-muted',
+          'hover:text-light-text-primary',
+          'focus-visible:ring-light-focus-ring',
         ],
       },
       active: {
@@ -619,12 +672,12 @@ const tabTriggerVariants = cva(
       {
         theme: 'dark',
         active: true,
-        className: 'bg-white/[0.08] text-white shadow-sm',
+        className: 'bg-dark-selected text-dark-text-primary shadow-aphelion-sm',
       },
       {
         theme: 'light',
         active: true,
-        className: 'bg-black/[0.08] text-black shadow-sm',
+        className: 'bg-light-selected text-light-text-primary shadow-aphelion-sm',
       },
     ],
     defaultVariants: {
@@ -634,13 +687,15 @@ const tabTriggerVariants = cva(
   }
 );
 
+// ─── Slider Track Variants ───────────────────────────────────────────────
+
 const sliderTrackVariants = cva(
-  ['relative', 'h-2', 'w-full', 'rounded-full', 'overflow-hidden'],
+  ['relative', 'h-2', 'w-full', 'rounded-aphelion-full', 'overflow-hidden'],
   {
     variants: {
       theme: {
-        dark: 'bg-white/10',
-        light: 'bg-black/10',
+        dark: 'bg-dark-muted',
+        light: 'bg-light-muted',
       },
     },
     defaultVariants: {
@@ -649,6 +704,8 @@ const sliderTrackVariants = cva(
   }
 );
 
+// ─── Slider Thumb Variants ───────────────────────────────────────────────
+
 const sliderThumbVariants = cva(
   [
     'absolute',
@@ -656,18 +713,18 @@ const sliderThumbVariants = cva(
     '-translate-y-1/2',
     'h-5',
     'w-5',
-    'rounded-full',
+    'rounded-aphelion-full',
     'border-2',
     'cursor-pointer',
     'transition-all',
     'duration-150',
-    'shadow-md',
+    'shadow-aphelion-md',
   ],
   {
     variants: {
       theme: {
-        dark: ['bg-dark-brand-primary', 'border-white', 'hover:scale-110'],
-        light: ['bg-white', 'border-black', 'hover:scale-110'],
+        dark: ['bg-dark-background', 'border-dark-primary', 'hover:scale-110'],
+        light: ['bg-light-background', 'border-light-primary', 'hover:scale-110'],
       },
     },
     defaultVariants: {
@@ -675,6 +732,8 @@ const sliderThumbVariants = cva(
     },
   }
 );
+
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface CardProps
   extends
@@ -789,6 +848,8 @@ export interface CardSliderProps {
   labelClassName?: string;
 }
 
+// ─── Card Component ──────────────────────────────────────────────────────
+
 const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   {
     theme = 'dark',
@@ -819,6 +880,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
   },
   ref
 ) {
+  const iconColor =
+    theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+
   return (
     <div
       ref={ref}
@@ -835,7 +899,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
         className
       )}
       onClick={onClick}
-      style={{ fontFamily: 'sans-serif' }}
       {...props}
     >
       {image && (
@@ -857,11 +920,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
                 {(icon || badge) && !image && (
                   <div className="mb-3 flex items-center gap-2">
                     {icon && (
-                      <span
-                        className={
-                          theme === 'dark' ? 'text-white/60' : 'text-black/60'
-                        }
-                      >
+                      <span className={iconColor}>
                         {icon}
                       </span>
                     )}
@@ -908,6 +967,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(
 });
 Card.displayName = 'Card';
 
+// ─── CardInput Component ─────────────────────────────────────────────────
+
 const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
   function CardInput(
     {
@@ -948,7 +1009,7 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
           >
             {label}
             {required && (
-              <span className="ml-0.5 text-red-500" aria-hidden="true">
+              <span className="ml-0.5 text-light-destructive" aria-hidden="true">
                 *
               </span>
             )}
@@ -977,7 +1038,6 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
             className,
             inputClassName
           )}
-          style={{ fontFamily: 'sans-serif' }}
           {...props}
         />
         {hasError && (
@@ -995,6 +1055,8 @@ const CardInput = React.forwardRef<HTMLInputElement, CardInputProps>(
   }
 );
 CardInput.displayName = 'CardInput';
+
+// ─── CardTextarea Component ──────────────────────────────────────────────
 
 const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
   function CardTextarea(
@@ -1036,7 +1098,7 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
           >
             {label}
             {required && (
-              <span className="ml-0.5 text-red-500" aria-hidden="true">
+              <span className="ml-0.5 text-light-destructive" aria-hidden="true">
                 *
               </span>
             )}
@@ -1062,7 +1124,6 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
             className,
             textareaClassName
           )}
-          style={{ fontFamily: 'sans-serif' }}
           {...props}
         />
         {hasError && (
@@ -1080,6 +1141,8 @@ const CardTextarea = React.forwardRef<HTMLTextAreaElement, CardTextareaProps>(
   }
 );
 CardTextarea.displayName = 'CardTextarea';
+
+// ─── CardButton Component ────────────────────────────────────────────────
 
 const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
   function CardButton(
@@ -1104,7 +1167,6 @@ const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
         loading={loading}
         variant={variant as any}
         className={cn(buttonVariants({ variant, size, theme }), className)}
-        style={{ fontFamily: 'sans-serif' }}
         {...props}
       >
         {loading && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -1116,6 +1178,8 @@ const CardButton = React.forwardRef<HTMLButtonElement, CardButtonProps>(
   }
 );
 CardButton.displayName = 'CardButton';
+
+// ─── CardSwitch Component ────────────────────────────────────────────────
 
 const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
   function CardSwitch(
@@ -1152,6 +1216,9 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
       lg: currentChecked ? 'translate-x-7' : 'translate-x-0.5',
     };
 
+    const labelColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+
     return (
       <label
         className={cn(
@@ -1159,7 +1226,7 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
           containerClassName
         )}
       >
-        <button
+        <Button
           ref={ref}
           type="button"
           role="switch"
@@ -1179,12 +1246,12 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
             )}
             aria-hidden="true"
           />
-        </button>
+        </Button>
         {label && (
           <span
             className={cn(
               'text-sm font-medium',
-              theme === 'dark' ? 'text-white' : 'text-black',
+              labelColor,
               disabled && 'opacity-40',
               labelClassName
             )}
@@ -1197,6 +1264,8 @@ const CardSwitch = React.forwardRef<HTMLButtonElement, CardSwitchProps>(
   }
 );
 CardSwitch.displayName = 'CardSwitch';
+
+// ─── CardSelect Component ────────────────────────────────────────────────
 
 const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
   function CardSelect(
@@ -1224,6 +1293,9 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
     const selectId = id ?? React.useId();
     const hasError = Boolean(error);
 
+    const chevronColor =
+      theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+
     return (
       <div className={cn('flex w-full flex-col', containerClassName)}>
         {label && (
@@ -1249,7 +1321,6 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
               className,
               selectClassName
             )}
-            style={{ fontFamily: 'sans-serif' }}
             {...props}
           >
             {placeholder && (
@@ -1266,9 +1337,7 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
           <div
             className={cn(
               'pointer-events-none absolute top-0 right-3 bottom-0 flex items-center',
-              theme === 'dark'
-                ? 'text-aphelion-light-text-primary'
-                : 'text-black/40'
+              chevronColor
             )}
           >
             <ChevronDown size={16} strokeWidth={2.5} />
@@ -1290,6 +1359,8 @@ const CardSelect = React.forwardRef<HTMLSelectElement, CardSelectProps>(
 );
 CardSelect.displayName = 'CardSelect';
 
+// ─── CardTabs Component ──────────────────────────────────────────────────
+
 const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
   function CardTabs(
     { tabs, activeTab, onTabChange, theme = 'dark', className },
@@ -1298,7 +1369,7 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
     return (
       <div ref={ref} className={cn(tabsVariants({ theme }), className)}>
         {tabs.map((tab) => (
-          <button
+          <Button
             key={tab.id}
             type="button"
             onClick={() => onTabChange(tab.id)}
@@ -1307,13 +1378,15 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
             )}
           >
             {tab.label}
-          </button>
+          </Button>
         ))}
       </div>
     );
   }
 );
 CardTabs.displayName = 'CardTabs';
+
+// ─── CardSlider Component ────────────────────────────────────────────────
 
 const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
   function CardSlider(
@@ -1330,13 +1403,18 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
     },
     ref
   ) {
+    const labelColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const fillColor =
+      theme === 'dark' ? 'bg-dark-primary' : 'bg-light-primary';
+
     return (
       <div className={cn('w-full flex flex-col', className)}>
         {label && (
           <span
             className={cn(
               'text-sm font-medium mb-2',
-              theme === 'dark' ? 'text-white' : 'text-black',
+              labelColor,
               labelClassName
             )}
           >
@@ -1356,10 +1434,7 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
           />
           <div className={cn(sliderTrackVariants({ theme }))}>
             <div
-              className={cn(
-                'h-full transition-all duration-150',
-                theme === 'dark' ? 'bg-white' : 'bg-black'
-              )}
+              className={cn('h-full transition-all duration-150', fillColor)}
               style={{ width: `${((value - min) / (max - min)) * 100}%` }}
             />
           </div>
@@ -1375,6 +1450,8 @@ const CardSlider = React.forwardRef<HTMLInputElement, CardSliderProps>(
   }
 );
 CardSlider.displayName = 'CardSlider';
+
+// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Card,

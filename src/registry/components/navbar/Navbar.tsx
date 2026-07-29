@@ -66,6 +66,36 @@ function ChevronRight({ className }: { className?: string }) {
   );
 }
 
+// ─── Hamburger Icon ──────────────────────────────────────────────────────
+
+function HamburgerIcon({
+  open,
+  theme = 'dark',
+}: {
+  open: boolean;
+  theme?: 'dark' | 'light';
+}) {
+  const barColor = theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary';
+  return (
+    <div className="relative w-4 h-3">
+      <span
+        className={cn(
+          'absolute left-0 block h-0.5 w-4 transition-all duration-200',
+          barColor,
+          open ? 'top-[0.35rem] -rotate-45' : 'top-0'
+        )}
+      />
+      <span
+        className={cn(
+          'absolute left-0 block h-0.5 w-4 transition-all duration-200',
+          barColor,
+          open ? 'top-[0.35rem] rotate-45' : 'top-[0.55rem]'
+        )}
+      />
+    </div>
+  );
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────
 
 export interface NavItem {
@@ -94,62 +124,74 @@ export type NavbarVariant =
 
 export type NavbarTheme = 'dark' | 'light';
 
-// ─── Button ──────────────────────────────────────────────────────────────
+// ─── Inline Button ───────────────────────────────────────────────────────
 
-const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out select-none active:scale-[0.97]',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-white text-black hover:bg-white/90',
-        secondary:
-          'bg-white/10 text-white border border-white/10 hover:bg-white/15 hover:border-white/20',
-        ghost: 'bg-transparent text-white/70 hover:text-white hover:bg-white/5',
-        outline:
-          'bg-transparent text-white border border-white/20 hover:border-white/40 hover:bg-white/5',
-        accent: 'bg-orange-500 text-white hover:bg-orange-400',
-        dark: 'bg-black text-white hover:bg-neutral-800',
-        light: 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200',
-      },
-      size: {
-        sm: 'px-3 py-1.5 text-xs rounded-aphelion-lg',
-        md: 'px-4 py-2 text-sm rounded-aphelion-xl',
-        lg: 'px-5 py-2.5 text-sm rounded-aphelion-xl',
-        pill: 'px-5 py-2 text-sm rounded-full',
-        icon: 'w-8 h-8 rounded-aphelion-lg',
-      },
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'md',
-    },
-  }
-);
-
-interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+interface InlineButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline' | 'accent' | 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg' | 'pill' | 'icon';
   icon?: React.ReactNode;
-  asChild?: boolean;
+  theme?: NavbarTheme;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant, size, icon, children, className, asChild, ...props }, ref) => {
-    const Comp = asChild ? React.Slot : 'button';
-    return (
-      <Comp
-        ref={ref}
-        className={cn(buttonVariants({ variant, size }), className)}
-        {...props}
-      >
-        {icon && <span className="shrink-0">{icon}</span>}
-        {children}
-      </Comp>
-    );
-  }
-);
-Button.displayName = 'Button';
+function InlineButton({
+  variant = 'primary',
+  size = 'md',
+  icon,
+  children,
+  className,
+  theme = 'dark',
+  ...props
+}: InlineButtonProps) {
+  const isDark = theme === 'dark';
+
+  const variantClasses: Record<string, string> = {
+    primary: isDark
+      ? 'bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover'
+      : 'bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover',
+    secondary: isDark
+      ? 'bg-dark-muted text-dark-text-primary border border-dark-border hover:bg-dark-hover hover:border-dark-border-strong'
+      : 'bg-light-muted text-light-text-primary border border-light-border hover:bg-light-hover hover:border-light-border-strong',
+    ghost: isDark
+      ? 'bg-transparent text-dark-text-secondary hover:text-dark-text-primary hover:bg-dark-hover'
+      : 'bg-transparent text-light-text-secondary hover:text-light-text-primary hover:bg-light-hover',
+    outline: isDark
+      ? 'bg-transparent text-dark-text-primary border border-dark-border hover:border-dark-border-strong hover:bg-dark-hover'
+      : 'bg-transparent text-light-text-primary border border-light-border hover:border-light-border-strong hover:bg-light-hover',
+    accent: isDark
+      ? 'bg-dark-destructive text-dark-destructive-foreground hover:bg-dark-destructive/80'
+      : 'bg-light-destructive text-light-destructive-foreground hover:bg-light-destructive/80',
+    dark: isDark
+      ? 'bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover'
+      : 'bg-light-muted text-light-text-primary hover:bg-light-hover',
+    light: isDark
+      ? 'bg-dark-muted text-dark-text-primary hover:bg-dark-hover'
+      : 'bg-light-muted text-light-text-primary hover:bg-light-hover',
+  };
+
+  const sizeClasses: Record<string, string> = {
+    sm: 'px-3 py-1.5 text-xs rounded-aphelion-lg',
+    md: 'px-4 py-2 text-sm rounded-aphelion-xl',
+    lg: 'px-5 py-2.5 text-sm rounded-aphelion-xl',
+    pill: 'px-5 py-2 text-sm rounded-aphelion-full',
+    icon: 'w-8 h-8 rounded-aphelion-lg',
+  };
+
+  return (
+    <button
+      className={cn(
+        'inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out select-none active:scale-[0.97]',
+        variantClasses[variant],
+        sizeClasses[size],
+        className
+      )}
+      {...props}
+    >
+      {icon && <span className="shrink-0">{icon}</span>}
+      {children}
+    </button>
+  );
+}
 
 // ─── Search Input ────────────────────────────────────────────────────────
 
@@ -163,19 +205,18 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
     const isDark = theme === 'dark';
     return (
       <div
-        style={{ fontFamily: 'sans-serif' }}
         className={cn(
           'flex items-center gap-2 rounded-aphelion-xl px-3 py-2 transition-all duration-200',
           isDark
-            ? 'bg-white/5 border border-white/10 focus-within:border-white/20'
-            : 'bg-neutral-100 border border-neutral-200 focus-within:border-neutral-300',
+            ? 'bg-dark-muted border border-dark-border focus-within:border-dark-border-strong'
+            : 'bg-light-muted border border-light-border focus-within:border-light-border-strong',
           containerClassName
         )}
       >
         <SearchIcon
           className={cn(
             'shrink-0',
-            isDark ? 'text-aphelion-light-text-primary' : 'text-neutral-400'
+            isDark ? 'text-dark-text-muted' : 'text-light-text-muted'
           )}
         />
         <input
@@ -184,8 +225,8 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
           className={cn(
             'bg-transparent text-sm outline-none w-full',
             isDark
-              ? 'text-white placeholder:text-white/30'
-              : 'text-neutral-900 placeholder:text-neutral-400',
+              ? 'text-dark-text-primary placeholder:text-dark-text-muted'
+              : 'text-light-text-primary placeholder:text-light-text-muted',
             className
           )}
           {...props}
@@ -226,18 +267,17 @@ function Dropdown({
   const isDark = theme === 'dark';
 
   return (
-    <div ref={ref} className="relative" style={{ fontFamily: 'sans-serif' }}>
+    <div ref={ref} className="relative">
       <div onClick={() => setOpen(!open)} className="cursor-pointer">
         {trigger}
       </div>
       {open && (
         <div
-          style={{ fontFamily: 'sans-serif' }}
           className={cn(
-            'absolute top-full mt-2 min-w-[180px] rounded-aphelion-xl border py-1.5 z-50 shadow-2xl',
+            'absolute top-full mt-2 min-w-[180px] rounded-aphelion-xl border py-1.5 z-50 shadow-aphelion-lg',
             isDark
-              ? 'border-white/10 bg-[#1a1a1a] shadow-black/40'
-              : 'border-neutral-200 bg-white shadow-black/10',
+              ? 'border-dark-border bg-dark-card'
+              : 'border-light-border bg-light-card',
             align === 'right' ? 'right-0' : 'left-0'
           )}
         >
@@ -249,8 +289,8 @@ function Dropdown({
               className={cn(
                 'block px-4 py-2.5 text-sm transition-colors duration-150',
                 isDark
-                  ? 'text-white/70 hover:text-white hover:bg-white/5'
-                  : 'text-neutral-600 hover:text-black hover:bg-neutral-50'
+                  ? 'text-dark-text-secondary hover:text-dark-text-primary hover:bg-dark-hover'
+                  : 'text-light-text-secondary hover:text-light-text-primary hover:bg-light-hover'
               )}
             >
               {item.label}
@@ -273,7 +313,6 @@ interface MobileNavProps {
 
 function MobileNav({ nav, logo, cta, theme = 'dark' }: MobileNavProps) {
   const [open, setOpen] = React.useState(false);
-  const Link = 'a';
   const isDark = theme === 'dark';
 
   React.useEffect(() => {
@@ -288,43 +327,26 @@ function MobileNav({ nav, logo, cta, theme = 'dark' }: MobileNavProps) {
   }, [open]);
 
   return (
-    <div className="md:hidden" style={{ fontFamily: 'sans-serif' }}>
+    <div className="md:hidden">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         aria-label={open ? 'Close Menu' : 'Open Menu'}
         className="relative z-50 flex items-center justify-center w-10 h-10"
       >
-        <div className="relative w-4 h-3">
-          <span
-            className={cn(
-              'absolute left-0 block h-0.5 w-4 transition-all duration-200',
-              isDark ? 'bg-white' : 'bg-black',
-              open ? 'top-[0.35rem] -rotate-45' : 'top-0'
-            )}
-          />
-          <span
-            className={cn(
-              'absolute left-0 block h-0.5 w-4 transition-all duration-200',
-              isDark ? 'bg-white' : 'bg-black',
-              open ? 'top-[0.35rem] rotate-45' : 'top-[0.55rem]'
-            )}
-          />
-        </div>
+        <HamburgerIcon open={open} theme={theme} />
       </button>
 
       <div
         className={cn(
           'fixed inset-0 z-40 backdrop-blur-xl transition-all duration-300',
-          isDark ? 'bg-black/95' : 'bg-white/95',
+          isDark ? 'bg-dark-background/95' : 'bg-light-background/95',
           open
             ? 'opacity-100 visible'
             : 'opacity-0 invisible pointer-events-none'
         )}
       >
-        <div
-          className="flex flex-col h-full px-6 pt-20 pb-6 overflow-auto"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <div className="flex flex-col h-full px-6 pt-20 pb-6 overflow-auto">
           {logo && <div className="mb-8">{logo}</div>}
 
           <div className="flex flex-col gap-10">
@@ -333,26 +355,26 @@ function MobileNav({ nav, logo, cta, theme = 'dark' }: MobileNavProps) {
                 <p
                   className={cn(
                     'text-sm font-medium uppercase tracking-wider',
-                    isDark ? 'text-aphelion-light-text-primary' : 'text-neutral-400'
+                    isDark ? 'text-dark-text-muted' : 'text-light-text-muted'
                   )}
                 >
                   {category.name}
                 </p>
                 <div className="flex flex-col gap-3">
                   {category.items.map((item, idx) => (
-                    <Link
+                    <a
                       key={idx}
                       href={item.href}
                       className={cn(
                         'text-2xl font-medium transition-colors',
                         isDark
-                          ? 'text-white/80 hover:text-white'
-                          : 'text-neutral-800 hover:text-black'
+                          ? 'text-dark-text-secondary hover:text-dark-text-primary'
+                          : 'text-light-text-secondary hover:text-light-text-primary'
                       )}
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -380,7 +402,6 @@ function Breadcrumb({ items, className, theme = 'dark' }: BreadcrumbProps) {
     <nav
       aria-label="breadcrumb"
       className={cn('flex items-center gap-2 text-sm', className)}
-      style={{ fontFamily: 'sans-serif' }}
     >
       {items.map((item, index) => (
         <React.Fragment key={index}>
@@ -388,7 +409,7 @@ function Breadcrumb({ items, className, theme = 'dark' }: BreadcrumbProps) {
             <ChevronRight
               className={cn(
                 'shrink-0',
-                isDark ? 'text-white/30' : 'text-neutral-300'
+                isDark ? 'text-dark-text-muted' : 'text-light-text-muted'
               )}
             />
           )}
@@ -398,14 +419,18 @@ function Breadcrumb({ items, className, theme = 'dark' }: BreadcrumbProps) {
               className={cn(
                 'transition-colors duration-150',
                 isDark
-                  ? 'text-white/50 hover:text-white'
-                  : 'text-neutral-500 hover:text-black'
+                  ? 'text-dark-text-muted hover:text-dark-text-primary'
+                  : 'text-light-text-muted hover:text-light-text-primary'
               )}
             >
               {item.label}
             </a>
           ) : (
-            <span className={isDark ? 'text-white' : 'text-neutral-900'}>
+            <span
+              className={
+                isDark ? 'text-dark-text-primary' : 'text-light-text-primary'
+              }
+            >
               {item.label}
             </span>
           )}
@@ -432,10 +457,7 @@ function NavLinks({
 }: NavLinksProps) {
   const isDark = theme === 'dark';
   return (
-    <div
-      className={cn('flex items-center gap-1', className)}
-      style={{ fontFamily: 'sans-serif' }}
-    >
+    <div className={cn('flex items-center gap-1', className)}>
       {links.map((link) => (
         <a
           key={link.label}
@@ -443,8 +465,8 @@ function NavLinks({
           className={cn(
             'px-4 py-2 text-sm transition-colors duration-200 rounded-aphelion-lg',
             isDark
-              ? 'text-white/60 hover:text-white hover:bg-white/5'
-              : 'text-neutral-600 hover:text-black hover:bg-neutral-100'
+              ? 'text-dark-text-secondary hover:text-dark-text-primary hover:bg-dark-hover'
+              : 'text-light-text-secondary hover:text-light-text-primary hover:bg-light-hover'
           )}
         >
           {link.label}
@@ -459,8 +481,8 @@ function NavLinks({
               className={cn(
                 'flex items-center gap-1 px-4 py-2 text-sm transition-colors duration-200 rounded-aphelion-lg cursor-pointer',
                 isDark
-                  ? 'text-white/60 hover:text-white hover:bg-white/5'
-                  : 'text-neutral-600 hover:text-black hover:bg-neutral-100'
+                  ? 'text-dark-text-secondary hover:text-dark-text-primary hover:bg-dark-hover'
+                  : 'text-light-text-secondary hover:text-light-text-primary hover:bg-light-hover'
               )}
             >
               {dropdown.label} <ChevronDown className="shrink-0" />
@@ -473,37 +495,70 @@ function NavLinks({
   );
 }
 
+// ─── Logo Icon ───────────────────────────────────────────────────────────
+
+function DefaultLogo() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="2" />
+      <circle cx="16" cy="16" r="6" fill="currentColor" />
+    </svg>
+  );
+}
+
+function DashboardLogo({ isDark }: { isDark: boolean }) {
+  return (
+    <div
+      className={cn(
+        'w-8 h-8 rounded-aphelion-lg flex items-center justify-center text-xs font-bold',
+        isDark
+          ? 'bg-dark-primary text-dark-primary-foreground'
+          : 'bg-light-primary text-light-primary-foreground'
+      )}
+    >
+      /
+    </div>
+  );
+}
+
 // ─── THEME UTILS ─────────────────────────────────────────────────────────
 
 function useThemeClasses(theme: NavbarTheme) {
   const isDark = theme === 'dark';
   return {
-    bg: isDark ? 'bg-transparent' : 'bg-white',
-    border: isDark ? 'border-white/10' : 'border-neutral-200',
-    text: isDark ? 'text-white' : 'text-neutral-900',
-    textMuted: isDark ? 'text-white/60' : 'text-neutral-600',
-    hoverBg: isDark ? 'hover:bg-white/5' : 'hover:bg-neutral-100',
-    pillBg: isDark ? 'bg-[#1a1a1a]' : 'bg-white',
-    pillBorder: isDark ? 'border-white/10' : 'border-neutral-200',
-    scrolledBg: isDark ? 'bg-black/80' : 'bg-white/80',
-    mobileBg: isDark ? 'bg-black/95' : 'bg-white/95',
-    inputBg: isDark ? 'bg-white/5' : 'bg-neutral-100',
-    inputBorder: isDark ? 'border-white/10' : 'border-neutral-200',
-    dropdownBg: isDark ? 'bg-[#1a1a1a]' : 'bg-white',
-    dropdownBorder: isDark ? 'border-white/10' : 'border-neutral-200',
-    dropdownText: isDark ? 'text-white/70' : 'text-neutral-600',
+    bg: isDark ? 'bg-transparent' : 'bg-light-background',
+    border: isDark ? 'border-dark-border' : 'border-light-border',
+    text: isDark ? 'text-dark-text-primary' : 'text-light-text-primary',
+    textMuted: isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary',
+    hoverBg: isDark ? 'hover:bg-dark-hover' : 'hover:bg-light-hover',
+    pillBg: isDark ? 'bg-dark-card' : 'bg-light-card',
+    pillBorder: isDark ? 'border-dark-border' : 'border-light-border',
+    scrolledBg: isDark ? 'bg-dark-background/80' : 'bg-light-background/80',
+    mobileBg: isDark ? 'bg-dark-background/95' : 'bg-light-background/95',
+    inputBg: isDark ? 'bg-dark-muted' : 'bg-light-muted',
+    inputBorder: isDark ? 'border-dark-border' : 'border-light-border',
+    dropdownBg: isDark ? 'bg-dark-card' : 'bg-light-card',
+    dropdownBorder: isDark ? 'border-dark-border' : 'border-light-border',
+    dropdownText: isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary',
     dropdownHover: isDark
-      ? 'hover:bg-white/5 hover:text-white'
-      : 'hover:bg-neutral-50 hover:text-black',
-    hamburger: isDark ? 'bg-white' : 'bg-black',
-    breadcrumbText: isDark ? 'text-white/50' : 'text-neutral-500',
-    breadcrumbActive: isDark ? 'text-white' : 'text-neutral-900',
-    breadcrumbSeparator: isDark ? 'text-white/30' : 'text-neutral-300',
+      ? 'hover:bg-dark-hover hover:text-dark-text-primary'
+      : 'hover:bg-light-hover hover:text-light-text-primary',
+    hamburger: isDark ? 'bg-dark-text-primary' : 'bg-light-text-primary',
+    breadcrumbText: isDark ? 'text-dark-text-muted' : 'text-light-text-muted',
+    breadcrumbActive: isDark
+      ? 'text-dark-text-primary'
+      : 'text-light-text-primary',
+    breadcrumbSeparator: isDark
+      ? 'text-dark-text-muted'
+      : 'text-light-text-muted',
+    logoCircleBg: isDark ? 'bg-dark-primary' : 'bg-light-primary',
+    logoCircleText: isDark
+      ? 'text-dark-primary-foreground'
+      : 'text-light-primary-foreground',
   };
 }
 
 // ─── VARIANT 1: Default ──────────────────────────────────────────────────
-// Logo left, links center, buttons right. Scroll pe pill + blur.
 
 function DefaultNavbar({
   logo,
@@ -520,37 +575,16 @@ function DefaultNavbar({
 }: any) {
   const t = useThemeClasses(theme);
   return (
-    <div
-      className="relative flex items-center justify-between py-3"
-      style={{ fontFamily: 'sans-serif' }}
-    >
-      <a
-        href={logoHref}
-        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
-        {logo || (
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-            <circle
-              cx="16"
-              cy="16"
-              r="14"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-            <circle cx="16" cy="16" r="6" fill="currentColor" />
-          </svg>
-        )}
+    <div className="relative flex items-center justify-between py-3">
+      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        {logo || <DefaultLogo />}
       </a>
 
       <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
         <NavLinks links={links} dropdowns={dropdowns} theme={theme} />
       </div>
 
-      <div
-        className="hidden md:flex items-center gap-2.5 shrink-0"
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="hidden md:flex items-center gap-2.5 shrink-0">
         {showSearch && (
           <SearchInput
             placeholder={searchPlaceholder}
@@ -561,28 +595,31 @@ function DefaultNavbar({
         {ctaSecondary}
         {ctaPrimary || (
           <>
-            <Button
-              variant={theme === 'dark' ? 'secondary' : 'light'}
+            <InlineButton
+              variant="secondary"
               size="sm"
+              theme={theme}
               className={cn(isScrolled && 'hidden lg:hidden')}
             >
               {theme === 'dark' ? 'Sign-in' : 'Log in'}
-            </Button>
-            <Button
-              variant={theme === 'dark' ? 'primary' : 'dark'}
+            </InlineButton>
+            <InlineButton
+              variant="primary"
               size="sm"
+              theme={theme}
               className={cn(isScrolled && 'hidden lg:hidden')}
             >
               Get Started
-            </Button>
+            </InlineButton>
             {isScrolled && (
-              <Button
-                variant={theme === 'dark' ? 'primary' : 'dark'}
+              <InlineButton
+                variant="primary"
                 size="sm"
+                theme={theme}
                 className="hidden lg:inline-flex"
               >
                 Get Started
-              </Button>
+              </InlineButton>
             )}
           </>
         )}
@@ -594,7 +631,6 @@ function DefaultNavbar({
 }
 
 // ─── VARIANT 2: Pill ────────────────────────────────────────────────────
-// Centered pill navbar, all items inside pill. Works with both themes.
 
 function PillNavbar({
   logo,
@@ -608,38 +644,26 @@ function PillNavbar({
   theme,
 }: any) {
   const t = useThemeClasses(theme);
+  const isDark = theme === 'dark';
   return (
-    <div
-      className="flex justify-center py-4"
-      style={{ fontFamily: 'sans-serif' }}
-    >
+    <div className="flex justify-center py-4">
       <div
         className={cn(
-          'flex items-center gap-1 rounded-full px-2 py-2 shadow-2xl',
+          'flex items-center gap-1 rounded-aphelion-full px-2 py-2 shadow-aphelion-lg border',
           t.pillBg,
-          t.pillBorder,
-          theme === 'dark' ? 'shadow-black/50' : 'shadow-black/10 border'
+          t.pillBorder
         )}
       >
         <a
           href={logoHref}
           className={cn(
-            'flex items-center justify-center w-10 h-10 rounded-full mr-1 shrink-0',
-            theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'
+            'flex items-center justify-center w-10 h-10 rounded-aphelion-full mr-1 shrink-0',
+            isDark
+              ? 'bg-dark-primary text-dark-primary-foreground'
+              : 'bg-light-primary text-light-primary-foreground'
           )}
         >
-          {logo || (
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-              <circle
-                cx="16"
-                cy="16"
-                r="14"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <circle cx="16" cy="16" r="6" fill="currentColor" />
-            </svg>
-          )}
+          {logo || <DefaultLogo />}
         </a>
         <div className="hidden md:flex items-center gap-0.5">
           <NavLinks links={links} dropdowns={dropdowns} theme={theme} />
@@ -669,7 +693,6 @@ function PillNavbar({
 }
 
 // ─── VARIANT 3: Minimal ──────────────────────────────────────────────────
-// No bg, no border, just text links.
 
 function MinimalNavbar({
   logo,
@@ -682,27 +705,9 @@ function MinimalNavbar({
 }: any) {
   const t = useThemeClasses(theme);
   return (
-    <div
-      className="flex items-center justify-between py-4"
-      style={{ fontFamily: 'sans-serif' }}
-    >
-      <a
-        href={logoHref}
-        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
-        {logo || (
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-            <circle
-              cx="16"
-              cy="16"
-              r="14"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-            <circle cx="16" cy="16" r="6" fill="currentColor" />
-          </svg>
-        )}
+    <div className="flex items-center justify-between py-4">
+      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        {logo || <DefaultLogo />}
       </a>
 
       <div className="hidden md:flex items-center gap-6">
@@ -716,7 +721,6 @@ function MinimalNavbar({
 }
 
 // ─── VARIANT 4: Split ────────────────────────────────────────────────────
-// Logo + links left, search + buttons right.
 
 function SplitNavbar({
   logo,
@@ -732,38 +736,17 @@ function SplitNavbar({
 }: any) {
   const t = useThemeClasses(theme);
   return (
-    <div
-      className="flex items-center justify-between py-3"
-      style={{ fontFamily: 'sans-serif' }}
-    >
+    <div className="flex items-center justify-between py-3">
       <div className="flex items-center gap-6">
-        <a
-          href={logoHref}
-          className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-          style={{ fontFamily: 'sans-serif' }}
-        >
-          {logo || (
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-              <circle
-                cx="16"
-                cy="16"
-                r="14"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <circle cx="16" cy="16" r="6" fill="currentColor" />
-            </svg>
-          )}
+        <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+          {logo || <DefaultLogo />}
         </a>
         <div className="hidden md:flex">
           <NavLinks links={links} dropdowns={dropdowns} theme={theme} />
         </div>
       </div>
 
-      <div
-        className="hidden md:flex items-center gap-2.5 shrink-0"
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="hidden md:flex items-center gap-2.5 shrink-0">
         {showSearch && (
           <SearchInput
             placeholder={searchPlaceholder}
@@ -781,7 +764,6 @@ function SplitNavbar({
 }
 
 // ─── VARIANT 5: Centered ─────────────────────────────────────────────────
-// Logo center, links left, buttons right.
 
 function CenteredNavbar({
   logo,
@@ -795,10 +777,7 @@ function CenteredNavbar({
 }: any) {
   const t = useThemeClasses(theme);
   return (
-    <div
-      className="flex items-center justify-between py-3"
-      style={{ fontFamily: 'sans-serif' }}
-    >
+    <div className="flex items-center justify-between py-3">
       <div className="hidden md:flex items-center gap-1">
         <NavLinks
           links={links.slice(0, Math.ceil(links.length / 2))}
@@ -807,23 +786,8 @@ function CenteredNavbar({
         />
       </div>
 
-      <a
-        href={logoHref}
-        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
-        {logo || (
-          <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-            <circle
-              cx="16"
-              cy="16"
-              r="14"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-            <circle cx="16" cy="16" r="6" fill="currentColor" />
-          </svg>
-        )}
+      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        {logo || <DefaultLogo />}
       </a>
 
       <div className="hidden md:flex items-center gap-1">
@@ -833,10 +797,7 @@ function CenteredNavbar({
         />
       </div>
 
-      <div
-        className="hidden md:flex items-center gap-2.5 shrink-0"
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="hidden md:flex items-center gap-2.5 shrink-0">
         {ctaSecondary}
         {ctaPrimary}
       </div>
@@ -847,7 +808,6 @@ function CenteredNavbar({
 }
 
 // ─── VARIANT 6: SaaS ─────────────────────────────────────────────────────
-// Full width, accent CTA, dropdowns.
 
 function SaasNavbar({
   logo,
@@ -860,61 +820,26 @@ function SaasNavbar({
   theme,
 }: any) {
   const t = useThemeClasses(theme);
-  const isDark = theme === 'dark';
   return (
-    <div
-      className="flex items-center justify-between py-4"
-      style={{ fontFamily: 'sans-serif' }}
-    >
-      <a
-        href={logoHref}
-        className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
-        {logo || (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              stroke={isDark ? 'white' : '#f97316'}
-              strokeWidth="2"
-            />
-            <path
-              d="M12 6v6l4 2"
-              stroke={isDark ? 'white' : '#f97316'}
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        )}
+    <div className="flex items-center justify-between py-4">
+      <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+        {logo || <DefaultLogo />}
       </a>
 
       <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
         <NavLinks links={links} dropdowns={dropdowns} theme={theme} />
       </div>
 
-      <div
-        className="hidden md:flex items-center gap-2.5 shrink-0"
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="hidden md:flex items-center gap-2.5 shrink-0">
         {ctaSecondary || (
-          <Button
-            variant="ghost"
-            size="sm"
-            className={
-              isDark
-                ? ''
-                : 'text-neutral-600 hover:text-black hover:bg-neutral-100'
-            }
-          >
+          <InlineButton variant="ghost" size="sm" theme={theme}>
             Log in
-          </Button>
+          </InlineButton>
         )}
         {ctaPrimary || (
-          <Button variant="accent" size="pill" className="px-5">
+          <InlineButton variant="accent" size="pill" theme={theme} className="px-5">
             Sign up
-          </Button>
+          </InlineButton>
         )}
       </div>
 
@@ -924,7 +849,6 @@ function SaasNavbar({
 }
 
 // ─── VARIANT 7: Dashboard ────────────────────────────────────────────────
-// Full width, search + avatar + button.
 
 function DashboardNavbar({
   logo,
@@ -941,36 +865,17 @@ function DashboardNavbar({
   const t = useThemeClasses(theme);
   const isDark = theme === 'dark';
   return (
-    <div
-      className="flex items-center justify-between py-3"
-      style={{ fontFamily: 'sans-serif' }}
-    >
+    <div className="flex items-center justify-between py-3">
       <div className="flex items-center gap-6">
-        <a
-          href={logoHref}
-          className={cn('flex items-center gap-2.5 shrink-0', t.text)}
-          style={{ fontFamily: 'sans-serif' }}
-        >
-          {logo || (
-            <div
-              className={cn(
-                'w-8 h-8 rounded-aphelion-lg flex items-center justify-center text-xs font-bold',
-                isDark ? 'bg-white text-black' : 'bg-black text-white'
-              )}
-            >
-              /
-            </div>
-          )}
+        <a href={logoHref} className={cn('flex items-center gap-2.5 shrink-0', t.text)}>
+          {logo || <DashboardLogo isDark={isDark} />}
         </a>
         <div className="hidden md:flex">
           <NavLinks links={links} dropdowns={dropdowns} theme={theme} />
         </div>
       </div>
 
-      <div
-        className="hidden md:flex items-center gap-3 shrink-0"
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="hidden md:flex items-center gap-3 shrink-0">
         {showSearch && (
           <SearchInput
             placeholder={searchPlaceholder}
@@ -979,12 +884,12 @@ function DashboardNavbar({
           />
         )}
         {avatar && (
-          <div className="w-8 h-8 rounded-full overflow-hidden">{avatar}</div>
+          <div className="w-8 h-8 rounded-aphelion-full overflow-hidden">{avatar}</div>
         )}
         {ctaPrimary || (
-          <Button variant={isDark ? 'secondary' : 'dark'} size="sm">
+          <InlineButton variant="secondary" size="sm" theme={theme}>
             Upgrade
-          </Button>
+          </InlineButton>
         )}
       </div>
 
@@ -1081,11 +986,10 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(function Navbar(
         className={cn(
           'fixed left-0 top-0 w-full z-50',
           variant !== 'pill' && isLight
-            ? 'bg-white border-b border-neutral-100'
+            ? 'bg-light-background border-b border-light-border'
             : '',
           className
         )}
-        style={{ fontFamily: 'sans-serif' }}
       >
         <div
           className={cn(
@@ -1132,7 +1036,7 @@ Navbar.displayName = 'Navbar';
 
 export {
   Navbar,
-  Button,
+  InlineButton as Button,
   SearchInput,
   Dropdown,
   MobileNav,

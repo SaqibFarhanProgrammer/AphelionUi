@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { X, Menu, ArrowUpRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { Button } from '@/registry/components/button/Button';
 
 const navLinks = [
   { label: 'Docs', href: '/docs' },
@@ -66,7 +67,7 @@ export default function Navbar() {
           </a>
         </div>
 
-        <button
+        <Button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden flex items-center justify-center w-8 h-8 rounded-full text-white/60 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           aria-label="Toggle menu"
@@ -76,7 +77,7 @@ export default function Navbar() {
           ) : (
             <Menu size={18} strokeWidth={1.8} />
           )}
-        </button>
+        </Button>
       </div>
 
       {mobileOpen && (

@@ -16,6 +16,7 @@ import DocsPageLayout from "@/components/docs/DocsPageLayout";
 import BottomNav from "@/components/docs/BottomNav";
 import DocsFooter from "@/components/docs/DocsFooter";
 import { useState } from "react";
+import { Button } from "@/registry/components/button/Button";
 
 
 const sampleItems = [
@@ -546,7 +547,7 @@ function InteractiveTimelinePreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {layouts.map((l) => (
-              <button
+              <Button
                 key={l.id}
                 onClick={() => setCurrentLayout(l.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
@@ -556,7 +557,7 @@ function InteractiveTimelinePreview() {
                 }`}
               >
                 {l.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -566,7 +567,7 @@ function InteractiveTimelinePreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {themes.map((t) => (
-              <button
+              <Button
                 key={t.id}
                 onClick={() => setCurrentTheme(t.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
@@ -576,7 +577,7 @@ function InteractiveTimelinePreview() {
                 }`}
               >
                 {t.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -586,7 +587,7 @@ function InteractiveTimelinePreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {dotSizes.map((s) => (
-              <button
+              <Button
                 key={s.id}
                 onClick={() => setCurrentDotSize(s.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
@@ -596,7 +597,7 @@ function InteractiveTimelinePreview() {
                 }`}
               >
                 {s.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

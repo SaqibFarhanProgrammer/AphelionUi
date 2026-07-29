@@ -9,6 +9,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Badge Variants ──────────────────────────────────────────────────────
 
 const badgeVariants = cva(
   [
@@ -49,9 +50,9 @@ const badgeVariants = cva(
         lg: 'h-8 px-3 text-sm',
       },
       shape: {
-        pill: 'rounded-full',
-        circle: 'rounded-full aspect-square px-0',
-        square: 'rounded-md',
+        pill: 'rounded-aphelion-full',
+        circle: 'rounded-aphelion-full aspect-square px-0',
+        square: 'rounded-aphelion-md',
       },
       theme: {
         dark: '',
@@ -59,486 +60,456 @@ const badgeVariants = cva(
       },
     },
     compoundVariants: [
-
+      // ─── Dark Theme ─────────────────────────────────────────────
+      // Default color
       {
         theme: 'dark',
         variant: 'default',
         color: 'default',
         className:
-          'bg-white/[0.06] border-white/[0.08] text-white focus-visible:ring-white/20',
+          'bg-dark-muted border-dark-border text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'default',
-        className: 'border-white/[0.12] text-white focus-visible:ring-white/20',
+        className: 'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'default',
-        className: 'bg-white text-black focus-visible:ring-white/20',
+        className: 'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'default',
-        className:
-          'text-white hover:bg-white/[0.04] focus-visible:ring-white/20',
+        className: 'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'default',
-        className: 'bg-white/[0.08] text-white focus-visible:ring-white/20',
+        className: 'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
-
+      // Primary
       {
         theme: 'dark',
         variant: 'default',
         color: 'primary',
         className:
-          'bg-white/[0.06] border-white/[0.08] text-white focus-visible:ring-white/20',
+          'bg-dark-muted border-dark-border text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'primary',
-        className: 'border-white/[0.12] text-white focus-visible:ring-white/20',
+        className: 'border-dark-border-strong text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'primary',
-        className: 'bg-white text-black focus-visible:ring-white/20',
+        className: 'bg-dark-primary text-dark-primary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'primary',
-        className:
-          'text-white hover:bg-white/[0.04] focus-visible:ring-white/20',
+        className: 'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'primary',
-        className: 'bg-white/[0.08] text-white focus-visible:ring-white/20',
+        className: 'bg-dark-muted text-dark-text-primary focus-visible:ring-dark-focus-ring',
       },
-
+      // Secondary
       {
         theme: 'dark',
         variant: 'default',
         color: 'secondary',
         className:
-          'bg-white/[0.06] border-white/[0.08] text-white/70 focus-visible:ring-white/20',
+          'bg-dark-muted border-dark-border text-dark-text-secondary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'secondary',
-        className:
-          'border-white/[0.12] text-white/70 focus-visible:ring-white/20',
+        className: 'border-dark-border-strong text-dark-text-secondary focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'secondary',
-        className: 'bg-white/70 text-black focus-visible:ring-white/20',
+        className: 'bg-dark-secondary text-dark-secondary-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'secondary',
-        className:
-          'text-white/70 hover:bg-white/[0.04] focus-visible:ring-white/20',
+        className: 'text-dark-text-secondary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'secondary',
-        className: 'bg-white/[0.08] text-white/70 focus-visible:ring-white/20',
+        className: 'bg-dark-muted text-dark-text-secondary focus-visible:ring-dark-focus-ring',
       },
-
+      // Success
       {
         theme: 'dark',
         variant: 'default',
         color: 'success',
         className:
-          'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 focus-visible:ring-emerald-500/20',
+          'bg-dark-success-background border-dark-success-border text-dark-success focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'success',
-        className:
-          'border-emerald-500/30 text-emerald-400 focus-visible:ring-emerald-500/20',
+        className: 'border-dark-success-border text-dark-success focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'success',
-        className:
-          'bg-emerald-500 text-black focus-visible:ring-emerald-500/20',
+        className: 'bg-dark-success text-dark-success-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'success',
-        className:
-          'text-emerald-400 hover:bg-emerald-500/10 focus-visible:ring-emerald-500/20',
+        className: 'text-dark-success hover:bg-dark-success-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'success',
-        className:
-          'bg-emerald-500/10 text-emerald-400 focus-visible:ring-emerald-500/20',
+        className: 'bg-dark-success-background text-dark-success focus-visible:ring-dark-focus-ring',
       },
-
+      // Destructive
       {
         theme: 'dark',
         variant: 'default',
         color: 'destructive',
         className:
-          'bg-red-500/10 border-red-500/20 text-red-400 focus-visible:ring-red-500/20',
+          'bg-dark-destructive-background border-dark-destructive-border text-dark-destructive focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'destructive',
-        className:
-          'border-red-500/30 text-red-400 focus-visible:ring-red-500/20',
+        className: 'border-dark-destructive-border text-dark-destructive focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'destructive',
-        className: 'bg-red-500 text-white focus-visible:ring-red-500/20',
+        className: 'bg-dark-destructive text-dark-destructive-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'destructive',
-        className:
-          'text-red-400 hover:bg-red-500/10 focus-visible:ring-red-500/20',
+        className: 'text-dark-destructive hover:bg-dark-destructive-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'destructive',
-        className: 'bg-red-500/10 text-red-400 focus-visible:ring-red-500/20',
+        className: 'bg-dark-destructive-background text-dark-destructive focus-visible:ring-dark-focus-ring',
       },
-
+      // Warning
       {
         theme: 'dark',
         variant: 'default',
         color: 'warning',
         className:
-          'bg-amber-500/10 border-amber-500/20 text-amber-400 focus-visible:ring-amber-500/20',
+          'bg-dark-warning-background border-dark-warning-border text-dark-warning focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'warning',
-        className:
-          'border-amber-500/30 text-amber-400 focus-visible:ring-amber-500/20',
+        className: 'border-dark-warning-border text-dark-warning focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'warning',
-        className: 'bg-amber-500 text-black focus-visible:ring-amber-500/20',
+        className: 'bg-dark-warning text-dark-warning-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'warning',
-        className:
-          'text-amber-400 hover:bg-amber-500/10 focus-visible:ring-amber-500/20',
+        className: 'text-dark-warning hover:bg-dark-warning-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'warning',
-        className:
-          'bg-amber-500/10 text-amber-400 focus-visible:ring-amber-500/20',
+        className: 'bg-dark-warning-background text-dark-warning focus-visible:ring-dark-focus-ring',
       },
-
+      // Info
       {
         theme: 'dark',
         variant: 'default',
         color: 'info',
         className:
-          'bg-blue-500/10 border-blue-500/20 text-blue-400 focus-visible:ring-blue-500/20',
+          'bg-dark-info-background border-dark-info-border text-dark-info focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'outline',
         color: 'info',
-        className:
-          'border-blue-500/30 text-blue-400 focus-visible:ring-blue-500/20',
+        className: 'border-dark-info-border text-dark-info focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'solid',
         color: 'info',
-        className: 'bg-blue-500 text-white focus-visible:ring-blue-500/20',
+        className: 'bg-dark-info text-dark-info-foreground focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'ghost',
         color: 'info',
-        className:
-          'text-blue-400 hover:bg-blue-500/10 focus-visible:ring-blue-500/20',
+        className: 'text-dark-info hover:bg-dark-info-background focus-visible:ring-dark-focus-ring',
       },
       {
         theme: 'dark',
         variant: 'soft',
         color: 'info',
-        className:
-          'bg-blue-500/10 text-blue-400 focus-visible:ring-blue-500/20',
+        className: 'bg-dark-info-background text-dark-info focus-visible:ring-dark-focus-ring',
       },
 
-
+      // ─── Light Theme ────────────────────────────────────────────
+      // Default color
       {
         theme: 'light',
         variant: 'default',
         color: 'default',
         className:
-          'bg-black/[0.06] border-black/[0.08] text-black focus-visible:ring-black/20',
+          'bg-light-muted border-light-border text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'default',
-        className: 'border-black/[0.12] text-black focus-visible:ring-black/20',
+        className: 'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'default',
-        className: 'bg-black text-white focus-visible:ring-black/20',
+        className: 'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'default',
-        className:
-          'text-black hover:bg-black/[0.04] focus-visible:ring-black/20',
+        className: 'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'default',
-        className: 'bg-black/[0.08] text-black focus-visible:ring-black/20',
+        className: 'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
       },
-
+      // Primary
       {
         theme: 'light',
         variant: 'default',
         color: 'primary',
         className:
-          'bg-black/[0.06] border-black/[0.08] text-black focus-visible:ring-black/20',
+          'bg-light-muted border-light-border text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'primary',
-        className: 'border-black/[0.12] text-black focus-visible:ring-black/20',
+        className: 'border-light-border-strong text-light-text-primary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'primary',
-        className: 'bg-black text-white focus-visible:ring-black/20',
+        className: 'bg-light-primary text-light-primary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'primary',
-        className:
-          'text-black hover:bg-black/[0.04] focus-visible:ring-black/20',
+        className: 'text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'primary',
-        className: 'bg-black/[0.08] text-black focus-visible:ring-black/20',
+        className: 'bg-light-muted text-light-text-primary focus-visible:ring-light-focus-ring',
       },
-
+      // Secondary
       {
         theme: 'light',
         variant: 'default',
         color: 'secondary',
         className:
-          'bg-black/[0.06] border-black/[0.08] text-black/60 focus-visible:ring-black/20',
+          'bg-light-muted border-light-border text-light-text-secondary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'secondary',
-        className:
-          'border-black/[0.12] text-black/60 focus-visible:ring-black/20',
+        className: 'border-light-border-strong text-light-text-secondary focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'secondary',
-        className: 'bg-black/60 text-white focus-visible:ring-black/20',
+        className: 'bg-light-secondary text-light-secondary-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'secondary',
-        className:
-          'text-black/60 hover:bg-black/[0.04] focus-visible:ring-black/20',
+        className: 'text-light-text-secondary hover:bg-light-hover focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'secondary',
-        className: 'bg-black/[0.08] text-black/60 focus-visible:ring-black/20',
+        className: 'bg-light-muted text-light-text-secondary focus-visible:ring-light-focus-ring',
       },
-
+      // Success
       {
         theme: 'light',
         variant: 'default',
         color: 'success',
         className:
-          'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 focus-visible:ring-emerald-500/20',
+          'bg-light-success-background border-light-success-border text-light-success focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'success',
-        className:
-          'border-emerald-500/30 text-emerald-600 focus-visible:ring-emerald-500/20',
+        className: 'border-light-success-border text-light-success focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'success',
-        className:
-          'bg-emerald-500 text-white focus-visible:ring-emerald-500/20',
+        className: 'bg-light-success text-light-success-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'success',
-        className:
-          'text-emerald-600 hover:bg-emerald-500/10 focus-visible:ring-emerald-500/20',
+        className: 'text-light-success hover:bg-light-success-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'success',
-        className:
-          'bg-emerald-500/10 text-emerald-600 focus-visible:ring-emerald-500/20',
+        className: 'bg-light-success-background text-light-success focus-visible:ring-light-focus-ring',
       },
-
+      // Destructive
       {
         theme: 'light',
         variant: 'default',
         color: 'destructive',
         className:
-          'bg-red-500/10 border-red-500/20 text-red-600 focus-visible:ring-red-500/20',
+          'bg-light-destructive-background border-light-destructive-border text-light-destructive focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'destructive',
-        className:
-          'border-red-500/30 text-red-600 focus-visible:ring-red-500/20',
+        className: 'border-light-destructive-border text-light-destructive focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'destructive',
-        className: 'bg-red-500 text-white focus-visible:ring-red-500/20',
+        className: 'bg-light-destructive text-light-destructive-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'destructive',
-        className:
-          'text-red-600 hover:bg-red-500/10 focus-visible:ring-red-500/20',
+        className: 'text-light-destructive hover:bg-light-destructive-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'destructive',
-        className: 'bg-red-500/10 text-red-600 focus-visible:ring-red-500/20',
+        className: 'bg-light-destructive-background text-light-destructive focus-visible:ring-light-focus-ring',
       },
-
+      // Warning
       {
         theme: 'light',
         variant: 'default',
         color: 'warning',
         className:
-          'bg-amber-500/10 border-amber-500/20 text-amber-600 focus-visible:ring-amber-500/20',
+          'bg-light-warning-background border-light-warning-border text-light-warning focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'warning',
-        className:
-          'border-amber-500/30 text-amber-600 focus-visible:ring-amber-500/20',
+        className: 'border-light-warning-border text-light-warning focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'warning',
-        className: 'bg-amber-500 text-black focus-visible:ring-amber-500/20',
+        className: 'bg-light-warning text-light-warning-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'warning',
-        className:
-          'text-amber-600 hover:bg-amber-500/10 focus-visible:ring-amber-500/20',
+        className: 'text-light-warning hover:bg-light-warning-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'warning',
-        className:
-          'bg-amber-500/10 text-amber-600 focus-visible:ring-amber-500/20',
+        className: 'bg-light-warning-background text-light-warning focus-visible:ring-light-focus-ring',
       },
-
+      // Info
       {
         theme: 'light',
         variant: 'default',
         color: 'info',
         className:
-          'bg-blue-500/10 border-blue-500/20 text-blue-600 focus-visible:ring-blue-500/20',
+          'bg-light-info-background border-light-info-border text-light-info focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'outline',
         color: 'info',
-        className:
-          'border-blue-500/30 text-blue-600 focus-visible:ring-blue-500/20',
+        className: 'border-light-info-border text-light-info focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'solid',
         color: 'info',
-        className: 'bg-blue-500 text-white focus-visible:ring-blue-500/20',
+        className: 'bg-light-info text-light-info-foreground focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'ghost',
         color: 'info',
-        className:
-          'text-blue-600 hover:bg-blue-500/10 focus-visible:ring-blue-500/20',
+        className: 'text-light-info hover:bg-light-info-background focus-visible:ring-light-focus-ring',
       },
       {
         theme: 'light',
         variant: 'soft',
         color: 'info',
-        className:
-          'bg-blue-500/10 text-blue-600 focus-visible:ring-blue-500/20',
+        className: 'bg-light-info-background text-light-info focus-visible:ring-light-focus-ring',
       },
     ],
     defaultVariants: {
@@ -551,8 +522,9 @@ const badgeVariants = cva(
   }
 );
 
+// ─── Dot Variants ────────────────────────────────────────────────────────
 
-const dotVariants = cva(['inline-block', 'rounded-full', 'shrink-0'], {
+const dotVariants = cva(['inline-block', 'rounded-aphelion-full', 'shrink-0'], {
   variants: {
     size: {
       sm: 'h-1.5 w-1.5',
@@ -565,6 +537,7 @@ const dotVariants = cva(['inline-block', 'rounded-full', 'shrink-0'], {
   },
 });
 
+// ─── BadgeAvatar Component ───────────────────────────────────────────────
 
 export interface BadgeAvatarProps {
   src?: string;
@@ -592,7 +565,7 @@ const BadgeAvatar = React.forwardRef<HTMLSpanElement, BadgeAvatarProps>(
       <span
         ref={ref}
         className={cn(
-          'inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full',
+          'inline-flex shrink-0 items-center justify-center overflow-hidden rounded-aphelion-full',
           sizeClasses[size],
           className
         )}
@@ -609,8 +582,8 @@ const BadgeAvatar = React.forwardRef<HTMLSpanElement, BadgeAvatarProps>(
             className={cn(
               'flex h-full w-full items-center justify-center text-[8px] font-medium',
               theme === 'dark'
-                ? 'bg-white/10 text-white/70'
-                : 'bg-black/10 text-black/70'
+                ? 'bg-dark-muted text-dark-text-secondary'
+                : 'bg-light-muted text-light-text-secondary'
             )}
           >
             {fallback?.charAt(0).toUpperCase() || '?'}
@@ -623,6 +596,7 @@ const BadgeAvatar = React.forwardRef<HTMLSpanElement, BadgeAvatarProps>(
 
 BadgeAvatar.displayName = 'BadgeAvatar';
 
+// ─── DismissButton Component ─────────────────────────────────────────────
 
 export interface DismissButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -645,15 +619,15 @@ const DismissButton = React.forwardRef<HTMLButtonElement, DismissButtonProps>(
         type="button"
         onClick={onClick}
         className={cn(
-          'inline-flex shrink-0 items-center justify-center rounded-full transition-colors',
+          'inline-flex shrink-0 items-center justify-center rounded-aphelion-full transition-colors',
           size === 'sm'
             ? '-mr-0.5 h-4 w-4'
             : size === 'md'
               ? '-mr-0.5 h-4 w-4'
               : '-mr-0.5 h-5 w-5',
           theme === 'dark'
-            ? 'text-aphelion-light-text-primary hover:bg-white/[0.08] hover:text-white'
-            : 'text-black/40 hover:bg-black/[0.08] hover:text-black',
+            ? 'text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary'
+            : 'text-light-text-muted hover:bg-light-hover hover:text-light-text-primary',
           className
         )}
         aria-label={ariaLabel}
@@ -676,6 +650,7 @@ const DismissButton = React.forwardRef<HTMLButtonElement, DismissButtonProps>(
 
 DismissButton.displayName = 'DismissButton';
 
+// ─── DotIndicator Component ──────────────────────────────────────────────
 
 export interface DotIndicatorProps {
   color?: 'default' | 'success' | 'destructive' | 'warning' | 'info';
@@ -689,12 +664,12 @@ const DotIndicator = React.forwardRef<HTMLSpanElement, DotIndicatorProps>(
     { color = 'default', size = 'md', theme = 'dark', className },
     ref
   ) {
-    const colorMap = {
-      default: theme === 'dark' ? 'bg-white' : 'bg-black',
-      success: 'bg-emerald-500',
-      destructive: 'bg-red-500',
-      warning: 'bg-amber-500',
-      info: 'bg-blue-500',
+    const colorMap: Record<string, string> = {
+      default: theme === 'dark' ? 'bg-dark-text-primary' : 'bg-light-text-primary',
+      success: 'bg-dark-success',
+      destructive: 'bg-dark-destructive',
+      warning: 'bg-dark-warning',
+      info: 'bg-dark-info',
     };
 
     return (
@@ -708,36 +683,24 @@ const DotIndicator = React.forwardRef<HTMLSpanElement, DotIndicatorProps>(
 
 DotIndicator.displayName = 'DotIndicator';
 
+// ─── Badge Component ─────────────────────────────────────────────────────
 
 export interface BadgeProps
   extends
     React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {
-  /** Badge text content */
   children?: React.ReactNode;
-  /** Left icon (SVG or React node) */
   leftIcon?: React.ReactNode;
-  /** Right icon (SVG or React node) */
   rightIcon?: React.ReactNode;
-  /** Show dot indicator on left */
   dot?: boolean;
-  /** Dot color (default, success, destructive, warning, info) */
   dotColor?: 'default' | 'success' | 'destructive' | 'warning' | 'info';
-  /** Show dismiss button */
   dismissible?: boolean;
-  /** Callback when dismissed */
   onDismiss?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  /** Avatar image URL */
   avatar?: string;
-  /** Avatar alt text */
   avatarAlt?: string;
-  /** Avatar fallback text (initials) */
   avatarFallback?: string;
-  /** Label prefix (e.g. "Department | Sales") */
   prefix?: string;
-  /** Custom className */
   className?: string;
-  /** Disable the badge */
   disabled?: boolean;
 }
 
@@ -767,8 +730,8 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
 ) {
   const resolvedColor = color ?? 'default';
 
-  const iconSizes = { sm: 12, md: 14, lg: 16 };
-  const iconSize = iconSizes[size ?? 'md'];
+  const prefixTextColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
 
   return (
     <span
@@ -784,7 +747,6 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
         disabled && 'opacity-50 cursor-not-allowed',
         className
       )}
-      style={{ fontFamily: 'sans-serif' }}
       {...props}
     >
       {/* Dot Indicator */}
@@ -800,7 +762,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       {/* Left Icon */}
       {leftIcon && (
         <span className="shrink-0 -ml-0.5" aria-hidden="true">
-          {typeof leftIcon === 'string' ? leftIcon : leftIcon}
+          {leftIcon}
         </span>
       )}
 
@@ -818,12 +780,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
 
       {/* Prefix */}
       {prefix && (
-        <span
-          className={cn(
-            'shrink-0',
-            theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-black/40'
-          )}
-        >
+        <span className={cn('shrink-0', prefixTextColor)}>
           {prefix}
         </span>
       )}
@@ -853,13 +810,11 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
 
 Badge.displayName = 'Badge';
 
+// ─── BadgeGroup Component ────────────────────────────────────────────────
 
 export interface BadgeGroupProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Gap between badges */
   gap?: 'sm' | 'md' | 'lg';
-  /** Wrap badges to next line */
   wrap?: boolean;
-  /** Theme applied to all badges */
   theme?: 'dark' | 'light';
   className?: string;
 }
@@ -894,6 +849,7 @@ const BadgeGroup = React.forwardRef<HTMLDivElement, BadgeGroupProps>(
 
 BadgeGroup.displayName = 'BadgeGroup';
 
+// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Badge,

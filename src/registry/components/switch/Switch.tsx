@@ -20,7 +20,7 @@ const switchVariants = cva(
     'shrink-0',
     'cursor-pointer',
     'items-center',
-    'rounded-full',
+    'rounded-aphelion-full',
     'border-2',
     'border-transparent',
     'transition-colors',
@@ -41,14 +41,14 @@ const switchVariants = cva(
       },
       theme: {
         light: [
-          'bg-neutral-200',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'bg-light-muted',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'bg-neutral-700',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'bg-dark-muted',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -60,12 +60,12 @@ const switchVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['bg-neutral-900'],
+        className: ['bg-light-primary'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['bg-white'],
+        className: ['bg-dark-primary'],
       },
     ],
     defaultVariants: {
@@ -80,8 +80,8 @@ const thumbVariants = cva(
   [
     'pointer-events-none',
     'block',
-    'rounded-full',
-    'shadow-sm',
+    'rounded-aphelion-full',
+    'shadow-aphelion-sm',
     'ring-0',
     'transition-all',
     'duration-200',
@@ -95,8 +95,8 @@ const thumbVariants = cva(
         lg: ['h-5', 'w-5'],
       },
       theme: {
-        light: ['bg-white'],
-        dark: ['bg-neutral-900'],
+        light: ['bg-light-background'],
+        dark: ['bg-dark-background'],
       },
       checked: {
         true: [],
@@ -107,12 +107,12 @@ const thumbVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['bg-white'],
+        className: ['bg-light-primary-foreground'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['bg-neutral-900'],
+        className: ['bg-dark-primary-foreground'],
       },
     ],
     defaultVariants: {
@@ -128,8 +128,8 @@ const labelVariants = cva(
   {
     variants: {
       theme: {
-        light: ['text-neutral-900'],
-        dark: ['text-white'],
+        light: ['text-light-text-primary'],
+        dark: ['text-dark-text-primary'],
       },
       disabled: {
         true: ['opacity-40'],
@@ -217,9 +217,6 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
 
   return (
     <div
-      style={{
-        fontFamily: 'sans-serif',
-      }}
       className={cn(
         'inline-flex items-center gap-3',
         className,

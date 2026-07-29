@@ -25,15 +25,15 @@ const progressVariants = cva(
         xl: 'h-4',
       },
       radius: {
-        none: 'rounded-none',
-        sm: 'rounded-sm',
-        md: 'rounded',
+        none: 'rounded-aphelion-none',
+        sm: 'rounded-aphelion-sm',
+        md: 'rounded-aphelion-md',
         lg: 'rounded-aphelion-lg',
-        full: 'rounded-full',
+        full: 'rounded-aphelion-full',
       },
       theme: {
-        light: 'bg-neutral-200',
-        dark: 'bg-neutral-800',
+        light: 'bg-light-muted',
+        dark: 'bg-dark-muted',
       },
       width: {
         xs: 'w-[120px]',
@@ -77,21 +77,77 @@ const fillVariants = cva(
     },
     compoundVariants: [
       // ─── Dark Theme Fills ────────────────────────────────────────
-      { theme: 'dark', variant: 'default', className: 'bg-white' },
-      { theme: 'dark', variant: 'primary', className: 'bg-white' },
-      { theme: 'dark', variant: 'success', className: 'bg-emerald-500' },
-      { theme: 'dark', variant: 'info', className: 'bg-blue-500' },
-      { theme: 'dark', variant: 'warning', className: 'bg-amber-500' },
-      { theme: 'dark', variant: 'error', className: 'bg-red-500' },
-      { theme: 'dark', variant: 'neutral', className: 'bg-neutral-500' },
+      {
+        theme: 'dark',
+        variant: 'default',
+        className: 'bg-dark-primary',
+      },
+      {
+        theme: 'dark',
+        variant: 'primary',
+        className: 'bg-dark-primary',
+      },
+      {
+        theme: 'dark',
+        variant: 'success',
+        className: 'bg-dark-success',
+      },
+      {
+        theme: 'dark',
+        variant: 'info',
+        className: 'bg-dark-info',
+      },
+      {
+        theme: 'dark',
+        variant: 'warning',
+        className: 'bg-dark-warning',
+      },
+      {
+        theme: 'dark',
+        variant: 'error',
+        className: 'bg-dark-destructive',
+      },
+      {
+        theme: 'dark',
+        variant: 'neutral',
+        className: 'bg-dark-text-muted',
+      },
       // ─── Light Theme Fills ───────────────────────────────────────
-      { theme: 'light', variant: 'default', className: 'bg-neutral-900' },
-      { theme: 'light', variant: 'primary', className: 'bg-neutral-900' },
-      { theme: 'light', variant: 'success', className: 'bg-emerald-600' },
-      { theme: 'light', variant: 'info', className: 'bg-blue-600' },
-      { theme: 'light', variant: 'warning', className: 'bg-amber-500' },
-      { theme: 'light', variant: 'error', className: 'bg-red-600' },
-      { theme: 'light', variant: 'neutral', className: 'bg-neutral-600' },
+      {
+        theme: 'light',
+        variant: 'default',
+        className: 'bg-light-primary',
+      },
+      {
+        theme: 'light',
+        variant: 'primary',
+        className: 'bg-light-primary',
+      },
+      {
+        theme: 'light',
+        variant: 'success',
+        className: 'bg-light-success',
+      },
+      {
+        theme: 'light',
+        variant: 'info',
+        className: 'bg-light-info',
+      },
+      {
+        theme: 'light',
+        variant: 'warning',
+        className: 'bg-light-warning',
+      },
+      {
+        theme: 'light',
+        variant: 'error',
+        className: 'bg-light-destructive',
+      },
+      {
+        theme: 'light',
+        variant: 'neutral',
+        className: 'bg-light-text-muted',
+      },
     ],
     defaultVariants: {
       variant: 'default',
@@ -148,10 +204,17 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     const clampedValue = Math.max(min, Math.min(value, max));
     const percentage = ((clampedValue - min) / (max - min)) * 100;
 
+    const labelColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const valueColor =
+      theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+    const descriptionColor =
+      theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+    const insideValueColor =
+      theme === 'dark' ? 'text-dark-primary-foreground/70' : 'text-light-primary-foreground/90';
+
     return (
       <div
-        ref={ref}
-        style={{ fontFamily: 'sans-serif' }}
         className={cn('flex flex-col gap-1.5', className)}
         {...props}
       >
@@ -159,22 +222,12 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         {(label || (showValue && valuePosition === 'outside')) && (
           <div className="flex items-center justify-between">
             {label && (
-              <span
-                className={cn(
-                  'text-sm font-medium',
-                  theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                )}
-              >
+              <span className={cn('text-sm font-medium', labelColor)}>
                 {label}
               </span>
             )}
             {showValue && valuePosition === 'outside' && (
-              <span
-                className={cn(
-                  'text-sm font-medium tabular-nums',
-                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-                )}
-              >
+              <span className={cn('text-sm font-medium tabular-nums', valueColor)}>
                 {Math.round(percentage)}%
               </span>
             )}
@@ -195,7 +248,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
           {indeterminate ? (
             <motion.div
               className={cn(
-                'h-full absolute rounded-full',
+                'h-full absolute rounded-aphelion-full',
                 fillVariants({ variant, theme, animated }),
                 fillClassName
               )}
@@ -210,7 +263,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
           ) : (
             <motion.div
               className={cn(
-                'rounded-full',
+                'rounded-aphelion-full',
                 fillVariants({ variant, theme, animated }),
                 fillClassName
               )}
@@ -226,7 +279,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
                 <span
                   className={cn(
                     'flex h-full items-center justify-end pr-2 text-xs font-medium',
-                    theme === 'dark' ? 'text-black/70' : 'text-white/90'
+                    insideValueColor
                   )}
                 >
                   {Math.round(percentage)}%
@@ -238,12 +291,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
 
         {/* ─── Description ────────────────────────────────────────── */}
         {description && (
-          <p
-            className={cn(
-              'text-xs',
-              theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
-            )}
-          >
+          <p className={cn('text-xs', descriptionColor)}>
             {description}
           </p>
         )}
@@ -251,18 +299,10 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         {/* ─── Value Bottom ───────────────────────────────────────── */}
         {showValue && valuePosition === 'bottom' && (
           <div className="flex justify-between text-xs">
-            <span
-              className={
-                theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'
-              }
-            >
+            <span className={descriptionColor}>
               {min}
             </span>
-            <span
-              className={
-                theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
-              }
-            >
+            <span className={valueColor}>
               {clampedValue} / {max}
             </span>
           </div>

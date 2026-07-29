@@ -18,7 +18,7 @@ const labelVariants = cva(
     "inline-flex",
     "items-center",
     "gap-2",
-    "rounded-full",
+    "rounded-aphelion-full",
     "font-medium",
     "leading-none",
     "transition-all",
@@ -35,34 +35,34 @@ const labelVariants = cva(
       },
       theme: {
         light: [
-          "bg-neutral-100",
-          "text-neutral-700",
+          "bg-light-muted",
+          "text-light-text-secondary",
           "border",
-          "border-neutral-200",
-          "hover:bg-neutral-200",
-          "hover:border-neutral-300",
+          "border-light-border",
+          "hover:bg-light-hover",
+          "hover:border-light-border-strong",
         ],
         dark: [
-          "bg-neutral-800",
-          "text-white",
+          "bg-dark-muted",
+          "text-dark-text-primary",
           "border",
-          "border-neutral-700",
-          "hover:bg-neutral-700",
-          "hover:border-neutral-600",
+          "border-dark-border",
+          "hover:bg-dark-hover",
+          "hover:border-dark-border-strong",
         ],
         "light-primary": [
-          "bg-neutral-900",
-          "text-white",
+          "bg-light-primary",
+          "text-light-primary-foreground",
           "border",
-          "border-neutral-900",
-          "hover:bg-neutral-800",
+          "border-light-primary-border",
+          "hover:bg-light-primary-hover",
         ],
         "dark-primary": [
-          "bg-slate-800",
-          "text-white",
+          "bg-dark-primary",
+          "text-dark-primary-foreground",
           "border",
-          "border-slate-700",
-          "hover:bg-slate-700",
+          "border-dark-primary-border",
+          "hover:bg-dark-primary-hover",
         ],
       },
       variant: {
@@ -76,25 +76,25 @@ const labelVariants = cva(
         theme: "light",
         variant: "outline",
         className:
-          "bg-transparent border-neutral-300 text-neutral-700 hover:bg-neutral-100",
+          "bg-transparent border-light-border text-light-text-secondary hover:bg-light-hover",
       },
       {
         theme: "dark",
         variant: "outline",
         className:
-          "bg-transparent border-neutral-600 text-neutral-200 hover:bg-neutral-800",
+          "bg-transparent border-dark-border-strong text-dark-text-primary hover:bg-dark-hover",
       },
       {
         theme: "light",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-neutral-700 hover:bg-neutral-100",
+          "bg-transparent border-transparent text-light-text-secondary hover:bg-light-hover",
       },
       {
         theme: "dark",
         variant: "ghost",
         className:
-          "bg-transparent border-transparent text-neutral-200 hover:bg-neutral-800",
+          "bg-transparent border-transparent text-dark-text-primary hover:bg-dark-hover",
       },
     ],
     defaultVariants: {
@@ -102,7 +102,7 @@ const labelVariants = cva(
       theme: "light",
       variant: "default",
     },
-  },
+  }
 );
 
 // ─── Types ───────────────────────────────────────────────────────────────
@@ -121,15 +121,28 @@ export interface LabelProps
   onDismiss?: () => void;
 }
 
+// ─── Helper: Check if theme is "primary" or "dark" variant ───────────────
+
+function isDarkOrPrimary(theme: string): boolean {
+  return theme === "dark" || theme === "dark-primary" || theme === "light-primary";
+}
+
 // ─── Icon Renderer ───────────────────────────────────────────────────────
 
 function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
   if (!icon) return null;
 
-  const iconColor =
-    theme.includes("dark") || theme.includes("primary")
-      ? "text-white"
-      : "text-neutral-500";
+  const iconColor = isDarkOrPrimary(theme)
+    ? "text-light-primary-foreground"
+    : "text-light-text-muted";
+
+  const dotBg = isDarkOrPrimary(theme)
+    ? "bg-light-primary-foreground"
+    : "bg-light-text-muted";
+
+  const circleBorder = isDarkOrPrimary(theme)
+    ? "border-light-primary-foreground"
+    : "border-light-text-muted";
 
   if (React.isValidElement(icon)) {
     return (
@@ -142,10 +155,8 @@ function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
       return (
         <span
           className={cn(
-            "inline-block h-2 w-2 rounded-full",
-            theme.includes("dark") || theme.includes("primary")
-              ? "bg-white"
-              : "bg-neutral-500",
+            "inline-block h-2 w-2 rounded-aphelion-full",
+            dotBg
           )}
         />
       );
@@ -153,10 +164,8 @@ function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
       return (
         <span
           className={cn(
-            "inline-block h-3 w-3 rounded-full border-2",
-            theme.includes("dark") || theme.includes("primary")
-              ? "border-white"
-              : "border-neutral-500",
+            "inline-block h-3 w-3 rounded-aphelion-full border-2",
+            circleBorder
           )}
         />
       );
@@ -197,6 +206,44 @@ function renderIcon(icon: LabelIcon, theme: string = "light"): React.ReactNode {
   }
 }
 
+// ─── Dismiss Button ──────────────────────────────────────────────────────
+
+function DismissButton({
+  onClick,
+  isPrimary,
+}: {
+  onClick: (e: React.MouseEvent) => void;
+  isPrimary: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "ml-1 inline-flex h-4 w-4 items-center justify-center rounded-aphelion-full transition-colors",
+        isPrimary
+          ? "text-light-primary-foreground/70 hover:bg-light-primary-foreground/20 hover:text-light-primary-foreground"
+          : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary"
+      )}
+      aria-label="Dismiss"
+    >
+      <svg
+        className="h-3 w-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  );
+}
+
 // ─── Label Component ─────────────────────────────────────────────────────
 
 const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
@@ -212,13 +259,10 @@ const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
     onDismiss,
     ...props
   },
-  ref,
+  ref
 ) {
   return (
     <span
-      style={{
-        fontFamily: "sans-serif",
-      }}
       ref={ref}
       className={cn(labelVariants({ size, theme, variant }), className)}
       {...props}
@@ -227,34 +271,13 @@ const Label = React.forwardRef<HTMLSpanElement, LabelProps>(function Label(
       <span>{children}</span>
       {renderIcon(iconRight, theme!)}
       {dismissible && (
-        <button
-          type="button"
+        <DismissButton
           onClick={(e) => {
             e.stopPropagation();
             onDismiss?.();
           }}
-          className={cn(
-            "ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full transition-colors",
-            theme!.includes("dark") || theme!.includes("primary")
-              ? "text-white/70 hover:bg-white/20 hover:text-white"
-              : "text-neutral-400 hover:bg-neutral-300 hover:text-neutral-600",
-          )}
-          aria-label="Dismiss"
-        >
-          <svg
-            className="h-3 w-3"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+          isPrimary={isDarkOrPrimary(theme!)}
+        />
       )}
     </span>
   );

@@ -8,6 +8,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Spinner Variants ────────────────────────────────────────────────────
 
 const spinnerVariants = cva(
   ["inline-flex", "items-center", "justify-center", "shrink-0"],
@@ -49,18 +50,36 @@ export interface SpinnerProps
   className?: string;
 }
 
+// ─── Theme Color Resolver ────────────────────────────────────────────────
+
+function getStrokeColor(theme?: "dark" | "light"): string {
+  return theme === "dark" ? "var(--color-dark-text-primary)" : "var(--color-light-text-primary)";
+}
+
+function getDotColor(theme?: "dark" | "light"): string {
+  return theme === "dark" ? "bg-dark-text-primary" : "bg-light-text-primary";
+}
+
+// ─── Size Map ────────────────────────────────────────────────────────────
+
+const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
+const dotSizeMap = { sm: 3, md: 4, lg: 5, xl: 6, "2xl": 7 };
+const barSizeMap = { sm: 10, md: 16, lg: 20, xl: 24, "2xl": 28 };
+
+type SpinnerSize = keyof typeof sizeMap;
+
+// ─── Default Spinner ─────────────────────────────────────────────────────
+
 function DefaultSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -71,7 +90,7 @@ function DefaultSpinner({
       className={cn("animate-spin", className)}
       style={{ animationDuration: "1s" }}
     >
-      <g stroke={strokeColor} strokeWidth="2.5" strokeLinecap="round">
+      <g stroke={getStrokeColor(theme)} strokeWidth="2.5" strokeLinecap="round">
         <line x1="12" y1="2" x2="12" y2="6" opacity="1" />
         <line x1="12" y1="18" x2="12" y2="22" opacity="0.3" />
         <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" opacity="0.9" />
@@ -85,18 +104,18 @@ function DefaultSpinner({
   );
 }
 
+// ─── Circle Spinner ──────────────────────────────────────────────────────
+
 function CircleSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -111,7 +130,7 @@ function CircleSpinner({
         cx="12"
         cy="12"
         r="10"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeDasharray="40 60"
@@ -121,7 +140,7 @@ function CircleSpinner({
         cx="12"
         cy="12"
         r="10"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeDasharray="40 60"
@@ -131,18 +150,18 @@ function CircleSpinner({
   );
 }
 
+// ─── Pinwheel Spinner ────────────────────────────────────────────────────
+
 function PinwheelSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -155,20 +174,20 @@ function PinwheelSpinner({
     >
       <path
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
       />
       <path
         d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
         opacity="0.5"
       />
       <path
         d="M12 10c-1.1 0-2 0.9-2 2s0.9 2 2 2"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
         opacity="0.25"
@@ -177,18 +196,18 @@ function PinwheelSpinner({
   );
 }
 
+// ─── Circle Filled Spinner ───────────────────────────────────────────────
+
 function CircleFilledSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -203,7 +222,7 @@ function CircleFilledSpinner({
         cx="12"
         cy="12"
         r="10"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="3"
         strokeLinecap="round"
         strokeDasharray="50 50"
@@ -212,23 +231,23 @@ function CircleFilledSpinner({
   );
 }
 
+// ─── Ellipsis Spinner ────────────────────────────────────────────────────
+
 function EllipsisSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const dotColor = theme === "dark" ? "bg-white" : "bg-black";
-  const sizeMap = { sm: 3, md: 4, lg: 5, xl: 6, "2xl": 7 };
-  const d = sizeMap[size ?? "md"];
+  const d = dotSizeMap[size];
 
   return (
     <div className={cn("flex items-center gap-1", className)}>
       <span
-        className={cn(dotColor, "rounded-full animate-bounce")}
+        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
         style={{
           width: d,
           height: d,
@@ -237,7 +256,7 @@ function EllipsisSpinner({
         }}
       />
       <span
-        className={cn(dotColor, "rounded-full animate-bounce")}
+        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
         style={{
           width: d,
           height: d,
@@ -246,7 +265,7 @@ function EllipsisSpinner({
         }}
       />
       <span
-        className={cn(dotColor, "rounded-full animate-bounce")}
+        className={cn(getDotColor(theme), "rounded-aphelion-full animate-bounce")}
         style={{
           width: d,
           height: d,
@@ -258,18 +277,18 @@ function EllipsisSpinner({
   );
 }
 
+// ─── Ring Spinner ────────────────────────────────────────────────────────
+
 function RingSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -284,7 +303,7 @@ function RingSpinner({
         cx="12"
         cy="12"
         r="10"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2"
         opacity="0.6"
       />
@@ -292,24 +311,24 @@ function RingSpinner({
   );
 }
 
+// ─── Bars Spinner ────────────────────────────────────────────────────────
+
 function BarsSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const barColor = theme === "dark" ? "bg-white" : "bg-black";
-  const sizeMap = { sm: 10, md: 16, lg: 20, xl: 24, "2xl": 28 };
-  const h = sizeMap[size ?? "md"];
+  const h = barSizeMap[size];
   const w = Math.max(2, Math.floor(h / 5));
 
   return (
     <div className={cn("flex items-center gap-[2px]", className)}>
       <span
-        className={cn(barColor, "animate-pulse")}
+        className={cn(getDotColor(theme), "animate-pulse")}
         style={{
           width: w,
           height: h,
@@ -318,7 +337,7 @@ function BarsSpinner({
         }}
       />
       <span
-        className={cn(barColor, "animate-pulse")}
+        className={cn(getDotColor(theme), "animate-pulse")}
         style={{
           width: w,
           height: h,
@@ -327,7 +346,7 @@ function BarsSpinner({
         }}
       />
       <span
-        className={cn(barColor, "animate-pulse")}
+        className={cn(getDotColor(theme), "animate-pulse")}
         style={{
           width: w,
           height: h,
@@ -339,18 +358,18 @@ function BarsSpinner({
   );
 }
 
+// ─── Infinite Spinner ────────────────────────────────────────────────────
+
 function InfiniteSpinner({
   size = "md",
   theme = "dark",
   className,
 }: {
-  size?: VariantProps<typeof spinnerVariants>["size"];
-  theme?: VariantProps<typeof spinnerVariants>["theme"];
+  size?: SpinnerSize;
+  theme?: "dark" | "light";
   className?: string;
 }) {
-  const strokeColor = theme === "dark" ? "white" : "black";
-  const sizeMap = { sm: 16, md: 24, lg: 32, xl: 40, "2xl": 48 };
-  const s = sizeMap[size ?? "md"];
+  const s = sizeMap[size];
 
   return (
     <svg
@@ -362,7 +381,7 @@ function InfiniteSpinner({
     >
       <path
         d="M12 12c-2-2.5-4.5-4-6.5-4C3.5 8 2 9.8 2 12s1.5 4 3.5 4c2 0 4.5-1.5 6.5-4 2 2.5 4.5 4 6.5 4 2 0 3.5-1.8 3.5-4s-1.5-4-3.5-4c-2 0-4.5 1.5-6.5 4z"
-        stroke={strokeColor}
+        stroke={getStrokeColor(theme)}
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -372,6 +391,8 @@ function InfiniteSpinner({
     </svg>
   );
 }
+
+// ─── Spinner Component ───────────────────────────────────────────────────
 
 const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner(
@@ -387,21 +408,21 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     const renderSpinner = () => {
       switch (variant) {
         case "circle":
-          return <CircleSpinner size={size} theme={theme} />;
+          return <CircleSpinner size={size as SpinnerSize} theme={theme} />;
         case "pinwheel":
-          return <PinwheelSpinner size={size} theme={theme} />;
+          return <PinwheelSpinner size={size as SpinnerSize} theme={theme} />;
         case "circle-filled":
-          return <CircleFilledSpinner size={size} theme={theme} />;
+          return <CircleFilledSpinner size={size as SpinnerSize} theme={theme} />;
         case "ellipsis":
-          return <EllipsisSpinner size={size} theme={theme} />;
+          return <EllipsisSpinner size={size as SpinnerSize} theme={theme} />;
         case "ring":
-          return <RingSpinner size={size} theme={theme} />;
+          return <RingSpinner size={size as SpinnerSize} theme={theme} />;
         case "bars":
-          return <BarsSpinner size={size} theme={theme} />;
+          return <BarsSpinner size={size as SpinnerSize} theme={theme} />;
         case "infinite":
-          return <InfiniteSpinner size={size} theme={theme} />;
+          return <InfiniteSpinner size={size as SpinnerSize} theme={theme} />;
         default:
-          return <DefaultSpinner size={size} theme={theme} />;
+          return <DefaultSpinner size={size as SpinnerSize} theme={theme} />;
       }
     };
 

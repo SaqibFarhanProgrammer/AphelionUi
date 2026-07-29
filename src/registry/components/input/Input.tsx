@@ -31,40 +31,40 @@ const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: ['h-9', 'px-3', 'text-sm', 'rounded-md'],
+        sm: ['h-9', 'px-3', 'text-sm', 'rounded-aphelion-md'],
         md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
         lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-lg'],
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'placeholder:text-neutral-400',
-          'border-neutral-300',
-          'focus-visible:border-neutral-900',
-          'focus-visible:ring-neutral-900/15',
-          'disabled:bg-neutral-50',
-          'disabled:border-neutral-200',
-          'read-only:bg-neutral-50',
-          'read-only:border-neutral-200',
-          'aria-invalid:border-red-500',
-          'aria-invalid:focus-visible:ring-red-500/15',
-          'aria-invalid:focus-visible:border-red-500',
+          'bg-light-background',
+          'text-light-text-primary',
+          'placeholder:text-light-text-muted',
+          'border-light-input-border',
+          'focus-visible:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
+          'disabled:bg-light-muted',
+          'disabled:border-light-border',
+          'read-only:bg-light-muted',
+          'read-only:border-light-border',
+          'aria-invalid:border-light-destructive',
+          'aria-invalid:focus-visible:ring-light-focus-ring',
+          'aria-invalid:focus-visible:border-light-destructive',
         ],
         dark: [
-          'bg-neutral-900',
-          'text-white',
-          'placeholder:text-neutral-500',
-          'border-neutral-700',
-          'focus-visible:border-neutral-500',
-          'focus-visible:ring-white/10',
-          'disabled:bg-neutral-950',
-          'disabled:border-neutral-800',
-          'read-only:bg-neutral-950',
-          'read-only:border-neutral-800',
-          'aria-invalid:border-red-500',
-          'aria-invalid:focus-visible:ring-red-500/15',
-          'aria-invalid:focus-visible:border-red-500',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'placeholder:text-dark-text-muted',
+          'border-dark-input-border',
+          'focus-visible:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
+          'disabled:bg-dark-muted',
+          'disabled:border-dark-border',
+          'read-only:bg-dark-muted',
+          'read-only:border-dark-border',
+          'aria-invalid:border-dark-destructive',
+          'aria-invalid:focus-visible:ring-dark-focus-ring',
+          'aria-invalid:focus-visible:border-dark-destructive',
         ],
       },
     },
@@ -75,11 +75,13 @@ const inputVariants = cva(
   }
 );
 
+// ─── Label Variants ──────────────────────────────────────────────────────
+
 const labelVariants = cva(['block', 'font-medium', 'text-sm', 'mb-1.5'], {
   variants: {
     theme: {
-      light: ['text-neutral-900'],
-      dark: ['text-white'],
+      light: ['text-light-text-primary'],
+      dark: ['text-dark-text-primary'],
     },
   },
   defaultVariants: {
@@ -87,25 +89,31 @@ const labelVariants = cva(['block', 'font-medium', 'text-sm', 'mb-1.5'], {
   },
 });
 
+// ─── Helper Text Variants ────────────────────────────────────────────────
+
 const helperVariants = cva(['block', 'mt-1.5', 'text-xs'], {
   variants: {
     theme: {
-      light: ['text-neutral-500'],
-      dark: ['text-neutral-400'],
+      light: ['text-light-text-muted'],
+      dark: ['text-dark-text-muted'],
     },
   },
   defaultVariants: {
     theme: 'light',
   },
 });
+
+// ─── Error Variants ──────────────────────────────────────────────────────
 
 const errorVariants = cva([
   'block',
   'mt-1.5',
   'text-xs',
   'font-medium',
-  'text-red-500',
+  'text-light-destructive',
 ]);
+
+// ─── Left Addon Variants ─────────────────────────────────────────────────
 
 const addonVariants = cva(
   ['flex', 'items-center', 'border', 'shrink-0', 'font-medium'],
@@ -118,18 +126,18 @@ const addonVariants = cva(
       },
       theme: {
         light: [
-          'bg-neutral-50',
-          'text-neutral-600',
-          'border-neutral-300',
+          'bg-light-muted',
+          'text-light-text-secondary',
+          'border-light-input-border',
           'border-r-0',
-          'rounded-l-md',
+          'rounded-l-aphelion-md',
         ],
         dark: [
-          'bg-neutral-800',
-          'text-neutral-400',
-          'border-neutral-700',
+          'bg-dark-muted',
+          'text-dark-text-secondary',
+          'border-dark-input-border',
           'border-r-0',
-          'rounded-l-md',
+          'rounded-l-aphelion-md',
         ],
       },
     },
@@ -139,6 +147,8 @@ const addonVariants = cva(
     },
   }
 );
+
+// ─── Right Addon Variants ────────────────────────────────────────────────
 
 const rightAddonVariants = cva(
   ['flex', 'items-center', 'border', 'shrink-0', 'font-medium'],
@@ -151,18 +161,18 @@ const rightAddonVariants = cva(
       },
       theme: {
         light: [
-          'bg-neutral-50',
-          'text-neutral-600',
-          'border-neutral-300',
+          'bg-light-muted',
+          'text-light-text-secondary',
+          'border-light-input-border',
           'border-l-0',
-          'rounded-r-md',
+          'rounded-r-aphelion-md',
         ],
         dark: [
-          'bg-neutral-800',
-          'text-neutral-400',
-          'border-neutral-700',
+          'bg-dark-muted',
+          'text-dark-text-secondary',
+          'border-dark-input-border',
           'border-l-0',
-          'rounded-r-md',
+          'rounded-r-aphelion-md',
         ],
       },
     },
@@ -192,7 +202,7 @@ export interface InputProps
   containerClassName?: string;
 }
 
-// ─── Input Component ───────────────────────────────────────────────────────
+// ─── Input Component ─────────────────────────────────────────────────────
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   {
@@ -237,16 +247,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
     className
   );
 
-  const iconColor = theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400';
-  const errIconColor = 'text-red-400';
+  const iconColor =
+    theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const errIconColor = 'text-light-destructive';
+  const requiredColor = 'text-light-destructive';
 
   return (
     <div
-      style={{
-        fontFamily: 'sans-serif',
-      }}
       className={cn(
-        'flex  flex-col',
+        'flex flex-col',
         fullWidth && 'w-full',
         containerClassName
       )}
@@ -256,10 +265,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
           {label}
           {required && (
             <span
-              style={{
-                fontFamily: 'sans-serif',
-              }}
-              className="ml-0.5 text-red-500"
+              className={cn('ml-0.5', requiredColor)}
               aria-hidden="true"
             >
               *
@@ -271,12 +277,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
       <div className={cn('relative flex items-stretch', fullWidth && 'w-full')}>
         {leftAddon && (
           <div
-            style={{
-              fontFamily: 'sans-serif',
-            }}
             className={cn(
               addonVariants({ size, theme }),
-              hasError && 'border-red-500'
+              hasError && 'border-light-destructive'
             )}
           >
             {leftAddon}
@@ -308,9 +311,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          style={{
-            fontFamily: 'sans-serif',
-          }}
           aria-invalid={hasError}
           aria-describedby={
             hasError
@@ -343,7 +343,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
           <div
             className={cn(
               rightAddonVariants({ size, theme }),
-              hasError && 'border-red-500'
+              hasError && 'border-light-destructive'
             )}
           >
             {rightAddon}

@@ -8,6 +8,7 @@ import { TbBrandReactNative } from 'react-icons/tb';
 import { RiReactjsLine, RiTerminalBoxLine } from 'react-icons/ri';
 import { SiReactrouter, SiAstro, SiLaravel } from 'react-icons/si';
 import { RiNextjsFill } from 'react-icons/ri';
+import { Button } from '@/registry/components/button/Button';
 
 function Step({
   number,
@@ -77,7 +78,7 @@ function FrameworkSelector({
           'tanstack-start',
         ] as const
       ).map((f) => (
-        <button
+        <Button
           key={f}
           onClick={() => onSelect(f)}
           className={`flex flex-col items-center justify-center gap-3 w-36 h-32 rounded-[12px] font-['inter-semi'] text-[15px] transition-all duration-200 ${
@@ -119,7 +120,7 @@ function FrameworkSelector({
           ) : (
             <></>
           )}
-        </button>
+        </Button>
       ))}
     </div>
   );

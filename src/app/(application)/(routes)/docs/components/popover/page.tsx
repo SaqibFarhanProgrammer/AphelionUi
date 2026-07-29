@@ -23,6 +23,7 @@ import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
 import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 
 const notifications = [
@@ -144,13 +145,13 @@ const popoverData = {
           label: 'Notifications',
           code: `<Popover
   trigger={
-    <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60">
+    <Button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
       </svg>
       <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-red-500" />
-    </button>
+    </Button>
   }
   side="bottom"
   align="end"
@@ -478,8 +479,8 @@ const popoverData = {
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={() => setIsOpen(true)} className="...">Open</button>
-      <button onClick={() => setIsOpen(false)} className="...">Close</button>
+      <Button onClick={() => setIsOpen(true)} className="...">Open</Button>
+      <Button onClick={() => setIsOpen(false)} className="...">Close</Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">Status: {isOpen ? 'Open' : 'Closed'}</div>
     <Popover open={isOpen} onOpenChange={setIsOpen} triggerText="Controlled" triggerVariant="solid">
@@ -505,9 +506,9 @@ return (
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={popover.openPopover}>Open</button>
-      <button onClick={popover.closePopover}>Close</button>
-      <button onClick={popover.toggle}>Toggle</button>
+      <Button onClick={popover.openPopover}>Open</Button>
+      <Button onClick={popover.closePopover}>Close</Button>
+      <Button onClick={popover.toggle}>Toggle</Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">Status: {popover.open ? 'Open' : 'Closed'}</div>
     <Popover open={popover.open} onOpenChange={popover.setOpen} triggerText="Hook" triggerVariant="solid">
@@ -722,13 +723,13 @@ function NotificationPopoverPreview() {
   return (
     <Popover
       trigger={
-        <button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 hover:border-white/20 hover:text-white transition-colors">
+        <Button className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 hover:border-white/20 hover:text-white transition-colors">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
           <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-red-500" />
-        </button>
+        </Button>
       }
       side="bottom"
       align="end"
@@ -793,18 +794,18 @@ function ControlledPopoverPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => setIsOpen(true)}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setIsOpen(false)}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">Status: {isOpen ? 'Open' : 'Closed'}</div>
       <Popover open={isOpen} onOpenChange={setIsOpen} triggerText="Controlled" triggerVariant="solid">
@@ -821,24 +822,24 @@ function HookPopoverPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={popover.openPopover}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={popover.closePopover}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={popover.toggle}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">Status: {popover.open ? 'Open' : 'Closed'}</div>
       <Popover open={popover.open} onOpenChange={popover.setOpen} triggerText="Hook" triggerVariant="solid">

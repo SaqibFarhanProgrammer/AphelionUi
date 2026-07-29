@@ -40,6 +40,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
+import { Button } from "@/registry/components/button/Button";
 
 // ─── Demo Data ──────────────────────────────────────────────────────────
 
@@ -144,7 +145,7 @@ const dropdownData = {
   useDropdownMenu,
 } from "@/components/ui/dropdown-menu";`,
     basic: `<DropdownMenu
-  trigger={<button>Open Menu</button>}
+  trigger={<Button>Open Menu</Button>}
   items={[
     { id: "1", label: "Profile", icon: <User className="h-4 w-4" /> },
     { id: "2", label: "Settings", icon: <Settings className="h-4 w-4" /> },
@@ -161,7 +162,7 @@ const dropdownData = {
         {
           label: "Default",
           code: `<DropdownMenu
-  trigger={<button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white">Open Menu</button>}
+  trigger={<Button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white">Open Menu</Button>}
   items={[
     { id: "profile", label: "Your Profile", icon: <User className="h-4 w-4" />, shortcut: "⌘P" },
     { id: "settings", label: "Settings", icon: <Settings className="h-4 w-4" />, shortcut: "⌘," },
@@ -173,9 +174,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Open Menu
-                </button>
+                </Button>
               }
               items={basicItems}
               align="start"
@@ -191,13 +192,13 @@ const dropdownData = {
       examples: [
         {
           label: "Start",
-          code: `<DropdownMenu trigger={<button>Start</button>} items={basicItems} align="start" />`,
+          code: `<DropdownMenu trigger={<Button>Start</Button>} items={basicItems} align="start" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Start
-                </button>
+                </Button>
               }
               items={basicItems}
               align="start"
@@ -206,13 +207,13 @@ const dropdownData = {
         },
         {
           label: "Center",
-          code: `<DropdownMenu trigger={<button>Center</button>} items={basicItems} align="center" />`,
+          code: `<DropdownMenu trigger={<Button>Center</Button>} items={basicItems} align="center" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Center
-                </button>
+                </Button>
               }
               items={basicItems}
               align="center"
@@ -221,13 +222,13 @@ const dropdownData = {
         },
         {
           label: "End",
-          code: `<DropdownMenu trigger={<button>End</button>} items={basicItems} align="end" />`,
+          code: `<DropdownMenu trigger={<Button>End</Button>} items={basicItems} align="end" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   End
-                </button>
+                </Button>
               }
               items={basicItems}
               align="end"
@@ -243,13 +244,13 @@ const dropdownData = {
       examples: [
         {
           label: "Bottom (Default)",
-          code: `<DropdownMenu trigger={<button>Bottom</button>} items={basicItems} side="bottom" />`,
+          code: `<DropdownMenu trigger={<Button>Bottom</Button>} items={basicItems} side="bottom" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Bottom
-                </button>
+                </Button>
               }
               items={basicItems}
               side="bottom"
@@ -259,13 +260,13 @@ const dropdownData = {
         },
         {
           label: "Top",
-          code: `<DropdownMenu trigger={<button>Top</button>} items={basicItems} side="top" />`,
+          code: `<DropdownMenu trigger={<Button>Top</Button>} items={basicItems} side="top" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Top
-                </button>
+                </Button>
               }
               items={basicItems}
               side="top"
@@ -275,13 +276,13 @@ const dropdownData = {
         },
         {
           label: "Right",
-          code: `<DropdownMenu trigger={<button>Right</button>} items={basicItems} side="right" />`,
+          code: `<DropdownMenu trigger={<Button>Right</Button>} items={basicItems} side="right" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Right
-                </button>
+                </Button>
               }
               items={basicItems}
               side="right"
@@ -291,13 +292,13 @@ const dropdownData = {
         },
         {
           label: "Left",
-          code: `<DropdownMenu trigger={<button>Left</button>} items={basicItems} side="left" />`,
+          code: `<DropdownMenu trigger={<Button>Left</Button>} items={basicItems} side="left" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Left
-                </button>
+                </Button>
               }
               items={basicItems}
               side="left"
@@ -315,7 +316,7 @@ const dropdownData = {
         {
           label: "Nested Menus",
           code: `<DropdownMenu
-  trigger={<button>File Menu</button>}
+  trigger={<Button>File Menu</Button>}
   items={[
     {
       id: "file",
@@ -350,9 +351,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   File Menu
-                </button>
+                </Button>
               }
               items={submenuItems}
               align="start"
@@ -369,7 +370,7 @@ const dropdownData = {
         {
           label: "Theme Selection",
           code: `<DropdownMenu
-  trigger={<button>Theme</button>}
+  trigger={<Button>Theme</Button>}
   items={[
     { id: "theme-label", label: "Theme Mode", separator: true },
     { id: "light", label: "Light Mode", icon: <Sun className="h-4 w-4" />, radio: true, radioGroup: "theme" },
@@ -381,9 +382,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Theme
-                </button>
+                </Button>
               }
               items={radioItems}
               align="start"
@@ -400,7 +401,7 @@ const dropdownData = {
         {
           label: "Notification Settings",
           code: `<DropdownMenu
-  trigger={<button>Notifications</button>}
+  trigger={<Button>Notifications</Button>}
   items={[
     { id: "notif-label", label: "Notifications", separator: true },
     { id: "audio", label: "Enable Audio", icon: <Volume2 className="h-4 w-4" />, checked: true },
@@ -412,9 +413,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Notifications
-                </button>
+                </Button>
               }
               items={checkboxItems}
               align="start"
@@ -431,7 +432,7 @@ const dropdownData = {
         {
           label: "With Shortcuts",
           code: `<DropdownMenu
-  trigger={<button>Edit</button>}
+  trigger={<Button>Edit</Button>}
   items={[
     { id: "copy", label: "Copy", shortcut: "⌘C" },
     { id: "paste", label: "Paste", shortcut: "⌘V" },
@@ -445,9 +446,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Edit
-                </button>
+                </Button>
               }
               items={shortcutItems}
               align="start"
@@ -464,7 +465,7 @@ const dropdownData = {
         {
           label: "Disabled Items",
           code: `<DropdownMenu
-  trigger={<button>Menu</button>}
+  trigger={<Button>Menu</Button>}
   items={[
     { id: "active-1", label: "Active Item", icon: <Check className="h-4 w-4" /> },
     { id: "disabled-1", label: "Disabled Item", icon: <AlertTriangle className="h-4 w-4" />, disabled: true },
@@ -475,9 +476,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Menu
-                </button>
+                </Button>
               }
               items={disabledItems}
               align="start"
@@ -487,16 +488,16 @@ const dropdownData = {
         {
           label: "Disabled Dropdown",
           code: `<DropdownMenu
-  trigger={<button>Disabled</button>}
+  trigger={<Button>Disabled</Button>}
   items={basicItems}
   disabled
 />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Disabled
-                </button>
+                </Button>
               }
               items={basicItems}
               disabled
@@ -513,7 +514,7 @@ const dropdownData = {
         {
           label: "Danger Actions",
           code: `<DropdownMenu
-  trigger={<button>Account</button>}
+  trigger={<Button>Account</Button>}
   items={[
     { id: "edit", label: "Edit Profile", icon: <Edit3 className="h-4 w-4" /> },
     { id: "share", label: "Share", icon: <Share2 className="h-4 w-4" /> },
@@ -525,9 +526,9 @@ const dropdownData = {
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Account
-                </button>
+                </Button>
               }
               items={dangerItems}
               align="start"
@@ -548,14 +549,14 @@ const dropdownData = {
 return (
   <div className="flex items-center gap-3">
     <DropdownMenu
-      trigger={<button>Controlled</button>}
+      trigger={<Button>Controlled</Button>}
       items={basicItems}
       open={open}
       onOpenChange={setOpen}
       align="start"
     />
-    <button onClick={() => setOpen(!open)}>Toggle</button>
-    <button onClick={() => setOpen(false)}>Close</button>
+    <Button onClick={() => setOpen(!open)}>Toggle</Button>
+    <Button onClick={() => setOpen(false)}>Close</Button>
   </div>
 );`,
           preview: <ControlledDropdownPreview />,
@@ -569,13 +570,13 @@ return (
       examples: [
         {
           label: "Narrow (180px)",
-          code: `<DropdownMenu trigger={<button>Narrow</button>} items={basicItems} width={180} align="start" />`,
+          code: `<DropdownMenu trigger={<Button>Narrow</Button>} items={basicItems} width={180} align="start" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Narrow
-                </button>
+                </Button>
               }
               items={basicItems}
               width={180}
@@ -585,13 +586,13 @@ return (
         },
         {
           label: "Wide (320px)",
-          code: `<DropdownMenu trigger={<button>Wide</button>} items={basicItems} width={320} align="start" />`,
+          code: `<DropdownMenu trigger={<Button>Wide</Button>} items={basicItems} width={320} align="start" />`,
           preview: (
             <DropdownMenu
               trigger={
-                <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                <Button variant={"primary"}>
                   Wide
-                </button>
+                </Button>
               }
               items={basicItems}
               width={320}
@@ -650,27 +651,27 @@ function ControlledDropdownPreview() {
     <div className="flex flex-wrap items-center gap-3">
       <DropdownMenu
         trigger={
-          <button className="rounded-aphelion-lg bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+          <Button variant={"primary"}>
             Controlled
-          </button>
+          </Button>
         }
         items={basicItems}
         open={open}
         onOpenChange={setOpen}
         align="start"
       />
-      <button
+      <Button
         onClick={() => setOpen(!open)}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
       >
         Toggle
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => setOpen(false)}
         className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm text-red-400 transition-colors hover:bg-red-500/10"
       >
         Close
-      </button>
+      </Button>
       <span className="text-sm text-aphelion-light-text-primary">
         State: {open ? "Open" : "Closed"}
       </span>

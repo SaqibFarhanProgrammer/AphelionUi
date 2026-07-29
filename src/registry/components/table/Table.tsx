@@ -9,41 +9,40 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ─── Table Container ──────────────────────────────────────────────────────
 
 const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
   variants: {
     layout: {
       default: '',
-      card: 'rounded-[12px] border border-white/[0.08] overflow-hidden',
+      card: 'rounded-aphelion-xl border overflow-hidden',
       vertical:
-        'rounded-[12px] border border-white/[0.08] overflow-hidden max-w-[480px]',
+        'rounded-aphelion-xl border overflow-hidden max-w-[480px]',
     },
     theme: {
-      dark: 'bg-black',
-      light: 'bg-white',
+      dark: 'bg-dark-background',
+      light: 'bg-light-background',
     },
   },
   compoundVariants: [
     {
       theme: 'dark',
       layout: 'card',
-      className: 'border-white/10',
+      className: 'border-dark-border',
     },
     {
       theme: 'light',
       layout: 'card',
-      className: 'border-black/10',
+      className: 'border-light-border',
     },
     {
       theme: 'dark',
       layout: 'vertical',
-      className: 'border-white/10',
+      className: 'border-dark-border',
     },
     {
       theme: 'light',
       layout: 'vertical',
-      className: 'border-black/10',
+      className: 'border-light-border',
     },
   ],
   defaultVariants: {
@@ -52,7 +51,6 @@ const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
   },
 });
 
-// ─── Table ───────────────────────────────────────────────────────────────
 
 const tableVariants = cva(['w-full', 'border-collapse', 'text-left'], {
   variants: {
@@ -82,13 +80,12 @@ const tableVariants = cva(['w-full', 'border-collapse', 'text-left'], {
   },
 });
 
-// ─── Header ──────────────────────────────────────────────────────────────
 
 const headerRowVariants = cva(['border-b'], {
   variants: {
     theme: {
-      dark: 'border-white/[0.08]',
-      light: 'border-black/[0.08]',
+      dark: 'border-dark-border',
+      light: 'border-light-border',
     },
     sticky: {
       true: 'sticky top-0 z-10',
@@ -96,8 +93,8 @@ const headerRowVariants = cva(['border-b'], {
     },
   },
   compoundVariants: [
-    { theme: 'dark', sticky: true, className: 'bg-black' },
-    { theme: 'light', sticky: true, className: 'bg-white' },
+    { theme: 'dark', sticky: true, className: 'bg-dark-background' },
+    { theme: 'light', sticky: true, className: 'bg-light-background' },
   ],
   defaultVariants: {
     theme: 'dark',
@@ -110,8 +107,8 @@ const headerCellVariants = cva(
   {
     variants: {
       theme: {
-        dark: 'text-white/50',
-        light: 'text-black/50',
+        dark: 'text-dark-text-muted',
+        light: 'text-light-text-muted',
       },
       size: {
         sm: 'px-3 py-2 text-xs',
@@ -119,7 +116,7 @@ const headerCellVariants = cva(
         lg: 'px-6 py-4 text-sm',
       },
       sortable: {
-        true: 'cursor-pointer hover:text-white/70 transition-colors',
+        true: 'cursor-pointer hover:text-dark-text-secondary transition-colors',
         false: '',
       },
     },
@@ -131,7 +128,6 @@ const headerCellVariants = cva(
   }
 );
 
-// ─── Body ────────────────────────────────────────────────────────────────
 
 const bodyRowVariants = cva(['transition-colors', 'duration-150'], {
   variants: {
@@ -161,75 +157,75 @@ const bodyRowVariants = cva(['transition-colors', 'duration-150'], {
     {
       theme: 'dark',
       variant: 'default',
-      className: 'border-white/[0.06] hover:bg-white/[0.02]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'striped',
-      className: 'border-white/[0.04] hover:bg-white/[0.03]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'no-dividers',
-      className: 'hover:bg-white/[0.02]',
+      className: 'hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'vertical-lines',
-      className: 'border-white/[0.06] hover:bg-white/[0.02]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'dense',
-      className: 'border-white/[0.06] hover:bg-white/[0.02]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'card',
-      className: 'border-white/[0.06] hover:bg-white/[0.02]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'dark',
       variant: 'vertical',
-      className: 'border-white/[0.06] hover:bg-white/[0.02]',
+      className: 'border-dark-divider hover:bg-dark-hover',
     },
     {
       theme: 'light',
       variant: 'default',
-      className: 'border-black/[0.06] hover:bg-black/[0.02]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'striped',
-      className: 'border-black/[0.04] hover:bg-black/[0.03]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'no-dividers',
-      className: 'hover:bg-black/[0.02]',
+      className: 'hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'vertical-lines',
-      className: 'border-black/[0.06] hover:bg-black/[0.02]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'dense',
-      className: 'border-black/[0.06] hover:bg-black/[0.02]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'card',
-      className: 'border-black/[0.06] hover:bg-black/[0.02]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
     {
       theme: 'light',
       variant: 'vertical',
-      className: 'border-black/[0.06] hover:bg-black/[0.02]',
+      className: 'border-light-divider hover:bg-light-hover',
     },
-    { theme: 'dark', selected: true, className: 'bg-white/[0.04]' },
-    { theme: 'light', selected: true, className: 'bg-black/[0.04]' },
+    { theme: 'dark', selected: true, className: 'bg-dark-selected' },
+    { theme: 'light', selected: true, className: 'bg-light-selected' },
   ],
   defaultVariants: {
     theme: 'dark',
@@ -242,8 +238,8 @@ const bodyRowVariants = cva(['transition-colors', 'duration-150'], {
 const bodyCellVariants = cva(['whitespace-nowrap', 'text-left'], {
   variants: {
     theme: {
-      dark: 'text-white',
-      light: 'text-black',
+      dark: 'text-dark-text-primary',
+      light: 'text-light-text-primary',
     },
     size: {
       sm: 'px-3 py-2.5 text-xs',
@@ -264,12 +260,12 @@ const bodyCellVariants = cva(['whitespace-nowrap', 'text-left'], {
     {
       theme: 'dark',
       variant: 'vertical-lines',
-      className: 'border-white/[0.06] last:border-r-0',
+      className: 'border-dark-divider last:border-r-0',
     },
     {
       theme: 'light',
       variant: 'vertical-lines',
-      className: 'border-black/[0.06] last:border-r-0',
+      className: 'border-light-divider last:border-r-0',
     },
   ],
   defaultVariants: {
@@ -279,13 +275,12 @@ const bodyCellVariants = cva(['whitespace-nowrap', 'text-left'], {
   },
 });
 
-// ─── Footer ──────────────────────────────────────────────────────────────
 
 const footerRowVariants = cva(['border-t'], {
   variants: {
     theme: {
-      dark: 'border-white/[0.08]',
-      light: 'border-black/[0.08]',
+      dark: 'border-dark-border',
+      light: 'border-light-border',
     },
   },
   defaultVariants: {
@@ -298,8 +293,8 @@ const footerCellVariants = cva(
   {
     variants: {
       theme: {
-        dark: 'text-white',
-        light: 'text-black',
+        dark: 'text-dark-text-primary',
+        light: 'text-light-text-primary',
       },
       size: {
         sm: 'px-3 py-3 text-xs',
@@ -314,7 +309,6 @@ const footerCellVariants = cva(
   }
 );
 
-// ─── Checkbox ────────────────────────────────────────────────────────────
 
 function Checkbox({
   checked,
@@ -327,19 +321,19 @@ function Checkbox({
   theme?: 'dark' | 'light';
   className?: string;
 }) {
+  const isDark = theme === 'dark';
+  const uncheckedBorder = isDark ? 'border-dark-border hover:border-dark-border-strong' : 'border-light-border hover:border-light-border-strong';
+  const checkedClasses = isDark
+    ? 'border-dark-primary bg-dark-primary text-dark-primary-foreground'
+    : 'border-light-primary bg-light-primary text-light-primary-foreground';
+
   return (
     <button
       type="button"
       onClick={() => onChange?.(!checked)}
       className={cn(
-        'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border transition-all duration-150',
-        theme === 'dark'
-          ? checked
-            ? 'border-white bg-white text-black'
-            : 'border-white/20 hover:border-white/40'
-          : checked
-            ? 'border-black bg-black text-white'
-            : 'border-black/20 hover:border-black/40',
+        'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-aphelion-xs border transition-all duration-150',
+        checked ? checkedClasses : uncheckedBorder,
         className
       )}
       aria-checked={checked}
@@ -365,7 +359,6 @@ function Checkbox({
   );
 }
 
-// ─── Sort Icon ───────────────────────────────────────────────────────────
 
 function SortIcon({ direction }: { direction?: 'asc' | 'desc' | null }) {
   return (
@@ -398,7 +391,6 @@ function SortIcon({ direction }: { direction?: 'asc' | 'desc' | null }) {
   );
 }
 
-// ─── Icons ──────────────────────────────────────────────────────────────
 
 function CheckIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
   return (
@@ -409,7 +401,7 @@ function CheckIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="2.5"
-      className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'}
+      className={theme === 'dark' ? 'text-dark-success' : 'text-light-success'}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
@@ -425,7 +417,7 @@ function CrossIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="2.5"
-      className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}
+      className={theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive'}
     >
       <path
         strokeLinecap="round"
@@ -436,7 +428,6 @@ function CrossIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
   );
 }
 
-// ─── Avatar ──────────────────────────────────────────────────────────────
 
 function Avatar({
   src,
@@ -444,12 +435,14 @@ function Avatar({
   fallback,
   size = 'md',
   className,
+  theme = 'dark',
 }: {
   src?: string;
   alt?: string;
   fallback?: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  theme?: 'dark' | 'light';
 }) {
   const [error, setError] = React.useState(false);
   const sizeClasses = {
@@ -461,7 +454,8 @@ function Avatar({
   return (
     <div
       className={cn(
-        'inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/10',
+        'inline-flex shrink-0 items-center justify-center overflow-hidden rounded-aphelion-full',
+        theme === 'dark' ? 'bg-dark-muted' : 'bg-light-muted',
         sizeClasses[size],
         className
       )}
@@ -474,7 +468,7 @@ function Avatar({
           onError={() => setError(true)}
         />
       ) : (
-        <span className="font-medium text-white/70">
+        <span className={cn('font-medium', theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary')}>
           {fallback?.charAt(0).toUpperCase() || '?'}
         </span>
       )}
@@ -482,7 +476,6 @@ function Avatar({
   );
 }
 
-// ─── Status Badge ────────────────────────────────────────────────────────
 
 function StatusBadge({
   status,
@@ -492,31 +485,20 @@ function StatusBadge({
   theme?: 'dark' | 'light';
 }) {
   const isActive = status.toLowerCase() === 'active';
+  const isDark = theme === 'dark';
+  const dotColor = isActive
+    ? isDark ? 'bg-dark-success' : 'bg-light-success'
+    : isDark ? 'bg-dark-text-muted' : 'bg-light-text-muted';
+  const textColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
+
   return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 text-sm',
-        theme === 'dark' ? 'text-white' : 'text-black'
-      )}
-    >
-      <span
-        className={cn(
-          'inline-block h-2 w-2 rounded-full',
-          isActive
-            ? theme === 'dark'
-              ? 'bg-emerald-400'
-              : 'bg-emerald-600'
-            : theme === 'dark'
-              ? 'bg-white/30'
-              : 'bg-black/30'
-        )}
-      />
+    <span className={cn('inline-flex items-center gap-1.5 text-sm', textColor)}>
+      <span className={cn('inline-block h-2 w-2 rounded-aphelion-full', dotColor)} />
       {status}
     </span>
   );
 }
 
-// ─── Intent Badge ────────────────────────────────────────────────────────
 
 function IntentBadge({
   label,
@@ -525,29 +507,26 @@ function IntentBadge({
   label: string;
   theme?: 'dark' | 'light';
 }) {
+  const isDark = theme === 'dark';
   const colors: Record<string, string> = {
-    C:
-      theme === 'dark'
-        ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-        : 'bg-amber-100 text-amber-700 border-amber-200',
-    T:
-      theme === 'dark'
-        ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
-        : 'bg-rose-100 text-rose-700 border-rose-200',
-    I:
-      theme === 'dark'
-        ? 'bg-blue-500/20 text-blue-300 border-blue-500/30'
-        : 'bg-blue-100 text-blue-700 border-blue-200',
-    N:
-      theme === 'dark'
-        ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
-        : 'bg-emerald-100 text-emerald-700 border-emerald-200',
+    C: isDark
+      ? 'bg-dark-warning-background text-dark-warning border-dark-warning-border'
+      : 'bg-light-warning-background text-light-warning border-light-warning-border',
+    T: isDark
+      ? 'bg-dark-destructive-background text-dark-destructive border-dark-destructive-border'
+      : 'bg-light-destructive-background text-light-destructive border-light-destructive-border',
+    I: isDark
+      ? 'bg-dark-info-background text-dark-info border-dark-info-border'
+      : 'bg-light-info-background text-light-info border-light-info-border',
+    N: isDark
+      ? 'bg-dark-success-background text-dark-success border-dark-success-border'
+      : 'bg-light-success-background text-light-success border-light-success-border',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex h-5 w-5 items-center justify-center rounded-[4px] border text-[10px] font-bold',
+        'inline-flex h-5 w-5 items-center justify-center rounded-aphelion-xs border text-[10px] font-bold',
         colors[label] || colors.N
       )}
     >
@@ -556,7 +535,6 @@ function IntentBadge({
   );
 }
 
-// ─── Filter Input ────────────────────────────────────────────────────────
 
 function FilterInput({
   placeholder,
@@ -571,6 +549,7 @@ function FilterInput({
   theme?: 'dark' | 'light';
   className?: string;
 }) {
+  const isDark = theme === 'dark';
   return (
     <input
       type="text"
@@ -578,17 +557,16 @@ function FilterInput({
       value={value}
       onChange={(e) => onChange?.(e.target.value)}
       className={cn(
-        'h-9 rounded-[6px] border bg-transparent px-3 text-sm transition-colors outline-none placeholder:text-white/30',
-        theme === 'dark'
-          ? 'border-white/[0.08] text-white focus:border-white/20'
-          : 'border-black/[0.08] text-black placeholder:text-black/30 focus:border-black/20',
+        'h-9 rounded-aphelion-sm border bg-transparent px-3 text-sm transition-colors outline-none',
+        isDark
+          ? 'border-dark-border text-dark-text-primary placeholder:text-dark-text-muted focus:border-dark-border-strong'
+          : 'border-light-border text-light-text-primary placeholder:text-light-text-muted focus:border-light-border-strong',
         className
       )}
     />
   );
 }
 
-// ─── Table Component ─────────────────────────────────────────────────────
 
 export interface TableColumn<T = any> {
   key: string;
@@ -660,12 +638,16 @@ function Table<T = any>({
 
   const isStriped = variant === 'striped';
   const isVertical = variant === 'vertical';
+  const isDark = theme === 'dark';
+
+  const emptyTextColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const verticalLabelColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const stripedEvenBg = isDark ? 'bg-dark-selected' : 'bg-light-selected';
 
   return (
     <div
       className={cn('flex flex-col gap-4', className)}
       {...props}
-      style={{ fontFamily: 'sans-serif' }}
     >
       {filters && (
         <div className="flex flex-wrap items-center gap-3">{filters}</div>
@@ -739,7 +721,6 @@ function Table<T = any>({
             {data.map((row, index) => {
               const key = rowKey(row, index);
               const selected = selectedRows.has(key);
-
               const isStripedRow = isStriped && index % 2 === 0;
 
               if (isVertical) {
@@ -755,8 +736,7 @@ function Table<T = any>({
                             selectable: !!onRowClick,
                             selected,
                           }),
-                          isStripedRow && theme === 'dark' && 'bg-white/[0.02]',
-                          isStripedRow && theme === 'light' && 'bg-black/[0.02]'
+                          isStripedRow && stripedEvenBg
                         )}
                         onClick={() => onRowClick?.(row, index)}
                       >
@@ -764,9 +744,7 @@ function Table<T = any>({
                           className={cn(
                             bodyCellVariants({ theme, size, variant }),
                             'font-medium',
-                            theme === 'dark'
-                              ? 'text-white/50'
-                              : 'text-black/50',
+                            verticalLabelColor,
                             'w-[140px]'
                           )}
                         >
@@ -797,8 +775,7 @@ function Table<T = any>({
                       selectable: !!onRowClick,
                       selected,
                     }),
-                    isStripedRow && theme === 'dark' && 'bg-white/[0.02]',
-                    isStripedRow && theme === 'light' && 'bg-black/[0.02]'
+                    isStripedRow && stripedEvenBg
                   )}
                   onClick={() => onRowClick?.(row, index)}
                 >
@@ -852,7 +829,7 @@ function Table<T = any>({
           <div
             className={cn(
               'flex items-center justify-center py-16 text-sm',
-              theme === 'dark' ? 'text-white/30' : 'text-black/30'
+              emptyTextColor
             )}
           >
             No data available
@@ -863,7 +840,6 @@ function Table<T = any>({
   );
 }
 
-// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Table,

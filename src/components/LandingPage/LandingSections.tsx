@@ -362,7 +362,7 @@ export function CTASection() {
             accessible components ready for your next project.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-colors duration-200">
+            <Button className="group inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-colors duration-200">
               Get Started
               <svg
                 className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
@@ -377,8 +377,8 @@ export function CTASection() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </button>
-            <button className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/[0.12] text-white/50 text-sm font-medium tracking-wide hover:border-white/25 hover:text-white/70 transition-all duration-200">
+            </Button>
+            <Button className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/[0.12] text-white/50 text-sm font-medium tracking-wide hover:border-white/25 hover:text-white/70 transition-all duration-200">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -393,7 +393,7 @@ export function CTASection() {
                 />
               </svg>
               View Documentation
-            </button>
+            </Button>
           </div>
         </motion.div>
       </div>
@@ -561,7 +561,7 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <button
+              <Button
                 className={`w-full py-3 text-sm font-medium tracking-wide transition-colors duration-200 ${
                   plan.popular
                     ? 'bg-white text-black hover:bg-white/90'
@@ -569,7 +569,7 @@ export function PricingSection() {
                 }`}
               >
                 {plan.cta}
-              </button>
+              </Button>
             </motion.div>
           ))}
         </div>
@@ -630,7 +630,7 @@ export function FAQSection() {
               transition={{ duration: 0.4, delay: i * 0.05 }}
               className={`${i !== 0 ? 'border-t border-white/[0.06]' : ''}`}
             >
-              <button
+              <Button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between p-6 text-left group hover:bg-white/[0.02] transition-colors duration-200"
               >
@@ -640,7 +640,7 @@ export function FAQSection() {
                 <span className="text-white/30 text-lg flex-shrink-0 transition-transform duration-200">
                   {openIndex === i ? '−' : '+'}
                 </span>
-              </button>
+              </Button>
               {openIndex === i && (
                 <div className="px-6 pb-6">
                   <p className="text-sm text-white/35 leading-relaxed max-w-2xl">

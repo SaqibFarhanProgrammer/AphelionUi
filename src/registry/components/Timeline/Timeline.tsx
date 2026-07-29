@@ -37,7 +37,7 @@ const dotVariants = cva(
   [
     "relative",
     "shrink-0",
-    "rounded-full",
+    "rounded-aphelion-full",
     "border-2",
     "transition-all",
     "duration-300",
@@ -64,32 +64,32 @@ const dotVariants = cva(
       {
         theme: "dark",
         state: "completed",
-        className: "border-white bg-white",
+        className: "border-dark-primary bg-dark-primary",
       },
       {
         theme: "dark",
         state: "active",
-        className: "border-white bg-black",
+        className: "border-dark-primary bg-dark-background",
       },
       {
         theme: "dark",
         state: "pending",
-        className: "border-white/30 bg-transparent",
+        className: "border-dark-border bg-transparent",
       },
       {
         theme: "light",
         state: "completed",
-        className: "border-black bg-black",
+        className: "border-light-primary bg-light-primary",
       },
       {
         theme: "light",
         state: "active",
-        className: "border-black bg-white",
+        className: "border-light-primary bg-light-background",
       },
       {
         theme: "light",
         state: "pending",
-        className: "border-black/30 bg-transparent",
+        className: "border-light-border bg-transparent",
       },
     ],
     defaultVariants: {
@@ -116,11 +116,11 @@ const lineVariants = cva(["absolute", "transition-all", "duration-300"], {
   compoundVariants: [
     {
       theme: "dark",
-      className: "bg-white/15",
+      className: "bg-dark-divider",
     },
     {
       theme: "light",
-      className: "bg-black/15",
+      className: "bg-light-divider",
     },
   ],
   defaultVariants: {
@@ -167,7 +167,16 @@ export interface TimelineProps
   descriptionClassName?: string;
 }
 
-// ─── Vertical Left Layout (Image 1) ───────────────────────────────────
+// ─── Theme Helpers ────────────────────────────────────────────────────
+function useTimelineColors(theme: "dark" | "light") {
+  const isDark = theme === "dark";
+  return {
+    textMuted: isDark ? "text-dark-text-muted" : "text-light-text-muted",
+    textTitle: isDark ? "text-dark-text-primary" : "text-light-text-primary",
+  };
+}
+
+// ─── Vertical Left Layout ─────────────────────────────────────────────
 function VerticalLeftTimeline({
   items,
   theme = "dark",
@@ -181,8 +190,7 @@ function VerticalLeftTimeline({
   titleClassName,
   descriptionClassName,
 }: TimelineProps) {
-  const textMuted = theme === "dark" ? "text-white/50" : "text-black/50";
-  const textTitle = theme === "dark" ? "text-white" : "text-black";
+  const { textMuted, textTitle } = useTimelineColors(theme!);
 
   return (
     <div className={cn("relative pl-8", className)}>
@@ -190,7 +198,7 @@ function VerticalLeftTimeline({
       <div
         className={cn(
           "absolute left-[7px] top-1 bottom-1 w-px",
-          theme === "dark" ? "bg-white/15" : "bg-black/15",
+          lineVariants({ theme }),
           lineClassName
         )}
       />
@@ -233,7 +241,7 @@ function VerticalLeftTimeline({
   );
 }
 
-// ─── Alternating Layout (Image 2) ─────────────────────────────────────
+// ─── Alternating Layout ───────────────────────────────────────────────
 function AlternatingTimeline({
   items,
   theme = "dark",
@@ -247,8 +255,7 @@ function AlternatingTimeline({
   titleClassName,
   descriptionClassName,
 }: TimelineProps) {
-  const textMuted = theme === "dark" ? "text-white/50" : "text-black/50";
-  const textTitle = theme === "dark" ? "text-white" : "text-black";
+  const { textMuted, textTitle } = useTimelineColors(theme!);
 
   return (
     <div className={cn("relative", className)}>
@@ -256,7 +263,7 @@ function AlternatingTimeline({
       <div
         className={cn(
           "absolute left-1/2 top-1 bottom-1 w-px -translate-x-1/2",
-          theme === "dark" ? "bg-white/15" : "bg-black/15",
+          lineVariants({ theme }),
           lineClassName
         )}
       />
@@ -314,7 +321,7 @@ function AlternatingTimeline({
   );
 }
 
-// ─── Horizontal Layout (Image 3) ──────────────────────────────────────
+// ─── Horizontal Layout ────────────────────────────────────────────────
 function HorizontalTimeline({
   items,
   theme = "dark",
@@ -328,8 +335,7 @@ function HorizontalTimeline({
   titleClassName,
   descriptionClassName,
 }: TimelineProps) {
-  const textMuted = theme === "dark" ? "text-white/50" : "text-black/50";
-  const textTitle = theme === "dark" ? "text-white" : "text-black";
+  const { textMuted, textTitle } = useTimelineColors(theme!);
 
   return (
     <div className={cn("relative w-full", className)}>
@@ -337,7 +343,7 @@ function HorizontalTimeline({
       <div
         className={cn(
           "absolute top-[7px] left-0 right-0 h-px",
-          theme === "dark" ? "bg-white/15" : "bg-black/15",
+          lineVariants({ theme }),
           lineClassName
         )}
       />
@@ -477,8 +483,7 @@ const TimelineItemComponent = React.forwardRef<HTMLDivElement, TimelineItemProps
     },
     ref
   ) {
-    const textMuted = theme === "dark" ? "text-white/50" : "text-black/50";
-    const textTitle = theme === "dark" ? "text-white" : "text-black";
+    const { textMuted, textTitle } = useTimelineColors(theme!);
 
     return (
       <div ref={ref} className={cn("flex flex-col gap-1", className)} {...props}>

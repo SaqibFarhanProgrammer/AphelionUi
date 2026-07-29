@@ -10,6 +10,7 @@ import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
 import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 // ─── Sheet Data ──────────────────────────────────────────────────────────
 
@@ -28,7 +29,7 @@ const sheetData = {
     basic: `const { open, onOpenChange, onOpen, onClose } = useSheet();
 
 <>
-  <button onClick={onOpen}>Open Sheet</button>
+  <Button onClick={onOpen}>Open Sheet</Button>
   <Sheet
     open={open}
     onOpenChange={onOpenChange}
@@ -37,8 +38,8 @@ const sheetData = {
     subtitle="Make changes to your profile here."
     footer={
       <>
-        <button onClick={onClose}>Cancel</button>
-        <button>Save</button>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button>Save</Button>
       </>
     }
   >
@@ -62,8 +63,8 @@ const sheetData = {
   subtitle="Slides in from the right"
   footer={
     <>
-      <button>Cancel</button>
-      <button>Save</button>
+      <Button>Cancel</Button>
+      <Button>Save</Button>
     </>
   }
 >
@@ -88,8 +89,8 @@ const sheetData = {
   subtitle="Slides in from the left"
   footer={
     <>
-      <button>Cancel</button>
-      <button>Save</button>
+      <Button>Cancel</Button>
+      <Button>Save</Button>
     </>
   }
 >
@@ -114,8 +115,8 @@ const sheetData = {
   subtitle="Slides in from the top"
   footer={
     <>
-      <button>Dismiss</button>
-      <button>Confirm</button>
+      <Button>Dismiss</Button>
+      <Button>Confirm</Button>
     </>
   }
 >
@@ -140,8 +141,8 @@ const sheetData = {
   subtitle="Slides in from the bottom"
   footer={
     <>
-      <button>Reject</button>
-      <button>Accept</button>
+      <Button>Reject</Button>
+      <Button>Accept</Button>
     </>
   }
 >
@@ -174,8 +175,8 @@ const sheetData = {
   subtitle="Fill in your details to get started."
   footer={
     <>
-      <button>Cancel</button>
-      <button>Create Account</button>
+      <Button>Cancel</Button>
+      <Button>Create Account</Button>
     </>
   }
 >
@@ -212,7 +213,7 @@ const sheetData = {
   title="Important Notice"
   subtitle="You must click a button to close this sheet."
   footer={
-    <button>I Understand</button>
+    <Button>I Understand</Button>
   }
 >
   <p>This sheet requires explicit action to close.</p>
@@ -245,8 +246,8 @@ const sheetData = {
   showClose={false}
   footer={
     <>
-      <button>Close</button>
-      <button>Done</button>
+      <Button>Close</Button>
+      <Button>Done</Button>
     </>
   }
 >
@@ -281,8 +282,8 @@ const sheetData = {
   description="This action cannot be undone. All your data will be permanently removed."
   footer={
     <>
-      <button>Cancel</button>
-      <button>Delete Account</button>
+      <Button>Cancel</Button>
+      <Button>Delete Account</Button>
     </>
   }
 >
@@ -316,8 +317,8 @@ const sheetData = {
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={() => setIsOpen(true)}>Open Sheet</button>
-      <button onClick={() => setIsOpen(false)}>Close Sheet</button>
+      <Button onClick={() => setIsOpen(true)}>Open Sheet</Button>
+      <Button onClick={() => setIsOpen(false)}>Close Sheet</Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">
       Status: {isOpen ? 'Open' : 'Closed'}
@@ -349,9 +350,9 @@ return (
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={sheet.onOpen}>Open</button>
-      <button onClick={sheet.onClose}>Close</button>
-      <button onClick={sheet.onToggle}>Toggle</button>
+      <Button onClick={sheet.onOpen}>Open</Button>
+      <Button onClick={sheet.onClose}>Close</Button>
+      <Button onClick={sheet.onToggle}>Toggle</Button>
     </div>
     <div className="text-sm text-aphelion-light-text-primary">
       Status: {sheet.open ? 'Open' : 'Closed'}
@@ -627,12 +628,12 @@ function SheetPreview({
 
   return (
     <>
-      <button
+      <Button
         onClick={sheet.onOpen}
         className="rounded-aphelion-lg border border-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
       >
         {buttonLabel}
-      </button>
+      </Button>
       <Sheet
         theme={theme}
         side={side}
@@ -645,18 +646,18 @@ function SheetPreview({
         closeOnOverlayClick={closeOnOverlayClick}
         footer={
           <div className="flex items-center justify-end gap-3">
-            <button
+            <Button
               onClick={sheet.onClose}
-              className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2"
+              variant={"primary"}
             >
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={sheet.onClose}
-              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
+
             >
               Save
-            </button>
+            </Button>
           </div>
         }
       >
@@ -674,18 +675,18 @@ function ControlledSheetPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => setIsOpen(true)}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Sheet
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setIsOpen(false)}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close Sheet
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">
         Status: {isOpen ? 'Open' : 'Closed'}
@@ -698,18 +699,18 @@ function ControlledSheetPreview() {
         subtitle="Managed by external state"
         footer={
           <div className="flex items-center justify-end gap-3">
-            <button
+            <Button
               onClick={() => setIsOpen(false)}
-              className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2"
+              variant={"primary"}
             >
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => setIsOpen(false)}
-              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
+
             >
               Done
-            </button>
+            </Button>
           </div>
         }
       >
@@ -729,24 +730,24 @@ function HookSheetPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={sheet.onOpen}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={sheet.onClose}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={sheet.onToggle}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">
         Status: {sheet.open ? 'Open' : 'Closed'}
@@ -759,18 +760,18 @@ function HookSheetPreview() {
         subtitle="Controlled by useSheet hook"
         footer={
           <div className="flex items-center justify-end gap-3">
-            <button
+            <Button
               onClick={sheet.onClose}
-              className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2"
+              variant={"primary"}
             >
               Cancel
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={sheet.onClose}
-              className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors"
+
             >
               Done
-            </button>
+            </Button>
           </div>
         }
       >

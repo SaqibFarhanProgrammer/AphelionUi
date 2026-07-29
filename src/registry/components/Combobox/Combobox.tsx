@@ -54,18 +54,18 @@ const inputVariants = cva(
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'border-neutral-300',
-          'focus-within:border-neutral-900',
-          'focus-within:ring-neutral-900/15',
+          'bg-light-background',
+          'text-light-text-primary',
+          'border-light-input-border',
+          'focus-within:border-light-border-strong',
+          'focus-within:ring-light-focus-ring',
         ],
         dark: [
-          'bg-[#0A0A0A]',
-          'text-white',
-          'border-white/[0.08]',
-          'focus-within:border-white/20',
-          'focus-within:ring-white/10',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'border-dark-input-border',
+          'focus-within:border-dark-border-strong',
+          'focus-within:ring-dark-focus-ring',
         ],
       },
       open: {
@@ -73,7 +73,7 @@ const inputVariants = cva(
         false: '',
       },
       error: {
-        true: 'border-red-500 focus-within:ring-red-500/15 focus-within:border-red-500',
+        true: '',
         false: '',
       },
     },
@@ -81,12 +81,24 @@ const inputVariants = cva(
       {
         theme: 'dark',
         open: true,
-        className: 'border-white/20',
+        className: 'border-dark-border-strong',
       },
       {
         theme: 'light',
         open: true,
-        className: 'border-neutral-900',
+        className: 'border-light-border-strong',
+      },
+      {
+        theme: 'dark',
+        error: true,
+        className:
+          'border-dark-destructive focus-within:ring-dark-focus-ring focus-within:border-dark-destructive',
+      },
+      {
+        theme: 'light',
+        error: true,
+        className:
+          'border-light-destructive focus-within:ring-light-focus-ring focus-within:border-light-destructive',
       },
     ],
     defaultVariants: {
@@ -106,15 +118,22 @@ const dropdownVariants = cva(
     'mt-1.5',
     'rounded-aphelion-xl',
     'border',
-    'shadow-xl',
     'overflow-hidden',
     'outline-none',
   ],
   {
     variants: {
       theme: {
-        dark: ['bg-dark-brand-primary', 'border-white/[0.08]', 'shadow-black/40'],
-        light: ['bg-white', 'border-black/[0.08]', 'shadow-black/10'],
+        dark: [
+          'bg-dark-card',
+          'border-dark-border',
+          'shadow-aphelion-lg',
+        ],
+        light: [
+          'bg-light-card',
+          'border-light-border',
+          'shadow-aphelion-lg',
+        ],
       },
     },
     defaultVariants: {
@@ -140,8 +159,8 @@ const groupLabelVariants = cva(
   {
     variants: {
       theme: {
-        dark: 'text-aphelion-light-text-primary',
-        light: 'text-black/40',
+        dark: 'text-dark-text-muted',
+        light: 'text-light-text-muted',
       },
     },
     defaultVariants: {
@@ -169,8 +188,16 @@ const optionVariants = cva(
   {
     variants: {
       theme: {
-        dark: ['text-white/70', 'hover:bg-white/[0.06]', 'hover:text-white'],
-        light: ['text-black/70', 'hover:bg-black/[0.06]', 'hover:text-black'],
+        dark: [
+          'text-dark-text-secondary',
+          'hover:bg-dark-hover',
+          'hover:text-dark-text-primary',
+        ],
+        light: [
+          'text-light-text-secondary',
+          'hover:bg-light-hover',
+          'hover:text-light-text-primary',
+        ],
       },
       selected: {
         true: '',
@@ -189,22 +216,22 @@ const optionVariants = cva(
       {
         theme: 'dark',
         selected: true,
-        className: 'bg-white/[0.06] text-white',
+        className: 'bg-dark-selected text-dark-text-primary',
       },
       {
         theme: 'light',
         selected: true,
-        className: 'bg-black/[0.06] text-black',
+        className: 'bg-light-selected text-light-text-primary',
       },
       {
         theme: 'dark',
         highlighted: true,
-        className: 'bg-white/[0.04]',
+        className: 'bg-dark-hover',
       },
       {
         theme: 'light',
         highlighted: true,
-        className: 'bg-black/[0.04]',
+        className: 'bg-light-hover',
       },
     ],
     defaultVariants: {
@@ -221,7 +248,7 @@ const tagVariants = cva(
     'inline-flex',
     'items-center',
     'gap-1',
-    'rounded-md',
+    'rounded-aphelion-md',
     'px-2',
     'py-0.5',
     'text-xs',
@@ -233,16 +260,16 @@ const tagVariants = cva(
     variants: {
       theme: {
         dark: [
-          'bg-white/[0.08]',
-          'text-white',
+          'bg-dark-muted',
+          'text-dark-text-primary',
           'border',
-          'border-white/[0.08]',
+          'border-dark-border',
         ],
         light: [
-          'bg-black/[0.08]',
-          'text-black',
+          'bg-light-muted',
+          'text-light-text-primary',
           'border',
-          'border-black/[0.08]',
+          'border-light-border',
         ],
       },
     },
@@ -255,8 +282,8 @@ const tagVariants = cva(
 const emptyVariants = cva(['px-3', 'py-8', 'text-center', 'text-sm'], {
   variants: {
     theme: {
-      dark: 'text-white/30',
-      light: 'text-black/30',
+      dark: 'text-dark-text-muted',
+      light: 'text-light-text-muted',
     },
   },
   defaultVariants: {
@@ -267,8 +294,8 @@ const emptyVariants = cva(['px-3', 'py-8', 'text-center', 'text-sm'], {
 const separatorVariants = cva(['h-px', 'mx-3', 'my-1'], {
   variants: {
     theme: {
-      dark: 'bg-white/[0.06]',
-      light: 'bg-black/[0.06]',
+      dark: 'bg-dark-divider',
+      light: 'bg-light-divider',
     },
   },
   defaultVariants: {
@@ -330,7 +357,9 @@ function SearchIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={theme === 'dark' ? 'text-white/30' : 'text-black/30'}
+      className={
+        theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted'
+      }
     >
       <circle cx="11" cy="11" r="8" />
       <path d="m21 21-4.3-4.3" />
@@ -357,7 +386,9 @@ function ChevronDownIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? 180 : 0 }}
       transition={{ duration: 0.2 }}
-      className={theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-black/40'}
+      className={
+        theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted'
+      }
     >
       <path d="M6 9l6 6 6-6" />
     </motion.svg>
@@ -375,14 +406,16 @@ function CheckIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={theme === 'dark' ? 'text-white' : 'text-black'}
+      className={
+        theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary'
+      }
     >
       <path d="M5 13l4 4L19 7" />
     </svg>
   );
 }
 
-function XIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
+function XIcon() {
   return (
     <svg
       width="12"
@@ -396,6 +429,36 @@ function XIcon({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
     >
       <path d="M18 6L6 18M6 6l12 12" />
     </svg>
+  );
+}
+
+// ─── Inline Icon Button ──────────────────────────────────────────────────
+
+function IconButton({
+  onClick,
+  theme,
+  children,
+  className,
+}: {
+  onClick?: (e: React.MouseEvent) => void;
+  theme?: 'dark' | 'light';
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        'inline-flex items-center justify-center rounded-aphelion-md p-0.5 transition-colors',
+        theme === 'dark'
+          ? 'text-dark-text-muted hover:text-dark-text-secondary hover:bg-dark-hover'
+          : 'text-light-text-muted hover:text-light-text-secondary hover:bg-light-hover',
+        className
+      )}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -657,6 +720,31 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
 
     const hasError = Boolean(error);
 
+    const labelColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const inputTextColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const inputPlaceholderColor =
+      theme === 'dark'
+        ? 'placeholder:text-dark-text-muted'
+        : 'placeholder:text-light-text-muted';
+    const helperTextColor =
+      theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+    const dropdownBgColor =
+      theme === 'dark' ? 'bg-dark-card' : 'bg-light-card';
+    const searchInnerBgColor =
+      theme === 'dark' ? 'bg-dark-background' : 'bg-light-background';
+    const searchInnerBorderColor =
+      theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+    const searchInnerTextColor =
+      theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const checkboxUncheckedBorder =
+      theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+    const checkboxCheckedBg =
+      theme === 'dark' ? 'bg-dark-primary border-dark-primary' : 'bg-light-primary border-light-primary';
+    const checkboxCheckedText =
+      theme === 'dark' ? 'text-dark-primary-foreground' : 'text-light-primary-foreground';
+
     return (
       <div
         ref={(node) => {
@@ -667,15 +755,11 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
               node;
         }}
         className={cn(comboboxVariants({ theme }), className)}
-        style={{ fontFamily: 'sans-serif' }}
       >
         {/* ─── Label ────────────────────────────────────────────── */}
         {label && (
           <label
-            className={cn(
-              'block text-sm font-medium mb-2',
-              theme === 'dark' ? 'text-white' : 'text-black'
-            )}
+            className={cn('block text-sm font-medium mb-2', labelColor)}
           >
             {label}
           </label>
@@ -701,21 +785,15 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
               selectedLabels.slice(0, maxTags).map((tag) => (
                 <span key={tag.value} className={cn(tagVariants({ theme }))}>
                   {tag.label}
-                  <button
-                    type="button"
+                  <IconButton
                     onClick={(e) => {
                       e.stopPropagation();
                       removeTag(tag.value);
                     }}
-                    className={cn(
-                      'inline-flex items-center justify-center rounded-sm p-0.5 transition-colors',
-                      theme === 'dark'
-                        ? 'hover:bg-white/10 text-white/60'
-                        : 'hover:bg-black/10 text-black/60'
-                    )}
+                    theme={theme}
                   >
-                    <XIcon theme={theme} />
-                  </button>
+                    <XIcon />
+                  </IconButton>
                 </span>
               ))}
 
@@ -742,33 +820,22 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
               disabled={disabled}
               className={cn(
                 'flex-1 bg-transparent outline-none min-w-[60px]',
-                theme === 'dark'
-                  ? 'text-white placeholder:text-white/30'
-                  : 'text-neutral-900 placeholder:text-neutral-400',
+                inputTextColor,
+                inputPlaceholderColor,
                 size === 'sm' && 'text-xs',
                 size === 'md' && 'text-sm',
                 size === 'lg' && 'text-base',
                 size === 'xl' && 'text-base'
               )}
-              style={{ fontFamily: 'sans-serif' }}
             />
           </div>
 
           {/* Clear + Chevron */}
           <div className="flex items-center gap-1.5 shrink-0">
             {clearable && selectedLabels.length > 0 && (
-              <button
-                type="button"
-                onClick={clearAll}
-                className={cn(
-                  'inline-flex items-center justify-center rounded-md p-0.5 transition-colors',
-                  theme === 'dark'
-                    ? 'text-white/30 hover:text-white/60 hover:bg-white/[0.06]'
-                    : 'text-black/30 hover:text-black/60 hover:bg-black/[0.06]'
-                )}
-              >
-                <XIcon theme={theme} />
-              </button>
+              <IconButton onClick={clearAll} theme={theme}>
+                <XIcon />
+              </IconButton>
             )}
             <ChevronDownIcon open={isOpen} theme={theme} />
           </div>
@@ -778,18 +845,13 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
         {hasError && (
           <span
             role="alert"
-            className="block mt-1.5 text-xs font-medium text-red-500"
+            className="block mt-1.5 text-xs font-medium text-light-destructive"
           >
             {error}
           </span>
         )}
         {!hasError && helperText && (
-          <span
-            className={cn(
-              'block mt-1.5 text-xs',
-              theme === 'dark' ? 'text-aphelion-light-text-primary' : 'text-neutral-500'
-            )}
-          >
+          <span className={cn('block mt-1.5 text-xs', helperTextColor)}>
             {helperText}
           </span>
         )}
@@ -804,22 +866,18 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
               exit={{ opacity: 0, y: -4, scale: 0.98 }}
               transition={{ duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
               className={cn(dropdownVariants({ theme }), dropdownClassName)}
-              style={{ maxHeight, overflowY: 'auto', fontFamily: 'sans-serif' }}
+              style={{ maxHeight, overflowY: 'auto' }}
             >
-              {/* Search input inside dropdown (when not searchable in main input) */}
+              {/* Search input inside dropdown */}
               {searchable && (
                 <div
-                  className={cn(
-                    'sticky top-0 z-10 px-3 py-2',
-                    theme === 'dark' ? 'bg-dark-brand-primary' : 'bg-white'
-                  )}
+                  className={cn('sticky top-0 z-10 px-3 py-2', dropdownBgColor)}
                 >
                   <div
                     className={cn(
                       'flex items-center gap-2 rounded-aphelion-lg border px-3 py-2',
-                      theme === 'dark'
-                        ? 'border-white/[0.08] bg-[#0A0A0A]'
-                        : 'border-black/[0.08] bg-neutral-50'
+                      searchInnerBorderColor,
+                      searchInnerBgColor
                     )}
                   >
                     <SearchIcon theme={theme} />
@@ -830,11 +888,9 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
                       placeholder={searchPlaceholder}
                       className={cn(
                         'flex-1 bg-transparent outline-none text-sm',
-                        theme === 'dark'
-                          ? 'text-white placeholder:text-white/30'
-                          : 'text-neutral-900 placeholder:text-neutral-400'
+                        searchInnerTextColor,
+                        inputPlaceholderColor
                       )}
-                      style={{ fontFamily: 'sans-serif' }}
                       autoFocus
                     />
                   </div>
@@ -885,17 +941,15 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
                           {multiple && (
                             <span
                               className={cn(
-                                'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border transition-all duration-150',
-                                theme === 'dark'
-                                  ? selected
-                                    ? 'border-white bg-white text-black'
-                                    : 'border-white/20'
-                                  : selected
-                                    ? 'border-black bg-black text-white'
-                                    : 'border-black/20'
+                                'inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-aphelion-xs border transition-all duration-150',
+                                selected
+                                  ? checkboxCheckedBg
+                                  : checkboxUncheckedBorder
                               )}
                             >
-                              {selected && <CheckIcon theme={theme} />}
+                              {selected && (
+                                <CheckIcon theme={theme} />
+                              )}
                             </span>
                           )}
 
@@ -943,7 +997,7 @@ const Combobox = React.forwardRef<HTMLDivElement, ComboboxProps>(
                         setHighlightedIndex(filteredFlat.length)
                       }
                     >
-                      <span className="text-white/50">
+                      <span className="text-dark-text-muted">
                         Create "{searchQuery.trim()}"
                       </span>
                     </div>

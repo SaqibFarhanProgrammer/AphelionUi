@@ -10,6 +10,7 @@ import DocsPageLayout from "@/components/docs/DocsPageLayout";
 import BottomNav from "@/components/docs/BottomNav";
 import DocsFooter from "@/components/docs/DocsFooter";
 import { useState } from "react";
+import { Button } from "@/registry/components/button/Button";
 
 
 const frameworkOptions = [
@@ -677,30 +678,30 @@ function HookControlledPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => tags.add("react")}
           className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add React
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => tags.add("vue")}
           className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white"
         >
           Add Vue
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => tags.remove("react")}
-          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-red-400 transition-colors hover:bg-red-500/10"
+          variant={"destructive"}
         >
           Remove React
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={tags.clear}
-          className="rounded-aphelion-lg border border-white/[0.08] px-3 py-1.5 text-[11px] text-white/50 transition-colors hover:bg-white/[0.06] hover:text-white"
+          variant={"primary"}
         >
           Clear All
-        </button>
+        </Button>
       </div>
       <TagsInput
         options={options}

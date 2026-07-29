@@ -9,7 +9,6 @@ interface CodeBlockProps {
   filename?: string;
 }
 
-// Token types for syntax highlighting
 interface Token {
   text: string;
   type:
@@ -53,7 +52,6 @@ function tokenizeLine(line: string): Token[] {
   let remaining = line;
 
   while (remaining.length > 0) {
-    // Comment
     const commentMatch = remaining.match(/^(\/\/.*)/);
     if (commentMatch) {
       tokens.push({ text: commentMatch[1], type: 'comment' });
@@ -61,7 +59,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // String (double quotes)
     const stringMatch = remaining.match(/^("(?:[^"\\]|\\.)*")/);
     if (stringMatch) {
       tokens.push({ text: stringMatch[1], type: 'string' });
@@ -69,7 +66,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // String (single quotes)
     const singleStringMatch = remaining.match(/^('(?:[^'\\]|\\.)*')/);
     if (singleStringMatch) {
       tokens.push({ text: singleStringMatch[1], type: 'string' });
@@ -77,7 +73,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // JSX tag
     const tagMatch = remaining.match(/^(<\/?)([A-Za-z][A-Za-z0-9]*)/);
     if (tagMatch) {
       tokens.push({ text: tagMatch[1] + tagMatch[2], type: 'tag' });
@@ -85,7 +80,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // JSX attribute
     const attrMatch = remaining.match(/^([a-zA-Z][a-zA-Z0-9-]*)=/);
     if (attrMatch) {
       tokens.push({ text: attrMatch[1], type: 'attr' });
@@ -94,7 +88,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // Keyword
     const keywordMatch = remaining.match(
       new RegExp(`^(${keywords.join('|')})\\b`)
     );
@@ -104,7 +97,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // Number
     const numMatch = remaining.match(/^(\d+)/);
     if (numMatch) {
       tokens.push({ text: numMatch[1], type: 'number' });
@@ -112,7 +104,6 @@ function tokenizeLine(line: string): Token[] {
       continue;
     }
 
-    // Default (single char)
     tokens.push({ text: remaining[0], type: 'default' });
     remaining = remaining.slice(1);
   }

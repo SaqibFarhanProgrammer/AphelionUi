@@ -17,8 +17,8 @@ const overlayVariants = cva(
   {
     variants: {
       theme: {
-        light: 'bg-black/40',
-        dark: 'bg-black/60',
+        light: 'bg-light-background/40',
+        dark: 'bg-dark-background/60',
       },
     },
     defaultVariants: {
@@ -32,8 +32,8 @@ const dialogVariants = cva(
   {
     variants: {
       theme: {
-        light: ['bg-white', 'border-neutral-200'],
-        dark: ['bg-neutral-950', 'border-neutral-800'],
+        light: ['bg-light-card', 'border-light-border'],
+        dark: ['bg-dark-card', 'border-dark-border'],
       },
       size: {
         sm: 'max-w-[400px]',
@@ -43,11 +43,11 @@ const dialogVariants = cva(
         full: 'max-w-full',
       },
       radius: {
-        none: 'rounded-none',
+        none: 'rounded-aphelion-none',
         sm: 'rounded-aphelion-lg',
         md: 'rounded-aphelion-xl',
         lg: 'rounded-aphelion-2xl',
-        xl: 'rounded-3xl',
+        xl: 'rounded-aphelion-2xl',
       },
     },
     defaultVariants: {
@@ -57,6 +57,44 @@ const dialogVariants = cva(
     },
   }
 );
+
+// ─── Close Icon Button ───────────────────────────────────────────────────
+
+function CloseButton({
+  onClick,
+  theme,
+}: {
+  onClick: () => void;
+  theme?: 'dark' | 'light';
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        'absolute top-4 right-4 rounded-aphelion-md p-1 transition-colors',
+        theme === 'dark'
+          ? 'text-dark-text-muted hover:text-dark-text-primary hover:bg-dark-hover'
+          : 'text-light-text-muted hover:text-light-text-primary hover:bg-light-hover'
+      )}
+      aria-label="Close"
+    >
+      <svg
+        className="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  );
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
@@ -126,6 +164,11 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
     };
   }, [open]);
 
+  const titleColor =
+    theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+  const descriptionColor =
+    theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+
   return (
     <AnimatePresence>
       {open && (
@@ -146,36 +189,9 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
             className={cn(dialogVariants({ theme, size, radius }), className)}
             role="dialog"
             aria-modal="true"
-            style={{ fontFamily: 'sans-serif' }}
           >
             {/* Close Button */}
-            {showClose && (
-              <button
-                type="button"
-                onClick={handleClose}
-                className={cn(
-                  'absolute top-4 right-4 rounded-md p-1 transition-colors',
-                  theme === 'dark'
-                    ? 'text-neutral-500 hover:text-neutral-300 hover:bg-neutral-800'
-                    : 'text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100'
-                )}
-                aria-label="Close"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            )}
+            {showClose && <CloseButton onClick={handleClose} theme={theme} />}
 
             {/* Header */}
             {(title || description) && (
@@ -185,10 +201,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
-                    className={cn(
-                      'text-lg font-semibold',
-                      theme === 'dark' ? 'text-white' : 'text-neutral-900'
-                    )}
+                    className={cn('text-lg font-semibold', titleColor)}
                   >
                     {title}
                   </motion.h2>
@@ -200,7 +213,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
                     transition={{ duration: 0.3, delay: 0.15 }}
                     className={cn(
                       'mt-2 text-sm leading-relaxed',
-                      theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600'
+                      descriptionColor
                     )}
                   >
                     {description}
@@ -244,7 +257,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
 
 Dialog.displayName = 'Dialog';
 
-// ─── useDialog Hook ────────────────────────────────────────────────────────
+// ─── useDialog Hook ──────────────────────────────────────────────────────
 
 export function useDialog(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);

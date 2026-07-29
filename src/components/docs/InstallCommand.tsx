@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check, Copy, Terminal } from 'lucide-react';
+import { Button } from '@/registry/components/button/Button';
 
 const packageManagers = ['pnpm', 'npm', 'yarn', 'bun'] as const;
 
@@ -34,7 +35,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-0.5">
             {packageManagers.map((m) => (
-              <button
+              <Button
                 key={m}
                 onClick={() => setPm(m)}
                 className={`
@@ -47,12 +48,12 @@ export default function InstallCommand({ command }: InstallCommandProps) {
                 `}
               >
                 {m}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
 
-        <button
+        <Button
           onClick={handleCopy}
           className="flex items-center justify-center w-8 h-8 rounded-md text-white/60 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           aria-label="Copy command"
@@ -62,7 +63,7 @@ export default function InstallCommand({ command }: InstallCommandProps) {
           ) : (
             <Copy size={15} strokeWidth={1.8} />
           )}
-        </button>
+        </Button>
       </div>
 
       <div className="px-5 py-4">

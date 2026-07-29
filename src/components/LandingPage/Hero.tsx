@@ -72,9 +72,9 @@ export default function Hero() {
             >
               Get Started
             </a>
-            <button className="py-2 px-20 test-radius rounded-aphelion-md bg-aphelion-destructive  text-black ">
+            <Button className="py-2 px-20 test-radius rounded-aphelion-md bg-aphelion-destructive  text-black ">
               hello
-            </button>
+            </Button>
           </div>
 
         </div>

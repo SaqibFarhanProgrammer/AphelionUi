@@ -9,6 +9,8 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Textarea Variants ───────────────────────────────────────────────────
+
 const textareaVariants = cva(
   [
     'w-full',
@@ -22,7 +24,7 @@ const textareaVariants = cva(
     'transition-all',
     'duration-200',
     'outline-none',
-    'placeholder:text-neutral-400',
+    'placeholder:text-light-text-muted',
     'focus:ring-2',
     'focus:ring-offset-0',
   ],
@@ -30,20 +32,20 @@ const textareaVariants = cva(
     variants: {
       theme: {
         light: [
-          'bg-neutral-50',
-          'border-neutral-200',
-          'text-neutral-900',
-          'focus:border-neutral-900',
-          'focus:ring-neutral-900/10',
-          'hover:border-neutral-300',
+          'bg-light-muted',
+          'border-light-border',
+          'text-light-text-primary',
+          'focus:border-light-border-strong',
+          'focus:ring-light-focus-ring',
+          'hover:border-light-border-strong',
         ],
         dark: [
-          'bg-neutral-900',
-          'border-neutral-700',
-          'text-white',
-          'focus:border-white',
-          'focus:ring-white/10',
-          'hover:border-neutral-600',
+          'bg-dark-background',
+          'border-dark-input-border',
+          'text-dark-text-primary',
+          'focus:border-dark-border-strong',
+          'focus:ring-dark-focus-ring',
+          'hover:border-dark-border-strong',
         ],
       },
       state: {
@@ -56,20 +58,20 @@ const textareaVariants = cva(
         theme: 'light',
         state: 'error',
         className: [
-          'border-red-500',
-          'focus:border-red-500',
-          'focus:ring-red-500/10',
-          'placeholder:text-red-300',
+          'border-light-destructive',
+          'focus:border-light-destructive',
+          'focus:ring-light-focus-ring',
+          'placeholder:text-light-destructive/30',
         ],
       },
       {
         theme: 'dark',
         state: 'error',
         className: [
-          'border-red-500',
-          'focus:border-red-500',
-          'focus:ring-red-500/10',
-          'placeholder:text-red-400',
+          'border-dark-destructive',
+          'focus:border-dark-destructive',
+          'focus:ring-dark-focus-ring',
+          'placeholder:text-dark-destructive/40',
         ],
       },
     ],
@@ -79,6 +81,8 @@ const textareaVariants = cva(
     },
   }
 );
+
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface TextareaProps
   extends
@@ -98,6 +102,8 @@ export interface TextareaProps
   containerClassName?: string;
   labelClassName?: string;
 }
+
+// ─── Textarea Component ──────────────────────────────────────────────────
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   function Textarea(
@@ -142,38 +148,37 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange?.(e);
     };
 
+    // ─── Theme-aware colors ──────────────────────────────────────────────
+    const isDark = theme === 'dark';
+    const labelDefaultColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
+    const labelErrorColor = 'text-light-destructive';
+    const requiredColor = 'text-light-destructive';
+    const optionalColor = isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+    const hintColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+    const charCountColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+    const charCountErrorColor = 'text-light-destructive';
+    const disabledBg = isDark ? 'bg-dark-muted' : 'bg-light-muted';
+
     return (
-      <div
-        className={cn('flex flex-col gap-1.5', containerClassName)}
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className={cn('flex flex-col gap-1.5', containerClassName)}>
         {label && (
           <div className="flex items-center justify-between">
             <label
               htmlFor={props.id}
               className={cn(
                 'text-sm font-medium',
-                isError
-                  ? 'text-red-500'
-                  : theme === 'dark'
-                    ? 'text-white'
-                    : 'text-neutral-900',
+                isError ? labelErrorColor : labelDefaultColor,
                 labelClassName
               )}
             >
               {label}
               {required && (
-                <span className="ml-0.5 text-red-500" aria-hidden="true">
+                <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
                   *
                 </span>
               )}
               {optional && !required && (
-                <span
-                  className={cn(
-                    'ml-1.5 font-normal',
-                    theme === 'dark' ? 'text-neutral-400' : 'text-neutral-400'
-                  )}
-                >
+                <span className={cn('ml-1.5 font-normal', optionalColor)}>
                   ({optionalText})
                 </span>
               )}
@@ -182,7 +187,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           </div>
         )}
 
-        {/* ─── Textarea ───────────────────────────────────────────────── */}
         <textarea
           ref={ref}
           rows={rows}
@@ -193,7 +197,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             disabled && [
               'cursor-not-allowed',
               'opacity-50',
-              theme === 'light' ? 'bg-neutral-100' : 'bg-neutral-800',
+              disabledBg,
             ],
             className
           )}
@@ -207,20 +211,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
 
-        {/* ─── Bottom Row: Hint / Error / Count ───────────────────────── */}
         <div className="flex items-center justify-between min-h-[20px]">
           <div className="flex-1">
             {error ? (
-              <span id={`${props.id}-error`} className="text-xs text-red-500">
+              <span id={`${props.id}-error`} className="text-xs text-light-destructive">
                 {error}
               </span>
             ) : hint ? (
               <span
                 id={`${props.id}-hint`}
-                className={cn(
-                  'text-xs',
-                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-                )}
+                className={cn('text-xs', hintColor)}
               >
                 {hint}
               </span>
@@ -230,11 +230,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             <span
               className={cn(
                 'text-xs tabular-nums shrink-0 ml-4',
-                isOverLimit
-                  ? 'text-red-500'
-                  : theme === 'dark'
-                    ? 'text-neutral-400'
-                    : 'text-neutral-400'
+                isOverLimit ? charCountErrorColor : charCountColor
               )}
             >
               {charCount}

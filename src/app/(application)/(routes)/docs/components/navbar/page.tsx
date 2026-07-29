@@ -9,6 +9,7 @@ import DocsSection from '@/components/docs/DocsSection';
 import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
+import { Button } from '@/registry/components/button/Button';
 
 const navbarData = {
   name: 'Navbar',
@@ -416,8 +417,8 @@ const navbarData = {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
   ]}
-  ctaSecondary={<button className="text-sm text-white/60 hover:text-white">Sign In</button>}
-  ctaPrimary={<button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl">Get Started</button>}
+  ctaSecondary={<Button className="text-sm text-white/60 hover:text-white">Sign In</Button>}
+  ctaPrimary={<Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl">Get Started</Button>}
 />`,
           preview: (
             <div className="bg-black rounded-aphelion-xl p-4">
@@ -428,14 +429,14 @@ const navbarData = {
                   { label: 'About', href: '/about' },
                 ]}
                 ctaSecondary={
-                  <button className="text-sm text-white/60 hover:text-white transition-colors">
+                  <Button variant={"primary"}>
                     Sign In
-                  </button>
+                  </Button>
                 }
                 ctaPrimary={
-                  <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl font-medium hover:bg-white/90 transition-colors">
+                  <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-xl font-medium hover:bg-white/90 transition-colors">
                     Get Started
-                  </button>
+                  </Button>
                 }
                 className="relative !static"
               />

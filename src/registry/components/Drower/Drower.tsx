@@ -10,13 +10,15 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Overlay Variants ────────────────────────────────────────────────────
+
 const overlayVariants = cva(
   ["fixed", "inset-0", "z-40", "transition-colors", "duration-300"],
   {
     variants: {
       theme: {
-        light: "bg-black/30",
-        dark: "bg-black/60",
+        light: "bg-light-background/30",
+        dark: "bg-dark-background/60",
       },
     },
     defaultVariants: {
@@ -25,13 +27,12 @@ const overlayVariants = cva(
   }
 );
 
+// ─── Drawer Variants ─────────────────────────────────────────────────────
+
 const drawerVariants = cva(
   [
     "fixed",
     "z-50",
-    "bg-neutral-950",
-    "border-neutral-800",
-    "shadow-2xl",
     "flex",
     "flex-col",
     "overflow-hidden",
@@ -51,8 +52,8 @@ const drawerVariants = cva(
         ],
       },
       theme: {
-        light: ["bg-white", "border-neutral-200"],
-        dark: ["bg-neutral-950", "border-neutral-800"],
+        light: ["bg-light-card", "border-light-border", "shadow-aphelion-lg"],
+        dark: ["bg-dark-card", "border-dark-border", "shadow-aphelion-lg"],
       },
     },
     defaultVariants: {
@@ -61,6 +62,8 @@ const drawerVariants = cva(
     },
   }
 );
+
+// ─── Header Variants ─────────────────────────────────────────────────────
 
 const headerVariants = cva(
   ["flex", "items-start", "justify-between", "gap-4", "p-6", "pb-0"],
@@ -77,13 +80,15 @@ const headerVariants = cva(
   }
 );
 
+// ─── Title Variants ──────────────────────────────────────────────────────
+
 const titleVariants = cva(
   ["text-lg", "font-semibold", "leading-tight"],
   {
     variants: {
       theme: {
-        light: "text-neutral-900",
-        dark: "text-white",
+        light: "text-light-text-primary",
+        dark: "text-dark-text-primary",
       },
     },
     defaultVariants: {
@@ -92,13 +97,15 @@ const titleVariants = cva(
   }
 );
 
+// ─── Subtitle Variants ───────────────────────────────────────────────────
+
 const subtitleVariants = cva(
   ["mt-1", "text-sm", "leading-relaxed"],
   {
     variants: {
       theme: {
-        light: "text-neutral-500",
-        dark: "text-neutral-400",
+        light: "text-light-text-muted",
+        dark: "text-dark-text-secondary",
       },
     },
     defaultVariants: {
@@ -106,6 +113,8 @@ const subtitleVariants = cva(
     },
   }
 );
+
+// ─── Body Variants ───────────────────────────────────────────────────────
 
 const bodyVariants = cva(
   ["flex-1", "overflow-y-auto", "p-6", "scrollbar-hide"],
@@ -122,6 +131,8 @@ const bodyVariants = cva(
   }
 );
 
+// ─── Footer Variants ─────────────────────────────────────────────────────
+
 const footerVariants = cva(
   ["flex", "items-center", "justify-end", "gap-3", "p-6", "pt-0"],
   {
@@ -136,6 +147,8 @@ const footerVariants = cva(
     },
   }
 );
+
+// ─── Close Icon ──────────────────────────────────────────────────────────
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -156,50 +169,60 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
+// ─── Close Button ────────────────────────────────────────────────────────
+
+function CloseButton({
+  onClick,
+  theme,
+}: {
+  onClick: () => void;
+  theme?: "dark" | "light";
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "absolute top-4 right-4 z-10 rounded-aphelion-md p-1.5 transition-colors",
+        theme === "dark"
+          ? "text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary"
+          : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary"
+      )}
+      aria-label="Close drawer"
+    >
+      <XIcon />
+    </button>
+  );
+}
+
+// ─── Types ───────────────────────────────────────────────────────────────
+
 export type DrawerSide = "top" | "bottom" | "left" | "right";
 
 export interface DrawerProps {
-  /** Visual theme */
   theme?: "light" | "dark";
-  /** Which side the drawer opens from */
   side?: DrawerSide;
-  /** Controlled open state */
   open?: boolean;
-  /** Callback when open state changes */
   onOpenChange?: (open: boolean) => void;
-  /** Drawer title */
   title?: string;
-  /** Drawer subtitle / description */
   subtitle?: string;
-  /** Additional description text */
   description?: string;
-  /** Content inside drawer */
   children?: React.ReactNode;
-  /** Footer content (buttons, actions) */
   footer?: React.ReactNode;
-  /** Show close button in header */
   showClose?: boolean;
-  /** Close when clicking overlay */
   closeOnOverlayClick?: boolean;
-  /** Close on Escape key */
   closeOnEscape?: boolean;
-  /** Disable body scroll when open */
   disableBodyScroll?: boolean;
-  /** Custom className for drawer panel */
   className?: string;
-  /** Overlay className */
   overlayClassName?: string;
-  /** Header className */
   headerClassName?: string;
-  /** Body className */
   bodyClassName?: string;
-  /** Footer className */
   footerClassName?: string;
-  /** Title className */
   titleClassName?: string;
-  /** Subtitle className */
   subtitleClassName?: string;
 }
+
+// ─── Animation Configs ───────────────────────────────────────────────────
 
 const overlayAnimation = {
   initial: { opacity: 0 },
@@ -242,6 +265,8 @@ const drawerAnimation: Record<
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
+
+// ─── Drawer Component ────────────────────────────────────────────────────
 
 const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
   function Drawer(
@@ -309,6 +334,9 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
 
     const anim = drawerAnimation[side];
 
+    const descriptionColor =
+      theme === "dark" ? "text-dark-text-secondary" : "text-light-text-secondary";
+
     return (
       <AnimatePresence>
         {open && (
@@ -333,23 +361,10 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
               aria-modal="true"
               aria-labelledby={title ? "drawer-title" : undefined}
               aria-describedby={subtitle ? "drawer-subtitle" : undefined}
-              style={{ fontFamily: "sans-serif" }}
             >
               {/* Close Button */}
               {showClose && (
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  className={cn(
-                    "absolute top-4 right-4 z-10 rounded-md p-1.5 transition-colors",
-                    theme === "dark"
-                      ? "text-neutral-500 hover:bg-neutral-800 hover:text-neutral-300"
-                      : "text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600"
-                  )}
-                  aria-label="Close drawer"
-                >
-                  <XIcon />
-                </button>
+                <CloseButton onClick={handleClose} theme={theme} />
               )}
 
               {/* Header */}
@@ -388,9 +403,7 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
                         transition={{ duration: 0.3, delay: 0.2 }}
                         className={cn(
                           "mt-3 text-sm leading-relaxed",
-                          theme === "dark"
-                            ? "text-neutral-400"
-                            : "text-neutral-500"
+                          descriptionColor
                         )}
                       >
                         {description}
@@ -433,6 +446,8 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
 
 Drawer.displayName = "Drawer";
 
+// ─── useDrawer Hook ──────────────────────────────────────────────────────
+
 export function useDrawer(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);
 
@@ -444,6 +459,8 @@ export function useDrawer(defaultOpen = false) {
     onToggle: () => setOpen((prev) => !prev),
   };
 }
+
+// ─── DrawerTrigger Component ─────────────────────────────────────────────
 
 interface DrawerTriggerProps {
   children: React.ReactNode;
@@ -458,6 +475,8 @@ function DrawerTrigger({ children, onClick, className }: DrawerTriggerProps) {
     </div>
   );
 }
+
+// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Drawer,

@@ -12,18 +12,6 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ─── Helper: Theme-based class resolver ──────────────────────────────────
-
-function themeClass(
-  theme: 'light' | 'dark' | undefined,
-  lightClass: string,
-  darkClass: string
-): string {
-  if (theme === 'light') return lightClass;
-  if (theme === 'dark') return darkClass;
-  return `${lightClass} ${darkClass}`;
-}
-
 // ─── Accordion Variants ──────────────────────────────────────────────────
 
 const accordionVariants = cva(['w-full'], {
@@ -55,7 +43,7 @@ const accordionVariants = cva(['w-full'], {
       theme: 'light',
       variant: 'card',
       className:
-        'border border-light-border rounded-aphelion-xl overflow-hidden bg-light-secondary',
+        'border border-light-border rounded-aphelion-xl overflow-hidden bg-light-card',
     },
     // ✨ DARK THEME
     { theme: 'dark', variant: 'default', className: '' },
@@ -68,7 +56,7 @@ const accordionVariants = cva(['w-full'], {
       theme: 'dark',
       variant: 'card',
       className:
-        'border border-dark-border rounded-aphelion-xl overflow-hidden bg-dark-secondary',
+        'border border-dark-border rounded-aphelion-xl overflow-hidden bg-dark-card',
     },
   ],
   defaultVariants: {
@@ -140,7 +128,6 @@ const triggerVariants = cva(
     'w-full',
     'items-center',
     'justify-between',
-    
     'gap-4',
     'text-left',
     'transition-colors',
@@ -150,22 +137,19 @@ const triggerVariants = cva(
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
     'font-medium',
-          "bg-aphelion-light-foreground",
-
   ],
   {
     variants: {
       theme: {
         light: [
           'text-light-text-primary',
+          'bg-light-background',
           'hover:bg-light-hover',
-          "bg-aphelion-light-background",
           'focus-visible:ring-light-focus-ring',
         ],
         dark: [
           'text-dark-text-primary',
-          "bg-aphelion-light-foreground",
-
+          'bg-dark-background',
           'hover:bg-dark-hover',
           'focus-visible:ring-dark-focus-ring',
         ],
@@ -188,8 +172,8 @@ const triggerVariants = cva(
 const contentVariants = cva(['overflow-hidden'], {
   variants: {
     theme: {
-      light: 'text-light-text-muted',
-      dark: 'text-dark-text-muted',
+      light: 'text-light-text-secondary',
+      dark: 'text-dark-text-secondary',
     },
     size: {
       sm: 'px-4 pb-3 text-sm',
@@ -212,9 +196,6 @@ function ChevronIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
-  const iconColor =
-    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
-
   return (
     <motion.svg
       width="16"
@@ -227,7 +208,10 @@ function ChevronIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? 180 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn('shrink-0', iconColor)}
+      className={cn(
+        'shrink-0',
+        theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted'
+      )}
     >
       <path d="M6 9l6 6 6-6" />
     </motion.svg>
@@ -243,9 +227,6 @@ function LeftChevronIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
-  const iconColor =
-    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
-
   return (
     <motion.svg
       width="16"
@@ -258,7 +239,10 @@ function LeftChevronIcon({
       strokeLinejoin="round"
       animate={{ rotate: open ? -90 : 0 }}
       transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={cn('shrink-0', iconColor)}
+      className={cn(
+        'shrink-0',
+        theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted'
+      )}
     >
       <path d="M9 18l6-6-6-6" />
     </motion.svg>
@@ -274,14 +258,11 @@ function PlusMinusIcon({
   open: boolean;
   theme?: 'dark' | 'light';
 }) {
-  const iconColor =
-    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
-
   return (
     <motion.span
       className={cn(
         'inline-flex h-5 w-5 shrink-0 items-center justify-center text-lg leading-none font-light',
-        iconColor
+        theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted'
       )}
       animate={{ rotate: open ? 90 : 0 }}
       transition={{ duration: 0.2 }}
@@ -389,9 +370,6 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
 
     return (
       <div
-        style={{
-          fontFamily: 'sans-serif',
-        }}
         ref={ref}
         className={cn(accordionVariants({ theme, variant, size }), className)}
         {...props}

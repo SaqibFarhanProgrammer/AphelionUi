@@ -5,11 +5,11 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Radio Variants ──────────────────────────────────────────────────────
 
 const radioVariants = cva(
   [
@@ -18,7 +18,7 @@ const radioVariants = cva(
     'items-center',
     'justify-center',
     'shrink-0',
-    'rounded-full',
+    'rounded-aphelion-full',
     'border-2',
     'transition-all',
     'duration-150',
@@ -39,16 +39,16 @@ const radioVariants = cva(
       },
       theme: {
         light: [
-          'border-neutral-300',
-          'bg-white',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'border-light-input-border',
+          'bg-light-background',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'border-neutral-600',
-          'bg-neutral-800',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'border-dark-input-border',
+          'bg-dark-background',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -60,12 +60,12 @@ const radioVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['border-blue-600', 'bg-white'],
+        className: ['border-light-primary', 'bg-light-background'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['border-blue-500', 'bg-neutral-800'],
+        className: ['border-dark-primary', 'bg-dark-background'],
       },
     ],
     defaultVariants: {
@@ -76,13 +76,15 @@ const radioVariants = cva(
   }
 );
 
+// ─── Label Variants ──────────────────────────────────────────────────────
+
 const labelVariants = cva(
   ['text-sm', 'font-medium', 'transition-colors', 'duration-150'],
   {
     variants: {
       theme: {
-        light: ['text-neutral-900'],
-        dark: ['text-white'],
+        light: ['text-light-text-primary'],
+        dark: ['text-dark-text-primary'],
       },
       disabled: {
         true: ['opacity-40'],
@@ -95,6 +97,8 @@ const labelVariants = cva(
     },
   }
 );
+
+// ─── Card Variants ───────────────────────────────────────────────────────
 
 const cardVariants = cva(
   [
@@ -118,18 +122,18 @@ const cardVariants = cva(
     variants: {
       theme: {
         light: [
-          'border-neutral-200',
-          'bg-white',
-          'hover:border-neutral-300',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'border-light-border',
+          'bg-light-card',
+          'hover:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'border-neutral-700',
-          'bg-neutral-900',
-          'hover:border-neutral-600',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'border-dark-border',
+          'bg-dark-card',
+          'hover:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -141,12 +145,12 @@ const cardVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['border-blue-600', 'bg-blue-50/50'],
+        className: ['border-light-primary', 'bg-light-selected'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['border-blue-500', 'bg-blue-500/10'],
+        className: ['border-dark-primary', 'bg-dark-selected'],
       },
     ],
     defaultVariants: {
@@ -155,6 +159,8 @@ const cardVariants = cva(
     },
   }
 );
+
+// ─── Table Row Variants ──────────────────────────────────────────────────
 
 const tableRowVariants = cva(
   [
@@ -176,18 +182,18 @@ const tableRowVariants = cva(
     variants: {
       theme: {
         light: [
-          'border-neutral-200',
-          'bg-white',
-          'hover:border-neutral-300',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'border-light-border',
+          'bg-light-card',
+          'hover:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'border-neutral-700',
-          'bg-neutral-900',
-          'hover:border-neutral-600',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'border-dark-border',
+          'bg-dark-card',
+          'hover:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -199,12 +205,12 @@ const tableRowVariants = cva(
       {
         theme: 'light',
         checked: true,
-        className: ['border-blue-600', 'bg-blue-50/50'],
+        className: ['border-light-primary', 'bg-light-selected'],
       },
       {
         theme: 'dark',
         checked: true,
-        className: ['border-blue-500', 'bg-blue-500/10'],
+        className: ['border-dark-primary', 'bg-dark-selected'],
       },
     ],
     defaultVariants: {
@@ -214,6 +220,7 @@ const tableRowVariants = cva(
   }
 );
 
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface RadioOption {
   value: string;
@@ -257,6 +264,7 @@ export interface RadioGroupProps {
   columns?: 1 | 2 | 3;
 }
 
+// ─── Radio Component ─────────────────────────────────────────────────────
 
 const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
   {
@@ -287,11 +295,12 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
     onChange?.(true);
   };
 
+  const dotColor =
+    theme === 'light' ? 'bg-light-primary' : 'bg-dark-primary';
+  const requiredColor = 'text-light-destructive';
+
   return (
     <div
-      style={{
-        fontFamily: 'sans-serif',
-      }}
       className={cn(
         'inline-flex items-center gap-2.5',
         className,
@@ -316,8 +325,8 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
         {checked && (
           <span
             className={cn(
-              'rounded-full',
-              theme === 'light' ? 'bg-blue-600' : 'bg-blue-500',
+              'rounded-aphelion-full',
+              dotColor,
               size === 'sm' && 'h-1.5 w-1.5',
               size === 'md' && 'h-2 w-2',
               size === 'lg' && 'h-2.5 w-2.5'
@@ -337,7 +346,7 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
         >
           {label}
           {required && (
-            <span className="ml-0.5 text-red-500" aria-hidden="true">
+            <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
               *
             </span>
           )}
@@ -349,6 +358,7 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(function Radio(
 
 Radio.displayName = 'Radio';
 
+// ─── RadioGroup Component ────────────────────────────────────────────────
 
 const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   function RadioGroup(
@@ -388,6 +398,22 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
       3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
     };
 
+    // Theme-aware color helpers
+    const labelColor = theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
+    const descColor = theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+    const iconColor = theme === 'light' ? 'text-light-text-secondary' : 'text-dark-text-secondary';
+    const priceColor = theme === 'light' ? 'text-light-text-primary' : 'text-dark-text-primary';
+    const metaColor = theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+    const checkBg = theme === 'light' ? 'bg-light-primary' : 'bg-dark-primary';
+    const checkText = theme === 'light' ? 'text-light-primary-foreground' : 'text-dark-primary-foreground';
+
+    // Default option border colors
+    const defaultBorder = theme === 'light' ? 'border-light-border' : 'border-dark-border';
+    const defaultBg = theme === 'light' ? 'bg-light-card' : 'bg-dark-card';
+    const defaultHoverBorder = theme === 'light' ? 'hover:border-light-border-strong' : 'hover:border-dark-border-strong';
+    const checkedBorder = theme === 'light' ? 'border-light-primary' : 'border-dark-primary';
+    const checkedBg = theme === 'light' ? 'bg-light-selected' : 'bg-dark-selected';
+
     const renderDefault = (option: RadioOption) => {
       const isChecked = currentValue === option.value;
       const isDisabled = disabled || option.disabled;
@@ -399,13 +425,9 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             'flex items-center justify-between gap-4',
             'rounded-aphelion-lg border px-4 py-3',
             'transition-all duration-150 cursor-pointer',
-            theme === 'light'
-              ? isChecked
-                ? 'border-blue-600 bg-blue-50/50'
-                : 'border-neutral-200 bg-white hover:border-neutral-300'
-              : isChecked
-                ? 'border-blue-500 bg-blue-500/10'
-                : 'border-neutral-700 bg-neutral-900 hover:border-neutral-600',
+            isChecked
+              ? cn(checkedBorder, checkedBg)
+              : cn(defaultBorder, defaultBg, defaultHoverBorder),
             isDisabled && 'opacity-40 cursor-not-allowed',
             optionClassName
           )}
@@ -424,33 +446,18 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
               name={groupName}
             />
             <div>
-              <span
-                className={cn(
-                  'text-sm font-medium',
-                  theme === 'light' ? 'text-neutral-900' : 'text-white'
-                )}
-              >
+              <span className={cn('text-sm font-medium', labelColor)}>
                 {option.label}
               </span>
               {option.description && (
-                <p
-                  className={cn(
-                    'text-xs mt-0.5',
-                    theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'
-                  )}
-                >
+                <p className={cn('text-xs mt-0.5', descColor)}>
                   {option.description}
                 </p>
               )}
             </div>
           </div>
           {option.price && (
-            <span
-              className={cn(
-                'text-sm font-semibold shrink-0',
-                theme === 'light' ? 'text-neutral-900' : 'text-white'
-              )}
-            >
+            <span className={cn('text-sm font-semibold shrink-0', priceColor)}>
               {option.price}
             </span>
           )}
@@ -479,35 +486,23 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 {option.icon && (
-                  <span
-                    className={cn(
-                      'text-lg',
-                      theme === 'light'
-                        ? 'text-neutral-600'
-                        : 'text-neutral-400'
-                    )}
-                  >
+                  <span className={cn('text-lg', iconColor)}>
                     {option.icon}
                   </span>
                 )}
-                <span
-                  className={cn(
-                    'text-sm font-semibold',
-                    theme === 'light' ? 'text-neutral-900' : 'text-white'
-                  )}
-                >
+                <span className={cn('text-sm font-semibold', labelColor)}>
                   {option.label}
                 </span>
               </div>
               {isChecked && (
                 <span
                   className={cn(
-                    'flex h-5 w-5 items-center justify-center rounded-full',
-                    theme === 'light' ? 'bg-blue-600' : 'bg-blue-500'
+                    'flex h-5 w-5 items-center justify-center rounded-aphelion-full',
+                    checkBg
                   )}
                 >
                   <svg
-                    className="h-3 w-3 text-white"
+                    className={cn('h-3 w-3', checkText)}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -523,32 +518,17 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
               )}
             </div>
             {option.description && (
-              <p
-                className={cn(
-                  'text-xs mb-3',
-                  theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'
-                )}
-              >
+              <p className={cn('text-xs mb-3', descColor)}>
                 {option.description}
               </p>
             )}
             {option.specs && (
-              <p
-                className={cn(
-                  'text-xs',
-                  theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'
-                )}
-              >
+              <p className={cn('text-xs', descColor)}>
                 {option.specs}
               </p>
             )}
             {option.price && (
-              <p
-                className={cn(
-                  'text-xl font-bold mt-2',
-                  theme === 'light' ? 'text-neutral-900' : 'text-white'
-                )}
-              >
+              <p className={cn('text-xl font-bold mt-2', priceColor)}>
                 {option.price}
               </p>
             )}
@@ -582,22 +562,14 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             disabled={isDisabled}
             name={groupName}
           />
-          <span
-            className={cn(
-              'text-sm font-medium flex-1',
-              theme === 'light' ? 'text-neutral-900' : 'text-white'
-            )}
-          >
+          <span className={cn('text-sm font-medium flex-1', labelColor)}>
             {option.label}
           </span>
           {option.meta &&
             Object.entries(option.meta).map(([key, val]) => (
               <span
                 key={key}
-                className={cn(
-                  'text-xs text-center min-w-[80px]',
-                  theme === 'light' ? 'text-neutral-500' : 'text-neutral-400'
-                )}
+                className={cn('text-xs text-center min-w-[80px]', metaColor)}
               >
                 {val}
               </span>
@@ -617,13 +589,9 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             'flex items-center gap-3',
             'rounded-aphelion-lg border px-4 py-3',
             'transition-all duration-150 cursor-pointer',
-            theme === 'light'
-              ? isChecked
-                ? 'border-blue-600 bg-blue-50/50'
-                : 'border-neutral-200 bg-white hover:border-neutral-300'
-              : isChecked
-                ? 'border-blue-500 bg-blue-500/10'
-                : 'border-neutral-700 bg-neutral-900 hover:border-neutral-600',
+            isChecked
+              ? cn(checkedBorder, checkedBg)
+              : cn(defaultBorder, defaultBg, defaultHoverBorder),
             isDisabled && 'opacity-40 cursor-not-allowed',
             optionClassName
           )}
@@ -640,12 +608,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             disabled={isDisabled}
             name={groupName}
           />
-          <span
-            className={cn(
-              'text-sm font-medium',
-              theme === 'light' ? 'text-neutral-900' : 'text-white'
-            )}
-          >
+          <span className={cn('text-sm font-medium', labelColor)}>
             {option.label}
           </span>
         </div>
@@ -668,9 +631,6 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     return (
       <div
         ref={ref}
-        style={{
-          fontFamily: 'sans-serif',
-        }}
         className={cn(
           'flex flex-col gap-3',
           variant === 'card' && cn('grid', gridCols[columns]),

@@ -10,6 +10,8 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Popover Variants ────────────────────────────────────────────────────
+
 const popoverVariants = cva(
   ["relative", "inline-flex", "items-center", "justify-center"],
   {
@@ -22,7 +24,7 @@ const popoverVariants = cva(
     defaultVariants: {
       theme: "dark",
     },
-  },
+  }
 );
 
 const contentVariants = cva(
@@ -32,9 +34,8 @@ const contentVariants = cva(
     "w-max",
     "min-w-[200px]",
     "max-w-[360px]",
-    "rounded-[12px]",
+    "rounded-aphelion-xl",
     "border",
-    "shadow-xl",
     "outline-none",
     "transition-all",
     "duration-200",
@@ -43,16 +44,16 @@ const contentVariants = cva(
     variants: {
       theme: {
         dark: [
-          "bg-[#0A0A0A]",
-          "border-white/[0.08]",
-          "text-white",
-          "shadow-black/40",
+          "bg-dark-card",
+          "border-dark-border",
+          "text-dark-text-primary",
+          "shadow-aphelion-lg",
         ],
         light: [
-          "bg-white",
-          "border-black/[0.08]",
-          "text-black",
-          "shadow-black/10",
+          "bg-light-card",
+          "border-light-border",
+          "text-light-text-primary",
+          "shadow-aphelion-lg",
         ],
       },
       size: {
@@ -70,7 +71,7 @@ const contentVariants = cva(
       size: "md",
       hasArrow: false,
     },
-  },
+  }
 );
 
 const triggerVariants = cva(
@@ -97,7 +98,7 @@ const triggerVariants = cva(
         solid: "",
       },
       size: {
-        sm: "h-8 px-3 text-xs rounded-md",
+        sm: "h-8 px-3 text-xs rounded-aphelion-md",
         md: "h-9 px-4 text-sm rounded-aphelion-lg",
         lg: "h-10 px-5 text-sm rounded-aphelion-lg",
       },
@@ -111,49 +112,49 @@ const triggerVariants = cva(
         theme: "dark",
         variant: "default",
         className:
-          "bg-white/[0.04] text-white hover:bg-white/[0.08] border border-white/[0.08] focus-visible:ring-white/20",
+          "bg-dark-muted text-dark-text-primary hover:bg-dark-hover border border-dark-border focus-visible:ring-dark-focus-ring",
       },
       {
         theme: "dark",
         variant: "outline",
         className:
-          "bg-transparent text-white hover:bg-white/[0.04] border border-white/[0.12] focus-visible:ring-white/20",
+          "bg-transparent text-dark-text-primary hover:bg-dark-hover border border-dark-border-strong focus-visible:ring-dark-focus-ring",
       },
       {
         theme: "dark",
         variant: "ghost",
         className:
-          "bg-transparent text-white hover:bg-white/[0.04] border border-transparent focus-visible:ring-white/20",
+          "bg-transparent text-dark-text-primary hover:bg-dark-hover border border-transparent focus-visible:ring-dark-focus-ring",
       },
       {
         theme: "dark",
         variant: "solid",
         className:
-          "bg-white text-black hover:bg-white/90 border border-transparent focus-visible:ring-white/20",
+          "bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover border border-transparent focus-visible:ring-dark-focus-ring",
       },
       {
         theme: "light",
         variant: "default",
         className:
-          "bg-black/[0.04] text-black hover:bg-black/[0.08] border border-black/[0.08] focus-visible:ring-black/20",
+          "bg-light-muted text-light-text-primary hover:bg-light-hover border border-light-border focus-visible:ring-light-focus-ring",
       },
       {
         theme: "light",
         variant: "outline",
         className:
-          "bg-transparent text-black hover:bg-black/[0.04] border border-black/[0.12] focus-visible:ring-black/20",
+          "bg-transparent text-light-text-primary hover:bg-light-hover border border-light-border-strong focus-visible:ring-light-focus-ring",
       },
       {
         theme: "light",
         variant: "ghost",
         className:
-          "bg-transparent text-black hover:bg-black/[0.04] border border-transparent focus-visible:ring-black/20",
+          "bg-transparent text-light-text-primary hover:bg-light-hover border border-transparent focus-visible:ring-light-focus-ring",
       },
       {
         theme: "light",
         variant: "solid",
         className:
-          "bg-black text-white hover:bg-black/90 border border-transparent focus-visible:ring-black/20",
+          "bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover border border-transparent focus-visible:ring-light-focus-ring",
       },
     ],
     defaultVariants: {
@@ -161,14 +162,14 @@ const triggerVariants = cva(
       size: "md",
       theme: "dark",
     },
-  },
+  }
 );
 
 const arrowVariants = cva(["absolute", "w-3", "h-3", "rotate-45"], {
   variants: {
     theme: {
-      dark: "bg-[#0A0A0A] border-white/[0.08]",
-      light: "bg-white border-black/[0.08]",
+      dark: "bg-dark-card border-dark-border",
+      light: "bg-light-card border-light-border",
     },
     side: {
       top: "border-b border-r",
@@ -182,6 +183,8 @@ const arrowVariants = cva(["absolute", "w-3", "h-3", "rotate-45"], {
     side: "top",
   },
 });
+
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export type PopoverSide = "top" | "bottom" | "left" | "right";
 export type PopoverAlign = "start" | "center" | "end";
@@ -213,12 +216,14 @@ export interface PopoverProps
   children?: React.ReactNode;
 }
 
+// ─── Positioning Helpers ─────────────────────────────────────────────────
+
 function getPopoverStyles(
   side: PopoverSide,
   align: PopoverAlign,
   sideOffset: number,
   alignOffset: number,
-  hasArrow: boolean,
+  hasArrow: boolean
 ): React.CSSProperties {
   const arrowSize = hasArrow ? 6 : 0;
   const offset = sideOffset + arrowSize;
@@ -268,7 +273,7 @@ function getPopoverStyles(
 function getArrowStyles(
   side: PopoverSide,
   align: PopoverAlign,
-  sideOffset: number,
+  _sideOffset: number
 ): React.CSSProperties {
   const base: React.CSSProperties = {
     position: "absolute",
@@ -315,6 +320,60 @@ function getArrowStyles(
   return base;
 }
 
+// ─── Inline Button ───────────────────────────────────────────────────────
+
+function InlineButton({
+  onClick,
+  disabled,
+  className,
+  children,
+  ariaLabel,
+  ariaExpanded,
+  ariaHasPopup,
+}: {
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  ariaLabel?: string;
+  ariaExpanded?: boolean;
+  ariaHasPopup?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-haspopup={ariaHasPopup as any}
+    >
+      {children}
+    </button>
+  );
+}
+
+// ─── Close Icon ──────────────────────────────────────────────────────────
+
+function CloseIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
+// ─── Popover Component ───────────────────────────────────────────────────
+
 const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
   {
     open: controlledOpen,
@@ -341,7 +400,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
     children,
     ...props
   },
-  ref,
+  ref
 ) {
   const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
   const isControlled = controlledOpen !== undefined;
@@ -357,53 +416,43 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
   };
 
   const toggle = () => handleOpenChange(!isOpen);
-  const open = () => handleOpenChange(true);
   const close = () => handleOpenChange(false);
 
   React.useEffect(() => {
     if (!closeOnClickOutside || !isOpen) return;
-
     const handleClick = (e: MouseEvent) => {
       const target = e.target as Node;
       if (containerRef.current && !containerRef.current.contains(target)) {
         close();
       }
     };
-
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isOpen, closeOnClickOutside]);
 
   React.useEffect(() => {
     if (!closeOnEscape || !isOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
         close();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, closeOnEscape]);
 
   React.useEffect(() => {
     if (!isOpen) return;
-
     const content = contentRef.current;
     if (!content) return;
-
     const focusableElements = content.querySelectorAll<HTMLElement>(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
-
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
-
     const handleTabKey = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
-
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
           e.preventDefault();
@@ -416,19 +465,11 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
         }
       }
     };
-
     document.addEventListener("keydown", handleTabKey);
     return () => document.removeEventListener("keydown", handleTabKey);
   }, [isOpen]);
 
-  const popoverStyles = getPopoverStyles(
-    side,
-    align,
-    sideOffset,
-    alignOffset,
-    hasArrow,
-  );
-
+  const popoverStyles = getPopoverStyles(side, align, sideOffset, alignOffset, hasArrow);
   const arrowStyles = getArrowStyles(side, align, sideOffset);
 
   const contentVariants_fr = {
@@ -438,12 +479,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
       y: side === "bottom" ? -4 : side === "top" ? 4 : 0,
       x: side === "right" ? -4 : side === "left" ? 4 : 0,
     },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      x: 0,
-    },
+    visible: { opacity: 1, scale: 1, y: 0, x: 0 },
     exit: {
       opacity: 0,
       scale: 0.95,
@@ -468,45 +504,34 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
           {trigger}
         </div>
       ) : (
-        <button
-          type="button"
+        <InlineButton
           onClick={toggle}
           disabled={disabled}
           className={cn(
-            triggerVariants({
-              variant: triggerVariant,
-              size: triggerSize,
-              theme,
-            }),
-            triggerClassName,
+            triggerVariants({ variant: triggerVariant, size: triggerSize, theme }),
+            triggerClassName
           )}
-          aria-expanded={isOpen}
-          aria-haspopup="dialog"
+          ariaExpanded={isOpen}
+          ariaHasPopup="dialog"
         >
           {triggerText || "Open popover"}
-        </button>
+        </InlineButton>
       )}
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
             ref={contentRef}
-            style={{
-              ...popoverStyles,
-              fontFamily: "sans-serif",
-            }}
+            style={popoverStyles}
             className={cn(
               contentVariants({ theme, size, hasArrow }),
-              contentClassName,
+              contentClassName
             )}
             variants={contentVariants_fr}
             initial="hidden"
             animate="visible"
             exit="exit"
-            transition={{
-              duration: 0.2,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }}
+            transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             role="dialog"
             aria-modal="false"
           >
@@ -526,6 +551,8 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
 
 Popover.displayName = "Popover";
 
+// ─── Popover Header ──────────────────────────────────────────────────────
+
 interface PopoverHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   description?: string;
@@ -537,84 +564,45 @@ interface PopoverHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const PopoverHeader = React.forwardRef<HTMLDivElement, PopoverHeaderProps>(
   function PopoverHeader(
-    {
-      title,
-      description,
-      theme = "dark",
-      showClose = false,
-      onClose,
-      className,
-      children,
-      ...props
-    },
-    ref,
+    { title, description, theme = "dark", showClose = false, onClose, className, children, ...props },
+    ref
   ) {
+    const borderColor = theme === "dark" ? "border-dark-divider" : "border-light-divider";
+    const titleColor = theme === "dark" ? "text-dark-text-primary" : "text-light-text-primary";
+    const descColor = theme === "dark" ? "text-dark-text-muted" : "text-light-text-muted";
+    const closeBtnColor = theme === "dark"
+      ? "text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary"
+      : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary";
+
     return (
       <div
         ref={ref}
-        className={cn(
-          "mb-3 flex items-start justify-between gap-3 pb-3",
-          theme === "dark"
-            ? "border-b border-white/[0.08]"
-            : "border-b border-black/[0.08]",
-          className,
-        )}
+        className={cn("mb-3 flex items-start justify-between gap-3 pb-3 border-b", borderColor, className)}
         {...props}
       >
         <div className="min-w-0 flex-1">
-          {title && (
-            <h3
-              className={cn(
-                "text-sm leading-tight font-semibold",
-                theme === "dark" ? "text-white" : "text-black",
-              )}
-            >
-              {title}
-            </h3>
-          )}
-          {description && (
-            <p
-              className={cn(
-                "mt-1 text-xs leading-relaxed",
-                theme === "dark" ? "text-white/50" : "text-black/50",
-              )}
-            >
-              {description}
-            </p>
-          )}
+          {title && <h3 className={cn("text-sm leading-tight font-semibold", titleColor)}>{title}</h3>}
+          {description && <p className={cn("mt-1 text-xs leading-relaxed", descColor)}>{description}</p>}
           {children}
         </div>
         {showClose && (
           <button
             type="button"
             onClick={onClose}
-            className={cn(
-              "inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition-colors",
-              theme === "dark"
-                ? "text-aphelion-light-text-primary hover:bg-white/[0.08] hover:text-white"
-                : "text-black/40 hover:bg-black/[0.08] hover:text-black",
-            )}
+            className={cn("inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-aphelion-md transition-colors", closeBtnColor)}
             aria-label="Close"
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            >
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
+            <CloseIcon />
           </button>
         )}
       </div>
     );
-  },
+  }
 );
 
 PopoverHeader.displayName = "PopoverHeader";
+
+// ─── Popover Body ────────────────────────────────────────────────────────
 
 interface PopoverBodyProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -627,10 +615,12 @@ const PopoverBody = React.forwardRef<HTMLDivElement, PopoverBodyProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 
 PopoverBody.displayName = "PopoverBody";
+
+// ─── Popover Footer ──────────────────────────────────────────────────────
 
 interface PopoverFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: "dark" | "light";
@@ -638,29 +628,23 @@ interface PopoverFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const PopoverFooter = React.forwardRef<HTMLDivElement, PopoverFooterProps>(
-  function PopoverFooter(
-    { theme = "dark", className, children, ...props },
-    ref,
-  ) {
+  function PopoverFooter({ theme = "dark", className, children, ...props }, ref) {
+    const borderColor = theme === "dark" ? "border-dark-divider" : "border-light-divider";
     return (
       <div
         ref={ref}
-        className={cn(
-          "mt-3 flex items-center justify-end gap-2 pt-3",
-          theme === "dark"
-            ? "border-t border-white/[0.08]"
-            : "border-t border-black/[0.08]",
-          className,
-        )}
+        className={cn("mt-3 flex items-center justify-end gap-2 pt-3 border-t", borderColor, className)}
         {...props}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 PopoverFooter.displayName = "PopoverFooter";
+
+// ─── Popover Button ──────────────────────────────────────────────────────
 
 interface PopoverButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "outline" | "ghost" | "solid";
@@ -670,120 +654,48 @@ interface PopoverButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const PopoverButton = React.forwardRef<HTMLButtonElement, PopoverButtonProps>(
-  function PopoverButton(
-    {
-      variant = "default",
-      size = "md",
-      theme = "dark",
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) {
-    const btnVariants = cva(
-      [
-        "inline-flex",
-        "items-center",
-        "justify-center",
-        "gap-1.5",
-        "font-medium",
-        "transition-all",
-        "duration-150",
-        "outline-none",
-        "focus-visible:ring-2",
-        "disabled:cursor-not-allowed",
-        "disabled:opacity-50",
-      ],
-      {
-        variants: {
-          variant: {
-            default: "",
-            outline: "border",
-            ghost: "",
-            solid: "",
-          },
-          size: {
-            sm: "h-7 px-2.5 text-xs rounded-md",
-            md: "h-8 px-3.5 text-xs rounded-md",
-            lg: "h-9 px-4 text-sm rounded-aphelion-lg",
-          },
-          theme: {
-            dark: "",
-            light: "",
-          },
-        },
-        compoundVariants: [
-          {
-            theme: "dark",
-            variant: "default",
-            className:
-              "bg-white/[0.06] text-white hover:bg-white/[0.10] border border-white/[0.08] focus-visible:ring-white/20",
-          },
-          {
-            theme: "dark",
-            variant: "outline",
-            className:
-              "bg-transparent text-white hover:bg-white/[0.04] border border-white/[0.12] focus-visible:ring-white/20",
-          },
-          {
-            theme: "dark",
-            variant: "ghost",
-            className:
-              "bg-transparent text-white hover:bg-white/[0.04] border border-transparent focus-visible:ring-white/20",
-          },
-          {
-            theme: "dark",
-            variant: "solid",
-            className:
-              "bg-white text-black hover:bg-white/90 border border-transparent focus-visible:ring-white/20",
-          },
-          {
-            theme: "light",
-            variant: "default",
-            className:
-              "bg-black/[0.06] text-black hover:bg-black/[0.10] border border-black/[0.08] focus-visible:ring-black/20",
-          },
-          {
-            theme: "light",
-            variant: "outline",
-            className:
-              "bg-transparent text-black hover:bg-black/[0.04] border border-black/[0.12] focus-visible:ring-black/20",
-          },
-          {
-            theme: "light",
-            variant: "ghost",
-            className:
-              "bg-transparent text-black hover:bg-black/[0.04] border border-transparent focus-visible:ring-black/20",
-          },
-          {
-            theme: "light",
-            variant: "solid",
-            className:
-              "bg-black text-white hover:bg-black/90 border border-transparent focus-visible:ring-black/20",
-          },
-        ],
-        defaultVariants: {
-          variant: "default",
-          size: "md",
-          theme: "dark",
-        },
-      },
-    );
+  function PopoverButton({ variant = "default", size = "md", theme = "dark", className, children, ...props }, ref) {
+    const isDark = theme === "dark";
+    const variantClasses: Record<string, string> = {
+      default: isDark
+        ? "bg-dark-muted text-dark-text-primary hover:bg-dark-hover border border-dark-border focus-visible:ring-dark-focus-ring"
+        : "bg-light-muted text-light-text-primary hover:bg-light-hover border border-light-border focus-visible:ring-light-focus-ring",
+      outline: isDark
+        ? "bg-transparent text-dark-text-primary hover:bg-dark-hover border border-dark-border-strong focus-visible:ring-dark-focus-ring"
+        : "bg-transparent text-light-text-primary hover:bg-light-hover border border-light-border-strong focus-visible:ring-light-focus-ring",
+      ghost: isDark
+        ? "bg-transparent text-dark-text-primary hover:bg-dark-hover border border-transparent focus-visible:ring-dark-focus-ring"
+        : "bg-transparent text-light-text-primary hover:bg-light-hover border border-transparent focus-visible:ring-light-focus-ring",
+      solid: isDark
+        ? "bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover border border-transparent focus-visible:ring-dark-focus-ring"
+        : "bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover border border-transparent focus-visible:ring-light-focus-ring",
+    };
+    const sizeClasses: Record<string, string> = {
+      sm: "h-7 px-2.5 text-xs rounded-aphelion-md",
+      md: "h-8 px-3.5 text-xs rounded-aphelion-md",
+      lg: "h-9 px-4 text-sm rounded-aphelion-lg",
+    };
 
     return (
       <button
         ref={ref}
-        className={cn(btnVariants({ variant, size, theme }), className)}
+        className={cn(
+          "inline-flex items-center justify-center gap-1.5 font-medium transition-all duration-150 outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50",
+          variantClasses[variant],
+          sizeClasses[size],
+          className
+        )}
         {...props}
       >
         {children}
       </button>
     );
-  },
+  }
 );
 
 PopoverButton.displayName = "PopoverButton";
+
+// ─── Popover Checkbox ────────────────────────────────────────────────────
 
 interface PopoverCheckboxProps {
   checked?: boolean;
@@ -793,68 +705,33 @@ interface PopoverCheckboxProps {
   className?: string;
 }
 
-function PopoverCheckbox({
-  checked,
-  onChange,
-  label,
-  theme = "dark",
-  className,
-}: PopoverCheckboxProps) {
+function PopoverCheckbox({ checked, onChange, label, theme = "dark", className }: PopoverCheckboxProps) {
+  const isDark = theme === "dark";
+  const checkboxUnchecked = isDark ? "border-dark-border bg-transparent hover:border-dark-border-strong" : "border-light-border bg-transparent hover:border-light-border-strong";
+  const checkboxChecked = isDark ? "border-dark-primary bg-dark-primary text-dark-primary-foreground" : "border-light-primary bg-light-primary text-light-primary-foreground";
+  const labelColor = isDark ? "text-dark-text-secondary group-hover:text-dark-text-primary" : "text-light-text-secondary group-hover:text-light-text-primary";
+
   return (
-    <label
-      className={cn(
-        "group inline-flex cursor-pointer items-center gap-2.5 select-none",
-        className,
-      )}
-    >
+    <label className={cn("group inline-flex cursor-pointer items-center gap-2.5 select-none", className)}>
       <button
         type="button"
         onClick={() => onChange?.(!checked)}
-        className={cn(
-          "inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border transition-all duration-150",
-          theme === "dark"
-            ? checked
-              ? "border-white bg-white text-black"
-              : "border-white/20 bg-transparent hover:border-white/40"
-            : checked
-              ? "border-black bg-black text-white"
-              : "border-black/20 bg-transparent hover:border-black/40",
-        )}
+        className={cn("inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-aphelion-xs border transition-all duration-150", checked ? checkboxChecked : checkboxUnchecked)}
         aria-checked={checked}
         role="checkbox"
       >
         {checked && (
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         )}
       </button>
-      {label && (
-        <span
-          className={cn(
-            "text-sm transition-colors",
-            theme === "dark"
-              ? "text-white/70 group-hover:text-white"
-              : "text-black/70 group-hover:text-black",
-          )}
-        >
-          {label}
-        </span>
-      )}
+      {label && <span className={cn("text-sm transition-colors", labelColor)}>{label}</span>}
     </label>
   );
 }
+
+// ─── Popover Notification ────────────────────────────────────────────────
 
 interface PopoverNotificationProps {
   avatar?: string;
@@ -870,96 +747,37 @@ interface PopoverNotificationProps {
 }
 
 function PopoverNotification({
-  avatar,
-  avatarFallback,
-  name,
-  action,
-  target,
-  time,
-  unread = false,
-  theme = "dark",
-  onClick,
-  className,
+  avatar, avatarFallback, name, action, target, time, unread = false, theme = "dark", onClick, className,
 }: PopoverNotificationProps) {
   const [imgError, setImgError] = React.useState(false);
+  const isDark = theme === "dark";
 
   return (
     <div
       onClick={onClick}
-      className={cn(
-        "-mx-1 flex cursor-pointer items-start gap-3 rounded-aphelion-lg px-1 py-3 transition-colors",
-        theme === "dark" ? "hover:bg-white/[0.03]" : "hover:bg-black/[0.03]",
-        className,
-      )}
+      className={cn("-mx-1 flex cursor-pointer items-start gap-3 rounded-aphelion-lg px-1 py-3 transition-colors", isDark ? "hover:bg-dark-hover" : "hover:bg-light-hover", className)}
     >
-      <div
-        className={cn(
-          "inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-medium",
-          theme === "dark"
-            ? "bg-white/10 text-white/70"
-            : "bg-black/10 text-black/70",
-        )}
-      >
+      <div className={cn("inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-aphelion-full text-xs font-medium", isDark ? "bg-dark-muted text-dark-text-secondary" : "bg-light-muted text-light-text-secondary")}>
         {avatar && !imgError ? (
-          <img
-            src={avatar}
-            alt={name}
-            className="h-full w-full object-cover"
-            onError={() => setImgError(true)}
-          />
+          <img src={avatar} alt={name} className="h-full w-full object-cover" onError={() => setImgError(true)} />
         ) : (
-          avatarFallback?.charAt(0).toUpperCase() ||
-          name.charAt(0).toUpperCase()
+          avatarFallback?.charAt(0).toUpperCase() || name.charAt(0).toUpperCase()
         )}
       </div>
-
       <div className="min-w-0 flex-1">
         <p className="text-sm leading-relaxed">
-          <span
-            className={
-              theme === "dark"
-                ? "font-medium text-white"
-                : "font-medium text-black"
-            }
-          >
-            {name}
-          </span>{" "}
-          <span
-            className={theme === "dark" ? "text-white/60" : "text-black/60"}
-          >
-            {action}
-          </span>{" "}
-          <span
-            className={
-              theme === "dark"
-                ? "font-medium text-white"
-                : "font-medium text-black"
-            }
-          >
-            {target}
-          </span>
+          <span className={isDark ? "font-medium text-dark-text-primary" : "font-medium text-light-text-primary"}>{name}</span>{" "}
+          <span className={isDark ? "text-dark-text-secondary" : "text-light-text-secondary"}>{action}</span>{" "}
+          <span className={isDark ? "font-medium text-dark-text-primary" : "font-medium text-light-text-primary"}>{target}</span>
         </p>
-        <p
-          className={cn(
-            "mt-0.5 text-xs",
-            theme === "dark" ? "text-white/35" : "text-black/35",
-          )}
-        >
-          {time}
-        </p>
+        <p className={cn("mt-0.5 text-xs", isDark ? "text-dark-text-muted" : "text-light-text-muted")}>{time}</p>
       </div>
-
-      {unread && (
-        <span
-          className={cn(
-            "mt-2 h-2 w-2 shrink-0 rounded-full",
-            theme === "dark" ? "bg-white" : "bg-black",
-          )}
-        />
-      )}
+      {unread && <span className={cn("mt-2 h-2 w-2 shrink-0 rounded-aphelion-full", isDark ? "bg-dark-primary" : "bg-light-primary")} />}
     </div>
   );
 }
+
+// ─── Popover Share ───────────────────────────────────────────────────────
 
 interface PopoverShareProps {
   url?: string;
@@ -968,13 +786,9 @@ interface PopoverShareProps {
   className?: string;
 }
 
-function PopoverShare({
-  url = "https://example.com",
-  onCopy,
-  theme = "dark",
-  className,
-}: PopoverShareProps) {
+function PopoverShare({ url = "https://example.com", onCopy, theme = "dark", className }: PopoverShareProps) {
   const [copied, setCopied] = React.useState(false);
+  const isDark = theme === "dark";
 
   const handleCopy = () => {
     if (url) {
@@ -986,158 +800,48 @@ function PopoverShare({
     }
   };
 
-  const iconBtn = cva(
-    [
-      "inline-flex",
-      "h-10",
-      "w-10",
-      "items-center",
-      "justify-center",
-      "rounded-aphelion-lg",
-      "border",
-      "transition-all",
-      "duration-150",
-    ],
-    {
-      variants: {
-        theme: {
-          dark: [
-            "border-white/[0.08]",
-            "text-white/60",
-            "hover:text-white",
-            "hover:bg-white/[0.04]",
-            "hover:border-white/[0.12]",
-          ],
-          light: [
-            "border-black/[0.08]",
-            "text-black/60",
-            "hover:text-black",
-            "hover:bg-black/[0.04]",
-            "hover:border-black/[0.12]",
-          ],
-        },
-      },
-      defaultVariants: {
-        theme: "dark",
-      },
-    },
+  const iconBtnClasses = cn(
+    "inline-flex h-10 w-10 items-center justify-center rounded-aphelion-lg border transition-all duration-150",
+    isDark
+      ? "border-dark-border text-dark-text-secondary hover:text-dark-text-primary hover:bg-dark-hover hover:border-dark-border-strong"
+      : "border-light-border text-light-text-secondary hover:text-light-text-primary hover:bg-light-hover hover:border-light-border-strong"
+  );
+
+  const urlBarClasses = cn(
+    "flex items-center gap-2 rounded-aphelion-lg border px-3 py-2.5",
+    isDark ? "border-dark-border bg-dark-muted" : "border-light-border bg-light-muted"
+  );
+
+  const copyBtnClasses = cn(
+    "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-aphelion-md transition-colors",
+    isDark
+      ? "text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary"
+      : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary"
   );
 
   return (
     <div className={cn("space-y-4", className)}>
       <div className="flex items-center justify-center gap-3">
-        <button
-          type="button"
-          className={cn(iconBtn({ theme }))}
-          aria-label="Embed code"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M16 18l6-6-6-6" />
-            <path d="M8 6l-6 6 6 6" />
-          </svg>
-        </button>
-
-        <button
-          type="button"
-          className={cn(iconBtn({ theme }))}
-          aria-label="Share on X"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </button>
-
-        <button
-          type="button"
-          className={cn(iconBtn({ theme }))}
-          aria-label="Share on Facebook"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-          </svg>
-        </button>
-
-        <button
-          type="button"
-          className={cn(iconBtn({ theme }))}
-          aria-label="Share via email"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect width="20" height="16" x="2" y="4" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
-        </button>
+        {["embed", "x", "facebook", "email"].map((type) => (
+          <button key={type} type="button" className={iconBtnClasses} aria-label={`Share via ${type}`}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {type === "embed" && <><path d="M16 18l6-6-6-6" /><path d="M8 6l-6 6 6 6" /></>}
+              {type === "x" && <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor" />}
+              {type === "facebook" && <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor" />}
+              {type === "email" && <><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></>}
+            </svg>
+          </button>
+        ))}
       </div>
-
-      <div
-        className={cn(
-          "flex items-center gap-2 rounded-aphelion-lg border px-3 py-2.5",
-          theme === "dark"
-            ? "border-white/[0.08] bg-white/[0.02]"
-            : "border-black/[0.08] bg-black/[0.02]",
-        )}
-      >
-        <span
-          className={cn(
-            "flex-1 truncate text-sm",
-            theme === "dark" ? "text-white/70" : "text-black/70",
-          )}
-        >
-          {url}
-        </span>
-        <button
-          type="button"
-          onClick={handleCopy}
-          className={cn(
-            "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors",
-            theme === "dark"
-              ? "text-aphelion-light-text-primary hover:bg-white/[0.08] hover:text-white"
-              : "text-black/40 hover:bg-black/[0.08] hover:text-black",
-          )}
-          aria-label="Copy URL"
-        >
+      <div className={urlBarClasses}>
+        <span className={cn("flex-1 truncate text-sm", isDark ? "text-dark-text-secondary" : "text-light-text-secondary")}>{url}</span>
+        <button type="button" onClick={handleCopy} className={copyBtnClasses} aria-label="Copy URL">
           {copied ? (
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 6L9 17l-5-5" />
             </svg>
           ) : (
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
               <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
             </svg>
@@ -1147,6 +851,8 @@ function PopoverShare({
     </div>
   );
 }
+
+// ─── Popover Stepper ─────────────────────────────────────────────────────
 
 interface PopoverStepperProps {
   steps: { title: string; description: string }[];
@@ -1158,122 +864,48 @@ interface PopoverStepperProps {
   className?: string;
 }
 
-function PopoverStepper({
-  steps,
-  currentStep,
-  onNext,
-  onPrev,
-  onFinish,
-  theme = "dark",
-  className,
-}: PopoverStepperProps) {
+function PopoverStepper({ steps, currentStep, onNext, onPrev, onFinish, theme = "dark", className }: PopoverStepperProps) {
   const step = steps[currentStep];
   const isFirst = currentStep === 0;
   const isLast = currentStep === steps.length - 1;
+  const isDark = theme === "dark";
 
   return (
     <div className={cn("space-y-4", className)}>
       <div>
-        <h4
-          className={cn(
-            "text-sm font-semibold",
-            theme === "dark" ? "text-white" : "text-black",
-          )}
-        >
-          {step.title}
-        </h4>
-        <p
-          className={cn(
-            "mt-1.5 text-xs leading-relaxed",
-            theme === "dark" ? "text-white/50" : "text-black/50",
-          )}
-        >
-          {step.description}
-        </p>
+        <h4 className={cn("text-sm font-semibold", isDark ? "text-dark-text-primary" : "text-light-text-primary")}>{step.title}</h4>
+        <p className={cn("mt-1.5 text-xs leading-relaxed", isDark ? "text-dark-text-muted" : "text-light-text-muted")}>{step.description}</p>
       </div>
-
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           {steps.map((_, i) => (
             <span
               key={i}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
+                "h-1.5 rounded-aphelion-full transition-all duration-300",
                 i === currentStep
-                  ? theme === "dark"
-                    ? "w-4 bg-white"
-                    : "w-4 bg-black"
+                  ? isDark ? "w-4 bg-dark-primary" : "w-4 bg-light-primary"
                   : i < currentStep
-                    ? theme === "dark"
-                      ? "w-1.5 bg-white/40"
-                      : "w-1.5 bg-black/40"
-                    : theme === "dark"
-                      ? "w-1.5 bg-white/15"
-                      : "w-1.5 bg-black/15",
+                    ? isDark ? "w-1.5 bg-dark-text-secondary" : "w-1.5 bg-light-text-secondary"
+                    : isDark ? "w-1.5 bg-dark-muted" : "w-1.5 bg-light-muted"
               )}
             />
           ))}
         </div>
-
-        <span
-          className={cn(
-            "text-xs tabular-nums",
-            theme === "dark" ? "text-white/35" : "text-black/35",
-          )}
-        >
-          {currentStep + 1}/{steps.length}
-        </span>
+        <span className={cn("text-xs tabular-nums", isDark ? "text-dark-text-muted" : "text-light-text-muted")}>{currentStep + 1}/{steps.length}</span>
       </div>
-
       <div className="flex items-center justify-between pt-1">
-        <PopoverButton
-          variant="ghost"
-          size="sm"
-          theme={theme}
-          onClick={onPrev}
-          disabled={isFirst}
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+        <PopoverButton variant="ghost" size="sm" theme={theme} onClick={onPrev} disabled={isFirst}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </PopoverButton>
-
         {isLast ? (
-          <PopoverButton
-            variant="solid"
-            size="sm"
-            theme={theme}
-            onClick={onFinish}
-          >
-            Finish
-          </PopoverButton>
+          <PopoverButton variant="solid" size="sm" theme={theme} onClick={onFinish}>Finish</PopoverButton>
         ) : (
-          <PopoverButton
-            variant="solid"
-            size="sm"
-            theme={theme}
-            onClick={onNext}
-          >
+          <PopoverButton variant="solid" size="sm" theme={theme} onClick={onNext}>
             Next
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </PopoverButton>
@@ -1282,6 +914,8 @@ function PopoverStepper({
     </div>
   );
 }
+
+// ─── Popover Form Row ────────────────────────────────────────────────────
 
 interface PopoverFormRowProps {
   label: string;
@@ -1292,24 +926,11 @@ interface PopoverFormRowProps {
   className?: string;
 }
 
-function PopoverFormRow({
-  label,
-  value,
-  onChange,
-  placeholder,
-  theme = "dark",
-  className,
-}: PopoverFormRowProps) {
+function PopoverFormRow({ label, value, onChange, placeholder, theme = "dark", className }: PopoverFormRowProps) {
+  const isDark = theme === "dark";
   return (
     <div className={cn("flex items-center gap-4", className)}>
-      <label
-        className={cn(
-          "w-[100px] shrink-0 text-sm font-medium",
-          theme === "dark" ? "text-white" : "text-black",
-        )}
-      >
-        {label}
-      </label>
+      <label className={cn("w-[100px] shrink-0 text-sm font-medium", isDark ? "text-dark-text-primary" : "text-light-text-primary")}>{label}</label>
       <input
         type="text"
         value={value}
@@ -1317,14 +938,16 @@ function PopoverFormRow({
         placeholder={placeholder}
         className={cn(
           "h-9 min-w-0 flex-1 rounded-aphelion-lg border px-3 text-sm transition-all duration-150 outline-none",
-          theme === "dark"
-            ? "border-white/[0.08] bg-white/[0.03] text-white placeholder:text-white/25 focus:border-white/20 focus:ring-1 focus:ring-white/10"
-            : "border-black/[0.08] bg-black/[0.03] text-black placeholder:text-black/25 focus:border-black/20 focus:ring-1 focus:ring-black/10",
+          isDark
+            ? "border-dark-input-border bg-dark-muted text-dark-text-primary placeholder:text-dark-text-muted focus:border-dark-border-strong focus:ring-1 focus:ring-dark-focus-ring"
+            : "border-light-input-border bg-light-muted text-light-text-primary placeholder:text-light-text-muted focus:border-light-border-strong focus:ring-1 focus:ring-light-focus-ring"
         )}
       />
     </div>
   );
 }
+
+// ─── Popover Divider ─────────────────────────────────────────────────────
 
 interface PopoverDividerProps {
   theme?: "dark" | "light";
@@ -1332,20 +955,14 @@ interface PopoverDividerProps {
 }
 
 function PopoverDivider({ theme = "dark", className }: PopoverDividerProps) {
-  return (
-    <div
-      className={cn(
-        "my-3 h-px w-full",
-        theme === "dark" ? "bg-white/[0.06]" : "bg-black/[0.06]",
-        className,
-      )}
-    />
-  );
+  const dividerColor = theme === "dark" ? "bg-dark-divider" : "bg-light-divider";
+  return <div className={cn("my-3 h-px w-full", dividerColor, className)} />;
 }
+
+// ─── usePopover Hook ─────────────────────────────────────────────────────
 
 export function usePopover(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);
-
   return {
     open,
     setOpen,
@@ -1354,6 +971,8 @@ export function usePopover(defaultOpen = false) {
     closePopover: () => setOpen(false),
   };
 }
+
+// ─── Exports ─────────────────────────────────────────────────────────────
 
 export {
   Popover,

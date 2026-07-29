@@ -33,8 +33,8 @@ const dialogData = {
   description="Make changes to your profile here."
   footer={
     <>
-      <button onClick={() => onOpenChange(false)}>Cancel</button>
-      <button>Save</button>
+      <Button onClick={() => onOpenChange(false)}>Cancel</Button>
+      <Button>Save</Button>
     </>
   }
 />`,
@@ -55,8 +55,8 @@ const dialogData = {
   description="Make changes to your profile here."
   footer={
     <>
-      <button className="text-sm text-neutral-400 hover:text-white transition-colors">Cancel</button>
-      <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">Save</button>
+      <Button className="text-sm text-neutral-400 hover:text-white transition-colors">Cancel</Button>
+      <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">Save</Button>
     </>
   }
 />`,
@@ -67,12 +67,12 @@ const dialogData = {
                 description="Make changes to your profile here."
                 footer={
                   <>
-                    <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
+                    <Button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
-                    </button>
-                    <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
+                    </Button>
+                    <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                       Save
-                    </button>
+                    </Button>
                   </>
                 }
               />
@@ -96,8 +96,8 @@ const dialogData = {
   description="Fill in your details to get started."
   footer={
     <>
-      <button>Cancel</button>
-      <button>Create Account</button>
+      <Button>Cancel</Button>
+      <Button>Create Account</Button>
     </>
   }
 >
@@ -114,12 +114,12 @@ const dialogData = {
                 description="Fill in your details to get started."
                 footer={
                   <>
-                    <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
+                    <Button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
-                    </button>
-                    <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
+                    </Button>
+                    <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                       Create Account
-                    </button>
+                    </Button>
                   </>
                 }
               >
@@ -159,7 +159,7 @@ const dialogData = {
   title="Important Notice"
   description="You must click a button to close this dialog."
   footer={
-    <button>I Understand</button>
+    <Button>I Understand</Button>
   }
 />`,
           preview: (
@@ -169,9 +169,9 @@ const dialogData = {
                 title="Important Notice"
                 description="You must click a button to close this dialog."
                 footer={
-                  <button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
+                  <Button className="text-sm bg-white text-black px-4 py-2 rounded-aphelion-lg font-medium hover:bg-white/90 transition-colors">
                     I Understand
-                  </button>
+                  </Button>
                 }
               />
             </ComponentPreview>
@@ -197,8 +197,8 @@ const dialogData = {
   description="Are you sure you want to delete your account? This action cannot be undone."
   footer={
     <>
-      <button>Cancel</button>
-      <button>Delete Account</button>
+      <Button>Cancel</Button>
+      <Button>Delete Account</Button>
     </>
   }
 >
@@ -216,12 +216,12 @@ const dialogData = {
                 description="Are you sure you want to delete your account? This action cannot be undone."
                 footer={
                   <>
-                    <button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
+                    <Button className="text-sm text-neutral-400 hover:text-white transition-colors px-4 py-2">
                       Cancel
-                    </button>
-                    <button className="text-sm bg-red-600 text-white px-4 py-2 rounded-aphelion-lg font-medium hover:bg-red-500 transition-colors">
+                    </Button>
+                    <Button className="text-sm bg-red-600 text-white px-4 py-2 rounded-aphelion-lg font-medium hover:bg-red-500 transition-colors">
                       Delete Account
-                    </button>
+                    </Button>
                   </>
                 }
               >

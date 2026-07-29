@@ -9,6 +9,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Avatar Variants ─────────────────────────────────────────────────────
 
 const avatarVariants = cva(
   [
@@ -19,13 +20,15 @@ const avatarVariants = cva(
     'shrink-0',
     'overflow-visible',
     'border',
-    'border-white/[0.08]',
-    'bg-[#111]',
     'transition-all',
     'duration-200',
   ],
   {
     variants: {
+      theme: {
+        light: 'border-light-border bg-light-muted',
+        dark: 'border-dark-border bg-dark-muted',
+      },
       size: {
         xs: 'h-6 w-6 text-[10px]',
         sm: 'h-8 w-8 text-xs',
@@ -36,24 +39,26 @@ const avatarVariants = cva(
         '3xl': 'h-20 w-20 text-2xl',
       },
       shape: {
-        circle: 'rounded-full',
+        circle: 'rounded-aphelion-full',
         square: 'rounded-aphelion-lg',
         rounded: 'rounded-aphelion-xl',
       },
     },
     defaultVariants: {
+      theme: 'dark',
       size: 'md',
       shape: 'circle',
     },
   }
 );
 
+// ─── Status Variants ─────────────────────────────────────────────────────
+
 const statusVariants = cva(
   [
     'absolute',
-    'rounded-full',
+    'rounded-aphelion-full',
     'border-2',
-    'border-black',
     'transition-all',
     'duration-200',
     'pointer-events-none',
@@ -61,6 +66,10 @@ const statusVariants = cva(
   ],
   {
     variants: {
+      theme: {
+        light: 'border-light-background',
+        dark: 'border-dark-background',
+      },
       size: {
         xs: 'h-1.5 w-1.5',
         sm: 'h-2 w-2',
@@ -71,19 +80,49 @@ const statusVariants = cva(
         '3xl': 'h-5 w-5',
       },
       status: {
-        online: 'bg-green-500',
-        offline: 'bg-gray-500',
-        away: 'bg-yellow-500',
-        busy: 'bg-red-500',
-        invisible: 'bg-white/10',
+        online: 'bg-light-success',
+        offline: 'bg-light-text-muted',
+        away: 'bg-light-warning',
+        busy: 'bg-light-destructive',
+        invisible: 'bg-light-muted',
       },
     },
+    compoundVariants: [
+      {
+        theme: 'dark',
+        status: 'online',
+        className: 'bg-dark-success',
+      },
+      {
+        theme: 'dark',
+        status: 'offline',
+        className: 'bg-dark-text-muted',
+      },
+      {
+        theme: 'dark',
+        status: 'away',
+        className: 'bg-dark-warning',
+      },
+      {
+        theme: 'dark',
+        status: 'busy',
+        className: 'bg-dark-destructive',
+      },
+      {
+        theme: 'dark',
+        status: 'invisible',
+        className: 'bg-dark-muted',
+      },
+    ],
     defaultVariants: {
+      theme: 'dark',
       size: 'md',
       status: 'online',
     },
   }
 );
+
+// ─── Group Variants ──────────────────────────────────────────────────────
 
 const groupVariants = cva(['flex', 'items-center'], {
   variants: {
@@ -103,8 +142,10 @@ const groupVariants = cva(['flex', 'items-center'], {
   },
 });
 
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface AvatarProps extends VariantProps<typeof avatarVariants> {
+  theme?: 'light' | 'dark';
   src?: string;
   alt?: string;
   fallback?: string;
@@ -117,6 +158,7 @@ export interface AvatarProps extends VariantProps<typeof avatarVariants> {
 }
 
 export interface AvatarGroupProps extends VariantProps<typeof groupVariants> {
+  theme?: 'light' | 'dark';
   children?: React.ReactNode;
   max?: number;
   total?: number;
@@ -125,6 +167,7 @@ export interface AvatarGroupProps extends VariantProps<typeof groupVariants> {
   className?: string;
 }
 
+// ─── Status Offset ───────────────────────────────────────────────────────
 
 const statusOffset: Record<string, string> = {
   'bottom-right': 'translate-x-[25%] translate-y-[25%] bottom-0 right-0',
@@ -133,9 +176,11 @@ const statusOffset: Record<string, string> = {
   'top-left': '-translate-x-[25%] -translate-y-[25%] top-0 left-0',
 };
 
+// ─── Avatar Component ────────────────────────────────────────────────────
 
 const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
   {
+    theme = 'dark',
     size = 'md',
     shape = 'circle',
     src,
@@ -165,15 +210,21 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
   const showImage = src && !error;
   const showFallback = fallback || alt || '?';
 
+  const shapeRadius = {
+    circle: 'rounded-aphelion-full',
+    square: 'rounded-aphelion-lg',
+    rounded: 'rounded-aphelion-xl',
+  };
+
+  const fallbackTextColor =
+    theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+
   return (
     <div
-      style={{
-        fontFamily: 'sans-serif',
-      }}
       ref={ref}
       className={cn(
-        avatarVariants({ size, shape }),
-        onClick && 'cursor-pointer hover:border-white/[0.14]',
+        avatarVariants({ theme, size, shape }),
+        onClick && 'cursor-pointer hover:opacity-90',
         className
       )}
       onClick={onClick}
@@ -186,9 +237,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
             alt={alt || 'Avatar'}
             className={cn(
               'h-full w-full object-cover',
-              shape === 'circle' && 'rounded-full',
-              shape === 'square' && 'rounded-aphelion-lg',
-              shape === 'rounded' && 'rounded-aphelion-xl',
+              shapeRadius[shape || 'circle'],
               imageClassName
             )}
             onError={() => setError(true)}
@@ -197,10 +246,9 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
         ) : (
           <span
             className={cn(
-              "flex h-full w-full select-none items-center justify-center font-['inter-semi'] text-white/50",
-              shape === 'circle' && 'rounded-full',
-              shape === 'square' && 'rounded-aphelion-lg',
-              shape === 'rounded' && 'rounded-aphelion-xl',
+              'flex h-full w-full select-none items-center justify-center font-medium',
+              shapeRadius[shape || 'circle'],
+              fallbackTextColor,
               fallbackClassName
             )}
           >
@@ -213,7 +261,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
       {status && (
         <span
           className={cn(
-            statusVariants({ size, status }),
+            statusVariants({ theme, size, status }),
             statusOffset[statusPosition]
           )}
           aria-label={`Status: ${status}`}
@@ -225,10 +273,12 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(function Avatar(
 
 Avatar.displayName = 'Avatar';
 
+// ─── Avatar Group ────────────────────────────────────────────────────────
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   function AvatarGroup(
     {
+      theme = 'dark',
       direction = 'horizontal',
       spacing = 'normal',
       children,
@@ -248,6 +298,13 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
     const remaining = total ?? (showMax ? childrenArray.length - max : 0);
     const remainingLabel = remainingText || `+${remaining}`;
 
+    const remainingBgColor =
+      theme === 'light' ? 'bg-light-muted' : 'bg-dark-muted';
+    const remainingBorderColor =
+      theme === 'light' ? 'border-light-border' : 'border-dark-border';
+    const remainingTextColor =
+      theme === 'light' ? 'text-light-text-muted' : 'text-dark-text-muted';
+
     return (
       <div
         ref={ref}
@@ -265,7 +322,10 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         {showMax && remaining > 0 && (
           <div
             className={cn(
-              "relative z-10 flex items-center justify-center rounded-full border border-white/[0.08] bg-[#111] font-['inter-semi'] text-[11px] text-white/50",
+              'relative z-10 flex items-center justify-center rounded-aphelion-full border font-medium text-[11px]',
+              remainingBgColor,
+              remainingBorderColor,
+              remainingTextColor,
               remainingClassName
             )}
             style={{
@@ -283,6 +343,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
 
 AvatarGroup.displayName = 'AvatarGroup';
 
+// ─── useAvatar Hook ──────────────────────────────────────────────────────
 
 export function useAvatar() {
   const [src, setSrc] = React.useState<string | undefined>(undefined);

@@ -25,31 +25,36 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-light-primary dark:bg-dark-primary text-light-primary-foreground dark:text-dark-primary-foreground border border-light-primary-border dark:border-dark-primary-border hover:bg-light-primary-hover dark:hover:bg-dark-primary-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-primary text-light-primary-foreground border border-light-primary-border hover:bg-light-primary-hover focus-visible:ring-light-focus-ring',
 
         secondary:
-          'bg-light-secondary dark:bg-dark-secondary text-light-secondary-foreground dark:text-dark-secondary-foreground border border-light-secondary-border dark:border-dark-secondary-border hover:bg-light-secondary-hover dark:hover:bg-dark-secondary-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-secondary text-light-secondary-foreground border border-light-secondary-border hover:bg-light-secondary-hover focus-visible:ring-light-focus-ring',
 
         outline:
-          'bg-transparent text-light-text-primary dark:text-dark-text-primary border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-transparent text-light-text-primary border border-light-border hover:bg-light-hover focus-visible:ring-light-focus-ring',
 
         ghost:
-          'bg-transparent text-light-text-primary dark:text-dark-text-primary hover:bg-light-hover dark:hover:bg-dark-hover focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-transparent text-light-text-primary hover:bg-light-hover focus-visible:ring-light-focus-ring',
 
         destructive:
-          'bg-light-destructive dark:bg-dark-destructive text-light-destructive-foreground dark:text-dark-destructive-foreground border border-light-destructive-border dark:border-dark-destructive-border hover:bg-light-destructive/80 dark:hover:bg-dark-destructive/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-destructive text-light-destructive-foreground border border-light-destructive-border hover:bg-light-destructive/80 focus-visible:ring-light-focus-ring',
 
         success:
-          'bg-light-success dark:bg-dark-success text-light-success-foreground dark:text-dark-success-foreground border border-light-success-border dark:border-dark-success-border hover:bg-light-success/80 dark:hover:bg-dark-success/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-success text-light-success-foreground border border-light-success-border hover:bg-light-success/80 focus-visible:ring-light-focus-ring',
 
         warning:
-          'bg-light-warning dark:bg-dark-warning text-light-warning-foreground dark:text-dark-warning-foreground border border-light-warning-border dark:border-dark-warning-border hover:bg-light-warning/80 dark:hover:bg-dark-warning/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-warning text-light-warning-foreground border border-light-warning-border hover:bg-light-warning/80 focus-visible:ring-light-focus-ring',
 
         info:
-          'bg-light-info dark:bg-dark-info text-light-info-foreground dark:text-dark-info-foreground border border-light-info-border dark:border-dark-info-border hover:bg-light-info/80 dark:hover:bg-dark-info/80 focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-light-info text-light-info-foreground border border-light-info-border hover:bg-light-info/80 focus-visible:ring-light-focus-ring',
 
         link:
-          'bg-transparent text-light-text-primary dark:text-dark-text-primary underline-offset-4 hover:underline focus-visible:ring-light-focus-ring dark:focus-visible:ring-dark-focus-ring',
+          'bg-transparent text-light-text-primary underline-offset-4 hover:underline focus-visible:ring-light-focus-ring',
+      },
+
+      theme: {
+        light: '',
+        dark: '',
       },
 
       size: {
@@ -73,13 +78,74 @@ const buttonVariants = cva(
       },
     },
 
+    compoundVariants: [
+      // Dark theme overrides
+      {
+        theme: 'dark',
+        variant: 'primary',
+        className:
+          'bg-dark-primary text-dark-primary-foreground border-dark-primary-border hover:bg-dark-primary-hover focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'secondary',
+        className:
+          'bg-dark-secondary text-dark-secondary-foreground border-dark-secondary-border hover:bg-dark-secondary-hover focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'outline',
+        className:
+          'text-dark-text-primary border-dark-border hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'ghost',
+        className:
+          'text-dark-text-primary hover:bg-dark-hover focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'destructive',
+        className:
+          'bg-dark-destructive text-dark-destructive-foreground border-dark-destructive-border hover:bg-dark-destructive/80 focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'success',
+        className:
+          'bg-dark-success text-dark-success-foreground border-dark-success-border hover:bg-dark-success/80 focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'warning',
+        className:
+          'bg-dark-warning text-dark-warning-foreground border-dark-warning-border hover:bg-dark-warning/80 focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'info',
+        className:
+          'bg-dark-info text-dark-info-foreground border-dark-info-border hover:bg-dark-info/80 focus-visible:ring-dark-focus-ring',
+      },
+      {
+        theme: 'dark',
+        variant: 'link',
+        className:
+          'text-dark-text-primary focus-visible:ring-dark-focus-ring',
+      },
+    ],
+
     defaultVariants: {
       variant: 'primary',
+      theme: 'light',
       size: 'md',
       radius: 'md',
     },
   }
 );
+
+// ─── Spinner ─────────────────────────────────────────────────────────────
 
 const spinnerSize = {
   xs: 12,
@@ -117,19 +183,25 @@ function Spinner({ size = 16 }: { size?: number }) {
   );
 }
 
+// ─── Types ───────────────────────────────────────────────────────────────
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  theme?: 'light' | 'dark';
   loading?: boolean;
   fullWidth?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
 
+// ─── Button Component ────────────────────────────────────────────────────
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant,
+      theme = 'light',
       size,
       radius,
       loading = false,
@@ -156,6 +228,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           buttonVariants({
             variant,
+            theme,
             size,
             radius,
           }),

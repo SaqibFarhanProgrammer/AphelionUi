@@ -14,6 +14,7 @@ import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
 import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 // ─── Demo Data ───────────────────────────────────────────────────────────
 
@@ -444,15 +445,15 @@ const accordionData = {
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={() => setOpenItems([])}>
+      <Button onClick={() => setOpenItems([])}>
         Close All
-      </button>
-      <button onClick={() => setOpenItems(["item-1"])}>
+      </Button>
+      <Button onClick={() => setOpenItems(["item-1"])}>
         Open Item 1
-      </button>
-      <button onClick={() => setOpenItems(["item-2"])}>
+      </Button>
+      <Button onClick={() => setOpenItems(["item-2"])}>
         Open Item 2
-      </button>
+      </Button>
     </div>
     <Accordion
       items={demoItems}
@@ -510,13 +511,13 @@ const hookItems = [
 return (
   <div className="space-y-4">
     <div className="flex flex-wrap gap-2">
-      <button onClick={accordion.closeAll}>Close All</button>
-      <button onClick={() => accordion.open("hook-1")}>
+      <Button onClick={accordion.closeAll}>Close All</Button>
+      <Button onClick={() => accordion.open("hook-1")}>
         Open Item 1
-      </button>
-      <button onClick={() => accordion.toggle("hook-2")}>
+      </Button>
+      <Button onClick={() => accordion.toggle("hook-2")}>
         Toggle Item 2
-      </button>
+      </Button>
     </div>
     <Accordion
       items={hookItems}
@@ -686,30 +687,30 @@ function ControlledAccordionPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={() => setOpenItems([])}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close All
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setOpenItems(['item-1'])}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 1
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setOpenItems(['item-2'])}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 2
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setOpenItems(['item-3'])}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 3
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">
         Currently open: {openItems.length ? openItems.join(', ') : 'None'}
@@ -751,30 +752,30 @@ function HookAccordionPreview() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <button
+        <Button
           onClick={accordion.closeAll}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Close All
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => accordion.open('hook-1')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 1
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => accordion.open('hook-2')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Open Item 2
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => accordion.toggle('hook-3')}
           className="rounded-aphelion-lg border border-white/10 px-3 py-1.5 text-sm transition-colors hover:bg-white/10 text-white"
         >
           Toggle Item 3
-        </button>
+        </Button>
       </div>
       <div className="text-sm text-aphelion-light-text-primary">
         Open:{' '}

@@ -1,5 +1,4 @@
-
-import React from "react";
+"use client"
 import { Avatar, AvatarGroup } from "@/registry/components/Avatar/Avatar";
 import DocsPageLayout from "@/components/docs/DocsPageLayout";
 import InstallCommand from "@/components/docs/InstallCommand";

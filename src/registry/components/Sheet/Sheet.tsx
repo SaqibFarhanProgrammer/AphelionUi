@@ -5,20 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { motion, type Transition, type Variants } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 // --- Utility ----------------------------------------------------------------
 function cn(...inputs: (string | undefined | null | boolean)[]): string {
   return twMerge(clsx(inputs));
 }
 
-// --- Variant definitions ----------------------------------------------------
+// --- Overlay Variants -------------------------------------------------------
 const overlayVariants = cva(
   ["fixed", "inset-0", "z-40", "transition-colors", "duration-300"],
   {
     variants: {
       theme: {
-        light: "bg-black/30",
-        dark: "bg-black/60",
+        light: "bg-light-background/30",
+        dark: "bg-dark-background/60",
       },
     },
     defaultVariants: {
@@ -27,13 +28,11 @@ const overlayVariants = cva(
   }
 );
 
+// --- Sheet Variants ---------------------------------------------------------
 const sheetVariants = cva(
   [
     "fixed",
     "z-50",
-    "bg-neutral-950",
-    "border-neutral-800",
-    "shadow-2xl",
     "flex",
     "flex-col",
   ],
@@ -51,13 +50,19 @@ const sheetVariants = cva(
           "sm:max-w-[420px]",
         ],
       },
+      theme: {
+        light: ["bg-light-card", "border-light-border", "shadow-aphelion-lg"],
+        dark: ["bg-dark-card", "border-dark-border", "shadow-aphelion-lg"],
+      },
     },
     defaultVariants: {
       side: "right",
+      theme: "dark",
     },
   }
 );
 
+// --- Header Variants --------------------------------------------------------
 const headerVariants = cva(
   ["flex", "items-start", "justify-between", "gap-4", "p-6", "pb-0"],
   {
@@ -73,11 +78,12 @@ const headerVariants = cva(
   }
 );
 
+// --- Title Variants ---------------------------------------------------------
 const titleVariants = cva(["text-lg", "font-semibold", "leading-tight"], {
   variants: {
     theme: {
-      light: "text-neutral-900",
-      dark: "text-white",
+      light: "text-light-text-primary",
+      dark: "text-dark-text-primary",
     },
   },
   defaultVariants: {
@@ -85,11 +91,12 @@ const titleVariants = cva(["text-lg", "font-semibold", "leading-tight"], {
   },
 });
 
+// --- Subtitle Variants ------------------------------------------------------
 const subtitleVariants = cva(["mt-1", "text-sm", "leading-relaxed"], {
   variants: {
     theme: {
-      light: "text-neutral-500",
-      dark: "text-neutral-400",
+      light: "text-light-text-muted",
+      dark: "text-dark-text-secondary",
     },
   },
   defaultVariants: {
@@ -97,6 +104,7 @@ const subtitleVariants = cva(["mt-1", "text-sm", "leading-relaxed"], {
   },
 });
 
+// --- Body Variants ----------------------------------------------------------
 const bodyVariants = cva(
   ["flex-1", "overflow-y-auto", "p-6", "scrollbar-hide"],
   {
@@ -112,6 +120,7 @@ const bodyVariants = cva(
   }
 );
 
+// --- Footer Variants --------------------------------------------------------
 const footerVariants = cva(
   ["flex", "items-center", "justify-end", "gap-3", "p-6", "pt-0"],
   {
@@ -126,6 +135,25 @@ const footerVariants = cva(
     },
   }
 );
+
+// --- Close Icon -------------------------------------------------------------
+function CloseIcon() {
+  return (
+    <svg
+      className="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
+}
 
 // --- Animation objects ------------------------------------------------------
 const overlayAnimation = {
@@ -193,7 +221,7 @@ export interface SheetProps {
   subtitleClassName?: string;
 }
 
-// --- Sheet Component ---------------------------------------------------------
+// --- Sheet Component --------------------------------------------------------
 const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
   {
     theme = "dark",
@@ -242,6 +270,12 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
 
   const anim = sheetAnimation[side ?? "right"];
 
+  const isDark = theme === "dark";
+  const descriptionColor = isDark ? "text-dark-text-secondary" : "text-light-text-secondary";
+  const closeBtnColor = isDark
+    ? "text-dark-text-muted hover:bg-dark-hover hover:text-dark-text-primary"
+    : "text-light-text-muted hover:bg-light-hover hover:text-light-text-primary";
+
   return (
     <AnimatePresence>
       {open && (
@@ -261,10 +295,9 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
             animate={anim.animate}
             exit={anim.exit}
             transition={anim.transition}
-            className={cn(sheetVariants({ side }), className)}
+            className={cn(sheetVariants({ side, theme }), className)}
             role="dialog"
             aria-modal="true"
-            style={{ fontFamily: "sans-serif" }}
           >
             {/* Close Button */}
             {showClose && (
@@ -272,26 +305,12 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
                 type="button"
                 onClick={handleClose}
                 className={cn(
-                  "absolute top-4 right-4 z-10 rounded-md p-1.5 transition-colors",
-                  theme === "dark"
-                    ? "text-neutral-500 hover:bg-neutral-800 hover:text-neutral-300"
-                    : "text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600"
+                  "absolute top-4 right-4 z-10 rounded-aphelion-md p-1.5 transition-colors",
+                  closeBtnColor
                 )}
                 aria-label="Close"
               >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <CloseIcon />
               </button>
             )}
 
@@ -329,9 +348,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
                       transition={{ duration: 0.3, delay: 0.2 }}
                       className={cn(
                         "mt-3 text-sm leading-relaxed",
-                        theme === "dark"
-                          ? "text-neutral-400"
-                          : "text-neutral-500"
+                        descriptionColor
                       )}
                     >
                       {description}
@@ -373,7 +390,7 @@ const Sheet = React.forwardRef<HTMLDivElement, SheetProps>(function Sheet(
 
 Sheet.displayName = "Sheet";
 
-// --- useSheet hook -----------------------------------------------------------
+// --- useSheet hook ----------------------------------------------------------
 export function useSheet(defaultOpen = false) {
   const [open, setOpen] = React.useState(defaultOpen);
   return {
@@ -386,3 +403,4 @@ export function useSheet(defaultOpen = false) {
 }
 
 export { Sheet, useSheet };
+export default Sheet;

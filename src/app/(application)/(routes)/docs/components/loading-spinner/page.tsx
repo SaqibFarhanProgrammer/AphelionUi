@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Spinner,
@@ -10,27 +10,27 @@ import {
   RingSpinner,
   BarsSpinner,
   InfiniteSpinner,
-} from "@/registry/components/Loading-spinner/Loading-spinner";
-import InstallCommand from "@/components/docs/InstallCommand";
-import CodeBlock from "@/components/docs/CodeBlock";
-import ComponentPreview from "@/components/docs/ComponentPreview";
-import PropsTable from "@/components/docs/PropsTable";
-import DocsSection from "@/components/docs/DocsSection";
-import DocsPageLayout from "@/components/docs/DocsPageLayout";
-import BottomNav from "@/components/docs/BottomNav";
-import DocsFooter from "@/components/docs/DocsFooter";
-import { useState } from "react";
-
+} from '@/registry/components/Loading-spinner/Loading-spinner';
+import InstallCommand from '@/components/docs/InstallCommand';
+import CodeBlock from '@/components/docs/CodeBlock';
+import ComponentPreview from '@/components/docs/ComponentPreview';
+import PropsTable from '@/components/docs/PropsTable';
+import DocsSection from '@/components/docs/DocsSection';
+import DocsPageLayout from '@/components/docs/DocsPageLayout';
+import BottomNav from '@/components/docs/BottomNav';
+import DocsFooter from '@/components/docs/DocsFooter';
+import { useState } from 'react';
+import { Button } from '@/registry/components/button/Button';
 
 const spinnerData = {
-  name: "Loading-Spinner",
-  slug: "loading-spinner",
-  title: "Loading Spinner",
+  name: 'Loading-Spinner',
+  slug: 'loading-spinner',
+  title: 'Loading Spinner',
   description:
-    "A collection of production-ready loading spinners with 8 unique variants, 5 sizes, and 2 color themes. Built with pure SVG and CSS animations — no external dependencies.",
-  category: "Feedback",
+    'A collection of production-ready loading spinners with 8 unique variants, 5 sizes, and 2 color themes. Built with pure SVG and CSS animations — no external dependencies.',
+  category: 'Feedback',
   installation: {
-    command: "shadcn@latest add aphelio/c/loading-spinner",
+    command: 'shadcn@latest add aphelio/c/loading-spinner',
   },
   usage: {
     import: `import { Spinner } from "@/components/ui/loading-spinner";`,
@@ -38,96 +38,98 @@ const spinnerData = {
   },
   sections: [
     {
-      id: "variants",
-      title: "Variants",
-      description: "Eight unique spinner styles for different contexts and aesthetics.",
+      id: 'variants',
+      title: 'Variants',
+      description:
+        'Eight unique spinner styles for different contexts and aesthetics.',
       examples: [
         {
-          label: "Default (Sunburst)",
+          label: 'Default (Sunburst)',
           code: `<Spinner variant="default" size="lg" theme="dark" />`,
           preview: <Spinner variant="default" size="lg" theme="dark" />,
         },
         {
-          label: "Circle (Rotating Arc)",
+          label: 'Circle (Rotating Arc)',
           code: `<Spinner variant="circle" size="lg" theme="dark" />`,
           preview: <Spinner variant="circle" size="lg" theme="dark" />,
         },
         {
-          label: "Pinwheel (Swirl)",
+          label: 'Pinwheel (Swirl)',
           code: `<Spinner variant="pinwheel" size="lg" theme="dark" />`,
           preview: <Spinner variant="pinwheel" size="lg" theme="dark" />,
         },
         {
-          label: "Circle Filled",
+          label: 'Circle Filled',
           code: `<Spinner variant="circle-filled" size="lg" theme="dark" />`,
           preview: <Spinner variant="circle-filled" size="lg" theme="dark" />,
         },
         {
-          label: "Ellipsis (Bouncing Dots)",
+          label: 'Ellipsis (Bouncing Dots)',
           code: `<Spinner variant="ellipsis" size="lg" theme="dark" />`,
           preview: <Spinner variant="ellipsis" size="lg" theme="dark" />,
         },
         {
-          label: "Ring (Pulsing)",
+          label: 'Ring (Pulsing)',
           code: `<Spinner variant="ring" size="lg" theme="dark" />`,
           preview: <Spinner variant="ring" size="lg" theme="dark" />,
         },
         {
-          label: "Bars (Scaling)",
+          label: 'Bars (Scaling)',
           code: `<Spinner variant="bars" size="lg" theme="dark" />`,
           preview: <Spinner variant="bars" size="lg" theme="dark" />,
         },
         {
-          label: "Infinite (Infinity)",
+          label: 'Infinite (Infinity)',
           code: `<Spinner variant="infinite" size="lg" theme="dark" />`,
           preview: <Spinner variant="infinite" size="lg" theme="dark" />,
         },
       ],
     },
     {
-      id: "sizes",
-      title: "Sizes",
-      description: "Five predefined sizes from small inline spinners to large page loaders.",
+      id: 'sizes',
+      title: 'Sizes',
+      description:
+        'Five predefined sizes from small inline spinners to large page loaders.',
       examples: [
         {
-          label: "Small (sm)",
+          label: 'Small (sm)',
           code: `<Spinner variant="default" size="sm" theme="dark" />`,
           preview: <Spinner variant="default" size="sm" theme="dark" />,
         },
         {
-          label: "Medium (md) — Default",
+          label: 'Medium (md) — Default',
           code: `<Spinner variant="default" size="md" theme="dark" />`,
           preview: <Spinner variant="default" size="md" theme="dark" />,
         },
         {
-          label: "Large (lg)",
+          label: 'Large (lg)',
           code: `<Spinner variant="default" size="lg" theme="dark" />`,
           preview: <Spinner variant="default" size="lg" theme="dark" />,
         },
         {
-          label: "Extra Large (xl)",
+          label: 'Extra Large (xl)',
           code: `<Spinner variant="default" size="xl" theme="dark" />`,
           preview: <Spinner variant="default" size="xl" theme="dark" />,
         },
         {
-          label: "2X Large (2xl)",
+          label: '2X Large (2xl)',
           code: `<Spinner variant="default" size="2xl" theme="dark" />`,
           preview: <Spinner variant="default" size="2xl" theme="dark" />,
         },
       ],
     },
     {
-      id: "themes",
-      title: "Themes",
-      description: "Dark and light themes for different background contexts.",
+      id: 'themes',
+      title: 'Themes',
+      description: 'Dark and light themes for different background contexts.',
       examples: [
         {
-          label: "Dark Theme",
+          label: 'Dark Theme',
           code: `<Spinner variant="circle" size="lg" theme="dark" />`,
           preview: <Spinner variant="circle" size="lg" theme="dark" />,
         },
         {
-          label: "Light Theme",
+          label: 'Light Theme',
           code: `<div className="rounded-aphelion-xl bg-white p-6 flex items-center justify-center">
   <Spinner variant="circle" size="lg" theme="light" />
 </div>`,
@@ -140,32 +142,32 @@ const spinnerData = {
       ],
     },
     {
-      id: "button-loading",
-      title: "Button Loading",
-      description: "Use spinners inside buttons to indicate loading states.",
+      id: 'button-loading',
+      title: 'Button Loading',
+      description: 'Use spinners inside buttons to indicate loading states.',
       examples: [
         {
-          label: "Loading Button",
-          code: `<button className="flex items-center gap-2 rounded-aphelion-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
+          label: 'Loading Button',
+          code: `<Button variant={"primary"}>
   <Spinner size="sm" variant="circle" theme="light" />
   Loading...
-</button>`,
+</Button>`,
           preview: (
-            <button className="flex items-center gap-2 rounded-aphelion-lg bg-white px-4 py-2 text-sm font-medium text-black opacity-70">
+            <Button variant={'primary'}>
               <Spinner size="sm" variant="circle" theme="light" />
               Loading...
-            </button>
+            </Button>
           ),
         },
       ],
     },
     {
-      id: "page-loader",
-      title: "Page Loader",
-      description: "Full-page loading indicators with accompanying text.",
+      id: 'page-loader',
+      title: 'Page Loader',
+      description: 'Full-page loading indicators with accompanying text.',
       examples: [
         {
-          label: "Page Loading",
+          label: 'Page Loading',
           code: `<div className="flex flex-col items-center gap-3 py-8">
   <Spinner size="xl" variant="pinwheel" theme="dark" />
   <p className="text-sm text-aphelion-light-text-primary">Loading content...</p>
@@ -173,19 +175,22 @@ const spinnerData = {
           preview: (
             <div className="flex flex-col items-center gap-3 py-8">
               <Spinner size="xl" variant="pinwheel" theme="dark" />
-              <p className="text-sm text-aphelion-light-text-primary">Loading content...</p>
+              <p className="text-sm text-aphelion-light-text-primary">
+                Loading content...
+              </p>
             </div>
           ),
         },
       ],
     },
     {
-      id: "inline-loading",
-      title: "Inline Loading",
-      description: "Compact inline spinners for form submissions and small actions.",
+      id: 'inline-loading',
+      title: 'Inline Loading',
+      description:
+        'Compact inline spinners for form submissions and small actions.',
       examples: [
         {
-          label: "Inline Spinner",
+          label: 'Inline Spinner',
           code: `<div className="flex items-center gap-2">
   <Spinner size="sm" variant="ellipsis" theme="dark" />
   <span className="text-sm text-white/60">Saving changes...</span>
@@ -200,12 +205,13 @@ const spinnerData = {
       ],
     },
     {
-      id: "individual-exports",
-      title: "Individual Exports",
-      description: "Import each spinner variant directly for tree-shaking and explicit usage.",
+      id: 'individual-exports',
+      title: 'Individual Exports',
+      description:
+        'Import each spinner variant directly for tree-shaking and explicit usage.',
       examples: [
         {
-          label: "Named Exports",
+          label: 'Named Exports',
           code: `import {
   DefaultSpinner,
   CircleSpinner,
@@ -223,35 +229,51 @@ const spinnerData = {
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <DefaultSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Default</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Default
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <CircleSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Circle</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Circle
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <PinwheelSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Pinwheel</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Pinwheel
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <CircleFilledSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Filled</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Filled
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <EllipsisSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Ellipsis</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Ellipsis
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <RingSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Ring</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Ring
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <BarsSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Bars</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Bars
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <InfiniteSpinner size="md" theme="dark" />
-                <span className="text-[10px] text-aphelion-light-text-primary">Infinite</span>
+                <span className="text-[10px] text-aphelion-light-text-primary">
+                  Infinite
+                </span>
               </div>
             </div>
           ),
@@ -259,12 +281,13 @@ const spinnerData = {
       ],
     },
     {
-      id: "interactive",
-      title: "Interactive Playground",
-      description: "Try all combinations of variant, size, and theme in real-time.",
+      id: 'interactive',
+      title: 'Interactive Playground',
+      description:
+        'Try all combinations of variant, size, and theme in real-time.',
       examples: [
         {
-          label: "Live Preview",
+          label: 'Live Preview',
           code: `const [variant, setVariant] = useState("default");
 const [size, setSize] = useState("md");
 const [theme, setTheme] = useState("dark");
@@ -277,73 +300,74 @@ const [theme, setTheme] = useState("dark");
   ],
   props: [
     {
-      name: "variant",
+      name: 'variant',
       type: "'default' | 'circle' | 'pinwheel' | 'circle-filled' | 'ellipsis' | 'ring' | 'bars' | 'infinite'",
       default: '"default"',
-      description: "Visual style of the spinner animation.",
+      description: 'Visual style of the spinner animation.',
     },
     {
-      name: "size",
+      name: 'size',
       type: "'sm' | 'md' | 'lg' | 'xl' | '2xl'",
       default: '"md"',
-      description: "Size of the spinner. Maps to 16px, 24px, 32px, 40px, 48px respectively.",
+      description:
+        'Size of the spinner. Maps to 16px, 24px, 32px, 40px, 48px respectively.',
     },
     {
-      name: "theme",
+      name: 'theme',
       type: "'dark' | 'light'",
       default: '"dark"',
-      description: "Color theme. Dark renders white spinners, light renders black spinners.",
+      description:
+        'Color theme. Dark renders white spinners, light renders black spinners.',
     },
     {
-      name: "className",
-      type: "string",
+      name: 'className',
+      type: 'string',
       default: '""',
-      description: "Additional CSS classes for custom styling.",
+      description: 'Additional CSS classes for custom styling.',
     },
   ],
 };
 
 const bottomNavItems = [
   {
-    label: "Skeleton",
-    href: "/docs/components/skeleton",
-    description: "Placeholder loading state for content.",
+    label: 'Skeleton',
+    href: '/docs/components/skeleton',
+    description: 'Placeholder loading state for content.',
   },
   {
-    label: "Progress",
-    href: "/docs/components/progress",
-    description: "Linear progress indicator component.",
+    label: 'Progress',
+    href: '/docs/components/progress',
+    description: 'Linear progress indicator component.',
   },
 ];
 
-
 function InteractiveSpinnerPreview() {
-  const [currentVariant, setCurrentVariant] = useState("default");
-  const [currentSize, setCurrentSize] = useState("md");
-  const [currentTheme, setCurrentTheme] = useState("dark");
+  const [currentVariant, setCurrentVariant] = useState('default');
+  const [currentSize, setCurrentSize] = useState('md');
+  const [currentTheme, setCurrentTheme] = useState('dark');
 
   const variants = [
-    { id: "default", label: "Default" },
-    { id: "circle", label: "Circle" },
-    { id: "pinwheel", label: "Pinwheel" },
-    { id: "circle-filled", label: "Circle Filled" },
-    { id: "ellipsis", label: "Ellipsis" },
-    { id: "ring", label: "Ring" },
-    { id: "bars", label: "Bars" },
-    { id: "infinite", label: "Infinite" },
+    { id: 'default', label: 'Default' },
+    { id: 'circle', label: 'Circle' },
+    { id: 'pinwheel', label: 'Pinwheel' },
+    { id: 'circle-filled', label: 'Circle Filled' },
+    { id: 'ellipsis', label: 'Ellipsis' },
+    { id: 'ring', label: 'Ring' },
+    { id: 'bars', label: 'Bars' },
+    { id: 'infinite', label: 'Infinite' },
   ];
 
   const sizes = [
-    { id: "sm", label: "SM" },
-    { id: "md", label: "MD" },
-    { id: "lg", label: "LG" },
-    { id: "xl", label: "XL" },
-    { id: "2xl", label: "2XL" },
+    { id: 'sm', label: 'SM' },
+    { id: 'md', label: 'MD' },
+    { id: 'lg', label: 'LG' },
+    { id: 'xl', label: 'XL' },
+    { id: '2xl', label: '2XL' },
   ];
 
   const themes = [
-    { id: "dark", label: "Dark" },
-    { id: "light", label: "Light" },
+    { id: 'dark', label: 'Dark' },
+    { id: 'light', label: 'Light' },
   ];
 
   return (
@@ -355,17 +379,17 @@ function InteractiveSpinnerPreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {variants.map((v) => (
-              <button
+              <Button
                 key={v.id}
                 onClick={() => setCurrentVariant(v.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentVariant === v.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {v.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -375,17 +399,17 @@ function InteractiveSpinnerPreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {sizes.map((s) => (
-              <button
+              <Button
                 key={s.id}
                 onClick={() => setCurrentSize(s.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentSize === s.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {s.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -395,17 +419,17 @@ function InteractiveSpinnerPreview() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {themes.map((t) => (
-              <button
+              <Button
                 key={t.id}
                 onClick={() => setCurrentTheme(t.id)}
                 className={`rounded-md px-2.5 py-1 text-[11px] transition-colors ${
                   currentTheme === t.id
-                    ? "bg-white/15 text-white"
-                    : "border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70"
+                    ? 'bg-white/15 text-white'
+                    : 'border border-white/[0.06] text-white/50 hover:bg-white/[0.06] hover:text-white/70'
                 }`}
               >
                 {t.label}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -413,7 +437,7 @@ function InteractiveSpinnerPreview() {
 
       <div
         className={`flex items-center justify-center gap-4 rounded-aphelion-xl border border-white/[0.06] p-8 ${
-          currentTheme === "light" ? "bg-white" : "bg-white/[0.02]"
+          currentTheme === 'light' ? 'bg-white' : 'bg-white/[0.02]'
         }`}
       >
         <Spinner
@@ -423,7 +447,9 @@ function InteractiveSpinnerPreview() {
         />
         <span
           className={`text-sm ${
-            currentTheme === "light" ? "text-black/60" : "text-aphelion-light-text-primary"
+            currentTheme === 'light'
+              ? 'text-black/60'
+              : 'text-aphelion-light-text-primary'
           }`}
         >
           {currentVariant} • {currentSize} • {currentTheme}
@@ -433,7 +459,6 @@ function InteractiveSpinnerPreview() {
   );
 }
 
-
 export default function LoadingSpinnerPage() {
   return (
     <DocsPageLayout
@@ -441,15 +466,15 @@ export default function LoadingSpinnerPage() {
       title={spinnerData.title}
       description={spinnerData.description}
       sideMapGroup={[
-        { id: "installation", title: "Installation" },
-        { id: "usage", title: "Usage" },
-        { id: "examples", title: "Examples" },
+        { id: 'installation', title: 'Installation' },
+        { id: 'usage', title: 'Usage' },
+        { id: 'examples', title: 'Examples' },
         ...spinnerData.sections.map((section) => ({
           id: section.id,
           title: section.title,
           level: 3,
         })),
-        { id: "props", title: "Props" },
+        { id: 'props', title: 'Props' },
       ]}
     >
       <section className="mb-14" id="installation">
@@ -457,8 +482,8 @@ export default function LoadingSpinnerPage() {
           Installation
         </h2>
         <p className="mb-4 font-['inter-rag'] text-[14px] leading-relaxed text-white/70">
-          Install the Loading-Spinner component using the CLI. This will copy the
-          component source into your project.
+          Install the Loading-Spinner component using the CLI. This will copy
+          the component source into your project.
         </p>
         <InstallCommand command={spinnerData.installation.command} />
       </section>

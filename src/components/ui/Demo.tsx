@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/registry/components/button/Button";
+
 export default function AphelionTokenShowcase() {
   return (
     <main className="min-h-screen bg-aphelion-background p-10 text-aphelion-foreground">
@@ -280,7 +282,7 @@ export default function AphelionTokenShowcase() {
           <div className="grid gap-5 md:grid-cols-3">
 
 
-            <button
+            <Button
               className="
               rounded-aphelion-md
               bg-aphelion-card
@@ -291,11 +293,11 @@ export default function AphelionTokenShowcase() {
               "
             >
               Hover State
-            </button>
+            </Button>
 
 
 
-            <button
+            <Button
               className="
               rounded-aphelion-md
               bg-aphelion-card
@@ -306,11 +308,11 @@ export default function AphelionTokenShowcase() {
               "
             >
               Active State
-            </button>
+            </Button>
 
 
 
-            <button
+            <Button
               className="
               rounded-aphelion-md
               bg-aphelion-card
@@ -322,7 +324,7 @@ export default function AphelionTokenShowcase() {
               "
             >
               Focus Ring
-            </button>
+            </Button>
 
 
 
@@ -494,7 +496,7 @@ export default function AphelionTokenShowcase() {
 
 
 
-            <button
+            <Button
               className="
               mt-5
               rounded-aphelion-md
@@ -505,7 +507,7 @@ export default function AphelionTokenShowcase() {
               "
             >
               Primary Button
-            </button>
+            </Button>
 
 
           </div>

@@ -20,7 +20,7 @@ const checkboxVariants = cva(
     'items-center',
     'justify-center',
     'shrink-0',
-    'rounded-md',
+    'rounded-aphelion-md',
     'border-2',
     'transition-all',
     'duration-150',
@@ -41,16 +41,16 @@ const checkboxVariants = cva(
       },
       theme: {
         light: [
-          'border-neutral-300',
-          'bg-white',
-          'focus-visible:ring-neutral-900/20',
-          'focus-visible:ring-offset-white',
+          'border-light-input-border',
+          'bg-light-background',
+          'focus-visible:ring-light-focus-ring',
+          'focus-visible:ring-offset-light-background',
         ],
         dark: [
-          'border-neutral-600',
-          'bg-neutral-800',
-          'focus-visible:ring-white/20',
-          'focus-visible:ring-offset-neutral-900',
+          'border-dark-input-border',
+          'bg-dark-background',
+          'focus-visible:ring-dark-focus-ring',
+          'focus-visible:ring-offset-dark-background',
         ],
       },
       checked: {
@@ -67,40 +67,40 @@ const checkboxVariants = cva(
         theme: 'light',
         checked: true,
         className: [
-          'border-blue-600',
-          'bg-blue-600',
-          'hover:bg-blue-700',
-          'hover:border-blue-700',
+          'border-light-primary',
+          'bg-light-primary',
+          'hover:bg-light-primary-hover',
+          'hover:border-light-primary-hover',
         ],
       },
       {
         theme: 'dark',
         checked: true,
         className: [
-          'border-blue-500',
-          'bg-blue-500',
-          'hover:bg-blue-400',
-          'hover:border-blue-400',
+          'border-dark-primary',
+          'bg-dark-primary',
+          'hover:bg-dark-primary-hover',
+          'hover:border-dark-primary-hover',
         ],
       },
       {
         theme: 'light',
         indeterminate: true,
         className: [
-          'border-blue-600',
-          'bg-blue-600',
-          'hover:bg-blue-700',
-          'hover:border-blue-700',
+          'border-light-primary',
+          'bg-light-primary',
+          'hover:bg-light-primary-hover',
+          'hover:border-light-primary-hover',
         ],
       },
       {
         theme: 'dark',
         indeterminate: true,
         className: [
-          'border-blue-500',
-          'bg-blue-500',
-          'hover:bg-blue-400',
-          'hover:border-blue-400',
+          'border-dark-primary',
+          'bg-dark-primary',
+          'hover:bg-dark-primary-hover',
+          'hover:border-dark-primary-hover',
         ],
       },
     ],
@@ -113,13 +113,15 @@ const checkboxVariants = cva(
   }
 );
 
+// ─── Label Variants ──────────────────────────────────────────────────────
+
 const labelVariants = cva(
   ['text-sm', 'font-medium', 'transition-colors', 'duration-150'],
   {
     variants: {
       theme: {
-        light: ['text-neutral-900'],
-        dark: ['text-white'],
+        light: ['text-light-text-primary'],
+        dark: ['text-dark-text-primary'],
       },
       disabled: {
         true: ['opacity-40'],
@@ -154,7 +156,7 @@ export interface CheckboxProps
   labelClassName?: string;
 }
 
-// ─── Checkbox Component ────────────────────────────────────────────────────
+// ─── Checkbox Component ──────────────────────────────────────────────────
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
@@ -212,6 +214,13 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [isIndeterminate]);
 
+    const checkIconColor =
+      theme === 'light'
+        ? 'text-light-primary-foreground'
+        : 'text-dark-primary-foreground';
+
+    const requiredColor = 'text-light-destructive';
+
     const checkboxContent = (
       <span
         className={cn(
@@ -243,7 +252,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         {(currentChecked || isIndeterminate) && (
           <svg
             className={cn(
-              'pointer-events-none text-white',
+              'pointer-events-none',
+              checkIconColor,
               size === 'sm' && 'h-2.5 w-2.5',
               size === 'md' && 'h-3 w-3',
               size === 'lg' && 'h-3.5 w-3.5'
@@ -279,7 +289,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       >
         {label}
         {required && (
-          <span className="ml-0.5 text-red-500" aria-hidden="true">
+          <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
             *
           </span>
         )}
@@ -288,9 +298,6 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div
-        style={{
-          fontFamily: 'sans-serif',
-        }}
         className={cn(
           'inline-flex items-center gap-2.5',
           labelPosition === 'left' && 'flex-row-reverse',

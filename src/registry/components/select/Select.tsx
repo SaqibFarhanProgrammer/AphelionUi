@@ -9,6 +9,8 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Select Variants ─────────────────────────────────────────────────────
+
 const selectVariants = cva(
   [
     'flex',
@@ -29,26 +31,26 @@ const selectVariants = cva(
   {
     variants: {
       size: {
-        sm: ['h-9', 'px-3', 'text-sm', 'rounded-md'],
+        sm: ['h-9', 'px-3', 'text-sm', 'rounded-aphelion-md'],
         md: ['h-10', 'px-4', 'text-sm', 'rounded-aphelion-lg'],
         lg: ['h-11', 'px-4', 'text-base', 'rounded-aphelion-lg'],
       },
       theme: {
         light: [
-          'bg-white',
-          'text-neutral-900',
-          'border-neutral-300',
-          'focus-visible:border-neutral-900',
-          'focus-visible:ring-neutral-900/15',
-          'hover:border-neutral-400',
+          'bg-light-background',
+          'text-light-text-primary',
+          'border-light-input-border',
+          'focus-visible:border-light-border-strong',
+          'focus-visible:ring-light-focus-ring',
+          'hover:border-light-border-strong',
         ],
         dark: [
-          'bg-neutral-900',
-          'text-white',
-          'border-neutral-700',
-          'focus-visible:border-neutral-500',
-          'focus-visible:ring-white/10',
-          'hover:border-neutral-600',
+          'bg-dark-background',
+          'text-dark-text-primary',
+          'border-dark-input-border',
+          'focus-visible:border-dark-border-strong',
+          'focus-visible:ring-dark-focus-ring',
+          'hover:border-dark-border-strong',
         ],
       },
       state: {
@@ -61,18 +63,18 @@ const selectVariants = cva(
         theme: 'light',
         state: 'error',
         className: [
-          'border-red-500',
-          'focus-visible:border-red-500',
-          'focus-visible:ring-red-500/15',
+          'border-light-destructive',
+          'focus-visible:border-light-destructive',
+          'focus-visible:ring-light-focus-ring',
         ],
       },
       {
         theme: 'dark',
         state: 'error',
         className: [
-          'border-red-500',
-          'focus-visible:border-red-500',
-          'focus-visible:ring-red-500/15',
+          'border-dark-destructive',
+          'focus-visible:border-dark-destructive',
+          'focus-visible:ring-dark-focus-ring',
         ],
       },
     ],
@@ -84,11 +86,13 @@ const selectVariants = cva(
   }
 );
 
+// ─── Label Variants ──────────────────────────────────────────────────────
+
 const labelVariants = cva(['block', 'font-medium', 'text-sm', 'mb-1.5'], {
   variants: {
     theme: {
-      light: ['text-neutral-900'],
-      dark: ['text-white'],
+      light: ['text-light-text-primary'],
+      dark: ['text-dark-text-primary'],
     },
   },
   defaultVariants: {
@@ -96,25 +100,77 @@ const labelVariants = cva(['block', 'font-medium', 'text-sm', 'mb-1.5'], {
   },
 });
 
+// ─── Helper Text Variants ────────────────────────────────────────────────
+
 const helperVariants = cva(['block', 'mt-1.5', 'text-xs'], {
   variants: {
     theme: {
-      light: ['text-neutral-500'],
-      dark: ['text-neutral-400'],
+      light: ['text-light-text-muted'],
+      dark: ['text-dark-text-muted'],
     },
   },
   defaultVariants: {
     theme: 'light',
   },
 });
+
+// ─── Error Variants ──────────────────────────────────────────────────────
 
 const errorVariants = cva([
   'block',
   'mt-1.5',
   'text-xs',
   'font-medium',
-  'text-red-500',
+  'text-light-destructive',
 ]);
+
+// ─── Search Icon ─────────────────────────────────────────────────────────
+
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  );
+}
+
+// ─── Chevron Icon ────────────────────────────────────────────────────────
+
+function ChevronIcon({
+  open,
+  className,
+}: {
+  open: boolean;
+  className?: string;
+}) {
+  return (
+    <svg
+      className={cn(
+        'h-4 w-4 shrink-0 transition-transform duration-200',
+        open && 'rotate-180',
+        className
+      )}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  );
+}
+
+// ─── Types ───────────────────────────────────────────────────────────────
 
 export interface SelectOption {
   value: string;
@@ -144,6 +200,8 @@ export interface SelectProps
   dropdownClassName?: string;
   optionClassName?: string;
 }
+
+// ─── Select Component ────────────────────────────────────────────────────
 
 const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
   {
@@ -284,26 +342,43 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, filteredOptions, currentValue]);
 
+  // ─── Theme-aware colors ────────────────────────────────────────────────
+
+  const isDark = theme === 'dark';
+  const placeholderColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const chevronColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const labelErrorColor = 'text-light-destructive';
+  const requiredColor = 'text-light-destructive';
+  const dropdownBg = isDark ? 'bg-dark-card' : 'bg-light-card';
+  const dropdownBorder = isDark ? 'border-dark-border' : 'border-light-border';
+  const searchBg = isDark ? 'bg-dark-muted' : 'bg-light-muted';
+  const searchBorder = isDark ? 'border-dark-border' : 'border-light-border';
+  const searchIconColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const searchTextColor = isDark ? 'text-dark-text-primary' : 'text-light-text-primary';
+  const noResultsColor = isDark ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const optionHoverBg = isDark ? 'hover:bg-dark-hover' : 'hover:bg-light-hover';
+  const optionSelectedBg = isDark ? 'bg-dark-selected' : 'bg-light-selected';
+  const optionSelectedText = isDark ? 'text-dark-text-primary font-medium' : 'text-light-text-primary font-medium';
+  const optionDefaultText = isDark ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+  const optionCircleSelected = isDark ? 'border-dark-primary bg-dark-primary' : 'border-light-primary bg-light-primary';
+  const optionCircleUnselected = isDark ? 'border-dark-border' : 'border-light-border';
+  const openBorder = isDark ? 'border-dark-border-strong' : 'border-light-border-strong';
+
   return (
-    <div
-      style={{
-        fontFamily: 'sans-serif',
-      }}
-      className={cn('relative flex flex-col', containerClassName)}
-    >
+    <div className={cn('relative flex flex-col', containerClassName)}>
       {/* ─── Label ──────────────────────────────────────────────────── */}
       {label && (
         <label
           htmlFor={selectId}
           className={cn(
             labelVariants({ theme }),
-            isError && 'text-red-500',
+            isError && labelErrorColor,
             labelClassName
           )}
         >
           {label}
           {required && (
-            <span className="ml-0.5 text-red-500" aria-hidden="true">
+            <span className={cn('ml-0.5', requiredColor)} aria-hidden="true">
               *
             </span>
           )}
@@ -328,9 +403,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
         onClick={handleToggle}
         className={cn(
           selectVariants({ size, theme, state: isError ? 'error' : 'default' }),
-          isOpen && [
-            theme === 'light' ? 'border-neutral-900' : 'border-neutral-500',
-          ],
+          isOpen && openBorder,
           className
         )}
         {...props}
@@ -338,29 +411,12 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
         <span
           className={cn(
             'truncate',
-            !selectedOption &&
-              (theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400')
+            !selectedOption && placeholderColor
           )}
         >
           {selectedOption?.label || placeholder}
         </span>
-        <svg
-          className={cn(
-            'h-4 w-4 shrink-0 transition-transform duration-200',
-            isOpen && 'rotate-180',
-            theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
-          )}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <ChevronIcon open={isOpen} className={chevronColor} />
       </button>
 
       {/* ─── Dropdown ───────────────────────────────────────────────── */}
@@ -371,9 +427,8 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
           role="listbox"
           className={cn(
             'absolute z-50 mt-1.5 w-full overflow-hidden rounded-aphelion-lg border',
-            theme === 'light'
-              ? 'border-neutral-200 bg-white'
-              : 'border-neutral-700 bg-neutral-900',
+            dropdownBg,
+            dropdownBorder,
             dropdownClassName
           )}
           style={{
@@ -388,28 +443,12 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
               ) : (
                 <div
                   className={cn(
-                    'flex items-center gap-2 rounded-md border px-3 py-2',
-                    theme === 'light'
-                      ? 'border-neutral-200 bg-neutral-50'
-                      : 'border-neutral-700 bg-neutral-800'
+                    'flex items-center gap-2 rounded-aphelion-md border px-3 py-2',
+                    searchBg,
+                    searchBorder
                   )}
                 >
-                  <svg
-                    className={cn(
-                      'h-4 w-4 shrink-0',
-                      theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'
-                    )}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
+                  <SearchIcon className={cn('h-4 w-4 shrink-0', searchIconColor)} />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -424,8 +463,8 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
                       }
                     }}
                     className={cn(
-                      'w-full bg-transparent text-sm outline-none placeholder:text-neutral-400',
-                      theme === 'dark' ? 'text-white' : 'text-neutral-900'
+                      'w-full bg-transparent text-sm outline-none placeholder:text-light-text-muted',
+                      searchTextColor
                     )}
                   />
                 </div>
@@ -442,10 +481,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
           >
             {filteredOptions.length === 0 ? (
               <div
-                className={cn(
-                  'px-3 py-4 text-center text-sm',
-                  theme === 'dark' ? 'text-neutral-500' : 'text-neutral-400'
-                )}
+                className={cn('px-3 py-4 text-center text-sm', noResultsColor)}
               >
                 No results found
               </div>
@@ -464,34 +500,19 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
                       if (!isDisabled) handleSelect(option.value);
                     }}
                     className={cn(
-                      'flex cursor-pointer items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors duration-150',
+                      'flex cursor-pointer items-center gap-3 rounded-aphelion-md px-3 py-2.5 text-sm transition-colors duration-150',
                       isDisabled && 'cursor-not-allowed opacity-40',
-                      !isDisabled &&
-                        (theme === 'light'
-                          ? 'hover:bg-neutral-100'
-                          : 'hover:bg-neutral-800'),
-                      isSelected &&
-                        (theme === 'light'
-                          ? 'bg-neutral-100 font-medium text-neutral-900'
-                          : 'bg-neutral-800 font-medium text-white'),
-                      !isSelected &&
-                        (theme === 'dark'
-                          ? 'text-neutral-300'
-                          : 'text-neutral-700'),
+                      !isDisabled && optionHoverBg,
+                      isSelected && cn(optionSelectedBg, optionSelectedText),
+                      !isSelected && optionDefaultText,
                       optionClassName
                     )}
                   >
                     {/* Option Circle Indicator */}
                     <span
                       className={cn(
-                        'h-2.5 w-2.5 shrink-0 rounded-full border-2 transition-colors duration-150',
-                        isSelected
-                          ? theme === 'light'
-                            ? 'border-neutral-900 bg-neutral-900'
-                            : 'border-white bg-white'
-                          : theme === 'light'
-                            ? 'border-neutral-300'
-                            : 'border-neutral-600'
+                        'h-2.5 w-2.5 shrink-0 rounded-aphelion-full border-2 transition-colors duration-150',
+                        isSelected ? optionCircleSelected : optionCircleUnselected
                       )}
                     />
                     <span className="truncate">{option.label}</span>

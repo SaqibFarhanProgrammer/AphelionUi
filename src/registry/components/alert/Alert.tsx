@@ -12,6 +12,44 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// ─── Dismiss Button (inline to avoid missing import) ─────────────────────
+
+function DismissButton({
+  onClick,
+  theme,
+}: {
+  onClick?: () => void;
+  theme?: 'light' | 'dark';
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        'shrink-0 rounded-aphelion-md p-1 transition-colors duration-150',
+        theme === 'light'
+          ? 'text-light-text-muted hover:text-light-text-primary hover:bg-light-hover'
+          : 'text-dark-text-muted hover:text-dark-text-primary hover:bg-dark-hover'
+      )}
+      aria-label="Dismiss alert"
+    >
+      <svg
+        className="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  );
+}
+
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
 const alertVariants = cva(
@@ -20,10 +58,8 @@ const alertVariants = cva(
     'flex',
     'items-start',
     'gap-3',
-    'rounded-aphelion-xl',
     'border',
     'p-4',
-    'shadow-sm',
     'w-full',
   ],
   {
@@ -67,67 +103,123 @@ const alertVariants = cva(
       {
         theme: 'light',
         variant: 'default',
-        className: ['border-neutral-300', 'bg-white', 'text-neutral-800'],
+        className: [
+          'border-light-border',
+          'bg-light-card',
+          'text-light-text-primary',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'light',
         variant: 'success',
-        className: ['border-emerald-300', 'bg-emerald-50', 'text-emerald-900'],
+        className: [
+          'border-light-success-border',
+          'bg-light-success-background',
+          'text-light-success',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'light',
         variant: 'info',
-        className: ['border-blue-300', 'bg-blue-50', 'text-blue-900'],
+        className: [
+          'border-light-info-border',
+          'bg-light-info-background',
+          'text-light-info',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'light',
         variant: 'warning',
-        className: ['border-amber-300', 'bg-amber-50', 'text-amber-900'],
+        className: [
+          'border-light-warning-border',
+          'bg-light-warning-background',
+          'text-light-warning',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'light',
         variant: 'error',
-        className: ['border-red-300', 'bg-red-50', 'text-red-900'],
+        className: [
+          'border-light-destructive-border',
+          'bg-light-destructive-background',
+          'text-light-destructive',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'light',
         variant: 'neutral',
-        className: ['border-neutral-300', 'bg-neutral-100', 'text-neutral-800'],
+        className: [
+          'border-light-border',
+          'bg-light-muted',
+          'text-light-text-secondary',
+          'shadow-aphelion-sm',
+        ],
       },
       // ─── Dark Theme ─────────────────────────────────────────────
       {
         theme: 'dark',
         variant: 'default',
-        className: ['border-neutral-800', 'bg-neutral-900', 'text-white'],
+        className: [
+          'border-dark-border',
+          'bg-dark-card',
+          'text-dark-text-primary',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'dark',
         variant: 'success',
         className: [
-          'border-emerald-900/50',
-          'bg-emerald-950/20',
-          'text-emerald-400',
+          'border-dark-success-border',
+          'bg-dark-success-background',
+          'text-dark-success',
+          'shadow-aphelion-sm',
         ],
       },
       {
         theme: 'dark',
         variant: 'info',
-        className: ['border-blue-900/50', 'bg-blue-950/20', 'text-blue-400'],
+        className: [
+          'border-dark-info-border',
+          'bg-dark-info-background',
+          'text-dark-info',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'dark',
         variant: 'warning',
-        className: ['border-amber-900/50', 'bg-amber-950/20', 'text-amber-400'],
+        className: [
+          'border-dark-warning-border',
+          'bg-dark-warning-background',
+          'text-dark-warning',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'dark',
         variant: 'error',
-        className: ['border-red-900/50', 'bg-red-950/20', 'text-red-400'],
+        className: [
+          'border-dark-destructive-border',
+          'bg-dark-destructive-background',
+          'text-dark-destructive',
+          'shadow-aphelion-sm',
+        ],
       },
       {
         theme: 'dark',
         variant: 'neutral',
-        className: ['border-neutral-800', 'bg-neutral-900', 'text-neutral-300'],
+        className: [
+          'border-dark-border',
+          'bg-dark-muted',
+          'text-dark-text-secondary',
+          'shadow-aphelion-sm',
+        ],
       },
     ],
     defaultVariants: {
@@ -141,7 +233,7 @@ const alertVariants = cva(
 );
 
 const iconVariants = cva(
-  ['flex', 'shrink-0', 'items-center', 'justify-center', 'rounded-full'],
+  ['flex', 'shrink-0', 'items-center', 'justify-center', 'rounded-aphelion-full'],
   {
     variants: {
       size: {
@@ -282,7 +374,7 @@ export interface AlertContainerProps {
   className?: string;
 }
 
-// ─── Animation Variants (FIXED – Position-based) ────────────────────────
+// ─── Animation Variants ──────────────────────────────────────────────────
 
 const topAnimation = {
   hidden: { opacity: 0, y: -20, scale: 0.96 },
@@ -352,11 +444,10 @@ function getAnimationByPosition(position: string) {
   if (position.includes('bottom')) return bottomAnimation;
   if (position.includes('left')) return leftAnimation;
   if (position.includes('right')) return rightAnimation;
-  // Default: top positions
   return topAnimation;
 }
 
-// ─── Alert Component (NO animation wrapper – animation handled by parent) ──
+// ─── Alert Component ─────────────────────────────────────────────────────
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   {
@@ -380,44 +471,55 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   },
   ref
 ) {
-  const variantIcons: Record<
-    string,
-    { icon: React.ReactNode; bg: string; color: string }
-  > = {
-    success: {
-      icon: <SuccessIcon className="h-3.5 w-3.5" />,
-      bg: theme === 'light' ? 'bg-emerald-100' : 'bg-emerald-900/50',
-      color: theme === 'light' ? 'text-emerald-700' : 'text-emerald-400',
-    },
-    info: {
-      icon: <InfoIcon className="h-3.5 w-3.5" />,
-      bg: theme === 'light' ? 'bg-blue-100' : 'bg-blue-900/50',
-      color: theme === 'light' ? 'text-blue-700' : 'text-blue-400',
-    },
-    warning: {
-      icon: <WarningIcon className="h-3.5 w-3.5" />,
-      bg: theme === 'light' ? 'bg-amber-100' : 'bg-amber-900/50',
-      color: theme === 'light' ? 'text-amber-700' : 'text-amber-400',
-    },
-    error: {
-      icon: <ErrorIcon className="h-3.5 w-3.5" />,
-      bg: theme === 'light' ? 'bg-red-100' : 'bg-red-900/50',
-      color: theme === 'light' ? 'text-red-700' : 'text-red-400',
-    },
-    neutral: {
-      icon: <NeutralIcon className="h-3.5 w-3.5" />,
-      bg: theme === 'light' ? 'bg-neutral-200' : 'bg-neutral-800',
-      color: theme === 'light' ? 'text-neutral-700' : 'text-neutral-400',
-    },
-    default: {
-      icon: null,
-      bg: '',
-      color: '',
-    },
+  const iconBgColor =
+    theme === 'light'
+      ? {
+          success: 'bg-light-success-background',
+          info: 'bg-light-info-background',
+          warning: 'bg-light-warning-background',
+          error: 'bg-light-destructive-background',
+          neutral: 'bg-light-muted',
+          default: '',
+        }
+      : {
+          success: 'bg-dark-success-background',
+          info: 'bg-dark-info-background',
+          warning: 'bg-dark-warning-background',
+          error: 'bg-dark-destructive-background',
+          neutral: 'bg-dark-muted',
+          default: '',
+        };
+
+  const iconTextColor =
+    theme === 'light'
+      ? {
+          success: 'text-light-success',
+          info: 'text-light-info',
+          warning: 'text-light-warning',
+          error: 'text-light-destructive',
+          neutral: 'text-light-text-secondary',
+          default: '',
+        }
+      : {
+          success: 'text-dark-success',
+          info: 'text-dark-info',
+          warning: 'text-dark-warning',
+          error: 'text-dark-destructive',
+          neutral: 'text-dark-text-secondary',
+          default: '',
+        };
+
+  const variantIcons: Record<string, React.ReactNode> = {
+    success: <SuccessIcon className="h-3.5 w-3.5" />,
+    info: <InfoIcon className="h-3.5 w-3.5" />,
+    warning: <WarningIcon className="h-3.5 w-3.5" />,
+    error: <ErrorIcon className="h-3.5 w-3.5" />,
+    neutral: <NeutralIcon className="h-3.5 w-3.5" />,
+    default: null,
   };
 
-  const variantConfig = variantIcons[variant] || variantIcons.default;
-  const showIcon = icon !== undefined ? icon : variantConfig.icon;
+  const defaultIcon = variantIcons[variant || 'default'];
+  const showIcon = icon !== undefined ? icon : defaultIcon;
 
   const sizeTextMap = {
     sm: { title: 'text-xs', desc: 'text-xs' },
@@ -427,10 +529,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
   const textSize = sizeTextMap[size ?? 'md'];
 
+  const descriptionTextColor =
+    theme === 'light' ? 'text-light-text-secondary' : 'text-dark-text-secondary';
+
   return (
     <div
       ref={ref}
-      style={{ fontFamily: 'sans-serif' }}
       className={cn(
         alertVariants({ theme, variant, size, width, height }),
         className
@@ -443,8 +547,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
         <span
           className={cn(
             iconVariants({ size: size === 'lg' ? 'lg' : 'md' }),
-            variantConfig.bg,
-            variantConfig.color,
+            iconBgColor[variant || 'default'],
+            iconTextColor[variant || 'default'],
             iconClassName
           )}
         >
@@ -470,7 +574,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
             className={cn(
               textSize.desc,
               'mt-1 leading-relaxed',
-              theme === 'dark' ? 'text-neutral-400' : 'text-neutral-600',
+              descriptionTextColor,
               descriptionClassName
             )}
           >
@@ -485,31 +589,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
       {/* Dismiss */}
       {dismissible && (
-        <button
-          type="button"
-          onClick={onDismiss}
-          className={cn(
-            'shrink-0 rounded-md p-1 transition-colors duration-150',
-            theme === 'light'
-              ? 'text-neutral-400 hover:text-neutral-600 hover:bg-neutral-200'
-              : 'text-neutral-500 hover:text-neutral-300 hover:bg-neutral-800'
-          )}
-          aria-label="Dismiss alert"
-        >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+        <DismissButton onClick={onDismiss} theme={theme} />
       )}
     </div>
   );
@@ -517,7 +597,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 Alert.displayName = 'Alert';
 
-// ─── Alert Container (FIXED – Single animation wrapper) ──────────────────
+// ─── Alert Container ─────────────────────────────────────────────────────
 
 const AlertContainer = React.forwardRef<HTMLDivElement, AlertContainerProps>(
   function AlertContainer(
@@ -574,7 +654,7 @@ const AlertContainer = React.forwardRef<HTMLDivElement, AlertContainerProps>(
 
 AlertContainer.displayName = 'AlertContainer';
 
-// ─── useAlert Hook (FIXED – No double animation) ─────────────────────────
+// ─── useAlert Hook ───────────────────────────────────────────────────────
 
 export interface AlertItem {
   id: string;
@@ -592,8 +672,6 @@ export function useAlert(
   position: AlertContainerProps['position'] = 'top-right'
 ) {
   const [alerts, setAlerts] = React.useState<AlertItem[]>([]);
-  const alertsRef = React.useRef(alerts);
-  alertsRef.current = alerts;
 
   const remove = React.useCallback((id: string) => {
     setAlerts((prev) => prev.filter((a) => a.id !== id));

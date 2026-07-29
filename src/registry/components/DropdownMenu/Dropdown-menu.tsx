@@ -44,6 +44,7 @@ export interface DropdownMenuProps {
   closeOnOutsideClick?: boolean;
   closeOnEscape?: boolean;
   disabled?: boolean;
+  theme?: 'dark' | 'light';
 }
 
 interface DropdownContextType {
@@ -59,6 +60,7 @@ interface DropdownContextType {
   focusLast: () => void;
   selectActive: () => void;
   itemIds: string[];
+  theme: 'dark' | 'light';
 }
 
 // ─── Context ──────────────────────────────────────────────────────────
@@ -175,6 +177,31 @@ function CircleIcon({
   );
 }
 
+// ─── Inline Button ───────────────────────────────────────────────────
+
+function MenuButton({
+  onClick,
+  disabled,
+  className,
+  children,
+}: {
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+    >
+      {children}
+    </button>
+  );
+}
+
 // ─── Navigation State ────────────────────────────────────────────────
 
 interface NavState {
@@ -206,60 +233,94 @@ function DropdownContent({
 }) {
   const currentNav = navStack[navStack.length - 1];
   const isRoot = navStack.length === 1;
-  const { setOpen } = useDropdown();
+  const { setOpen, theme } = useDropdown();
+
+  const menuBg = theme === 'dark' ? 'bg-dark-card' : 'bg-light-card';
+  const menuBorder = theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+  const itemDefaultText = theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
+  const itemHoverText = theme === 'dark' ? 'hover:text-dark-text-primary' : 'hover:text-light-text-primary';
+  const itemHoverBg = theme === 'dark' ? 'hover:bg-dark-hover' : 'hover:bg-light-hover';
+  const itemDisabledText = theme === 'dark' ? 'text-dark-text-disabled' : 'text-light-text-disabled';
+  const dangerText = theme === 'dark' ? 'text-dark-destructive' : 'text-light-destructive';
+  const dangerHoverText = theme === 'dark' ? 'hover:text-dark-destructive' : 'hover:text-light-destructive';
+  const dangerHoverBg = theme === 'dark' ? 'hover:bg-dark-destructive-background' : 'hover:bg-light-destructive-background';
+  const mutedIconColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const shortcutColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const separatorColor = theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
+  const labelColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const radioDefault = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
+  const radioSelected = theme === 'dark' ? 'text-dark-text-primary' : 'text-light-text-primary';
+  const checkboxBorder = theme === 'dark' ? 'border-dark-border' : 'border-light-border';
+  const checkboxCheckedColor = theme === 'dark' ? 'text-dark-text-secondary' : 'text-light-text-secondary';
 
   const handleItemClick = (item: DropdownItem) => {
     if (item.disabled) return;
 
-    // Navigate into submenu
     if (item.items && item.items.length > 0) {
       onNavigate(item.items, item.label, currentNav.depth + 1);
       return;
     }
 
-    // Handle radio selection
     if (item.radio && item.radioGroup) {
       onRadioSelect(item.radioGroup, item.id);
       return;
     }
 
-    // Handle checkbox toggle
     if (item.checked !== undefined) {
       onCheckToggle(item.id);
       return;
     }
 
-    // Regular item click
     if (item.onClick) item.onClick();
     if (closeOnItemClick) setOpen(false);
   };
 
   return (
     <div
-      className="overflow-hidden rounded-aphelion-xl border border-white/[0.08] bg-[#1a1a1a] py-1"
-      style={{ minWidth: 220, fontFamily: 'sans-serif' }}
+      className={cn(
+        'overflow-hidden rounded-aphelion-xl border py-1',
+        menuBg,
+        menuBorder
+      )}
+      style={{ minWidth: 220 }}
     >
-      {/* Back Button (when not at root) */}
+      {/* Back Button */}
       {!isRoot && (
-        <button
+        <MenuButton
           onClick={onBack}
-          className="relative mx-1 flex w-[calc(100%-8px)] items-center gap-2.5 rounded-aphelion-lg px-3 py-2 text-left text-[13px] transition-all duration-150 outline-none text-white/70 hover:bg-white/[0.06] hover:text-white cursor-pointer"
+          className={cn(
+            'relative mx-1 flex w-[calc(100%-8px)] items-center gap-2.5 rounded-aphelion-lg px-3 py-2 text-left text-[13px] transition-all duration-150 outline-none',
+            itemDefaultText,
+            itemHoverBg,
+            itemHoverText,
+            'cursor-pointer'
+          )}
         >
-          <ChevronLeftIcon className="flex-shrink-0 text-aphelion-light-text-primary" />
+          <ChevronLeftIcon className={cn('flex-shrink-0', mutedIconColor)} />
           <span className="font-medium">Back</span>
-        </button>
+        </MenuButton>
       )}
 
-      {/* Title (when not at root) */}
+      {/* Title */}
       {!isRoot && currentNav.title && (
-        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase">
+        <div
+          className={cn(
+            'mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] uppercase',
+            labelColor
+          )}
+        >
           {currentNav.title}
         </div>
       )}
 
       {/* Root label */}
       {isRoot && (
-        <div className="mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase">
+        <div
+          className={cn(
+            'mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] uppercase',
+            labelColor
+          )}
+        >
           Menu Actions
         </div>
       )}
@@ -270,7 +331,7 @@ function DropdownContent({
           return (
             <div
               key={`sep-${index}`}
-              className="mx-3 my-1 h-px bg-white/[0.06]"
+              className={cn('mx-3 my-1 h-px', separatorColor)}
             />
           );
         }
@@ -281,23 +342,24 @@ function DropdownContent({
           item.radioGroup && selectedRadios[item.radioGroup] === item.id;
 
         return (
-          <button
+          <MenuButton
             key={item.id || `item-${index}`}
             onClick={() => handleItemClick(item)}
             disabled={item.disabled}
-            className={`relative flex items-center gap-2.5 px-3 py-2 mx-1 rounded-aphelion-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left ${
+            className={cn(
+              'relative flex items-center gap-2.5 px-3 py-2 mx-1 rounded-aphelion-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left',
               item.disabled
-                ? 'opacity-40 cursor-not-allowed text-white/30'
+                ? `opacity-40 cursor-not-allowed ${itemDisabledText}`
                 : item.danger
-                  ? 'text-red-400 hover:text-red-300 hover:bg-red-500/10 cursor-pointer'
-                  : 'text-white/70 hover:bg-white/[0.06] hover:text-white cursor-pointer'
-            }`}
+                  ? `${dangerText} ${dangerHoverText} ${dangerHoverBg} cursor-pointer`
+                  : `${itemDefaultText} ${itemHoverBg} ${itemHoverText} cursor-pointer`
+            )}
           >
             {/* Radio indicator */}
             {item.radio && (
               <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center">
                 <CircleIcon
-                  className={isRadioSelected ? 'text-white' : 'text-white/30'}
+                  className={isRadioSelected ? radioSelected : radioDefault}
                   filled={isRadioSelected as boolean}
                 />
               </span>
@@ -307,9 +369,9 @@ function DropdownContent({
             {item.checked !== undefined && !item.radio && (
               <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center">
                 {isChecked ? (
-                  <CheckIcon className="text-white/60" />
+                  <CheckIcon className={checkboxCheckedColor} />
                 ) : (
-                  <span className="h-3.5 w-3.5 rounded border border-white/20" />
+                  <span className={cn('h-3.5 w-3.5 rounded border', checkboxBorder)} />
                 )}
               </span>
             )}
@@ -325,20 +387,26 @@ function DropdownContent({
 
             {/* Submenu arrow */}
             {isSubmenu && (
-              <ChevronRightIcon className="flex-shrink-0 text-aphelion-light-text-primary" />
+              <ChevronRightIcon className={cn('flex-shrink-0', mutedIconColor)} />
             )}
 
             {/* Shortcut */}
             {item.shortcut && (
-              <span className="ml-2 text-[11px] font-medium text-white/30">
+              <span className={cn('ml-2 text-[11px] font-medium', shortcutColor)}>
                 {item.shortcut}
               </span>
             )}
-          </button>
+          </MenuButton>
         );
       })}
     </div>
   );
+}
+
+// ─── cn Utility ──────────────────────────────────────────────────────
+
+function cn(...inputs: (string | undefined | false | null)[]) {
+  return inputs.filter(Boolean).join(' ');
 }
 
 // ─── Main DropdownMenu Component ─────────────────────────────────────
@@ -359,20 +427,18 @@ export function DropdownMenu({
   closeOnOutsideClick = true,
   closeOnEscape = true,
   disabled = false,
+  theme = 'dark',
 }: DropdownMenuProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [itemIds, setItemIds] = useState<string[]>([]);
 
-  // Navigation stack for nested menus
   const [navStack, setNavStack] = useState<NavState[]>([{ items, depth: 0 }]);
 
-  // Radio selection state
   const [selectedRadios, setSelectedRadios] = useState<Record<string, string>>(
     {}
   );
 
-  // Checkbox state
   const [checkedItems, setCheckedItems] = useState<Set<string>>(new Set());
 
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -387,7 +453,6 @@ export function DropdownMenu({
       onOpenChange?.(value);
       if (!value) {
         setActiveItem(null);
-        // Reset nav stack when closing
         setTimeout(() => setNavStack([{ items, depth: 0 }]), 200);
       }
     },
@@ -436,7 +501,6 @@ export function DropdownMenu({
     }
   }, [activeItem, items, closeOnItemClick, setOpen]);
 
-  // Navigate into submenu
   const handleNavigate = useCallback(
     (subItems: DropdownItem[], title: string, depth: number) => {
       setNavStack((prev) => [...prev, { items: subItems, title, depth }]);
@@ -444,17 +508,14 @@ export function DropdownMenu({
     []
   );
 
-  // Go back
   const handleBack = useCallback(() => {
     setNavStack((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev));
   }, []);
 
-  // Radio select
   const handleRadioSelect = useCallback((group: string, value: string) => {
     setSelectedRadios((prev) => ({ ...prev, [group]: value }));
   }, []);
 
-  // Check toggle
   const handleCheckToggle = useCallback((id: string) => {
     setCheckedItems((prev) => {
       const next = new Set(prev);
@@ -545,6 +606,7 @@ export function DropdownMenu({
     focusLast,
     selectActive,
     itemIds,
+    theme,
   };
 
   const getPositionStyles = (): React.CSSProperties => {
@@ -597,11 +659,7 @@ export function DropdownMenu({
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <div
-        className="relative inline-block"
-        ref={triggerRef}
-        style={{ fontFamily: 'sans-serif' }}
-      >
+      <div className="relative inline-block" ref={triggerRef}>
         <div
           onClick={() => !disabled && setOpen(!open)}
           className={
@@ -662,14 +720,20 @@ export function DropdownMenu({
 export function DropdownMenuLabel({
   children,
   className = '',
+  theme = 'dark',
 }: {
   children: React.ReactNode;
   className?: string;
+  theme?: 'dark' | 'light';
 }) {
+  const labelColor = theme === 'dark' ? 'text-dark-text-muted' : 'text-light-text-muted';
   return (
     <div
-      className={`mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] text-aphelion-light-text-primary uppercase ${className}`}
-      style={{ fontFamily: 'sans-serif' }}
+      className={cn(
+        'mx-1 px-3 py-1.5 text-[10px] font-medium tracking-[0.12em] uppercase',
+        labelColor,
+        className
+      )}
     >
       {children}
     </div>
@@ -678,22 +742,27 @@ export function DropdownMenuLabel({
 
 export function DropdownMenuSeparator({
   className = '',
+  theme = 'dark',
 }: {
   className?: string;
+  theme?: 'dark' | 'light';
 }) {
-  return <div className={`mx-3 my-1 h-px bg-white/[0.06] ${className}`} />;
+  const separatorColor = theme === 'dark' ? 'bg-dark-divider' : 'bg-light-divider';
+  return <div className={cn('mx-3 my-1 h-px', separatorColor, className)} />;
 }
 
 export function DropdownMenuGroup({
   children,
   label,
+  theme = 'dark',
 }: {
   children: React.ReactNode;
   label?: string;
+  theme?: 'dark' | 'light';
 }) {
   return (
-    <div style={{ fontFamily: 'sans-serif' }}>
-      {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
+    <div>
+      {label && <DropdownMenuLabel theme={theme}>{label}</DropdownMenuLabel>}
       {children}
     </div>
   );

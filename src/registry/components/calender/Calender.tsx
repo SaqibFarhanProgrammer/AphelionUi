@@ -63,26 +63,18 @@ function isDateInRange(date: Date, start: Date, end: Date): boolean {
   return d >= s && d <= e;
 }
 
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
 const calendarVariants = cva(["w-full", "select-none"], {
   variants: {
     theme: {
-      dark: "bg-black text-white",
-      light: "bg-white text-black",
+      dark: "bg-dark-background text-dark-text-primary",
+      light: "bg-light-background text-light-text-primary",
     },
     variant: {
       default: "",
-      bordered: "border rounded-[12px] overflow-hidden",
-      card: "border rounded-[12px] overflow-hidden shadow-lg",
+      bordered: "border rounded-aphelion-xl overflow-hidden",
+      card: "border rounded-aphelion-xl overflow-hidden shadow-aphelion-lg",
     },
     size: {
       sm: "max-w-[280px]",
@@ -91,17 +83,25 @@ const calendarVariants = cva(["w-full", "select-none"], {
     },
   },
   compoundVariants: [
-    { theme: "dark", variant: "bordered", className: "border-white/10" },
+    {
+      theme: "dark",
+      variant: "bordered",
+      className: "border-dark-border",
+    },
     {
       theme: "dark",
       variant: "card",
-      className: "border-white/10 shadow-white/5",
+      className: "border-dark-border",
     },
-    { theme: "light", variant: "bordered", className: "border-black/10" },
+    {
+      theme: "light",
+      variant: "bordered",
+      className: "border-light-border",
+    },
     {
       theme: "light",
       variant: "card",
-      className: "border-black/10 shadow-black/5",
+      className: "border-light-border",
     },
   ],
   defaultVariants: {
@@ -116,7 +116,7 @@ const dayCellVariants = cva(
     "inline-flex",
     "items-center",
     "justify-center",
-    "rounded-[10px]",
+    "rounded-aphelion-sm",
     "text-sm",
     "font-medium",
     "transition-all",
@@ -152,83 +152,97 @@ const dayCellVariants = cva(
       {
         theme: "dark",
         state: "default",
-        className: "text-white hover:bg-white/10",
+        className:
+          "text-dark-text-primary hover:bg-dark-hover",
       },
-      { 
-        theme: "dark", 
-        state: "selected", 
-        className: "bg-white text-black hover:bg-white/90" 
+      {
+        theme: "dark",
+        state: "selected",
+        className:
+          "bg-dark-primary text-dark-primary-foreground hover:bg-dark-primary-hover",
       },
       {
         theme: "dark",
         state: "in-range",
-        className: "bg-white/10 text-white rounded-none hover:bg-white/15",
+        className:
+          "bg-dark-selected text-dark-text-primary rounded-aphelion-none hover:bg-dark-active",
       },
       {
         theme: "dark",
         state: "range-start",
-        className: "bg-white text-black rounded-r-none hover:bg-white/90",
+        className:
+          "bg-dark-primary text-dark-primary-foreground rounded-r-aphelion-none hover:bg-dark-primary-hover",
       },
       {
         theme: "dark",
         state: "range-end",
-        className: "bg-white text-black rounded-l-none hover:bg-white/90",
+        className:
+          "bg-dark-primary text-dark-primary-foreground rounded-l-aphelion-none hover:bg-dark-primary-hover",
       },
       {
         theme: "dark",
         state: "disabled",
-        className: "text-white/20 line-through cursor-not-allowed hover:bg-transparent",
+        className:
+          "text-dark-text-disabled line-through cursor-not-allowed hover:bg-transparent",
       },
-      { 
-        theme: "dark", 
-        state: "outside-month", 
-        className: "text-white/20 cursor-default hover:bg-transparent" 
+      {
+        theme: "dark",
+        state: "outside-month",
+        className:
+          "text-dark-text-disabled cursor-default hover:bg-transparent",
       },
-      { 
-        theme: "dark", 
-        state: "today", 
-        className: "text-white font-bold" 
+      {
+        theme: "dark",
+        state: "today",
+        className: "text-dark-text-primary font-bold",
       },
       // Light theme
       {
         theme: "light",
         state: "default",
-        className: "text-black hover:bg-black/10",
+        className:
+          "text-light-text-primary hover:bg-light-hover",
       },
-      { 
-        theme: "light", 
-        state: "selected", 
-        className: "bg-black text-white hover:bg-black/90" 
+      {
+        theme: "light",
+        state: "selected",
+        className:
+          "bg-light-primary text-light-primary-foreground hover:bg-light-primary-hover",
       },
       {
         theme: "light",
         state: "in-range",
-        className: "bg-black/10 text-black rounded-none hover:bg-black/15",
+        className:
+          "bg-light-selected text-light-text-primary rounded-aphelion-none hover:bg-light-active",
       },
       {
         theme: "light",
         state: "range-start",
-        className: "bg-black text-white rounded-r-none hover:bg-black/90",
+        className:
+          "bg-light-primary text-light-primary-foreground rounded-r-aphelion-none hover:bg-light-primary-hover",
       },
       {
         theme: "light",
         state: "range-end",
-        className: "bg-black text-white rounded-l-none hover:bg-black/90",
+        className:
+          "bg-light-primary text-light-primary-foreground rounded-l-aphelion-none hover:bg-light-primary-hover",
       },
       {
         theme: "light",
         state: "disabled",
-        className: "text-black/20 line-through cursor-not-allowed hover:bg-transparent",
+        className:
+          "text-light-text-disabled line-through cursor-not-allowed hover:bg-transparent",
       },
-      { 
-        theme: "light", 
-        state: "outside-month", 
-        className: "text-black/20 cursor-default hover:bg-transparent" 
+      {
+        theme: "light",
+        state: "outside-month",
+        className:
+          "text-light-text-disabled cursor-default hover:bg-transparent",
       },
-      { 
-        theme: "light", 
-        state: "today", 
-        className: "text-black font-bold" 
+      {
+        theme: "light",
+        state: "today",
+        className: "text-light-text-primary font-bold",
       },
     ],
     defaultVariants: {
@@ -236,8 +250,38 @@ const dayCellVariants = cva(
       state: "default",
       size: "md",
     },
-  },
+  }
 );
+
+// ─── Inline Icon Button ──────────────────────────────────────────────────
+
+function IconButton({
+  onClick,
+  theme,
+  children,
+  className,
+}: {
+  onClick?: () => void;
+  theme?: "light" | "dark";
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "flex h-8 w-8 items-center justify-center rounded-aphelion-sm transition-colors",
+        theme === "dark"
+          ? "text-dark-text-secondary hover:bg-dark-hover hover:text-dark-text-primary"
+          : "text-light-text-secondary hover:bg-light-hover hover:text-light-text-primary",
+        className
+      )}
+    >
+      {children}
+    </button>
+  );
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
@@ -296,7 +340,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       className,
       ...props
     },
-    ref,
+    ref
   ) {
     const today = new Date();
     const [currentMonth, setCurrentMonth] = React.useState(today.getMonth());
@@ -395,7 +439,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
     const renderDays = () => {
       const days: React.ReactNode[] = [];
-      let nextMonthDay = 1;
 
       for (let i = 0; i < firstDay; i++) {
         const day = prevMonthDays - firstDay + i + 1;
@@ -405,18 +448,18 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               key={`prev-${i}`}
               disabled
               className={cn(
-                dayCellVariants({ theme, state: "outside-month", size }),
+                dayCellVariants({ theme, state: "outside-month", size })
               )}
             >
               {day}
-            </button>,
+            </button>
           );
         } else {
           days.push(
             <div
               key={`prev-${i}`}
               className={cn(dayCellVariants({ theme, size }), "opacity-0")}
-            />,
+            />
           );
         }
       }
@@ -429,30 +472,35 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         days.push(
           <motion.button
             key={`day-${i}`}
+            type="button"
             whileTap={{ scale: 0.92 }}
             onClick={() => handleDayClick(date)}
             className={cn(
-              dayCellVariants({ theme, state: state as any, size }),
+              dayCellVariants({ theme, state: state as any, size })
             )}
           >
             {i}
             {isToday && state === "default" && (
               <span
                 className={cn(
-                  "absolute bottom-1 h-1 w-1 rounded-full",
-                  theme === "dark" ? "bg-white/50" : "bg-black/50",
+                  "absolute bottom-1 h-1 w-1 rounded-aphelion-full",
+                  theme === "dark"
+                    ? "bg-dark-text-muted"
+                    : "bg-light-text-muted"
                 )}
               />
             )}
             {state === "selected" && (
               <span
                 className={cn(
-                  "absolute bottom-1.5 h-1 w-1 rounded-full",
-                  theme === "dark" ? "bg-black" : "bg-white",
+                  "absolute bottom-1.5 h-1 w-1 rounded-aphelion-full",
+                  theme === "dark"
+                    ? "bg-dark-primary-foreground"
+                    : "bg-light-primary-foreground"
                 )}
               />
             )}
-          </motion.button>,
+          </motion.button>
         );
       }
 
@@ -464,21 +512,20 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               key={`next-${i}`}
               disabled
               className={cn(
-                dayCellVariants({ theme, state: "outside-month", size }),
+                dayCellVariants({ theme, state: "outside-month", size })
               )}
             >
-              {nextMonthDay}
-            </button>,
+              {i + 1}
+            </button>
           );
         } else {
           days.push(
             <div
               key={`next-${i}`}
               className={cn(dayCellVariants({ theme, size }), "opacity-0")}
-            />,
+            />
           );
         }
-        nextMonthDay++;
       }
 
       return days;
@@ -491,15 +538,18 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         firstDay + daysInMonth + ((7 - ((firstDay + daysInMonth) % 7)) % 7);
       const weekCount = Math.ceil(totalCells / 7);
 
+      const weekTextColor =
+        theme === "dark" ? "text-dark-text-disabled" : "text-light-text-disabled";
+
       for (let i = 0; i < weekCount; i++) {
         const weekStart = new Date(
           currentYear,
           currentMonth,
-          1 + i * 7 - firstDay,
+          1 + i * 7 - firstDay
         );
         const startOfYear = new Date(weekStart.getFullYear(), 0, 1);
         const daysDiff = Math.floor(
-          (weekStart.getTime() - startOfYear.getTime()) / 86400000,
+          (weekStart.getTime() - startOfYear.getTime()) / 86400000
         );
         const weekNum = Math.ceil((daysDiff + startOfYear.getDay() + 1) / 7);
 
@@ -508,16 +558,16 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             key={`week-${i}`}
             className={cn(
               "flex items-center justify-center text-xs font-medium",
-              theme === "dark" ? "text-white/30" : "text-black/30",
+              weekTextColor,
               size === "sm"
                 ? "h-8 w-8"
                 : size === "md"
                   ? "h-10 w-10"
-                  : "h-12 w-12",
+                  : "h-12 w-12"
             )}
           >
             {weekNum}
-          </div>,
+          </div>
         );
       }
       return weeks;
@@ -526,21 +576,15 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     const renderTimeSlots = () => {
       if (!timeSlots) return null;
       const selDate = selected instanceof Date ? selected : null;
+
+      const borderColor =
+        theme === "dark" ? "border-dark-border" : "border-light-border";
+      const headingColor =
+        theme === "dark" ? "text-dark-text-primary" : "text-light-text-primary";
+
       return (
-        <div
-          className={cn(
-            "w-[130px] shrink-0 border-l pl-5",
-            theme === "dark" 
-              ? "border-white/10" 
-              : "border-black/10",
-          )}
-        >
-          <p
-            className={cn(
-              "mb-3 text-base font-semibold",
-              theme === "dark" ? "text-white" : "text-black",
-            )}
-          >
+        <div className={cn("w-[130px] shrink-0 border-l pl-5", borderColor)}>
+          <p className={cn("mb-3 text-base font-semibold", headingColor)}>
             {selDate
               ? selDate.toLocaleDateString("en-US", {
                   weekday: "long",
@@ -552,17 +596,18 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             {timeSlots.map((time) => (
               <motion.button
                 key={time}
+                type="button"
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onTimeSelect?.(time)}
                 className={cn(
-                  "w-full rounded-[8px] border px-3 py-2 text-sm font-medium transition-all",
+                  "w-full rounded-aphelion-md border px-3 py-2 text-sm font-medium transition-all",
                   selectedTime === time
                     ? theme === "dark"
-                      ? "border-white bg-white text-black"
-                      : "border-black bg-black text-white"
+                      ? "border-dark-primary bg-dark-primary text-dark-primary-foreground"
+                      : "border-light-primary bg-light-primary text-light-primary-foreground"
                     : theme === "dark"
-                      ? "border-white/10 text-white/70 hover:border-white/20 hover:bg-white/5"
-                      : "border-black/10 text-black/70 hover:border-black/20 hover:bg-black/5",
+                      ? "border-dark-border text-dark-text-secondary hover:border-dark-border-strong hover:bg-dark-hover"
+                      : "border-light-border text-light-text-secondary hover:border-light-border-strong hover:bg-light-hover"
                 )}
               >
                 {time}
@@ -575,18 +620,20 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
     const renderPresets = () => {
       if (!presets) return null;
+      const borderColor =
+        theme === "dark" ? "border-dark-border" : "border-light-border";
+
       return (
         <div
           className={cn(
             "w-[130px] shrink-0 space-y-0.5 border-r pr-5",
-            theme === "dark" 
-              ? "border-white/10" 
-              : "border-black/10",
+            borderColor
           )}
         >
           {presets.map((preset) => (
             <button
               key={preset.label}
+              type="button"
               onClick={() => {
                 if (preset.value instanceof Date) {
                   onSelect?.(preset.value);
@@ -599,10 +646,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 }
               }}
               className={cn(
-                "w-full rounded-[6px] px-3 py-2 text-left text-sm font-medium transition-colors",
+                "w-full rounded-aphelion-sm px-3 py-2 text-left text-sm font-medium transition-colors",
                 theme === "dark"
-                  ? "text-white hover:bg-white/10"
-                  : "text-black hover:bg-black/10",
+                  ? "text-dark-text-primary hover:bg-dark-hover"
+                  : "text-light-text-primary hover:bg-light-hover"
               )}
             >
               {preset.label}
@@ -612,17 +659,19 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       );
     };
 
+    const selectClasses = cn(
+      "h-9 cursor-pointer appearance-none rounded-aphelion-md border bg-transparent px-3 text-sm font-semibold outline-none",
+      theme === "dark"
+        ? "border-dark-border text-dark-text-primary"
+        : "border-light-border text-light-text-primary"
+    );
+
     const headerContent = showMonthYearSelect ? (
       <div className="mb-4 flex items-center gap-2">
         <select
           value={currentMonth}
           onChange={(e) => setCurrentMonth(Number(e.target.value))}
-          className={cn(
-            "h-9 flex-1 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none",
-            theme === "dark"
-              ? "border-white/10 text-white"
-              : "border-black/10 text-black",
-          )}
+          className={cn(selectClasses, "flex-1")}
         >
           {MONTHS.map((m, i) => (
             <option key={m} value={i}>
@@ -633,19 +682,14 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         <select
           value={currentYear}
           onChange={(e) => setCurrentYear(Number(e.target.value))}
-          className={cn(
-            "h-9 cursor-pointer appearance-none rounded-[8px] border bg-transparent px-3 text-sm font-semibold outline-none",
-            theme === "dark"
-              ? "border-white/10 text-white"
-              : "border-black/10 text-black",
-          )}
+          className={cn(selectClasses, "flex-1")}
         >
           {Array.from({ length: 21 }, (_, i) => currentYear - 10 + i).map(
             (y) => (
               <option key={y} value={y}>
                 {y}
               </option>
-            ),
+            )
           )}
         </select>
       </div>
@@ -653,15 +697,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       <div className="mb-4 flex items-center justify-between">
         {navPosition === "top" ? (
           <>
-            <button
-              onClick={prevMonth}
-              className={cn(
-                "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
-                theme === "dark"
-                  ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
-                  : "text-black/40 hover:bg-black/10 hover:text-black",
-              )}
-            >
+            <IconButton onClick={prevMonth} theme={theme}>
               <svg
                 width="16"
                 height="16"
@@ -674,24 +710,18 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               >
                 <path d="M15 18l-6-6 6-6" />
               </svg>
-            </button>
+            </IconButton>
             <span
               className={cn(
                 "text-base font-semibold",
-                theme === "dark" ? "text-white" : "text-black",
+                theme === "dark"
+                  ? "text-dark-text-primary"
+                  : "text-light-text-primary"
               )}
             >
               {MONTHS[currentMonth]} {currentYear}
             </span>
-            <button
-              onClick={nextMonth}
-              className={cn(
-                "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
-                theme === "dark"
-                  ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
-                  : "text-black/40 hover:bg-black/10 hover:text-black",
-              )}
-            >
+            <IconButton onClick={nextMonth} theme={theme}>
               <svg
                 width="16"
                 height="16"
@@ -704,28 +734,22 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               >
                 <path d="M9 18l6-6-6-6" />
               </svg>
-            </button>
+            </IconButton>
           </>
         ) : (
           <>
             <span
               className={cn(
                 "text-lg font-semibold",
-                theme === "dark" ? "text-white" : "text-black",
+                theme === "dark"
+                  ? "text-dark-text-primary"
+                  : "text-light-text-primary"
               )}
             >
               {MONTHS[currentMonth]} {currentYear}
             </span>
             <div className="flex items-center gap-1">
-              <button
-                onClick={prevMonth}
-                className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
-                  theme === "dark"
-                    ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
-                    : "text-black/40 hover:bg-black/10 hover:text-black",
-                )}
-              >
+              <IconButton onClick={prevMonth} theme={theme}>
                 <svg
                   width="16"
                   height="16"
@@ -738,16 +762,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
-              </button>
-              <button
-                onClick={nextMonth}
-                className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-[6px] transition-colors",
-                  theme === "dark"
-                    ? "text-aphelion-light-text-primary hover:bg-white/10 hover:text-white"
-                    : "text-black/40 hover:bg-black/10 hover:text-black",
-                )}
-              >
+              </IconButton>
+              <IconButton onClick={nextMonth} theme={theme}>
                 <svg
                   width="16"
                   height="16"
@@ -760,12 +776,15 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
-              </button>
+              </IconButton>
             </div>
           </>
         )}
       </div>
     );
+
+    const dayLabelColor =
+      theme === "dark" ? "text-dark-text-secondary" : "text-light-text-secondary";
 
     return (
       <div
@@ -773,7 +792,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         className={cn(
           calendarVariants({ theme, variant, size }),
           (timeSlots || presets) && "flex max-w-none",
-          className,
+          className
         )}
         {...props}
       >
@@ -783,7 +802,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <div
             className={cn(
               "mb-1 grid",
-              showWeekNumbers ? "grid-cols-8" : "grid-cols-7",
+              showWeekNumbers ? "grid-cols-8" : "grid-cols-7"
             )}
           >
             {showWeekNumbers && <div />}
@@ -792,8 +811,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 key={day}
                 className={cn(
                   "flex items-center justify-center pb-2 text-xs font-medium",
-                  theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40",
-                  size === "sm" ? "h-8" : size === "md" ? "h-10" : "h-12",
+                  dayLabelColor,
+                  size === "sm" ? "h-8" : size === "md" ? "h-10" : "h-12"
                 )}
               >
                 {day}
@@ -803,7 +822,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <div
             className={cn(
               "grid",
-              showWeekNumbers ? "grid-cols-8" : "grid-cols-7",
+              showWeekNumbers ? "grid-cols-8" : "grid-cols-7"
             )}
           >
             {showWeekNumbers && (
@@ -815,7 +834,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         {renderTimeSlots()}
       </div>
     );
-  },
+  }
 );
 
 Calendar.displayName = "Calendar";
@@ -832,7 +851,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       className,
       ...props
     },
-    ref,
+    ref
   ) {
     const [open, setOpen] = React.useState(false);
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -850,24 +869,36 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       return () => document.removeEventListener("mousedown", handleClick);
     }, []);
 
+    const triggerBorderColor =
+      theme === "dark" ? "border-dark-border" : "border-light-border";
+    const triggerBgColor =
+      theme === "dark" ? "bg-dark-background" : "bg-light-background";
+    const triggerTextColor =
+      theme === "dark" ? "text-dark-text-primary" : "text-light-text-primary";
+    const placeholderColor =
+      theme === "dark" ? "text-dark-text-muted" : "text-light-text-muted";
+    const iconColor =
+      theme === "dark" ? "text-dark-text-muted" : "text-light-text-muted";
+    const hoverBorderColor =
+      theme === "dark"
+        ? "hover:border-dark-border-strong"
+        : "hover:border-light-border-strong";
+
     return (
       <div ref={containerRef} className="relative inline-block">
         <button
           type="button"
           onClick={() => setOpen(!open)}
           className={cn(
-            "flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-[10px] border px-4 text-sm transition-colors",
-            theme === "dark"
-              ? "border-white/10 bg-black text-white hover:border-white/20"
-              : "border-black/10 bg-white text-black hover:border-black/20",
-            className,
+            "flex h-11 min-w-[240px] items-center justify-between gap-3 rounded-aphelion-sm border px-4 text-sm transition-colors",
+            triggerBorderColor,
+            triggerBgColor,
+            triggerTextColor,
+            hoverBorderColor,
+            className
           )}
         >
-          <span
-            className={
-              value ? "" : theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40"
-            }
-          >
+          <span className={value ? "" : placeholderColor}>
             {value
               ? value.toLocaleDateString("en-US", {
                   month: "short",
@@ -883,7 +914,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
-            className={theme === "dark" ? "text-aphelion-light-text-primary" : "text-black/40"}
+            className={iconColor}
           >
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
             <line x1="16" y1="2" x2="16" y2="6" />
@@ -916,7 +947,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         </AnimatePresence>
       </div>
     );
-  },
+  }
 );
 
 DatePicker.displayName = "DatePicker";

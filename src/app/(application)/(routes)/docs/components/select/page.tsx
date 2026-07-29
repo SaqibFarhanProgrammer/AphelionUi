@@ -6,7 +6,7 @@ import DocsSection from '@/components/docs/DocsSection';
 import DocsPageLayout from '@/components/docs/DocsPageLayout';
 import BottomNav from '@/components/docs/BottomNav';
 import DocsFooter from '@/components/docs/DocsFooter';
-import Select from '@/registry/components/select/page';
+import Select from '@/registry/components/select/Select';
 
 const selectOptions = [
   { value: 'apple', label: 'Apple' },
