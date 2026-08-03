@@ -14,7 +14,7 @@ function cn(...inputs: (string | undefined | null | boolean)[]): string {
 
 // --- Overlay Variants -------------------------------------------------------
 const overlayVariants = cva(
-  ['fixed', 'inset-0', 'z-40', 'transition-colors', 'duration-300'],
+  ['fixed', 'inset-0', 'z-40', 'overflow-hidden', 'transition-colors', 'duration-300'],
   {
     variants: {
       theme: {
@@ -29,13 +29,13 @@ const overlayVariants = cva(
 );
 
 // --- Sheet Variants ---------------------------------------------------------
-const sheetVariants = cva(['fixed', 'z-50', 'flex', 'flex-col'], {
+const sheetVariants = cva(['fixed', 'z-50', 'flex', 'min-w-0', 'max-w-full', 'flex-col', 'overflow-hidden'], {
   variants: {
     side: {
-      top: ['inset-x-0', 'top-0', 'border-b', 'h-auto', 'max-h-[85vh]'],
-      bottom: ['inset-x-0', 'bottom-0', 'border-t', 'h-auto', 'max-h-[85vh]'],
-      left: ['inset-y-0', 'left-0', 'border-r', 'w-full', 'sm:max-w-[420px]'],
-      right: ['inset-y-0', 'right-0', 'border-l', 'w-full', 'sm:max-w-[420px]'],
+      top: ['inset-x-0', 'top-0', 'border-b', 'h-auto', 'w-full', 'max-h-[min(85vh,720px)]'],
+      bottom: ['inset-x-0', 'bottom-0', 'border-t', 'h-auto', 'w-full', 'max-h-[min(85vh,720px)]'],
+      left: ['inset-y-0', 'left-0', 'border-r', 'w-full', 'max-w-full', 'sm:max-w-[420px]'],
+      right: ['inset-y-0', 'right-0', 'border-l', 'w-full', 'max-w-full', 'sm:max-w-[420px]'],
     },
     theme: {
       light: ['bg-light-card', 'border-light-border', 'shadow-aphelion-lg'],
@@ -50,7 +50,7 @@ const sheetVariants = cva(['fixed', 'z-50', 'flex', 'flex-col'], {
 
 // --- Header Variants --------------------------------------------------------
 const headerVariants = cva(
-  ['flex', 'items-start', 'justify-between', 'gap-4', 'p-6', 'pb-0'],
+  ['flex', 'min-w-0', 'items-start', 'justify-between', 'gap-4', 'p-4', 'pb-0', 'sm:p-6', 'sm:pb-0'],
   {
     variants: {
       theme: {
@@ -65,7 +65,7 @@ const headerVariants = cva(
 );
 
 // --- Title Variants ---------------------------------------------------------
-const titleVariants = cva(['text-lg', 'font-semibold', 'leading-tight'], {
+const titleVariants = cva(['text-lg', 'min-w-0', 'wrap-break-word', 'font-semibold', 'leading-tight'], {
   variants: {
     theme: {
       light: 'text-light-text-primary',
@@ -78,7 +78,7 @@ const titleVariants = cva(['text-lg', 'font-semibold', 'leading-tight'], {
 });
 
 // --- Subtitle Variants ------------------------------------------------------
-const subtitleVariants = cva(['mt-1', 'text-sm', 'leading-relaxed'], {
+const subtitleVariants = cva(['mt-1', 'min-w-0', 'wrap-break-word', 'text-sm', 'leading-relaxed'], {
   variants: {
     theme: {
       light: 'text-light-text-muted',
@@ -92,7 +92,7 @@ const subtitleVariants = cva(['mt-1', 'text-sm', 'leading-relaxed'], {
 
 // --- Body Variants ----------------------------------------------------------
 const bodyVariants = cva(
-  ['flex-1', 'overflow-y-auto', 'p-6', 'scrollbar-hide'],
+  ['flex-1', 'min-w-0', 'overflow-y-auto', 'p-4', 'sm:p-6', 'scrollbar-hide'],
   {
     variants: {
       theme: {
@@ -108,7 +108,7 @@ const bodyVariants = cva(
 
 // --- Footer Variants --------------------------------------------------------
 const footerVariants = cva(
-  ['flex', 'items-center', 'justify-end', 'gap-3', 'p-6', 'pt-0'],
+  ['flex', 'min-w-0', 'flex-wrap', 'items-center', 'justify-end', 'gap-3', 'p-4', 'pt-0', 'sm:p-6', 'sm:pt-0'],
   {
     variants: {
       theme: {

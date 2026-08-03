@@ -679,7 +679,6 @@ const bottomNavItems = [
   },
 ];
 
-// ─── Controlled Preview Component ────────────────────────────────────────
 
 function ControlledAccordionPreview() {
   const [openItems, setOpenItems] = useState<string[]>(['item-1']);

@@ -53,7 +53,7 @@ function DismissButton({
 // ─── CVA Variants ────────────────────────────────────────────────────────
 
 const alertVariants = cva(
-  ['relative', 'flex', 'items-start', 'gap-3', 'border', 'p-4', 'w-full'],
+  ['relative', 'flex', 'min-w-0', 'max-w-full', 'items-start', 'gap-3', 'border', 'p-4', 'w-full'],
   {
     variants: {
       theme: {

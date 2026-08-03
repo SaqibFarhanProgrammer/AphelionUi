@@ -300,11 +300,10 @@ function DropdownContent({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-aphelion-xl border py-1',
+        'overflow-hidden rounded-aphelion-xl border py-1 min-w-55 max-w-[calc(100vw-1rem)]',
         menuBg,
         menuBorder
       )}
-      style={{ minWidth: 220 }}
     >
       {/* Back Button */}
       {!isRoot && (
@@ -318,7 +317,7 @@ function DropdownContent({
             'cursor-pointer'
           )}
         >
-          <ChevronLeftIcon className={cn('flex-shrink-0', mutedIconColor)} />
+          <ChevronLeftIcon className={cn('shrink-0', mutedIconColor)} />
           <span className="font-medium">Back</span>
         </MenuButton>
       )}
@@ -369,7 +368,7 @@ function DropdownContent({
             onClick={() => handleItemClick(item)}
             disabled={item.disabled}
             className={cn(
-              'relative flex items-center gap-2.5 px-3 py-2 mx-1 rounded-aphelion-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left',
+              'relative flex min-w-0 max-w-full items-center gap-2.5 px-3 py-2 mx-1 rounded-aphelion-lg text-[13px] transition-all duration-150 outline-none w-[calc(100%-8px)] text-left',
               item.disabled
                 ? `opacity-40 cursor-not-allowed ${itemDisabledText}`
                 : item.danger
@@ -379,7 +378,7 @@ function DropdownContent({
           >
             {/* Radio indicator */}
             {item.radio && (
-              <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center">
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center">
                 <CircleIcon
                   className={isRadioSelected ? radioSelected : radioDefault}
                   filled={isRadioSelected as boolean}
@@ -389,7 +388,7 @@ function DropdownContent({
 
             {/* Checkbox indicator */}
             {item.checked !== undefined && !item.radio && (
-              <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center">
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center">
                 {isChecked ? (
                   <CheckIcon className={checkboxCheckedColor} />
                 ) : (
@@ -402,17 +401,17 @@ function DropdownContent({
 
             {/* Regular icon */}
             {item.icon && !item.radio && item.checked === undefined && (
-              <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center">
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center">
                 {item.icon}
               </span>
             )}
 
-            <span className="flex-1 truncate">{item.label}</span>
+            <span className="min-w-0 flex-1 wrap-break-word">{item.label}</span>
 
             {/* Submenu arrow */}
             {isSubmenu && (
               <ChevronRightIcon
-                className={cn('flex-shrink-0', mutedIconColor)}
+                className={cn('shrink-0', mutedIconColor)}
               />
             )}
 
@@ -642,6 +641,7 @@ export function DropdownMenu({
       position: 'absolute',
       zIndex: 50,
       width: typeof width === 'number' ? `${width}px` : width,
+      maxWidth: 'calc(100vw - 1rem)',
     };
 
     switch (side) {
@@ -687,7 +687,7 @@ export function DropdownMenu({
 
   return (
     <DropdownContext.Provider value={contextValue}>
-      <div className="relative inline-block" ref={triggerRef}>
+      <div className="relative inline-block max-w-full" ref={triggerRef}>
         <div
           onClick={() => !disabled && setOpen(!open)}
           className={

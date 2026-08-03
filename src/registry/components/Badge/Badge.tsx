@@ -14,6 +14,8 @@ function cn(...inputs: ClassValue[]) {
 const badgeVariants = cva(
   [
     'inline-flex',
+    'min-w-0',
+    'max-w-full',
     'items-center',
     'justify-center',
     'gap-1.5',

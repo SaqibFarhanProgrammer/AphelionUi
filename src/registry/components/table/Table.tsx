@@ -9,12 +9,12 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
+const tableContainerVariants = cva(['w-full', 'min-w-0', 'max-w-full', 'overflow-x-auto'], {
   variants: {
     layout: {
       default: '',
       card: 'rounded-aphelion-xl border overflow-hidden',
-      vertical: 'rounded-aphelion-xl border overflow-hidden max-w-[480px]',
+      vertical: 'rounded-aphelion-xl border overflow-hidden',
     },
     theme: {
       dark: 'bg-dark-background',
@@ -49,7 +49,7 @@ const tableContainerVariants = cva(['w-full', 'overflow-x-auto'], {
   },
 });
 
-const tableVariants = cva(['w-full', 'border-collapse', 'text-left'], {
+const tableVariants = cva(['w-full', 'min-w-0', 'border-collapse', 'text-left'], {
   variants: {
     variant: {
       default: '',
@@ -99,7 +99,7 @@ const headerRowVariants = cva(['border-b'], {
 });
 
 const headerCellVariants = cva(
-  ['font-medium', 'text-left', 'whitespace-nowrap', 'select-none'],
+  ['font-medium', 'min-w-0', 'text-left', 'whitespace-nowrap', 'select-none'],
   {
     variants: {
       theme: {
@@ -230,7 +230,7 @@ const bodyRowVariants = cva(['transition-colors', 'duration-150'], {
   },
 });
 
-const bodyCellVariants = cva(['whitespace-nowrap', 'text-left'], {
+const bodyCellVariants = cva(['min-w-0', 'wrap-break-word', 'text-left'], {
   variants: {
     theme: {
       dark: 'text-dark-text-primary',

@@ -19,6 +19,8 @@ const cardVariants = cva(
   [
     'relative',
     'flex',
+    'min-w-0',
+    'max-w-full',
     'flex-col',
     'overflow-hidden',
     'border',
@@ -55,13 +57,13 @@ const cardVariants = cva(
         xl: 'p-10',
       },
       width: {
-        auto: 'w-auto',
-        xs: 'w-[280px]',
-        sm: 'w-[320px]',
-        md: 'w-[380px]',
-        lg: 'w-[440px]',
-        xl: 'w-[520px]',
-        full: 'w-full',
+        auto: 'w-full max-w-full',
+        xs: 'w-full max-w-[280px]',
+        sm: 'w-full max-w-[320px]',
+        md: 'w-full max-w-[380px]',
+        lg: 'w-full max-w-[440px]',
+        xl: 'w-full max-w-[520px]',
+        full: 'w-full max-w-full',
       },
       hover: {
         true: '',
@@ -112,7 +114,7 @@ const cardVariants = cva(
 
 // ─── Card Header Variants ────────────────────────────────────────────────
 
-const cardHeaderVariants = cva(['flex', 'flex-col', 'gap-1.5'], {
+const cardHeaderVariants = cva(['flex', 'min-w-0', 'flex-col', 'gap-1.5'], {
   variants: {
     padding: {
       none: '',
@@ -130,7 +132,7 @@ const cardHeaderVariants = cva(['flex', 'flex-col', 'gap-1.5'], {
 // ─── Card Title Variants ─────────────────────────────────────────────────
 
 const cardTitleVariants = cva(
-  ['text-2xl', 'font-semibold', 'leading-tight', 'tracking-tight'],
+  ['text-2xl', 'min-w-0', 'wrap-break-word', 'font-semibold', 'leading-tight', 'tracking-tight'],
   {
     variants: {
       theme: {
@@ -146,7 +148,7 @@ const cardTitleVariants = cva(
 
 // ─── Card Description Variants ───────────────────────────────────────────
 
-const cardDescriptionVariants = cva(['text-sm', 'leading-relaxed'], {
+const cardDescriptionVariants = cva(['text-sm', 'min-w-0', 'wrap-break-word', 'leading-relaxed'], {
   variants: {
     theme: {
       dark: 'text-dark-text-muted',
@@ -160,7 +162,7 @@ const cardDescriptionVariants = cva(['text-sm', 'leading-relaxed'], {
 
 // ─── Card Footer Variants ────────────────────────────────────────────────
 
-const cardFooterVariants = cva(['flex', 'items-center', 'gap-3'], {
+const cardFooterVariants = cva(['flex', 'min-w-0', 'flex-wrap', 'items-center', 'gap-3'], {
   variants: {
     padding: {
       none: '',

@@ -7,10 +7,13 @@ import { cn } from '@/lib/utils';
 const buttonVariants = cva(
   [
     'inline-flex',
+    'min-w-0',
+    'max-w-full',
     'items-center',
     'justify-center',
     'gap-2',
     'whitespace-nowrap',
+    'overflow-hidden',
     'transition-all',
     'duration-200',
     'select-none',
@@ -61,7 +64,7 @@ const buttonVariants = cva(
         md: 'h-10 px-4 text-sm',
         lg: 'h-11 px-5 text-base',
         xl: 'h-12 px-6 text-base',
-        icon: 'h-10 w-10 p-0',
+        icon: 'h-10 w-10 shrink-0 p-0',
       },
 
       radius: {
@@ -239,9 +242,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           <Spinner size={spinnerSize[size ?? 'md']} />
         ) : (
           <>
-            {leftIcon && <span aria-hidden="true">{leftIcon}</span>}
-            {children}
-            {rightIcon && <span aria-hidden="true">{rightIcon}</span>}
+            {leftIcon && (
+              <span aria-hidden="true" className="inline-flex shrink-0">
+                {leftIcon}
+              </span>
+            )}
+            <span className="min-w-0 truncate">{children}</span>
+            {rightIcon && (
+              <span aria-hidden="true" className="inline-flex shrink-0">
+                {rightIcon}
+              </span>
+            )}
           </>
         )}
       </button>

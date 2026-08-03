@@ -254,7 +254,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <div
-      className={cn('flex flex-col', fullWidth && 'w-full', containerClassName)}
+      className={cn(
+        'flex min-w-0 flex-col',
+        fullWidth && 'w-full',
+        containerClassName
+      )}
     >
       {label && (
         <label htmlFor={inputId} className={labelVariants({ theme })}>
@@ -267,7 +271,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
         </label>
       )}
 
-      <div className={cn('relative flex items-stretch', fullWidth && 'w-full')}>
+      <div
+        className={cn(
+          'relative flex min-w-0 max-w-full items-stretch',
+          fullWidth && 'w-full'
+        )}
+      >
         {leftAddon && (
           <div
             className={cn(

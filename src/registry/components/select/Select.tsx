@@ -15,6 +15,8 @@ const selectVariants = cva(
   [
     'flex',
     'w-full',
+    'min-w-0',
+    'max-w-full',
     'items-center',
     'justify-between',
     'gap-2',
@@ -385,7 +387,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
     : 'border-light-border-strong';
 
   return (
-    <div className={cn('relative flex flex-col', containerClassName)}>
+    <div className={cn('relative flex min-w-0 max-w-full flex-col', containerClassName)}>
       {/* ─── Label ──────────────────────────────────────────────────── */}
       {label && (
         <label
@@ -428,7 +430,12 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
         )}
         {...props}
       >
-        <span className={cn('truncate', !selectedOption && placeholderColor)}>
+        <span
+          className={cn(
+            'min-w-0 flex-1 truncate text-left',
+            !selectedOption && placeholderColor
+          )}
+        >
           {selectedOption?.label || placeholder}
         </span>
         <ChevronIcon open={isOpen} className={chevronColor} />
@@ -441,7 +448,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
           id={`${selectId}-listbox`}
           role="listbox"
           className={cn(
-            'absolute z-50 mt-1.5 w-full overflow-hidden rounded-aphelion-lg border',
+            'absolute z-50 mt-1.5 w-full min-w-0 max-w-full overflow-hidden rounded-aphelion-lg border',
             dropdownBg,
             dropdownBorder,
             dropdownClassName
@@ -458,7 +465,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
               ) : (
                 <div
                   className={cn(
-                    'flex items-center gap-2 rounded-aphelion-md border px-3 py-2',
+                    'flex min-w-0 max-w-full items-center gap-2 rounded-aphelion-md border px-3 py-2',
                     searchBg,
                     searchBorder
                   )}
@@ -480,7 +487,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
                       }
                     }}
                     className={cn(
-                      'w-full bg-transparent text-sm outline-none placeholder:text-light-text-muted',
+                      'w-full min-w-0 bg-transparent text-sm outline-none placeholder:text-light-text-muted',
                       searchTextColor
                     )}
                   />
@@ -492,7 +499,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(function Select(
           {/* Options List */}
           <div
             className={cn(
-              'max-h-[240px] overflow-y-auto',
+              'max-h-[min(240px,50vh)] overflow-y-auto',
               searchable ? 'px-2 pb-2' : 'p-1'
             )}
           >

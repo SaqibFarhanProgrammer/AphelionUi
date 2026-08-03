@@ -124,7 +124,7 @@ const thumbVariants = cva(
 );
 
 const labelVariants = cva(
-  ['text-sm', 'font-medium', 'transition-colors', 'duration-150'],
+  ['min-w-0', 'text-sm', 'font-medium', 'break-words', 'transition-colors', 'duration-150'],
   {
     variants: {
       theme: {
@@ -218,7 +218,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-3',
+        'inline-flex max-w-full items-center gap-3',
         className,
         containerClassName
       )}

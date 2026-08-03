@@ -13,7 +13,7 @@ function cn(...inputs: ClassValue[]) {
 // ─── CVA ─────────────────────────────────────────────────────────────────
 
 const overlayVariants = cva(
-  ['fixed', 'inset-0', 'z-40', 'flex', 'items-center', 'justify-center', 'p-4'],
+  ['fixed', 'inset-0', 'z-40', 'flex', 'items-center', 'justify-center', 'p-2', 'sm:p-4'],
   {
     variants: {
       theme: {
@@ -28,7 +28,7 @@ const overlayVariants = cva(
 );
 
 const dialogVariants = cva(
-  ['relative', 'z-50', 'w-full', 'border', 'outline-none', 'overflow-hidden'],
+  ['relative', 'z-50', 'w-full', 'max-w-[calc(100vw-1rem)]', 'max-h-[min(90dvh,720px)]', 'flex', 'flex-col', 'overflow-hidden', 'border', 'outline-none'],
   {
     variants: {
       theme: {
@@ -36,11 +36,11 @@ const dialogVariants = cva(
         dark: ['bg-dark-card', 'border-dark-border'],
       },
       size: {
-        sm: 'max-w-[400px]',
-        md: 'max-w-[480px]',
-        lg: 'max-w-[560px]',
-        xl: 'max-w-[640px]',
-        full: 'max-w-full',
+        sm: 'sm:max-w-[400px]',
+        md: 'sm:max-w-[480px]',
+        lg: 'sm:max-w-[560px]',
+        xl: 'sm:max-w-[640px]',
+        full: 'sm:max-w-[calc(100vw-1rem)]',
       },
       radius: {
         none: 'rounded-aphelion-none',
@@ -72,7 +72,7 @@ function CloseButton({
       type="button"
       onClick={onClick}
       className={cn(
-        'absolute top-4 right-4 rounded-aphelion-md p-1 transition-colors',
+        'absolute top-3 right-3 rounded-aphelion-md p-1 transition-colors sm:top-4 sm:right-4',
         theme === 'dark'
           ? 'text-dark-text-muted hover:text-dark-text-primary hover:bg-dark-hover'
           : 'text-light-text-muted hover:text-light-text-primary hover:bg-light-hover'
@@ -195,13 +195,13 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
 
             {/* Header */}
             {(title || description) && (
-              <div className={cn('p-6 pb-0', headerClassName)}>
+              <div className={cn('p-4 pb-0 sm:p-6 sm:pb-0', headerClassName)}>
                 {title && (
                   <motion.h2
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
-                    className={cn('text-lg font-semibold', titleColor)}
+                    className={cn('text-lg font-semibold wrap-break-word', titleColor)}
                   >
                     {title}
                   </motion.h2>
@@ -212,7 +212,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.15 }}
                     className={cn(
-                      'mt-2 text-sm leading-relaxed',
+                      'mt-2 text-sm leading-relaxed wrap-break-word',
                       descriptionColor
                     )}
                   >
@@ -228,7 +228,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
-                className={cn('p-6', bodyClassName)}
+                className={cn('overflow-y-auto p-4 sm:p-6', bodyClassName)}
               >
                 {children}
               </motion.div>
@@ -241,7 +241,7 @@ const Dialog = React.forwardRef<HTMLDivElement, DialogProps>(function Dialog(
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 }}
                 className={cn(
-                  'flex items-center justify-end gap-3 p-6 pt-0',
+                  'flex flex-wrap items-center justify-end gap-3 p-4 pt-0 sm:p-6 sm:pt-0',
                   footerClassName
                 )}
               >

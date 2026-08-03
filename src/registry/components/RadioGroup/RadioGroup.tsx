@@ -104,6 +104,8 @@ const cardVariants = cva(
   [
     'relative',
     'flex',
+    'min-w-0',
+    'max-w-full',
     'items-start',
     'gap-3',
     'rounded-aphelion-xl',
@@ -165,6 +167,8 @@ const cardVariants = cva(
 const tableRowVariants = cva(
   [
     'flex',
+    'min-w-0',
+    'max-w-full',
     'items-center',
     'gap-4',
     'rounded-aphelion-lg',
